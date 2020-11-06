@@ -43,50 +43,6 @@ CREATE TABLE Reservation (
         REFERENCES Agency (agencyId)
 );
 
-/*DROP TABLE Criterion*/
-CREATE TABLE Criterion (
-	criterionId INT NOT NULL,
-    name VARCHAR(50),
-    min INT,
-    max INT, 
-	hotelId INT,
-    PRIMARY KEY (criterionId),
-    FOREIGN KEY (hotelId)
-		REFERENCES Hotel(hotelId)
-);
-
-/*DROP TABLE Assessment*/
-CREATE TABLE Assessment (
-	datetime DATETIME NOT NULL,
-    comments VARCHAR(250),
-    reservationId INT,
-    PRIMARY KEY (datetime),
-    FOREIGN KEY (reservationId)
-		REFERENCES Reservation (reservationId)
-);
-
-/*DROP TABLE RoomType*/
-CREATE TABLE RoomType (
-	type VARCHAR(50) NOT NULL,
-    numberOfRooms INT,
-    price DOUBLE,
-    reservationId INT,
-    PRIMARY KEY (type, reservationId),
-    FOREIGN KEY (reservationId)
-		REFERENCES Reservation (reservationId) 
-);
-
-/*DROP TABLE Customer_Room*/ 
-CREATE TABLE Customer_Room (
-	customerId INT NOT NULL,
-    number VARCHAR(50) NOT NULL,
-    PRIMARY KEY (customerId, number),
-    FOREIGN KEY (customerId)
-		REFERENCES Customer (customerId),
-	FOREIGN KEY (number)
-		REFERENCES Room (number)
-);             
-
 /*DROP TABLE Service;*/
 CREATE TABLE Service (
     serviceId INT NOT NULL,
@@ -132,6 +88,50 @@ CREATE TABLE Room (
     FOREIGN KEY (hotelId)
         REFERENCES Hotel (hotelId)
 );
+
+/*DROP TABLE Criterion;*/
+CREATE TABLE Criterion (
+	criterionId INT NOT NULL,
+    name VARCHAR(50),
+    min INT,
+    max INT, 
+	hotelId INT,
+    PRIMARY KEY (criterionId),
+    FOREIGN KEY (hotelId)
+		REFERENCES Hotel(hotelId)
+);
+
+/*DROP TABLE Assessment;*/
+CREATE TABLE Assessment (
+	datetime DATETIME NOT NULL,
+    comments VARCHAR(250),
+    reservationId INT,
+    PRIMARY KEY (datetime),
+    FOREIGN KEY (reservationId)
+		REFERENCES Reservation (reservationId)
+);
+
+/*DROP TABLE RoomType;*/
+CREATE TABLE RoomType (
+	type VARCHAR(50) NOT NULL,
+    numberOfRooms INT,
+    price DOUBLE,
+    reservationId INT,
+    PRIMARY KEY (type, reservationId),
+    FOREIGN KEY (reservationId)
+		REFERENCES Reservation (reservationId) 
+);
+
+/*DROP TABLE Customer_Room;*/
+CREATE TABLE Customer_Room (
+	customerId INT NOT NULL,
+    number INT NOT NULL,
+    PRIMARY KEY (customerId, number),
+    FOREIGN KEY (customerId)
+		REFERENCES Group_Customer (customerId),
+	FOREIGN KEY (number)
+		REFERENCES Room (number)
+);             
 
 /*DROP TABLE Hotel_Service;*/ 
 CREATE TABLE Hotel_Service (
