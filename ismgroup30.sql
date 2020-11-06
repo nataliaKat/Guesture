@@ -78,7 +78,7 @@ CREATE TABLE Payment (
         REFERENCES Reservation (reservationId)
 );
             
-/*DROP TABLE Payment;*/
+/*DROP TABLE Room;*/
 CREATE TABLE Room (
     number INT NOT NULL,
     hotelId INT NOT NULL,
@@ -89,3 +89,49 @@ CREATE TABLE Room (
         REFERENCES Hotel (hotelId)
 );
 
+/*DROP TABLE Hotel_Service;*/ 
+CREATE TABLE Hotel_Service (
+    hotelId INT NOT NULL,
+    serviceId INT NOT NULL,
+    PRIMARY KEY (hotelId , serviceId),
+    FOREIGN KEY (hotelId)
+        REFERENCES Hotel (hotelId),
+    FOREIGN KEY (serviceId)
+        REFERENCES Service (serviceId)
+);
+             
+ /*DROP TABLE Reservation_Service;*/ 
+CREATE TABLE Reservation_Service (
+    reservationId INT NOT NULL,
+    serviceId INT NOT NULL,
+    value BOOLEAN NOT NULL,
+    PRIMARY KEY (reservationId , serviceId),
+    FOREIGN KEY (reservationId)
+        REFERENCES Reservation (reservationId),
+    FOREIGN KEY (serviceId)
+        REFERENCES Service (serviceId)
+);
+             
+   /*DROP TABLE Hotel_Agency;*/ 
+CREATE TABLE Hotel_Agency (
+    hotelId INT NOT NULL,
+    agencyId INT NOT NULL,
+    registrationDate DATE NOT NULL,
+    PRIMARY KEY (hotelId , agencyId),
+    FOREIGN KEY (hotelId)
+        REFERENCES Hotel (hotelId),
+    FOREIGN KEY (agencyId)
+        REFERENCES Agency (agencyId)
+);
+             
+ /*DROP TABLE Assessment_Criterion;*/ 
+CREATE TABLE Assessment_Criterion (
+    criterionId INT NOT NULL,
+    score INT NOT NULL,
+    datetime DATETIME NOT NULL,
+    PRIMARY KEY (datetime),
+    FOREIGN KEY (criterionId)
+        REFERENCES Criterion (criterionId)
+);
+            
+            
