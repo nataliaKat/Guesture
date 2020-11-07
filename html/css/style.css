@@ -7,14 +7,43 @@
 
 /* Background styles
 ---------------------------------------------------*/
-/* .custom-background {
+main {
+  padding-top: 5%;
+}
+
+.custom-background:before {
+  background-image: url(/images/sample_hotel.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-} */
-main {
-  min-height: 500px;
+  opacity: 0.4;
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
 }
+
+/* Button styles
+---------------------------------------------------*/
+.my-button {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 20%;
+  height: 50px;
+  border-radius: 7px;
+  background-color: #af975d;
+  border: none;
+  color:white;
+}
+
+.my-button:hover {
+  transition: 0.2s;
+  background-color: #7d6b41;  
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -37,5 +66,7 @@ html {
     line-height: 35px; /* Vertically center the text there */
     background-color: #d0c398;
   }
+
+
 
     
