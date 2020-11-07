@@ -1,0 +1,41 @@
+/* Navbar styles
+---------------------------------------------------*/
+.custom-nav {
+  background-color: #bfd9d7;
+  border-bottom: 3px solid #353745;
+}
+
+/* Background styles
+---------------------------------------------------*/
+/* .custom-background {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+} */
+main {
+  min-height: 500px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+
+  .footer {
+    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 35px;
+    line-height: 35px; /* Vertically center the text there */
+    background-color: #d0c398;
+  }
+
+    
