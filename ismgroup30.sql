@@ -1,5 +1,7 @@
 USE ismgroup30;
 SHOW DATABASES;
+
+SET FOREIGN_KEY_CHECKS=1;
 /*DROP TABLE Hotel;*/
 CREATE TABLE Hotel (
     hotelId INT NOT NULL,
@@ -8,7 +10,7 @@ CREATE TABLE Hotel (
     phoneNumber INT NOT NULL,
     head VARCHAR(50) NOT NULL,
     logo VARCHAR(50) NOT NULL,
-    discription TINYTEXT,
+    description TINYTEXT,
     PRIMARY KEY (hotelId)
 );
 
@@ -20,16 +22,19 @@ CREATE TABLE Agency (
     mail VARCHAR(50) NOT NULL,
     vatNumber VARCHAR(50) NOT NULL,
     registrationDate DATE,
-    PRIMARY KEY (agencyId)
+    hotelId INT,
+    PRIMARY KEY (agencyId),
+    FOREIGN KEY (hotelId)
+		REFERENCES Hotel (hotelId)
 );
              
-/*DROP TABLE Reservation;*/    
+/*DROP TABLE Reservation;*/  
 CREATE TABLE Reservation (
     reservationId INT NOT NULL,
     arrivalDate DATE NOT NULL,
-    arrivalTime TIME NOT NULL,
+    arrivalTime VARCHAR(50) NOT NULL,
     departureDate DATE NOT NULL,
-    departureTime TIME NOT NULL,
+    departureTime VARCHAR(50) NOT NULL,
     numberOfPeople INT NOT NULL,
     totalCost DOUBLE,
     submittedOn DATE NOT NULL,
@@ -155,19 +160,7 @@ CREATE TABLE Reservation_Service (
     FOREIGN KEY (serviceId)
         REFERENCES Service (serviceId)
 );
-             
-   /*DROP TABLE Hotel_Agency;*/ 
-CREATE TABLE Hotel_Agency (
-    hotelId INT NOT NULL,
-    agencyId INT NOT NULL,
-    registrationDate DATE NOT NULL,
-    PRIMARY KEY (hotelId , agencyId),
-    FOREIGN KEY (hotelId)
-        REFERENCES Hotel (hotelId),
-    FOREIGN KEY (agencyId)
-        REFERENCES Agency (agencyId)
-);
-             
+			             
  /*DROP TABLE Assessment_Criterion;*/ 
 CREATE TABLE Assessment_Criterion (
     criterionId INT NOT NULL,

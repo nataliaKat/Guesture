@@ -26,6 +26,10 @@ main {
   opacity: 0.4;
 }
 
+.registration-background {
+  background-color: lightblue;
+}
+
 /* Button styles
 ---------------------------------------------------*/
 .my-button {
