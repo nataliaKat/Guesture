@@ -29,8 +29,6 @@ main {
 /* Button styles
 ---------------------------------------------------*/
 .my-button {
-  margin-top: 10%;
-  margin-bottom: 10%;
   width: 20%;
   height: 50px;
   border-radius: 7px;
@@ -42,6 +40,28 @@ main {
 .my-button:hover {
   transition: 0.2s;
   background-color: #7d6b41;  
+}
+
+#cust-submit{
+  width: 100%;
+  flex-direction: row-reverse; 
+  margin-bottom: 20px;
+}
+
+/* Customers' table styles
+---------------------------------------------------*/
+#my-table{
+  overflow-y:scroll;
+  height:500px;
+  display:block;
+}
+
+#my-table td {
+  text-align: right;
+}
+
+#my-table th {
+  text-align: center;
 }
 
 
