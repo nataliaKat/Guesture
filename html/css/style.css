@@ -105,4 +105,9 @@ html {
   color:white;
 }
 
+.chart  {
+  margin: 100px auto;
+  width: 1000px;
+  height: 500px;
+}
     
