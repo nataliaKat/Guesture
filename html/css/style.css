@@ -63,6 +63,12 @@ body {
   margin-bottom: 20px;
 }
 
+#agency-submit{
+    width: 100%;
+    flex-direction: row-reverse; 
+    margin-bottom: 20px;
+}
+
 /* Customers' table styles
 ---------------------------------------------------*/
 #my-table{
