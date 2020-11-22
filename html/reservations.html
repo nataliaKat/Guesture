@@ -8,6 +8,10 @@
     <meta name="author" content="">
 
     <title>Dream Hotel | Reservations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -56,8 +60,8 @@
     <!-- Begin page content -->
     <main class="container">
         <div class="row">
-        <form>
-            <div class="d-flex flex-row mb-5">
+            <form>
+                <div class="d-flex flex-row mb-5">
 
                     <select id="filter" class="form-control mr-3 p-2">
                         <option selected>Choose filter</option>
@@ -66,106 +70,232 @@
                         <option>All</option>
                     </select>
 
-    
+
                     <button type="submit" class="my-button p-2">Apply</button>
-            </div>
-        </form>
+                </div>
+            </form>
 
         </div>
 
-        <div class="row">
-            <div class="table-responsive table-striped table-sm">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Reservation code</th>
-                            <th scope="col">Agency</th>
-                            <th scope="col">Arrival date</th>
-                            <th scope="col">Arrival time</th>
-                            <th scope="col">Departure date</th>
-                            <th scope="col">Departure time</th>
-                            <th scope="col">Show members</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Check-in</th>
-                            <th scope="col">Check-out</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align: center;">
-                        <tr>
-                            <td>32153</td>
-                            <td>Agency1</td>
-                            <td>25/05/2021</td>
-                            <td>morning</td>
-                            <td>30/05/2021</td>
-                            <td>evening</td>
-                            <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
-                            </td>
-                            <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                            </td>
+        <div class="mb-3 mt-3">
+            <table id="reservations" class="table table-hover table-striped table-bordered dt-responsive nowrap"
+                style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Reservation code</th>
+                        <th scope="col">Agency</th>
+                        <th scope="col">Arrival date</th>
+                        <th scope="col">Arrival time</th>
+                        <th scope="col">Departure date</th>
+                        <th scope="col">Departure time</th>
+                        <th scope="col">Show members</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Check-in</th>
+                        <th scope="col">Check-out</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align: center;">
+                    <tr>
+                        <td>32153</td>
+                        <td>Agency1</td>
+                        <td>25/05/2021</td>
+                        <td>morning</td>
+                        <td>30/05/2021</td>
+                        <td>evening</td>
+                        <td>
+
+                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#members-modal"><i class="fas fa-users"></i></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="members-modal" tabindex="-1" role="dialog"
+                                aria-labelledby="Group Customers" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="Group Customers">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">First Name</th>
+                                                        <th scope="col">Last Name</th>
+                                                        <th scope="col">Identity Number</th>
+                                                        <th scope="col">Phone</th>
+                                                        <th scope="col">email</th>
+                                                        <th scope="col">Room</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                        <td>AT321678327</td>
+                                                        <td>5327154671</td>
+                                                        <td>mark@o.com</td>
+                                                        <td>114</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                        <td>AT321678327</td>
+                                                        <td>5327154671</td>
+                                                        <td>mark@o.com</td>
+                                                        <td>114</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">3</th>
+                                                        <td>Traintafyllia Maria</td>
+                                                        <td>Papadopoulou</td>
+                                                        <td>AT321678327</td>
+                                                        <td>5327154671</td>
+                                                        <td>traintafyllia.papadopoulou@somemail.com</td>
+                                                        <td>114</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><button type="button" class="btn btn-warning" data-target="#modal-edit"
+                                data-toggle="modal"><i class="fas fa-edit"></i></button>
+                        </td>
+                        <!-- Modal HTML Markup -->
+                        <div id="modal-edit" class="modal fade">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title">Edit Reservation</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form role="form" method="POST" action="edit.jsp">
+                                            <input type="hidden" name="resId" value="">
+                                            <div class="form-group">
+                                                <label class="control-label">Arrival date</label>
+                                                <div>
+                                                    <input type="date" class="form-control input-lg" name="ar_date"
+                                                        value="25/05/2021">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Arrival time</label>
+                                                <div>
+                                                    <input type="text" class="form-control input-lg" name="ar_time"
+                                                        value="morning">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Departure date</label>
+                                                <div>
+                                                    <input type="date" class="form-control input-lg" name="dep_date"
+                                                        value="30/05/2021">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Departure time</label>
+                                                <div>
+                                                    <input type="text" class="form-control input-lg" name="dep_time"
+                                                        value="evening">
+                                                </div>
+                                            </div>
+                                            <div class="row"> 
+                                                <input type="submit" class="ml-auto my-button" style="margin-right: 10px;"
+                                                    value="Edit">
+                                            </div>
+                                        </form>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
                             <td><button type="button" class="btn btn-success"><i
                                         class="fas fa-door-closed"></i></button>
                             </td>
                             <td>-</td>
                             <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>32154</td>
-                            <td>Agency1</td>
-                            <td>25/05/2021</td>
-                            <td>morning</td>
-                            <td>30/05/2021</td>
-                            <td>evening</td>
-                            <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
-                            </td>
-                            <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                            </td>
-                            <td><button type="button" class="btn btn-success"><i
-                                        class="fas fa-door-closed"></i></button>
-                            </td>
-                            <td>-</td>
-                            <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>32155</td>
-                            <td>Agency1</td>
-                            <td>25/05/2021</td>
-                            <td>morning</td>
-                            <td>30/05/2021</td>
-                            <td>evening</td>
-                            <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
-                            </td>
-                            <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td>32154</td>
+                        <td>Agency1</td>
+                        <td>25/05/2021</td>
+                        <td>morning</td>
+                        <td>30/05/2021</td>
+                        <td>evening</td>
+                        <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
+                        </td>
+                        <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        </td>
+                        <td><button type="button" class="btn btn-success"><i class="fas fa-door-closed"></i></button>
+                        </td>
+                        <td>-</td>
+                        <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>32155</td>
+                        <td>Agency1</td>
+                        <td>25/05/2021</td>
+                        <td>morning</td>
+                        <td>30/05/2021</td>
+                        <td>evening</td>
+                        <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
+                        </td>
+                        <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        </td>
 
-                            <td>-</td>
-                            <td><button type="button" class="btn btn-success"><i class="fas fa-door-open"></i></button>
-                            </td>
-                            <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>32156</td>
-                            <td>Agency1</td>
-                            <td>25/05/2021</td>
-                            <td>morning</td>
-                            <td>30/05/2021</td>
-                            <td>evening</td>
-                            <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
-                            </td>
-                            <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                            </td>
+                        <td>-</td>
+                        <td><button type="button" class="btn btn-success"><i class="fas fa-door-open"></i></button>
+                        </td>
+                        <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>32156</td>
+                        <td>Agency1</td>
+                        <td>25/05/2021</td>
+                        <td>morning</td>
+                        <td>30/05/2021</td>
+                        <td>evening</td>
+                        <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
+                        </td>
+                        <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        </td>
 
-                            <td>-</td>
-                            <td>-</td>
-                            <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                <tfoot>
+                    <tr>
+                        <th scope="col">Reservation code</th>
+                        <th scope="col">Agency</th>
+                        <th scope="col">Arrival date</th>
+                        <th scope="col">Arrival time</th>
+                        <th scope="col">Departure date</th>
+                        <th scope="col">Departure time</th>
+                        <th scope="col">Show members</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Check-in</th>
+                        <th scope="col">Check-out</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </tfoot>
+                </tbody>
+            </table>
         </div>
     </main>
 
@@ -174,17 +304,39 @@
             <span class="text-muted">Guesture - Group Management</span>
         </div>
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="js/customers.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#reservations').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'csv', 'pdf', 'colvis']
+            });
+
+            table.buttons().container().appendTo('#reservation_wrapper .col-md-6:eq(0)');
+        });
+
+    </script>
 </body>
 
 </html>

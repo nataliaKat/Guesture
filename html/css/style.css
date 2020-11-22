@@ -13,7 +13,7 @@ main {
 }
 
 body {
-    background: url('https://www.idownimages.com/wp-content/cache/thumb/Mandar-Oriental-Hotel-Classical-White-Rich-Castle-Inside_2560x1440.jpg') no-repeat center center fixed;
+    /* background: url('https://www.idownimages.com/wp-content/cache/thumb/Mandar-Oriental-Hotel-Classical-White-Rich-Castle-Inside_2560x1440.jpg') no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -35,7 +35,13 @@ body {
   z-index: -1;
 
 } 
+/* table {
+  table-layout:fixed;
+}
 
+table td {
+  overflow:auto; */
+}
 .registration-background {
   background-color: lightblue;
 }
