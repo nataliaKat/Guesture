@@ -9,14 +9,22 @@
 ---------------------------------------------------*/
 main {
   padding-top: 5%;
+  z-index: 1;
 }
+
+body {
+    /* background: url('https://www.idownimages.com/wp-content/cache/thumb/Mandar-Oriental-Hotel-Classical-White-Rich-Castle-Inside_2560x1440.jpg') no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
 
 .custom-background:before {
   background-image: url(/images/sample_hotel.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  opacity: 0.4;
   content: "";
   position: absolute;
   top: 0px;
@@ -24,8 +32,16 @@ main {
   bottom: 0px;
   left: 0px;
   opacity: 0.4;
+  z-index: -1;
+
+} 
+/* table {
+  table-layout:fixed;
 }
 
+table td {
+  overflow:auto; 
+}
 .registration-background {
   background-color: lightblue;
 }
@@ -33,10 +49,9 @@ main {
 /* Button styles
 ---------------------------------------------------*/
 .my-button {
-  margin-top: 10%;
-  margin-bottom: 10%;
-  width: 20%;
-  height: 50px;
+  /* width: 40%; */
+  /* height: 50px; */
+  padding: 3%;
   border-radius: 7px;
   background-color: #af975d;
   border: none;
@@ -46,6 +61,34 @@ main {
 .my-button:hover {
   transition: 0.2s;
   background-color: #7d6b41;  
+}
+
+#cust-submit{
+  width: 100%;
+  flex-direction: row-reverse; 
+  margin-bottom: 20px;
+}
+
+#agency-submit{
+    width: 100%;
+    flex-direction: row-reverse; 
+    margin-bottom: 20px;
+}
+
+/* Customers' table styles
+---------------------------------------------------*/
+#my-table{
+  overflow-y:scroll;
+  height:500px;
+  display:block;
+}
+
+#my-table td {
+  text-align: right;
+}
+
+#my-table th {
+  text-align: center;
 }
 
 
@@ -81,4 +124,11 @@ html {
   border: none;
   color: black;
 }
+
+.chart  {
+  margin: 100px auto;
+  width: 1000px;
+  height: 500px;
+}
+    
 
