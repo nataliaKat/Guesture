@@ -2,16 +2,25 @@ USE ismgroup30;
 SHOW DATABASES;
 
 SET FOREIGN_KEY_CHECKS=1;
+/*DROP TABLE User;*/
+CREATE TABLE User (
+    username VARCHAR(20) NOT NULL,
+    passward VARCHAR(30),
+    role VARCHAR(30),
+    PRIMARY KEY (username)
+);
+
 /*DROP TABLE Hotel;*/
 CREATE TABLE Hotel (
-    hotelId INT NOT NULL,
+    username VARCHAR(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
     address VARCHAR(50) NOT NULL,
     phoneNumber INT NOT NULL,
     head VARCHAR(50) NOT NULL,
     logo VARCHAR(50) NOT NULL,
     description TINYTEXT,
-    PRIMARY KEY (hotelId)
+    FOREIGN KEY (username)
+        REFERENCES User (username)
 );
 
 /*DROP TABLE Agency;*/ 
@@ -22,28 +31,30 @@ CREATE TABLE Agency (
     mail VARCHAR(50) NOT NULL,
     vatNumber VARCHAR(50) NOT NULL,
     registrationDate DATE,
-    hotelId INT,
+    username VARCHAR(20) NOT NULL,
     PRIMARY KEY (agencyId),
-    FOREIGN KEY (hotelId)
-		REFERENCES Hotel (hotelId)
+    FOREIGN KEY (username)
+		REFERENCES User (username)
 );
              
 /*DROP TABLE Reservation;*/  
 CREATE TABLE Reservation (
     reservationId INT NOT NULL,
-    arrivalDate DATE NOT NULL,
+    arrivalDate VARCHAR(30) NOT NULL,
     arrivalTime VARCHAR(50) NOT NULL,
-    departureDate DATE NOT NULL,
+    departureDate VARCHAR(30) NOT NULL,
     departureTime VARCHAR(50) NOT NULL,
     numberOfPeople INT NOT NULL,
     totalCost DOUBLE,
     submittedOn DATE NOT NULL,
     comments TINYTEXT,
-    hotelId INT NOT NULL,
+    checkin BOOLEAN,
+    chekout BOOLEAN,
+    username VARCHAR(20) NOT NULL,
     agencyId INT NOT NULL,
     PRIMARY KEY (reservationId),
-    FOREIGN KEY (hotelId)
-        REFERENCES Hotel (hotelId),
+    FOREIGN KEY (username)
+        REFERENCES User (username),
     FOREIGN KEY (agencyId)
         REFERENCES Agency (agencyId)
 );
@@ -69,29 +80,15 @@ CREATE TABLE Group_Customer (
         REFERENCES Reservation (reservationId)
 );
                             
- /*DROP TABLE Payment;*/            
-CREATE TABLE Payment (
-    paymentId INT NOT NULL,
-    responsible VARCHAR(50),
-    date DATETIME,
-    method BOOLEAN,
-    card VARCHAR(50),
-    amount DOUBLE,
-    reservationId INT NOT NULL,
-    PRIMARY KEY (paymentID),
-    FOREIGN KEY (reservationId)
-        REFERENCES Reservation (reservationId)
-);
-            
 /*DROP TABLE Room;*/
 CREATE TABLE Room (
     number INT NOT NULL,
-    hotelId INT NOT NULL,
+    username VARCHAR(20) NOT NULL,
     type VARCHAR(30),
     floor INT,
-    PRIMARY KEY (number , hotelId),
-    FOREIGN KEY (hotelId)
-        REFERENCES Hotel (hotelId)
+    PRIMARY KEY (number , username),
+    FOREIGN KEY (username)
+        REFERENCES User (username)
 );
 
 /*DROP TABLE Criterion;*/
@@ -100,10 +97,10 @@ CREATE TABLE Criterion (
     name VARCHAR(50),
     min INT,
     max INT, 
-	hotelId INT,
+	username VARCHAR(20) NOT NULL,
     PRIMARY KEY (criterionId),
-    FOREIGN KEY (hotelId)
-		REFERENCES Hotel(hotelId)
+    FOREIGN KEY (username)
+		REFERENCES User (username)
 );
 
 /*DROP TABLE Assessment;*/
@@ -140,11 +137,11 @@ CREATE TABLE Customer_Room (
 
 /*DROP TABLE Hotel_Service;*/ 
 CREATE TABLE Hotel_Service (
-    hotelId INT NOT NULL,
+    username VARCHAR(20) NOT NULL,
     serviceId INT NOT NULL,
-    PRIMARY KEY (hotelId , serviceId),
-    FOREIGN KEY (hotelId)
-        REFERENCES Hotel (hotelId),
+    PRIMARY KEY (username , serviceId),
+    FOREIGN KEY (username)
+        REFERENCES User (username),
     FOREIGN KEY (serviceId)
         REFERENCES Service (serviceId)
 );
