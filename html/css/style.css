@@ -20,8 +20,8 @@ main {
     -o-background-size: cover;
 }
 
-#group, #reservation, #new_reservation, #agency, #new_agency, #reviews {
-    background: url(../images/blur.jpg) no-repeat center center fixed;
+#group, #reservation, #new_reservation, #agency, #new_agency, #review {
+    background: url(../images/blurred.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
