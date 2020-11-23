@@ -28,21 +28,6 @@ main {
     -o-background-size: cover;
 }
 
-.custom-background:before {
-  background-image: url(/images/sample_hotel.png);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  content: "";
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.4;
-  z-index: -1;
-
-} 
 /* table {
   table-layout:fixed;
 }
@@ -59,11 +44,11 @@ table td {
 .my-button {
   /* width: 40%; */
   /* height: 50px; */
-  padding: 3%;
   border-radius: 7px;
   background-color: #af975d;
   border: none;
   color:white;
+  padding: 10px;
 }
 
 .my-button:hover {
