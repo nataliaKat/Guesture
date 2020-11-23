@@ -12,13 +12,21 @@ main {
   z-index: 1;
 }
 
-body {
-    /* background: url('https://www.idownimages.com/wp-content/cache/thumb/Mandar-Oriental-Hotel-Classical-White-Rich-Castle-Inside_2560x1440.jpg') no-repeat center center fixed; */
+#home {
+    background: url(../images/hotel.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-  }
+}
+
+#group, #reservation, #new_reservation, #agency, #new_agency, #reviews {
+    background: url(../images/blur.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 
 .custom-background:before {
   background-image: url(/images/sample_hotel.png);
