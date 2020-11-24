@@ -73,9 +73,14 @@
                             <button type="reset" class="btn btn-danger">Clear</button>
 
                         </div>
+
                     </div>
 
-            </div>
+
+                    
+                </form>
+                
+           </div>
             </form>
 
         </div>
@@ -90,17 +95,17 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var maxField = 20; //Input fields increment limitation
+            var maxField = 20; 
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
             var fieldHTML = '<div class="col-sm-10"><input type="text" name="new_field" value=""/><a href="javascript:void(0);" class="remove_button" style="color: red;"><button type="button" class="btn btn-default btn-sm">Delete Service</button></a></div>'; //New input field html 
-            var x = 1; //Initial field counter is 1
+            var x = 1; 
 
             //Once add button is clicked
             $(addButton).click(function () {
-                //Check maximum number of input fields
+                
                 if (x < maxField) {
-                    x++; //Increment field counter
+                    x++; 
                     $(wrapper).append(fieldHTML); //Add field html
                 }
             });
@@ -109,7 +114,7 @@
             $(wrapper).on('click', '.remove_button', function (e) {
                 e.preventDefault();
                 $(this).parent('div').remove(); //Remove field html
-                x--; //Decrement field counter
+                x--; 
             });
         });
     </script>

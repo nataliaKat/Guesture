@@ -1,0 +1,40 @@
+  body
+{
+    justify-content: center;
+}
+
+.container .box .chart
+{
+    position: relative;
+    width: 80px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 32px;
+    line-height: 110px;
+    color: black; 
+}
+
+.container .box h5
+{
+   text-align: center;
+   text-transform: none;
+   color: black;
+   text-shadow: 1px 1px;
+}
+.container .box canvas
+{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#editButton {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 102%;
+    height: 60px;
+    border-radius: 7px;
+    background-color:#bfd9d7;
+    border: none;
+    color: black;
+  }

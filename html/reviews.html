@@ -17,7 +17,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 </head>
 
-<body class="custom-background">
+<body id="review">
   <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light  custom-nav">
@@ -28,23 +28,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">New Reservation</a>
+            <a class="nav-link" href="agencies.html">Agencies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Agencies</a>
+            <a class="nav-link" href="reservations.html">Reservations</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Reservations</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="reviews.html">Reviews<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-cog"></i> Account Settings</a>
+             <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
@@ -89,12 +87,12 @@
 
   <!-- combo box -->
   <b style="font-size:medium;">Please Choose an Agency:</b>
-  <select style="font-size: larger;" name="Cooperated Agencies">
+  <select style="font-size:larger;" name="Cooperated Agencies">
     <option>travel a.e.</option>
     <option>pame ekdromh</option>
     <option>taxidi</option>
     <option>wraia komotini</option>
-</select>
+  </select>
 
   <hr>
 
@@ -103,7 +101,7 @@
       <div class="col-xs-12 col-lg-8">
           <div class="row">
               <div class="table-responsive table-striped">
-                  <table id="my-table" class="table table-hover table-striped table-bordered" style="text-align: center; width: 100px;">
+                  <table id="my-table" class="table table-hover table-striped table-dark table-bordered" style="text-align: center;">
                       <caption>List of Reviews for Reservations</caption>
                       <thead>
                           <tr>
@@ -123,7 +121,7 @@
                               <td>travel a.e.</td>
                               <td>19/09/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -135,7 +133,7 @@
                               <td>taxidi</td>
                               <td>30/09/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -147,7 +145,7 @@
                               <td>pame ekdromh</td>
                               <td>08/10/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -159,7 +157,7 @@
                               <td>pame ekdromh</td>
                               <td>19/10/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -171,7 +169,7 @@
                               <td>taxidi</td>
                               <td>29/10/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -183,7 +181,7 @@
                               <td>planet</td>
                               <td>10/11/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -195,7 +193,7 @@
                               <td>planet</td>
                               <td>07/11/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -207,7 +205,7 @@
                               <td>travel a.e.</td>
                               <td>06/11/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -219,7 +217,7 @@
                               <td>planet</td>
                               <td>15/11/2020</td>
                               <td>
-                                  <form action="forma.html" target="_blank">
+                                  <form action="show_review.html" target="_blank">
                                       <button class="showReviewButton">Show Review</button>
                                   </form>
                               </td>
@@ -231,7 +229,7 @@
                               <td>planet</td>
                               <td>20/11/2020</td>
                               <td>
-                                <form action="forma.html" target="_blank">
+                                <form action="show_review.html" target="_blank">
                                   <button class="showReviewButton">Show Review</button>
                               </form>
                               </td>
@@ -240,9 +238,12 @@
                   </table>
               </div>
           </div>
-          <div id="cust-submit" class="row">
-              <button class="btn btn-secondary" style="border-radius: 7px; margin-left: 3px;" onclick="location.href='index.html'">Back</button>
-          </div>
+          <form class="form-inline" target="_blank">
+            <div id="cust-submit" class="row">
+                <button class="btn btn-secondary" style="border-radius: 7px; margin-left: 3px;" onclick="location.href='index.html'">Back</button>
+                <button class="btn btn-secondary" style="border-radius: 7px; margin-left: 3px; margin-left: 460px; background-color: #bfd9d7; color:black;" onclick="location.href='chart.html'">Show Statistics</button>
+            </div>
+          </form>
       </div>
   </div>
 

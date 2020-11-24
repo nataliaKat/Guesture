@@ -30,12 +30,15 @@
         ['April', 85.2, 50.25],
         ['May', 77.25, 47],
         ['June', 93.6, 33],
+        ['August', 97, 60],
+        ['September', 71.3, 30],
+        ['October', 54, 18],
       ]);
 
     
       var options = {
         title: 'Comfort Evaluation 2019 - 2020',
-        colors: ['#bfd9d7','#353745'],
+        colors: ['#e0440e','#353745'],
         hAxis: {
           title: 'Month',
         },
@@ -50,7 +53,7 @@
     </script>
 
 </head>
-<body class="custom-background">
+<body id="chart">
     <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-light  custom-nav">
@@ -62,10 +65,7 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="home.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="new_reservation.html">New Reservation</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="agency.html">Agencies</a>
@@ -75,9 +75,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="reviews.html">Reviews</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-cog"></i> Account Settings</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
