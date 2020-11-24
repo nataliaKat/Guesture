@@ -63,6 +63,17 @@ table td {
   color: black;
 }
 
+#editButton {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 102%;
+  height: 60px;
+  border-radius: 7px;
+  background-color:#bfd9d7;
+  border: none;
+  color: black;
+}
+
 .my-button:hover {
   transition: 0.2s;
   background-color: #7d6b41;  
