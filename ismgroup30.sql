@@ -101,8 +101,8 @@ CREATE TABLE Criterion (
 		REFERENCES Hotel (username)
 );
 
-/*DROP TABLE Assessment;*/
-CREATE TABLE Assessment (
+/*DROP TABLE Review;*/
+CREATE TABLE Review (
 	datetime DATETIME NOT NULL,
     comments VARCHAR(250),
     reservationId INT,
@@ -156,8 +156,8 @@ CREATE TABLE Reservation_Service (
         REFERENCES Service (serviceId)
 );
 			             
- /*DROP TABLE Assessment_Criterion;*/ 
-CREATE TABLE Assessment_Criterion (
+ /*DROP TABLE Review_Criterion;*/ 
+CREATE TABLE Review_Criterion (
     criterionId INT NOT NULL,
     score INT NOT NULL,
     datetime DATETIME NOT NULL,
