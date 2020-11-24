@@ -1,14 +1,3 @@
-#editButton {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    width: 102%;
-    height: 60px;
-    border-radius: 7px;
-    background-color:#bfd9d7;
-    border: none;
-    color: black;
-  }
-
   body
 {
     justify-content: center;
@@ -38,3 +27,14 @@
     top: 0;
     left: 0;
 }
+
+#editButton {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 102%;
+    height: 60px;
+    border-radius: 7px;
+    background-color:#bfd9d7;
+    border: none;
+    color: black;
+  }

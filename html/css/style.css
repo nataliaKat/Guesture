@@ -20,7 +20,7 @@ main {
     -o-background-size: cover;
 }
 
-#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart {
+#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview {
     background: url(../images/blurred.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -123,5 +123,3 @@ html {
   width: 1000px;
   height: 500px;
 }
-    
-

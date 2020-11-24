@@ -28,26 +28,25 @@
     }
   </style>
 </head>
-
-<body >
+<body id="showReview">
   <header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-light">
+    <nav class="navbar navbar-expand-md navbar-light custom-nav">
       <a class="navbar-brand" href="index.html"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto custom-nav">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Agencies</a>
+            <a class="nav-link" href="agencies.html">Agencies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Reservations</a>
+            <a class="nav-link" href="reservations.html">Reservations</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="reviews.html">Reviews<span class="sr-only">(current)</span></a>
@@ -64,12 +63,14 @@
     </nav>
   </header>
 
+  <hr>
+  
   <!-- Begin page content -->
   <div class="container">
     <div class="page-header">
       <h1> Submitted Form - Review Of Agency</h1>
     </div>
-    <div class="row">
+    <div class="row table-dark">
       <div class="col-md-3">
         <p class="solid"><b>Booking Details</b></p>
         <p class="solid"><b>Agency: </b> travel a.e.</p>
@@ -80,7 +81,7 @@
       </div>
       <div class="col-md-6">
         <div class="table-responsive table-striped">
-          <table class="table table-hover table-striped table-bordered" style="text-align: center;">
+          <table class="table table-hover table-striped table-dark table-bordered" style="text-align: center;">
             <thead>
               <tr>
                 <th scope="col">Type Of Room</th>
@@ -152,12 +153,11 @@
         <h5>Comfort</h5>
       </div>
     </div>
+    <div id="cust-submit" class="row">
+      <button class="btn btn-secondary" style="border-radius: 7px; width: 150px; margin-left: 130px; background-color: #bfd9d7; color:black;" onclick="location.href='reviews.html'">Back</button>
+    </div>
+  </div>
 
-  </div>
-  <div id="cust-submit" class="row">
-    <button class="btn btn-secondary" style="border-radius: 7px; width: 150px; margin-left: 130px; background-color: #bfd9d7; color:black;" onclick="location.href='reviews.html'">Back</button>
-  </div>
-  <hr>
   <footer class="footer">
     <div class="container">
       <span class="text-muted">Guesture - Group Management</span>
