@@ -25,14 +25,12 @@ CREATE TABLE Hotel (
 
 /*DROP TABLE Agency;*/ 
 CREATE TABLE Agency (
-    agencyId INT NOT NULL,
     name VARCHAR(50) NOT NULL,
     telephone INT NOT NULL,
     mail VARCHAR(50) NOT NULL,
     vatNumber VARCHAR(50) NOT NULL,
     registrationDate DATE,
     username VARCHAR(20) NOT NULL,
-    PRIMARY KEY (agencyId),
     FOREIGN KEY (username)
 		REFERENCES User (username)
 );
@@ -50,13 +48,13 @@ CREATE TABLE Reservation (
     comments TINYTEXT,
     checkin BOOLEAN,
     chekout BOOLEAN,
-    username VARCHAR(20) NOT NULL,
-    agencyId INT NOT NULL,
+    username_hotel VARCHAR(20) NOT NULL,
+    username_agency VARCHAR(20) NOT NULL,
     PRIMARY KEY (reservationId),
-    FOREIGN KEY (username)
-        REFERENCES User (username),
-    FOREIGN KEY (agencyId)
-        REFERENCES Agency (agencyId)
+    FOREIGN KEY (username_hotel)
+        REFERENCES Hotel (username),
+    FOREIGN KEY (username_agency)
+        REFERENCES Agency (username)
 );
 
 /*DROP TABLE Service;*/
@@ -88,7 +86,7 @@ CREATE TABLE Room (
     floor INT,
     PRIMARY KEY (number , username),
     FOREIGN KEY (username)
-        REFERENCES User (username)
+        REFERENCES Hotel (username)
 );
 
 /*DROP TABLE Criterion;*/
@@ -100,7 +98,7 @@ CREATE TABLE Criterion (
 	username VARCHAR(20) NOT NULL,
     PRIMARY KEY (criterionId),
     FOREIGN KEY (username)
-		REFERENCES User (username)
+		REFERENCES Hotel (username)
 );
 
 /*DROP TABLE Assessment;*/
@@ -141,7 +139,7 @@ CREATE TABLE Hotel_Service (
     serviceId INT NOT NULL,
     PRIMARY KEY (username , serviceId),
     FOREIGN KEY (username)
-        REFERENCES User (username),
+        REFERENCES Hotel (username),
     FOREIGN KEY (serviceId)
         REFERENCES Service (serviceId)
 );
