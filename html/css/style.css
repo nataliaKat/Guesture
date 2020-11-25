@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 /* Navbar styles
 ---------------------------------------------------*/
 .custom-nav {
@@ -61,6 +67,11 @@ table td {
   background-color:#bfd9d7;
   border: none;
   color: black;
+}
+
+.blueButton:hover {
+  transition: 0.5s;
+  background-color: #a4dcd7;
 }
 
 #editButton {
