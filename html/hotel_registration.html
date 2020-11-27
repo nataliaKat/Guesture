@@ -37,64 +37,64 @@
 
     <!-- Begin page content -->
     <main class="container" >
-        <div id="registration_form">
-        <h1 style="text-align: center;">Sign Up</h1>
-        <div class="row">
+        <div id="registration_form" class="col-xs-12 col-md-6">
+        <h1 class="text-center">Sign Up</h1>
+        <div class="row d-flex justify-content-center">
             <!-- Form -->
             <div id="group-form" class="col-xs-12 col-md-10 col-lg-8">
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">Username </label>
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="text" id="username" name="username" class="form-control" placeholder="Enter a valid e-mail address" required>
                         </div>
                     </div> 
 
                     <div class="form-group">
                         <label for="password" class="col-sm-2 control-label">Password </label>
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required>
                         </div>
                     </div> 
 
                     <div class="form-group">
                         <label for="repeat_password" class="col-sm-2 control-label">Repeat Password </label>
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="password" id="repeat_password" name="repeat_password" class="form-control" placeholder="Repeat Password" required>
                         </div>
                     </div> 
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Name </label>
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="text" id="name" name="name" class="form-control" placeholder="Enter a name" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="address" class="col-sm-4 control-label">Address</label>
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="text" id="address" name="address" class="form-control" placeholder="Enter an address" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="phonenumber" class="col-sm-4 control-label">Phonenumber</label>
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="text" id="phonenumber" name="phonenumber" class="form-control" placeholder="Enter a phonenumber" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="description" class="col-sm-4 control-label">Description</label>
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="text" id="description" name="description" class="form-control" placeholder="Enter a description" required>
                         </div>
                     </div>
 
                     <div class="form-group field_wrapper">
-                        <div class="col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-30">
                             <input type="text" name="new_field" value="" placeholder="Enter a service" />
                             <a href="javascript:void(0);" class="add_button" title="Add field"><button type="button">
                                  <i class="fas fa-plus"></i>
@@ -103,17 +103,18 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-30" style="padding-left: 15px;">
+                        <div class="col-sm-offset-2 col-sm-30">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="terms" id="terms" value="1"><b> I agree to the
                                         terms and conditions</b>
-                            </div>
+                                </label>
+                                    </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-30 col-sm-offset-2" style="padding-left: 15px;">
+                        <div class="col-sm-30 col-sm-offset-2">
                             <button type="submit" class="btn btn-success">Submit</button>
                             <button type="reset" class="btn btn-danger">Clear</button>
 
@@ -126,7 +127,6 @@
                 </form>
 
             </div>
-            </form>
 
 
         </div>
@@ -145,7 +145,7 @@
             var maxField = 20;
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
-            var fieldHTML = '<div class="col-sm-30" style="padding-left: 15px;"><input type="text" name="new_field" value="" placeholder="Enter a service"/><a href="javascript:void(0);" class="remove_button"><button type="button"> <i class="fas fa-minus"></i></button></a></div>'; //New input field html 
+            var fieldHTML = '<div class="col-sm-30"><input type="text" name="new_field" value="" placeholder="Enter a service"/><a href="javascript:void(0);" class="remove_button"><button type="button"> <i class="fas fa-minus"></i></button></a></div>'; //New input field html 
             var x = 1;
 
             //Once add button is clicked
