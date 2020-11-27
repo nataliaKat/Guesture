@@ -57,3 +57,20 @@
     height: 100px;
     /* margin-bottom: 0px; */
 }
+#login {
+background: url(../images/login_background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#quote{
+    font-size: 30px;
+    font-style: italic;
+    color: #5f6061;
+    padding: 5%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    min-width: 300px;
+}
