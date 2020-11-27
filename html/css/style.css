@@ -26,7 +26,7 @@ main {
     -o-background-size: cover;
 }
 
-#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview {
+#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration {
     background: url(../images/blurred.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -145,6 +145,18 @@ html {
   margin: 100px auto;
   width: 1000px;
   height: 500px;
+}
+
+#registration_form {
+  border: 2px solid lightslategrey;
+  border-width: medium;
+  border-radius: 12px;
+  background-color: darkgrey;
+  margin-right: 600px;
+  padding-top: 25px;
+  padding-right: 0%;
+  
+
 }
 
 
