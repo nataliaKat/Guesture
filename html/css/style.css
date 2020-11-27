@@ -26,7 +26,7 @@ main {
     -o-background-size: cover;
 }
 
-#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration {
+#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration #login {
     background: url(../images/blurred.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;

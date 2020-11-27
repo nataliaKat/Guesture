@@ -18,7 +18,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"/>
 </head>
 
-<body id="login-body">
+<body id="login">
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-light  custom-nav">
+            <a class="navbar-brand"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
     <div class="container">
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center animated fadeInRight">
@@ -28,15 +39,17 @@
                         <label class="sr-only" for="username">Username</label>
                         <div class="input-group my-input">
                             <div class="input-group-text"><i class="fa fa-user"></i></div>
-                            <input type="text" class="form-control" id="username" placeholder="Username" required>
+                            <input type="text" class="form-control" id="username" placeholder="Username">
                         </div>
                         <label class="sr-only" for="password">Password</label>
                         <div class="input-group my-input">
                             <div class="input-group-text"><i class="fa fa-lock"></i></div>
-                            <input type="text" class="form-control" id="password" placeholder="Password" required>
+                            <input type="text" class="form-control" id="password" placeholder="Password">
                         </div>
-                        <button class="my-button" id="submit-button" type="submit">Login</button>
                         <input type="checkbox" checked> Remember me</input>
+                        <button class="my-button" id="submit-button" type="submit">Login</button>
+                        <hr style="color: gray;">
+                        <div>New User? <a href="hotel_registration.html"><u>Sign Up for Free</u></a></div>    
                     </form>
                 </div>
             </div>
