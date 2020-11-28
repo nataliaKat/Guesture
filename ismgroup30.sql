@@ -63,7 +63,7 @@ CREATE TABLE Service (
     name VARCHAR(50),
     PRIMARY KEY (serviceId)
 );
-             
+			
 /*DROP TABLE Group_Customer;*/             
 CREATE TABLE Group_Customer (
     customerId INT NOT NULL,
@@ -230,3 +230,18 @@ VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', 32, 1000.99, '2020-11
 ('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 652.99, '2020-11-13', 'All the rooms should be triples', TRUE, TRUE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
             
             
+INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.com'),
+('Fishing','iraklion@gmail.com'),
+('Breakfast','iraklion@gmail.com'),
+('Breakfast','luxury@gmail.com'),
+('Breakfast','marysrooms@yahoo.com'),
+('Breakfast','sweethome@yahoo.com'),
+('Breakfast','portoven@gmail.com'),
+('Lunch','homepoetry@gmail.com'),
+('Lunch','acropolisv@gmail.com'),
+('Sightseeing','iraklion@gmail.com'),
+('Sightseeing','acropolisv@gmail.com'),
+('Sightseeing','portoven@gmail.com'),
+('Massage & Spa','homepoetry@gmail.com'),
+('Horse Riding','marysrooms@yahoo.com'),
+('Horse Riding','portoven@gmail.com');
