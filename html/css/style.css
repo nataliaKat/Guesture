@@ -26,12 +26,14 @@ main {
     -o-background-size: cover;
 }
 
-#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration {
-    background: url(../images/blurred.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration #login {
+
+    background: url(../images/login_background.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    
 }
 
 
@@ -59,10 +61,10 @@ table td {
 }
 
 .blueButton {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  /* margin-top: 10%;
+  margin-bottom: 10%; */
   width: 100%;
-  height: 70px;
+  padding: 10px;
   border-radius: 7px;
   background-color:#bfd9d7;
   border: none;

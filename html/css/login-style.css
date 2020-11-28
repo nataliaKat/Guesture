@@ -57,13 +57,7 @@
     height: 100px;
     /* margin-bottom: 0px; */
 }
-#login {
-background: url(../images/login_background.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
+
 
 #quote{
     font-size: 30px;
