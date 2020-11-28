@@ -26,7 +26,7 @@ main {
     -o-background-size: cover;
 }
 
-#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration #login {
+#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration, #login {
 
     background: url(../images/login_background.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
@@ -61,14 +61,13 @@ table td {
 }
 
 .blueButton {
-  /* margin-top: 10%;
-  margin-bottom: 10%; */
-  width: 100%;
-  padding: 10px;
+  /* width: 100%; */
   border-radius: 7px;
-  background-color:#bfd9d7;
+  background-color:#bfd9d9;
   border: none;
   color: black;
+  padding: 10px;
+
 }
 
 .blueButton:hover {
@@ -149,11 +148,10 @@ html {
   height: 500px;
 }
 
-#registration_form {
-  border: 2px solid lightslategrey;
+#registration_form, #myform, #group-form {
+  border: 2px solid #2b526e;
   border-width: medium;
   border-radius: 12px;
-  background-color: darkgrey;
   /* margin-right: 600px; */
   /* padding-top: 25px; */
   /* padding-right: 0%; */

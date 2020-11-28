@@ -1,4 +1,10 @@
 
+.my-input {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    min-width: fit-content;
+}
+
 
 #login-form {
     padding: 5%;
@@ -7,12 +13,6 @@
     margin-bottom: 100px;
     border-radius: 14px;
     min-width: 300px;
-}
-
-.my-input {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    min-width: fit-content;
 }
 
 #submit-button {
