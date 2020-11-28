@@ -318,6 +318,24 @@ VALUES ('luxury@gmail.com', 1),
 ('iraklion@gmail.com', 2),
 ('iraklion@gmail.com', 4);
 
+INSERT INTO Reservation_Service (reservationId, serviceId, value) 
+VALUES (1, 1, TRUE),
+(1, 2, FALSE),
+(1, 4, TRUE),
+(2, 1, TRUE), 
+(2, 2, FALSE),
+(2, 4, FALSE);
+
+INSERT INTO Review_Criterion (criterionId, score, datetime)
+VALUES (1, 10, '2020-07-05 13:25:42'),
+(2, 7, '2020-07-05 13:25:42'), 
+(4, 3, '2020-05-27 22:09:52'), 
+(7, 50, '2020-05-04 11:45:26'), 
+(7, 70, '2020-06-25 17:19:19'),
+(6, 4,'2020-05-16 20:15:36'),
+(5, 5, '2020-06-29 10:36:51');
+
+
 
 
 
