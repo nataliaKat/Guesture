@@ -79,6 +79,8 @@
                         <th scope="col">Departure date</th>
                         <th scope="col">Departure time</th>
                         <th scope="col">Show members</th>
+                        <th scope="col">Show services</th>
+
                         <th scope="col">Edit</th>
                         <th scope="col">Check-in</th>
                         <th scope="col">Check-out</th>
@@ -99,7 +101,14 @@
                                 data-target="#members-modal"><i class="fas fa-users"></i></button>
 
                         </td>
-                        <td><button type="button" class="btn btn-warning" data-target="#modal-edit"
+
+                        <td>
+
+                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#services-modal"><i class="fas fa-utensils"></i></button>
+
+                        </td>
+                        <td><button type="button" class="btn btn-warning" data-target="#modal-edit" data-res="32153"
                                 data-ar_date="2021-05-25" data-ar_time="morning" data-dep_date="2021-05-30"
                                 data-dep_time="evening" data-toggle="modal"><i class="fas fa-edit"></i></button>
                         </td>
@@ -119,6 +128,9 @@
                         <td>evening</td>
                         <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
                         </td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#services-modal"><i class="fas fa-utensils"></i></button>
+                        </td>
                         <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
                         </td>
                         <td><button type="button" class="btn btn-success"><i class="fas fa-door-closed"></i></button>
@@ -135,6 +147,9 @@
                         <td>30/05/2021</td>
                         <td>evening</td>
                         <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
+                        </td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal"
+                            data-target="#services-modal"><i class="fas fa-utensils"></i></button>
                         </td>
                         <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
                         </td>
@@ -154,6 +169,9 @@
                         <td>evening</td>
                         <td><button type="button" class="btn btn-info"><i class="fas fa-users"></i></button>
                         </td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal"
+                            data-target="#services-modal"><i class="fas fa-utensils"></i></button>
+                    </td>
                         <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
                         </td>
 
@@ -171,6 +189,8 @@
                         <th scope="col">Departure date</th>
                         <th scope="col">Departure time</th>
                         <th scope="col">Show members</th>
+                        <th scope="col">Show services</th>
+
                         <th scope="col">Edit</th>
                         <th scope="col">Check-in</th>
                         <th scope="col">Check-out</th>
@@ -181,7 +201,7 @@
             </table>
         </div>
     </main>
-    <!-- Modal -->
+    <!-- Modal For Members-->
     <div class="modal fade" id="members-modal" tabindex="-1" role="dialog" aria-labelledby="Group Customers"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
@@ -243,7 +263,35 @@
             </div>
         </div>
     </div>
-    <!-- Modal HTML Markup -->
+    
+    <!-- Modal For Members-->
+    <div class="modal fade" id="services-modal" tabindex="-1" role="dialog" aria-labelledby="Group Customers"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Services">Services</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Breakfast</li>
+                        <li class="list-group-item">Spa</li>
+                        <li class="list-group-item">Horse Riding</li>
+
+                      </ul>
+                </div>
+                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal For Edit -->
     <div id="modal-edit" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -252,7 +300,7 @@
                 </div>
                 <div class="modal-body">
                     <form role="form" method="POST" action="edit.jsp">
-                        <input type="hidden" name="resId" value="">
+                        <input type="hidden" id="resiId" name="resId">
                         <div class="form-group">
                             <label class="control-label">Arrival date</label>
                             <div>
