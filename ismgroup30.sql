@@ -229,4 +229,52 @@ VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', 32, 1000.99, '2020-11
 ('2020-11-30', 'evening', '2021-01-03', 'morning', 35, 421.95, '2020-11-13', 'All the rooms should be doubles', TRUE, FALSE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
 ('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 652.99, '2020-11-13', 'All the rooms should be triples', TRUE, TRUE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
             
-            
+INSERT INTO Service (name)
+VALUES ('Water Sports'), 
+('Breakfast'),
+('Vegan Menu'),
+('Spa services'),
+('Massage'),
+('Pool'),
+('Gym'),
+('Children Playground');
+
+INSERT INTO Group_Customer (name, surname, telephone, email, identityNumber)
+VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632'),
+('Maria', 'Iwannidou', '6985214789', 'mariwan@hotmail.com', 'AZ8574152'),
+('Panagiwths', 'Spyrou', 6932145823, 'panspyrou@gmail.com', 'AK963219'),
+('Katerina', 'Kalogerakh', '6952391768', 'katekalog@gmail.com', 'AH851793'),
+('Stavroula', 'Kalergh', '6954712695', 'kalerghhhh@hotmail.com', 'AX223964'),
+('Alexis', 'Kwstopoulos', '697235648', 'alexkwst@gmail.com', 'AH765542'),
+('Ahilleas', 'Gewrgiou', '6928346635', 'ahilleasgewr@hotmail.gr', 'AK932647'),
+('Aristeidhs', 'Nikolaou', '6921053678', 'aristnikol@gmail.com', 'AM371420'),
+('Kleiw', 'Vasilopoulou', '6930806004', 'kleiwvas@gmail.com', 'AH659841'),
+('Foivos', 'Maroglou', '6975263104', 'foivmar@hotmail.com', 'AK203691');
+
+INSERT INTO Room (number, username, type, floor)
+VALUES (101, 'luxury@gmail.com', 'single', 1),
+(710, 'iraklion@gmail.com', 'double', 7),
+(405, 'sweethome@yahoo.com', 'single', 4),
+(307, 'luxury@gmail.com', 'triple', 3),
+(505, 'homepoetry@gmail.com', 'double', 5),
+(208, 'iraklion@gmail.com', 'double', 2),
+(401, 'marysrooms@yahoo.com', 'triple', 4),
+(610, 'iraklion@gmail.com', 'quad', 6),
+(303, 'luxury@gmail.com', 'quad', 3),
+(106, 'luxury@gmail.com', 'double', 1);
+
+INSERT INTO Criterion (name, min, max, username)
+VALUES ('Cleanness', 1, 10, 'luxury@gmail.com'),
+('Reception staff', 1, 10, 'luxury@gmail.com'),
+('Comfort', 1, 10, 'luxury@gmail.com'),
+('Comfort', 1, 5,'iraklion@gmail.com'),
+('Prices', 1, 5, 'iraklion@gmail.com'), 
+('Breakfast', 1, 5, 'iraklion@gmail.com'),
+('Cleanness', 1, 100, 'homepoetry@gmail.com');
+
+
+
+
+
+
+
