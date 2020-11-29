@@ -95,7 +95,16 @@
 
                     <div class="form-group field_wrapper">
                         <div class="col-sm-30" style="padding-left: 15px;">
-                            <input type="text" name="new_field" value="" placeholder="Enter a service" />
+                            <input type="text" name="add_field" value="" placeholder="Enter a service" />
+                            <a href="javascript:void(0);" class="add_button" title="Add field"><button type="button" name="service_button">
+                                 <i class="fas fa-plus"></i>
+                                </button></a>
+                        </div>
+                    </div>
+          
+                     <div class="form-group field_wrapper">
+                        <div class="col-sm-30" style="padding-left: 15px;">
+                            <input type="text" name="criterion_button" value="" placeholder="Add a criterion for review" />
                             <a href="javascript:void(0);" class="add_button" title="Add field"><button type="button">
                                  <i class="fas fa-plus"></i>
                                 </button></a>
@@ -142,10 +151,13 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            if(document.getElementById('service_button').clicked == true) {
+  
+
             var maxField = 20;
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
-            var fieldHTML = '<div class="col-sm-30" style="padding-left: 15px;"><input type="text" name="new_field" value="" placeholder="Enter a service"/><a href="javascript:void(0);" class="remove_button"><button type="button"> <i class="fas fa-minus"></i></button></a></div>'; //New input field html 
+            var fieldHTML = '<div class="col-sm-30" style="padding-left: 15px;"><input type="text" name="add_field" value="" placeholder="Enter a service"/><a href="javascript:void(0);" class="remove_button"><button type="button"> <i class="fas fa-minus"></i></button></a></div>'; //New input field html 
             var x = 1;
 
             //Once add button is clicked
@@ -163,6 +175,9 @@
                 $(this).parent('div').remove(); //Remove field html
                 x--;
             });
+        }​;​
+   
+
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
