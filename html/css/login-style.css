@@ -1,4 +1,10 @@
 
+.my-input {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    min-width: fit-content;
+}
+
 
 #login-form {
     padding: 5%;
@@ -7,12 +13,6 @@
     margin-bottom: 100px;
     border-radius: 14px;
     min-width: 300px;
-}
-
-.my-input {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    min-width: fit-content;
 }
 
 #submit-button {
@@ -57,13 +57,7 @@
     height: 100px;
     /* margin-bottom: 0px; */
 }
-#login {
-background: url(../images/login_background.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
+
 
 #quote{
     font-size: 30px;

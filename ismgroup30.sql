@@ -37,7 +37,7 @@ CREATE TABLE Agency (
              
 /*DROP TABLE Reservation;*/  
 CREATE TABLE Reservation (
-    reservationId INT NOT NULL,
+    reservationId INT NOT NULL auto_increment,
     arrivalDate DATE NOT NULL,
     arrivalTime VARCHAR(50) NOT NULL,
     departureDate DATE NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE Service (
              
 /*DROP TABLE Group_Customer;*/             
 CREATE TABLE Group_Customer (
-    customerId INT NOT NULL,
+    customerId INT NOT NULL auto_increment,
     name VARCHAR(50),
     surname VARCHAR(50),
     telephone VARCHAR(50),
@@ -91,7 +91,7 @@ CREATE TABLE Room (
 
 /*DROP TABLE Criterion;*/
 CREATE TABLE Criterion (
-	criterionId INT NOT NULL,
+	criterionId INT NOT NULL auto_increment,
     name VARCHAR(50),
     min INT,
     max INT, 
@@ -229,4 +229,120 @@ VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', 32, 1000.99, '2020-11
 ('2020-11-30', 'evening', '2021-01-03', 'morning', 35, 421.95, '2020-11-13', 'All the rooms should be doubles', TRUE, FALSE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
 ('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 652.99, '2020-11-13', 'All the rooms should be triples', TRUE, TRUE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
             
-            
+INSERT INTO Service (name)
+VALUES ('Water Sports'), 
+('Breakfast'),
+('Vegan Menu'),
+('Spa services'),
+('Massage'),
+('Pool'),
+('Gym'),
+('Children Playground');
+
+INSERT INTO Group_Customer (name, surname, telephone, email, identityNumber, reservationId)
+VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632', 1),
+('Maria', 'Iwannidou', '6985214789', 'mariwan@hotmail.com', 'AZ8574152', 1),
+('Panagiwths', 'Spyrou', 6932145823, 'panspyrou@gmail.com', 'AK963219', 1),
+('Katerina', 'Kalogerakh', '6952391768', 'katekalog@gmail.com', 'AH851793', 1),
+('Stavroula', 'Kalergh', '6954712695', 'kalerghhhh@hotmail.com', 'AX223964', 1),
+('Alexis', 'Kwstopoulos', '697235648', 'alexkwst@gmail.com', 'AH765542', 2),
+('Ahilleas', 'Gewrgiou', '6928346635', 'ahilleasgewr@hotmail.gr', 'AK932647', 2),
+('Aristeidhs', 'Nikolaou', '6921053678', 'aristnikol@gmail.com', 'AM371420', 2),
+('Kleiw', 'Vasilopoulou', '6930806004', 'kleiwvas@gmail.com', 'AH659841', 2),
+('Foivos', 'Maroglou', '6975263104', 'foivmar@hotmail.com', 'AK203691', 2);
+
+INSERT INTO Room (number, username, type, floor)
+VALUES (101, 'luxury@gmail.com', 'single', 1),
+(710, 'iraklion@gmail.com', 'double', 7),
+(405, 'sweethome@yahoo.com', 'single', 4),
+(307, 'luxury@gmail.com', 'triple', 3),
+(505, 'homepoetry@gmail.com', 'double', 5),
+(208, 'iraklion@gmail.com', 'double', 2),
+(401, 'marysrooms@yahoo.com', 'triple', 4),
+(610, 'iraklion@gmail.com', 'quad', 6),
+(303, 'luxury@gmail.com', 'quad', 3),
+(106, 'luxury@gmail.com', 'double', 1);
+
+INSERT INTO Criterion (name, min, max, username)
+VALUES ('Cleanness', 1, 10, 'luxury@gmail.com'),
+('Reception staff', 1, 10, 'luxury@gmail.com'),
+('Comfort', 1, 10, 'luxury@gmail.com'),
+('Comfort', 1, 5,'iraklion@gmail.com'),
+('Prices', 1, 5, 'iraklion@gmail.com'), 
+('Breakfast', 1, 5, 'iraklion@gmail.com'),
+('Cleanness', 1, 100, 'homepoetry@gmail.com');
+
+INSERT INTO Review (datetime, comments, reservationId)
+VALUES ('2020-07-10 14:55:30', 'Reception staff were friendly, rooms not clean enough', 1),
+('2020-07-05 13:25:42', 'Breakfast was great, rooms were cold', 2),
+('2020-06-29 10:36:51', 'TV broken in 3 rooms', 3),
+('2020-06-25 17:19:19', 'Customers not satisfied from lunch', 4),
+('2020-05-27 22:09:52', 'Great experience at your hotel!', 5),
+('2020-05-16 20:15:36', 'prices too high!', 6),
+('2020-05-04 11:45:26', 'excellent stay at your hotel', 7);
+
+INSERT INTO Roomtype (type, numberOfRooms, price, reservationId)
+VALUES ('single', 5, 155.60, 1),
+('double', 10, 500, 1),
+('triple', 2, 120.50, 1),
+('single', 7, 215.30, 2),
+('double', 3, 155.70, 2),
+('triple', 1, 60.50, 2),
+('quad', 1, 140.20, 2),
+('double', 6, 325.75, 3),
+('triple', 10, 750.25, 3),
+('single', 15, 475.80, 4),
+('triple', 5, 360.30, 4), 
+('quad', 3, 205.10, 4);
+
+INSERT INTO Customer_Room (customerId, number)
+VALUES (1, 101),
+(2, 101),
+(3, 106),
+(4, 208),
+(5, 208),
+(6, 307),
+(7, 505),
+(8, 405);
+
+INSERT INTO Hotel_Service (username, serviceId)
+VALUES ('luxury@gmail.com', 1),
+('luxury@gmail.com', 2),
+('luxury@gmail.com', 4),
+('sweethome@yahoo.com', 5),
+('sweethome@yahoo.com', 6),
+('sweethome@yahoo.com', 8),
+('marysrooms@yahoo.com', 1),
+('marysrooms@yahoo.com', 5),
+('iraklion@gmail.com', 1),
+('iraklion@gmail.com', 2),
+('iraklion@gmail.com', 4);
+
+INSERT INTO Reservation_Service (reservationId, serviceId, value) 
+VALUES (1, 1, TRUE),
+(1, 2, FALSE),
+(1, 4, TRUE),
+(2, 1, TRUE), 
+(2, 2, FALSE),
+(2, 4, FALSE);
+
+INSERT INTO Review_Criterion (criterionId, score, datetime)
+VALUES (1, 10, '2020-07-05 13:25:42'),
+(2, 7, '2020-06-05 13:25:42'), 
+(4, 3, '2020-05-27 22:09:52'), 
+(7, 50, '2020-05-04 11:45:26'), 
+(7, 70, '2020-06-25 17:19:19'),
+(6, 4,'2020-05-16 20:15:36'),
+(5, 5, '2020-06-29 10:36:51');
+
+
+
+
+
+
+
+
+
+
+
+

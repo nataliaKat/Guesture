@@ -34,7 +34,7 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item current">
               <a class="nav-link" href="agencies.html">Agencies</a>
             </li>
             <li class="nav-item">
@@ -55,27 +55,28 @@
           </ul>
         </div>
       </nav>
-    </header>
-</body>
-  
+    </header>  
 
   <!-- Page Content -->
-  <main class="container-fluid" style="padding-left: 20%;">
+  <main class="container">
+
     <div class="row">
         <!-- Form -->
-        <div id="myform" class="col-sm-12 col-lg-8 ml-5" >
+        <div id="myform" class="col-sm-12 col-lg-8 col-ml-5" style="padding: 20px;">
+          <h1 class="text-center">New Agency</h1>
+
             <form action="" class="form-horizontal" >
                 <div class="form-agency">
-                    <label for="name" class="col-sm-4 control-label" ">Name</label>
+                    <label for="name" class="col-sm-4 control-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="όνομα" 
+                        <input type="text" id="name" name="name" class="form-control" placeholder="name" 
                         required>
                     </div>
                 </div>
                 <div class="form-agency">
                     <label for="tel" class="col-sm-4 control-label" style="padding-top: 2%;">Telephone</label>
                     <div class="col-sm-10">
-                        <input type="tel" id="telephone" name="phone" class="form-control" placeholder="αριθμός" required>
+                        <input type="tel" id="telephone" name="phone" class="form-control" placeholder="number" required>
                     </div>
                 </div>
                 <div class="form-agency">
@@ -87,7 +88,7 @@
                 <div class="form-agency">
                     <label for="vat" class="col-sm-4 control-label" style="padding-top: 2%;">VAT Number</label>
                     <div class="col-sm-10">
-                        <input type="text" id="vat" name="vat" class="form-control" placeholder="αριθμός" required>
+                        <input type="text" id="vat" name="vat" class="form-control" placeholder="number" required>
                     </div>
                 </div>
                 <div class="form-agency">
@@ -99,12 +100,13 @@
 
                 <div class="form-agency">
                     <div class="col-sm-10 col-sm-offset-2" style="padding-top: 5%;">
-                        <button type="submit" class="btn btn-success" onclick="location.href='agencies.html'">Υποβολή</button>
-                        <button type="reset" class="btn btn-danger">Καθαρισμός</button>
+                        <button type="submit" class="my-button" onclick="location.href='agencies.html'">Submit</button>
+                        <button type="reset" class="blueButton">Clear</button>
                     </div>
                 </div>
             </form>
         </div>
+    
     </div>
 </main>
 
