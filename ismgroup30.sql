@@ -1,8 +1,22 @@
 USE ismgroup30;
 SHOW DATABASES;
 
-SET FOREIGN_KEY_CHECKS=1;
-/*DROP TABLE User;*/
+/*DROP TABLE Review_Criterion; 
+DROP TABLE Reservation_Service;
+DROP TABLE Hotel_Service; 
+DROP TABLE Customer_Room;
+DROP TABLE RoomType;
+DROP TABLE Review;
+DROP TABLE Criterion;
+DROP TABLE Room;
+DROP TABLE Group_Customer;             
+DROP TABLE Service;
+DROP TABLE Reservation;  
+DROP TABLE Agency; 
+DROP TABLE Hotel;
+DROP TABLE User;*/
+
+-- SET FOREIGN_KEY_CHECKS=1;
 CREATE TABLE User (
     username VARCHAR(20) NOT NULL,
     password VARCHAR(30),
@@ -10,7 +24,6 @@ CREATE TABLE User (
     PRIMARY KEY (username)
 );
 
-/*DROP TABLE Hotel;*/
 CREATE TABLE Hotel (
     username VARCHAR(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
@@ -23,7 +36,6 @@ CREATE TABLE Hotel (
         REFERENCES User (username)
 );
 
-/*DROP TABLE Agency;*/ 
 CREATE TABLE Agency (
     name VARCHAR(50) NOT NULL,
     telephone BIGINT NOT NULL,
@@ -35,7 +47,6 @@ CREATE TABLE Agency (
 		REFERENCES User (username)
 );
              
-/*DROP TABLE Reservation;*/  
 CREATE TABLE Reservation (
     reservationId INT NOT NULL auto_increment,
     arrivalDate DATE NOT NULL,
@@ -56,14 +67,15 @@ CREATE TABLE Reservation (
         REFERENCES Agency (username)
 );
 
-/*DROP TABLE Service;*/
 CREATE TABLE Service (
-    serviceId INT NOT NULL,
+    serviceId INT NOT NULL auto_increment,
     name VARCHAR(50),
-    PRIMARY KEY (serviceId)
+    hotel_username varchar(50),
+    PRIMARY KEY (serviceId),
+    FOREIGN KEY (hotel_username)
+		REFERENCES Hotel (username)
 );
              
-/*DROP TABLE Group_Customer;*/             
 CREATE TABLE Group_Customer (
     customerId INT NOT NULL auto_increment,
     name VARCHAR(50),
@@ -77,7 +89,6 @@ CREATE TABLE Group_Customer (
         REFERENCES Reservation (reservationId)
 );
                             
-/*DROP TABLE Room;*/
 CREATE TABLE Room (
     number INT NOT NULL,
     username VARCHAR(20) NOT NULL,
@@ -88,7 +99,6 @@ CREATE TABLE Room (
         REFERENCES Hotel (username)
 );
 
-/*DROP TABLE Criterion;*/
 CREATE TABLE Criterion (
 	criterionId INT NOT NULL auto_increment,
     name VARCHAR(50),
@@ -100,7 +110,6 @@ CREATE TABLE Criterion (
 		REFERENCES Hotel (username)
 );
 
-/*DROP TABLE Review;*/
 CREATE TABLE Review (
 	datetime DATETIME NOT NULL,
     comments VARCHAR(250),
@@ -110,7 +119,6 @@ CREATE TABLE Review (
 		REFERENCES Reservation (reservationId)
 );
 
-/*DROP TABLE RoomType;*/
 CREATE TABLE RoomType (
 	type VARCHAR(50) NOT NULL,
     numberOfRooms INT,
@@ -121,7 +129,6 @@ CREATE TABLE RoomType (
 		REFERENCES Reservation (reservationId) 
 );
 
-/*DROP TABLE Customer_Room;*/
 CREATE TABLE Customer_Room (
 	customerId INT NOT NULL,
     number INT NOT NULL,
@@ -132,7 +139,6 @@ CREATE TABLE Customer_Room (
 		REFERENCES Room (number)
 );             
 
-/*DROP TABLE Hotel_Service;*/ 
 CREATE TABLE Hotel_Service (
     username VARCHAR(20) NOT NULL,
     serviceId INT NOT NULL,
@@ -143,7 +149,6 @@ CREATE TABLE Hotel_Service (
         REFERENCES Service (serviceId)
 );
              
- /*DROP TABLE Reservation_Service;*/ 
 CREATE TABLE Reservation_Service (
     reservationId INT NOT NULL,
     serviceId INT NOT NULL,
@@ -155,7 +160,6 @@ CREATE TABLE Reservation_Service (
         REFERENCES Service (serviceId)
 );
 			             
- /*DROP TABLE Review_Criterion;*/ 
 CREATE TABLE Review_Criterion (
     criterionId INT NOT NULL,
     score INT NOT NULL,
@@ -228,15 +232,21 @@ VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', 32, 1000.99, '2020-11
 ('2020-11-30', 'evening', '2021-01-03', 'morning', 35, 421.95, '2020-11-13', TRUE, FALSE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
 ('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 652.99, '2020-11-13', TRUE, TRUE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
             
-INSERT INTO Service (name)
-VALUES ('Water Sports'), 
-('Breakfast'),
-('Vegan Menu'),
-('Spa services'),
-('Massage'),
-('Pool'),
-('Gym'),
-('Children Playground');
+INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.com'),
+('Fishing','iraklion@gmail.com'),
+('Breakfast','iraklion@gmail.com'),
+('Breakfast','luxury@gmail.com'),
+('Breakfast','marysrooms@yahoo.com'),
+('Breakfast','sweethome@yahoo.com'),
+('Breakfast','portoven@gmail.com'),
+('Lunch','homepoetry@gmail.com'),
+('Lunch','acropolisv@gmail.com'),
+('Sightseeing','iraklion@gmail.com'),
+('Sightseeing','acropolisv@gmail.com'),
+('Sightseeing','portoven@gmail.com'),
+('Massage & Spa','homepoetry@gmail.com'),
+('Horse Riding','marysrooms@yahoo.com'),
+('Horse Riding','portoven@gmail.com');
 
 INSERT INTO Group_Customer (name, surname, telephone, email, identityNumber, reservationId)
 VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632', 1),
