@@ -148,7 +148,7 @@ html {
   height: 500px;
 }
 
-#registration_form, #myform, #group-form {
+#registration_form, #res-form, #new-agency {
   border: 2px solid #2b526e;
   border-width: medium;
   border-radius: 12px;

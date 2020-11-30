@@ -34,99 +34,97 @@
         </nav>
     </header>
 
-
-
     <!-- Begin page content -->
-    <main class="container" >
+    <main class="container">
         <div id="registration_form" class="col-xs-12 col-md-6">
-        <h1 class="text-center">Sign Up</h1>
-        <div class="row d-flex justify-content-center">
-            <!-- Form -->
-            <div class="col-xs-12 col-md-10 col-lg-8">
-                <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">Username </label>
-                        <div>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter a valid e-mail address" required>
+            <h1 class="text-center">Sign Up</h1>
+            <div class="row d-flex justify-content-center">
+                <!-- Form -->
+                <div class="col-xs-12 col-md-10 col-lg-8">
+                    <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">Username </label>
+                            <div>
+                                <input type="text" id="username" name="username" class="form-control"
+                                    placeholder="Enter a valid e-mail address" required>
+                            </div>
                         </div>
-                    </div> 
 
-                    <div class="form-group">
-                        <label for="password" class="col-sm-2 control-label">Password </label>
-                        <div>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">Password </label>
+                            <div>
+                                <input type="password" id="password" name="password" class="form-control"
+                                    placeholder="Enter Password" required>
+                            </div>
                         </div>
-                    </div> 
 
-                    <div class="form-group">
-                        <label for="repeat_password" class="col-sm-12 control-label">Repeat Password </label>
-                        <div>
-                            <input type="password" id="repeat_password" name="repeat_password" class="form-control" placeholder="Repeat Password" required>
+                        <div class="form-group">
+                            <label for="repeat_password" class="col-sm-12 control-label">Repeat Password </label>
+                            <div>
+                                <input type="password" id="repeat_password" name="repeat_password" class="form-control"
+                                    placeholder="Repeat Password" required>
+                            </div>
                         </div>
-                    </div> 
 
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Name </label>
-                        <div>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter a name" required>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Name </label>
+                            <div>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter a name"
+                                    required>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="address" class="col-sm-4 control-label">Address</label>
-                        <div>
-                            <input type="text" id="address" name="address" class="form-control" placeholder="Enter an address" required>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-4 control-label">Address</label>
+                            <div>
+                                <input type="text" id="address" name="address" class="form-control"
+                                    placeholder="Enter an address" required>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="phonenumber" class="col-sm-4 control-label">Phonenumber</label>
-                        <div>
-                            <input type="text" id="phonenumber" name="phonenumber" class="form-control" placeholder="Enter a phonenumber" required>
+                        <div class="form-group">
+                            <label for="phonenumber" class="col-sm-4 control-label">Phonenumber</label>
+                            <div>
+                                <input type="text" id="phonenumber" name="phonenumber" class="form-control"
+                                    placeholder="Enter a phonenumber" required>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="description" class="col-sm-4 control-label">Description</label>
-                        <div>
-                            <input type="text" id="description" name="description" class="form-control" placeholder="Enter a description" required>
+                        <div class="form-group">
+                            <label for="description" class="col-sm-4 control-label">Description</label>
+                            <div>
+                                <input type="text" id="description" name="description" class="form-control"
+                                    placeholder="Enter a description" required>
+                            </div>
                         </div>
-                    </div>
 
-                   
-                     
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-30">
-                            <div class="checkbox">
-                                <label>
+                        <div class="form-group">
+                            <label for="services">Enter services, each one in new line</label>
+                            <textarea class="form-control" id="services"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="criteria">Enter criteria, each one in new line</label>
+                            <textarea class="form-control" id="criteria"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-30">
+                                <div class="checkbox">
                                     <input type="checkbox" name="terms" id="terms" value="1"><b> I agree to the
                                         terms and conditions</b>
-                                </label>
-                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-30 col-sm-offset-2">
-                            <button type="submit" class="my-button">Submit</button>
-                            <button type="reset" class="blueButton">Clear</button>
-
+                        <div class="form-group">
+                            <div class="col-sm-30 col-sm-offset-2">
+                                <button type="submit" class="my-button">Submit</button>
+                                <button type="reset" class="blueButton">Clear</button>
+                            </div>
                         </div>
-
-                    </div>
-
-
-
-                </form>
-
+                    </form>
+                </div>
             </div>
-
-
         </div>
-    </div>
-        
     </main>
 
     <footer class="footer">
@@ -135,7 +133,7 @@
         </div>
     </footer>
 
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
