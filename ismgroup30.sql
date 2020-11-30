@@ -1,9 +1,7 @@
 USE ismgroup30;
-SHOW DATABASES;
 
-/*DROP TABLE Review_Criterion; 
+DROP TABLE Review_Criterion; 
 DROP TABLE Reservation_Service;
-DROP TABLE Hotel_Service; 
 DROP TABLE Customer_Room;
 DROP TABLE RoomType;
 DROP TABLE Review;
@@ -14,9 +12,8 @@ DROP TABLE Service;
 DROP TABLE Reservation;  
 DROP TABLE Agency; 
 DROP TABLE Hotel;
-DROP TABLE User;*/
+DROP TABLE User;
 
--- SET FOREIGN_KEY_CHECKS=1;
 CREATE TABLE User (
     username VARCHAR(20) NOT NULL,
     password VARCHAR(30),
@@ -138,16 +135,6 @@ CREATE TABLE Customer_Room (
 	FOREIGN KEY (number)
 		REFERENCES Room (number)
 );             
-
-CREATE TABLE Hotel_Service (
-    username VARCHAR(20) NOT NULL,
-    serviceId INT NOT NULL,
-    PRIMARY KEY (username , serviceId),
-    FOREIGN KEY (username)
-        REFERENCES Hotel (username),
-    FOREIGN KEY (serviceId)
-        REFERENCES Service (serviceId)
-);
              
 CREATE TABLE Reservation_Service (
     reservationId INT NOT NULL,
@@ -313,19 +300,6 @@ VALUES (1, 101),
 (6, 307),
 (7, 505),
 (8, 405);
-
-INSERT INTO Hotel_Service (username, serviceId)
-VALUES ('luxury@gmail.com', 1),
-('luxury@gmail.com', 2),
-('luxury@gmail.com', 4),
-('sweethome@yahoo.com', 5),
-('sweethome@yahoo.com', 6),
-('sweethome@yahoo.com', 8),
-('marysrooms@yahoo.com', 1),
-('marysrooms@yahoo.com', 5),
-('iraklion@gmail.com', 1),
-('iraklion@gmail.com', 2),
-('iraklion@gmail.com', 4);
 
 INSERT INTO Reservation_Service (reservationId, serviceId, value) 
 VALUES (1, 1, TRUE),
