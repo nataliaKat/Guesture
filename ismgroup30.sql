@@ -45,7 +45,6 @@ CREATE TABLE Reservation (
     numberOfPeople INT NOT NULL,
     totalCost DOUBLE,
     submittedOn DATE NOT NULL,
-    comments TINYTEXT,
     checkin BOOLEAN,
     chekout BOOLEAN,
     username_hotel VARCHAR(20) NOT NULL,
@@ -219,15 +218,15 @@ VALUES ('Holidays', 2562532145, 'holidays@gmail.com', 'GR52125232', '2008-10-16'
         ('Vacation', 2152545225, 'vacay@yahoo.com', 'GR15214563', '2013-03-03', 'vacay@yahoo.com');
         
         
-INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, numberOfPeople, totalCost, submittedOn, comments, checkin, chekout, username_hotel, username_agency)
-VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', 32, 1000.99, '2020-11-10', 'All the rooms should be triples', FALSE, FALSE, 'luxury@gmail.com', 'holidays@gmail.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', 21, 865.32, '2020-11-29', 'Vegan menu for 3 customers', TRUE, FALSE, 'iraklion@gmail.com', 'vacay@yahoo.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', 45, 865.32, '2020-11-29', 'Vegan menu for 5 customers', TRUE, FALSE, 'sweethome@yahoo.com', 'travel@gmail.com'),
-('2020-12-12', 'morning', '2020-12-20', 'evening', 29, 1000.99, '2020-11-10', 'All the rooms should be triples', FALSE, FALSE, 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
-('2020-11-29', 'evening', '2020-12-05', 'evening', 32, 1623.99, '2020-11-10', 'All the rooms should be doubles', TRUE, FALSE, 'sweethome@yahoo.com', 'holidays@gmail.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 1789.95, '2020-11-13', 'All the rooms should be doubles', TRUE, FALSE, 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
-('2020-11-30', 'evening', '2021-01-03', 'morning', 35, 421.95, '2020-11-13', 'All the rooms should be doubles', TRUE, FALSE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 652.99, '2020-11-13', 'All the rooms should be triples', TRUE, TRUE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
+INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, numberOfPeople, totalCost, submittedOn, checkin, chekout, username_hotel, username_agency)
+VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', 32, 1000.99, '2020-11-10', FALSE, FALSE, 'luxury@gmail.com', 'holidays@gmail.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', 21, 865.32, '2020-11-29', TRUE, FALSE, 'iraklion@gmail.com', 'vacay@yahoo.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', 45, 865.32, '2020-11-29', TRUE, FALSE, 'sweethome@yahoo.com', 'travel@gmail.com'),
+('2020-12-12', 'morning', '2020-12-20', 'evening', 29, 1000.99, '2020-11-10', FALSE, FALSE, 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
+('2020-11-29', 'evening', '2020-12-05', 'evening', 32, 1623.99, '2020-11-10', TRUE, FALSE, 'sweethome@yahoo.com', 'holidays@gmail.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 1789.95, '2020-11-13', TRUE, FALSE, 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
+('2020-11-30', 'evening', '2021-01-03', 'morning', 35, 421.95, '2020-11-13', TRUE, FALSE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 652.99, '2020-11-13', TRUE, TRUE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
             
 INSERT INTO Service (name)
 VALUES ('Water Sports'), 
