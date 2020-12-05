@@ -1,0 +1,6 @@
+guesture_project.iml
+/lib/**
+/out/**
+/target/**
+*.class
+.idea
