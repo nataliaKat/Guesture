@@ -19,7 +19,7 @@ main {
 }
 
 #home {
-    background: url(../../src/main/webapp/images/hotel.jpg) no-repeat center center fixed;
+    background: url(../images/hotel.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -28,12 +28,12 @@ main {
 
 #group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration, #login {
 
-    background: url(../../src/main/webapp/images/login_background.jpg) no-repeat center center fixed;
+    background: url(../images/login_background.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         background-size: cover;
         -o-background-size: cover;
-    
+
 }
 
 

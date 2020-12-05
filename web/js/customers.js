@@ -3,6 +3,7 @@ $(document).ready(function() {
     counter = 0
 
     $("#myform").submit(function(e) {
+        console.log("submitted")
         e.preventDefault();
         let content = `<tr id='row-${++counter}'>`
                         // <td scope='row'>${counter}</td>`;
@@ -13,11 +14,12 @@ $(document).ready(function() {
             cust_id : e.target[2].value,
             cust_tel : e.target[3].value,
             cust_mail : e.target[4].value,
-            cust_romm : e.target[5].value
+            cust_room : e.target[5].value
         }
-        
+
         for (key in customer) {
-            content += `<td>${customer[key]}</td>`            
+            content += `<td>${customer[key]}</td>`
+
         }
         content += `<td>
                         <button id="delete-${counter}" type="button" class="delete-buttons btn btn-danger"><i class="fas fa-trash-alt fa-xs"></i></button>    
@@ -38,22 +40,42 @@ $(document).ready(function() {
             console.log(customers)
             row.remove();
         })
-    
+
     })
 
+    function createXML(obj) {
+        xml = '<customers>';
+        for (let c in customers) {
+            xml += '<customer>';
+            xml += `<name>${customers[c].cust_name}</name>
+                    <surname>${customers[c].cust_sname}</surname>
+                    <identity>${customers[c].cust_id}</identity>
+                    <tel>${customers[c].cust_tel}</tel>
+                    <mail>${customers[c].cust_mail}</mail>
+                    <room>${customers[c].cust_room}</room>`
+            xml += '</customer>'
+        }
+        xml += '</customers>'
+        return xml;
+    }
+
+
+
+    $("#final-submit").on('click', function sendXML() {
+        createXML(customers);
+        let url = 'groupCustomers';
+        let data = createXML(customers);
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.send(data);
+    });
 
     $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-      })
+        $('#myInput').trigger('focus');
+
+    })
 
 })
 
-function sendJSON() {
-    let url = "submit.php"; 
-    let data = JSON.stringify(customers);
-    let xhr = new XMLHttpRequest(); 
-    xhr.open("POST", url, true); 
-    xhr.send(data);
-    window.location.href = "index.html";
 
-}
+

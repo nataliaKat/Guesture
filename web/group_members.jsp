@@ -13,7 +13,8 @@
 </head>
 <body>
 <%@include file="navbar.jsp"%>
-<main class="container-fluid">
+<% int counter = 0; %>
+<main class="container-fluid" id="group">
     <div class="row">
         <!-- Form -->
         <div id="myform" class="col-sm-12 col-lg-4 ml-5">
@@ -115,7 +116,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="blueButton" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="my-button" onclick="sendJSON()">Yes</button>
+                            <button type="button" class="my-button" id="final-submit">Yes</button>
                         </div>
                     </div>
                 </div>
@@ -124,5 +125,6 @@
     </div>
 </main>
 <%@include file="footer.jsp"%>
+<script src="js/customers.js"></script>
 </body>
 </html>
