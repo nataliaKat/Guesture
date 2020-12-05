@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Navbar styles
+---------------------------------------------------*/
+.custom-nav {
+  background-color: #bfd9d7;
+  border-bottom: 3px solid #353745;
+}
+
+/* Background styles
+---------------------------------------------------*/
+main {
+  padding-top: 5%;
+  z-index: 1;
+}
+
+#home {
+    background: url(../../src/main/webapp/images/hotel.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration, #login {
+
+    background: url(../../src/main/webapp/images/login_background.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    
+}
+
+
+/* table {
+  table-layout:fixed;
+}
+
+table td {
+  overflow:auto; 
+}
+.registration-background {
+  background-color: lightblue;
+}
+
+/* Button styles
+---------------------------------------------------*/
+.my-button {
+  /* width: 40%; */
+  /* height: 50px; */
+  border-radius: 7px;
+  background-color: #af975d;
+  border: none;
+  color:white;
+  padding: 10px;
+}
+
+.blueButton {
+  /* width: 100%; */
+  border-radius: 7px;
+  background-color:#bfd9d9;
+  border: none;
+  color: black;
+  padding: 10px;
+
+}
+
+.blueButton:hover {
+  transition: 0.5s;
+  background-color: #a4dcd7;
+}
+
+#editButton {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 102%;
+  height: 60px;
+  border-radius: 7px;
+  background-color:#bfd9d7;
+  border: none;
+  color: black;
+}
+
+.my-button:hover {
+  transition: 0.2s;
+  background-color: #7d6b41;  
+}
+
+#cust-submit{
+  width: 100%;
+  flex-direction: row-reverse; 
+  margin-bottom: 20px;
+}
+
+#agency-submit{
+    width: 100%;
+    flex-direction: row-reverse; 
+    margin-bottom: 20px;
+}
+
+/* Customers' table styles
+---------------------------------------------------*/
+#my-table{
+  overflow-y:scroll;
+  height:500px;
+  display:block;
+}
+
+#my-table td {
+  text-align: right;
+}
+
+#my-table th {
+  text-align: center;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+
+  .footer {
+    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 35px;
+    line-height: 35px; /* Vertically center the text there */
+    background-color: #d0c398;
+  }
+
+
+.chart  {
+  margin: 100px auto;
+  width: 1000px;
+  height: 500px;
+}
+
+#registration_form, #res-form, #new-agency {
+  border: 2px solid #2b526e;
+  border-width: medium;
+  border-radius: 12px;
+  /* margin-right: 600px; */
+  /* padding-top: 25px; */
+  /* padding-right: 0%; */
+  
+
+}
+
+
