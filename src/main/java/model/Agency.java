@@ -5,7 +5,7 @@ import java.util.Date;
 public class Agency {
 
     private String name;
-    private int telephone;
+    private String telephone;
     private String mail;
     private String vatNumber;
     private Date registrationDate;
@@ -14,7 +14,7 @@ public class Agency {
     public Agency() {
     }
 
-    public Agency(String name, int telephone, String mail, String vatNumber, Date registrationDate, String username) {
+    public Agency(String name, String telephone, String mail, String vatNumber, Date registrationDate, String username) {
         this.name = name;
         this.telephone = telephone;
         this.mail = mail;
@@ -31,11 +31,11 @@ public class Agency {
         this.name = name;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
@@ -68,8 +68,8 @@ public class Agency {
     }
 
     public void setUsername(String username) {
-        this.username = username;
-    }
+		this.username = username;
+	}
 
     @Override
     public int hashCode() {
@@ -78,7 +78,7 @@ public class Agency {
         result = prime * result + ((mail == null) ? 0 : mail.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((registrationDate == null) ? 0 : registrationDate.hashCode());
-        result = prime * result + telephone;
+        result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
         result = prime * result + ((username == null) ? 0 : username.hashCode());
         result = prime * result + ((vatNumber == null) ? 0 : vatNumber.hashCode());
         return result;
@@ -108,7 +108,10 @@ public class Agency {
                 return false;
         } else if (!registrationDate.equals(other.registrationDate))
             return false;
-        if (telephone != other.telephone)
+        if (telephone == null) {
+            if (other.telephone != null)
+                return false;
+        } else if (!telephone.equals(other.telephone))
             return false;
         if (username == null) {
             if (other.username != null)
@@ -129,4 +132,6 @@ public class Agency {
                 + telephone + ", username=" + username + ", vatNumber=" + vatNumber + "]";
     }
 
+    
+    
 }
