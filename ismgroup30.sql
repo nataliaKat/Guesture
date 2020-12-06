@@ -25,9 +25,8 @@ CREATE TABLE Hotel (
     username VARCHAR(20) NOT NULL,
     name VARCHAR(50) NOT NULL,
     address VARCHAR(50) NOT NULL,
-    phoneNumber BIGINT NOT NULL,
+    phoneNumber VARCHAR(50) NOT NULL,
     head VARCHAR(50) NOT NULL,
-    logo VARCHAR(50) NOT NULL,
     description TINYTEXT,
     FOREIGN KEY (username)
         REFERENCES User (username)
@@ -35,7 +34,7 @@ CREATE TABLE Hotel (
 
 CREATE TABLE Agency (
     name VARCHAR(50) NOT NULL,
-    telephone BIGINT NOT NULL,
+    telephone VARCHAR(50) NOT NULL,
     mail VARCHAR(50) NOT NULL,
     vatNumber VARCHAR(50) NOT NULL,
     registrationDate DATE,
@@ -183,30 +182,30 @@ VALUES ('luxury@gmail.com', '11111', 'Hotel'),
        ('vacay@yahoo.com', '20789', 'Agency');
 
 INSERT INTO Hotel (username, name, address, phoneNumber, head, logo, description)
-VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', 2565241236, 'Ανδρέας Γεωργίου', 'Lux', ''),
-	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', 2152365236, 'Ελένη Παπαδοπούλου', 'MRooms', ''),
-       ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', 2194526325, 'Γιώργος Λινός', 'AVH', ''),
-       ('homepoetry@gmail.com', 'Home and Poetry', 'Ερμού 114, Αθήνα', 2198545632, 'Δήμητρα Σωτηρίου', 'Home & Poetry', ''),
-       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', 1254563289, 'Chris Green', 'SW', ''),
-       ('iraklion@gmail.com', 'Iraklion Hotel', 'Καλοκαιρινού 128, Ηράκλειο', 2563245639, 'Σωτήρης Φανταράκης', 'Iraklion', ''),
-       ('portoven@gmail.com', 'Porto Veneziano Hotel', 'Ακτή Ενώσεως και Γλαύκου, Χανιά', 2569685632, 'Μαρία Κωσταντάκη', 'Porto Veneziano', '');
+VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '2565241236', 'Ανδρέας Γεωργίου', ''),
+	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', '2152365236', 'Ελένη Παπαδοπούλου', ''),
+       ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', '2194526325', 'Γιώργος Λινός', ''),
+       ('homepoetry@gmail.com', 'Home and Poetry', 'Ερμού 114, Αθήνα', '2198545632', 'Δήμητρα Σωτηρίου', ''),
+       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', '1254563289', 'Chris Green', ''),
+       ('iraklion@gmail.com', 'Iraklion Hotel', 'Καλοκαιρινού 128, Ηράκλειο', '2563245639', 'Σωτήρης Φανταράκης', ''),
+       ('portoven@gmail.com', 'Porto Veneziano Hotel', 'Ακτή Ενώσεως και Γλαύκου, Χανιά', '2569685632', 'Μαρία Κωσταντάκη', '');
             
 INSERT INTO Agency (name, telephone, mail, vatNumber, registrationDate, username)
-VALUES ('Holidays', 2562532145, 'holidays@gmail.com', 'GR52125232', '2008-10-16', 'holidays@gmail.com'),
-        ('Memorable Trips', 2152025458, 'memorablet@yahoo.com', 'GR85426312', '2008-12-19','memorablet@yahoo.com'),
-        ('Orea Komotini', 2115256342, 'oreakomot@gmail.com', 'GR10205623', '2020-10-02', 'oreakomot@gmail.com'),
-        ('Pame Diakopes', 2102587965, 'pamediak@yahoo.com', 'GR10854569', '2008-12-13', 'pamediak@yahoo.com'),
-        ('Pame Ekdromi', 2152545857, 'pamekromi@gmail.com', 'GR45137291', '2009-01-12', 'pamekromi@gmail.com'),
-        ('Peripatos', 2125245857, 'peripatos@yahoo.com', 'GR78451263', '2012-08-06', 'peripatos@yahoo.com'),
-        ('Planet', 2105428536, 'planet@gmail.com', 'GR78562380', '2012-12-02', 'planet@gmail.com'),
-        ('Planning Trips', 1524585796, 'plantrips@gmail.com', 'GR78234130', '2012-12-18', 'plantrips@gmail.com'),
-        ('Summer Trips', 2563245236, 'summer@yahoo.com', 'GR47639420', '2010-03-17', 'summer@yahoo.com'),
-        ('Taxidi', 2152442258, 'taxidi@gmail.com', 'GR12037812', '2008-11-28', 'taxidi@gmail.com'),
-        ('Taxidiotiko', 2514587968, 'taxidiot@gmail.com','GR84239712', '2009-09-15', 'taxidiot@gmail.com'),
-        ('Tour', 2142585796, 'tours@gmail.com', 'GR85246253', '2010-10-14', 'tours@gmail.com'),
-        ('Travel', 2104258892, 'travel@gmail.com', 'GR45282365', '2011-07-25', 'travel@gmail.com'),
-        ('Travelling 24', 2174859565, 'travelling@gmail.com', 'GR45852360', '2012-09-23', 'travelling@gmail.com'),
-        ('Vacation', 2152545225, 'vacay@yahoo.com', 'GR15214563', '2013-03-03', 'vacay@yahoo.com');
+VALUES ('Holidays', '2562532145', 'holidays@gmail.com', 'GR52125232', '2008-10-16', 'holidays@gmail.com'),
+        ('Memorable Trips', '2152025458', 'memorablet@yahoo.com', 'GR85426312', '2008-12-19','memorablet@yahoo.com'),
+        ('Orea Komotini', '2115256342', 'oreakomot@gmail.com', 'GR10205623', '2020-10-02', 'oreakomot@gmail.com'),
+        ('Pame Diakopes', '2102587965', 'pamediak@yahoo.com', 'GR10854569', '2008-12-13', 'pamediak@yahoo.com'),
+        ('Pame Ekdromi', '2152545857', 'pamekromi@gmail.com', 'GR45137291', '2009-01-12', 'pamekromi@gmail.com'),
+        ('Peripatos', '2125245857', 'peripatos@yahoo.com', 'GR78451263', '2012-08-06', 'peripatos@yahoo.com'),
+        ('Planet', '2105428536', 'planet@gmail.com', 'GR78562380', '2012-12-02', 'planet@gmail.com'),
+        ('Planning Trips', '1524585796', 'plantrips@gmail.com', 'GR78234130', '2012-12-18', 'plantrips@gmail.com'),
+        ('Summer Trips', '2563245236', 'summer@yahoo.com', 'GR47639420', '2010-03-17', 'summer@yahoo.com'),
+        ('Taxidi', '2152442258', 'taxidi@gmail.com', 'GR12037812', '2008-11-28', 'taxidi@gmail.com'),
+        ('Taxidiotiko', '2514587968', 'taxidiot@gmail.com','GR84239712', '2009-09-15', 'taxidiot@gmail.com'),
+        ('Tour', '2142585796', 'tours@gmail.com', 'GR85246253', '2010-10-14', 'tours@gmail.com'),
+        ('Travel', '2104258892', 'travel@gmail.com', 'GR45282365', '2011-07-25', 'travel@gmail.com'),
+        ('Travelling 24', '2174859565', 'travelling@gmail.com', 'GR45852360', '2012-09-23', 'travelling@gmail.com'),
+        ('Vacation', '2152545225', 'vacay@yahoo.com', 'GR15214563', '2013-03-03', 'vacay@yahoo.com');
         
         
 INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, numberOfPeople, totalCost, submittedOn, checkin, chekout, username_hotel, username_agency)
