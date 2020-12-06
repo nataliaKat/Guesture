@@ -181,7 +181,7 @@ VALUES ('luxury@gmail.com', '11111', 'Hotel'),
        ('travelling@gmail.com', '10258', 'Agency'),
        ('vacay@yahoo.com', '20789', 'Agency');
 
-INSERT INTO Hotel (username, name, address, phoneNumber, head, logo, description)
+INSERT INTO Hotel (username, name, address, phoneNumber, head, description)
 VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '2565241236', 'Ανδρέας Γεωργίου', ''),
 	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', '2152365236', 'Ελένη Παπαδοπούλου', ''),
        ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', '2194526325', 'Γιώργος Λινός', ''),
