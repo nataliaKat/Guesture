@@ -5,22 +5,19 @@ public class Hotel {
     private String username;
     private String name;
     private String address;
-    private int phoneNumber;
+    private String phoneNumber;
     private String head;
-    private String logo;
     private String description;
 
     public Hotel() {
     }
 
-    public Hotel(String username, String name, String address, int phoneNumber, String head, String logo,
-            String description) {
+    public Hotel(String username, String name, String address, String phoneNumber, String head, String description) {
         this.username = username;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.head = head;
-        this.logo = logo;
         this.description = description;
     }
 
@@ -48,11 +45,11 @@ public class Hotel {
         this.address = address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -62,14 +59,6 @@ public class Hotel {
 
     public void setHead(String head) {
         this.head = head;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
     }
 
     public String getDescription() {
@@ -87,9 +76,8 @@ public class Hotel {
         result = prime * result + ((address == null) ? 0 : address.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((head == null) ? 0 : head.hashCode());
-        result = prime * result + ((logo == null) ? 0 : logo.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + phoneNumber;
+        result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
         result = prime * result + ((username == null) ? 0 : username.hashCode());
         return result;
     }
@@ -118,17 +106,15 @@ public class Hotel {
                 return false;
         } else if (!head.equals(other.head))
             return false;
-        if (logo == null) {
-            if (other.logo != null)
-                return false;
-        } else if (!logo.equals(other.logo))
-            return false;
         if (name == null) {
             if (other.name != null)
                 return false;
         } else if (!name.equals(other.name))
             return false;
-        if (phoneNumber != other.phoneNumber)
+        if (phoneNumber == null) {
+            if (other.phoneNumber != null)
+                return false;
+        } else if (!phoneNumber.equals(other.phoneNumber))
             return false;
         if (username == null) {
             if (other.username != null)
@@ -140,8 +126,8 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel [address=" + address + ", description=" + description + ", head=" + head + ", logo=" + logo
-                + ", name=" + name + ", phoneNumber=" + phoneNumber + ", username=" + username + "]";
+        return "Hotel [address=" + address + ", description=" + description + ", head=" + head + ", name=" + name
+                + ", phoneNumber=" + phoneNumber + ", username=" + username + "]";
     }
 
 }
