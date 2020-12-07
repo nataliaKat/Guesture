@@ -1,8 +1,10 @@
 package dao;
 
+import model.Agency;
 import model.Reservation;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import java.sql.*;
 import java.sql.Connection;
@@ -12,11 +14,12 @@ import java.sql.SQLException;
 
 public class ReservationDao {
 
-    public List<Reservation> getAll(String username) {
+    public List<Reservation> getAll(String username) throws Exception {
         Connection con = null;
         ResultSet rs = null;
         List<Reservation> reservations = new ArrayList<Reservation>();
-        String sql = "SELECT reservationId, username_agency, arrivalDate, arrivalTime, departureDate, departureTime, totalCost, submittedOn FROM Reservation WHERE username_hotel = ?; ";
+        AgencyDao adao = new AgencyDao();
+        String sql = "SELECT reservationId, name, arrivalDate, arrivalTime, departureDate, departureTime, totalCost, submittedOn FROM Reservation, Agency WHERE Reservation.username_agency=Agency.username AND username_hotel = ?;";
         DB db = new DB();
 
         try {
@@ -26,9 +29,9 @@ public class ReservationDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                reservations.add(new Reservation(rs.getInt("reservationId"), rs.getString("username_agency"),
-                        rs.getDate("arrivalDate"), rs.getString("arrivalTime"), rs.getDate("departureDate"),
-                        rs.getString("departureTime"), rs.getDouble("totalCost"), rs.getDate("submittedOn")));
+                reservations.add(new Reservation(rs.getInt(1), adao.getByName(rs.getString(2)),
+                        rs.getDate(3), rs.getString(4), rs.getDate(5),
+                        rs.getString(6), rs.getDouble(7), rs.getDate(8)));
             }
 
             stmt.close();
@@ -70,7 +73,7 @@ public class ReservationDao {
         }
     }// End of delete
 
-    public void edit(final Reservation r) throws SQLException{
+    public void edit(Reservation r) {
         Connection con = null;
         String sql = "UPDATE Reservation SET arrivalDate = ?, arrivalTime = ?, departureDate = ?, departureTime = ? WHERE reservationId = ?; ";
         DB db = new DB();
@@ -106,7 +109,7 @@ public class ReservationDao {
         try {
             con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(2, resId);
+            stmt.setInt(1, resId);
             stmt.executeUpdate();
 
             stmt.close();
@@ -130,7 +133,7 @@ public class ReservationDao {
         try {
             con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(2, resId);
+            stmt.setInt(1, resId);
             stmt.executeUpdate();
 
             stmt.close();

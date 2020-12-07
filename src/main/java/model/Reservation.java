@@ -5,6 +5,7 @@ import java.util.Date;
 public class Reservation {
 
     private int reservationId;
+    private Agency agency;
     private Date arrivalDate;
     private String arrivalTime;
     private Date departureDate;
@@ -19,9 +20,11 @@ public class Reservation {
 
     }
 
-    public Reservation(int reservationId, Date arrivalDate, String arrivalTime, Date departureDate, String departureTime,
-                       int numberOfPeople, double totalCost, Date submittedOn, boolean checkedIn, boolean checkedOut) {
+    public Reservation(int reservationId, Agency agency, Date arrivalDate, String arrivalTime, Date departureDate,
+            String departureTime, int numberOfPeople, double totalCost, Date submittedOn, boolean checkedIn,
+            boolean checkedOut) {
         this.reservationId = reservationId;
+        this.agency = agency;
         this.arrivalDate = arrivalDate;
         this.arrivalTime = arrivalTime;
         this.departureDate = departureDate;
@@ -33,12 +36,32 @@ public class Reservation {
         this.checkedOut = checkedOut;
     }
 
+    public Reservation(int reservationId, Agency agency, Date arrivalDate, String arrivalTime, Date departureDate,
+            String departureTime, double totalCost, Date submittedOn) {
+        this.reservationId = reservationId;
+        this.agency = agency;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.totalCost = totalCost;
+        this.submittedOn = submittedOn;
+    }
+
     public int getReservationId() {
         return reservationId;
     }
 
     public void setReservationId(int reservationId) {
         this.reservationId = reservationId;
+    }
+
+    public Agency getAgency() {
+        return agency;
+    }
+
+    public void setAgency(Agency agency) {
+        this.agency = agency;
     }
 
     public Date getArrivalDate() {
@@ -114,57 +137,83 @@ public class Reservation {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Reservation that = (Reservation) o;
-
-        if (reservationId != that.reservationId) return false;
-        if (numberOfPeople != that.numberOfPeople) return false;
-        if (Double.compare(that.totalCost, totalCost) != 0) return false;
-        if (checkedIn != that.checkedIn) return false;
-        if (checkedOut != that.checkedOut) return false;
-        if (arrivalDate != null ? !arrivalDate.equals(that.arrivalDate) : that.arrivalDate != null) return false;
-        if (arrivalTime != null ? !arrivalTime.equals(that.arrivalTime) : that.arrivalTime != null) return false;
-        if (departureDate != null ? !departureDate.equals(that.departureDate) : that.departureDate != null)
-            return false;
-        if (departureTime != null ? !departureTime.equals(that.departureTime) : that.departureTime != null)
-            return false;
-        return submittedOn != null ? submittedOn.equals(that.submittedOn) : that.submittedOn == null;
-    }
-
-    @Override
     public int hashCode() {
-        int result;
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((agency == null) ? 0 : agency.hashCode());
+        result = prime * result + ((arrivalDate == null) ? 0 : arrivalDate.hashCode());
+        result = prime * result + ((arrivalTime == null) ? 0 : arrivalTime.hashCode());
+        result = prime * result + (checkedIn ? 1231 : 1237);
+        result = prime * result + (checkedOut ? 1231 : 1237);
+        result = prime * result + ((departureDate == null) ? 0 : departureDate.hashCode());
+        result = prime * result + ((departureTime == null) ? 0 : departureTime.hashCode());
+        result = prime * result + numberOfPeople;
+        result = prime * result + reservationId;
+        result = prime * result + ((submittedOn == null) ? 0 : submittedOn.hashCode());
         long temp;
-        result = reservationId;
-        result = 31 * result + (arrivalDate != null ? arrivalDate.hashCode() : 0);
-        result = 31 * result + (arrivalTime != null ? arrivalTime.hashCode() : 0);
-        result = 31 * result + (departureDate != null ? departureDate.hashCode() : 0);
-        result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
-        result = 31 * result + numberOfPeople;
         temp = Double.doubleToLongBits(totalCost);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (submittedOn != null ? submittedOn.hashCode() : 0);
-        result = 31 * result + (checkedIn ? 1 : 0);
-        result = 31 * result + (checkedOut ? 1 : 0);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
     @Override
-    public String toString() {
-        return "Reservation{" +
-                "reservationId=" + reservationId +
-                ", arrivalDate=" + arrivalDate +
-                ", arrivalTime='" + arrivalTime + '\'' +
-                ", departureDate=" + departureDate +
-                ", departureTime='" + departureTime + '\'' +
-                ", numberOfPeople=" + numberOfPeople +
-                ", totalCost=" + totalCost +
-                ", submittedOn=" + submittedOn +
-                ", checkedIn=" + checkedIn +
-                ", checkedOut=" + checkedOut +
-                '}';
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Reservation other = (Reservation) obj;
+        if (agency == null) {
+            if (other.agency != null)
+                return false;
+        } else if (!agency.equals(other.agency))
+            return false;
+        if (arrivalDate == null) {
+            if (other.arrivalDate != null)
+                return false;
+        } else if (!arrivalDate.equals(other.arrivalDate))
+            return false;
+        if (arrivalTime == null) {
+            if (other.arrivalTime != null)
+                return false;
+        } else if (!arrivalTime.equals(other.arrivalTime))
+            return false;
+        if (checkedIn != other.checkedIn)
+            return false;
+        if (checkedOut != other.checkedOut)
+            return false;
+        if (departureDate == null) {
+            if (other.departureDate != null)
+                return false;
+        } else if (!departureDate.equals(other.departureDate))
+            return false;
+        if (departureTime == null) {
+            if (other.departureTime != null)
+                return false;
+        } else if (!departureTime.equals(other.departureTime))
+            return false;
+        if (numberOfPeople != other.numberOfPeople)
+            return false;
+        if (reservationId != other.reservationId)
+            return false;
+        if (submittedOn == null) {
+            if (other.submittedOn != null)
+                return false;
+        } else if (!submittedOn.equals(other.submittedOn))
+            return false;
+        if (Double.doubleToLongBits(totalCost) != Double.doubleToLongBits(other.totalCost))
+            return false;
+        return true;
     }
+
+    @Override
+    public String toString() {
+        return "Reservation [agency=" + agency + ", arrivalDate=" + arrivalDate + ", arrivalTime=" + arrivalTime
+                + ", checkedIn=" + checkedIn + ", checkedOut=" + checkedOut + ", departureDate=" + departureDate
+                + ", departureTime=" + departureTime + ", numberOfPeople=" + numberOfPeople + ", reservationId="
+                + reservationId + ", submittedOn=" + submittedOn + ", totalCost=" + totalCost + "]";
+    }
+
 }
