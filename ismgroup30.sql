@@ -7,7 +7,7 @@ DROP TABLE RoomType;
 DROP TABLE Review;
 DROP TABLE Criterion;
 DROP TABLE Room;
-DROP TABLE Group_Customer;             
+DROP TABLE GroupCustomer;             
 DROP TABLE Service;
 DROP TABLE Reservation;  
 DROP TABLE Agency; 
@@ -28,6 +28,10 @@ CREATE TABLE Hotel (
     phoneNumber VARCHAR(50) NOT NULL,
     head VARCHAR(50) NOT NULL,
     description TINYTEXT,
+    priceSingle DOUBLE NOT NULL,
+    priceDouble DOUBLE NOT NULL,
+    priceTriple DOUBLE NOT NULL,
+    priceQuadruple DOUBLE NOT NULL,
     FOREIGN KEY (username)
         REFERENCES User (username)
 );
@@ -49,11 +53,14 @@ CREATE TABLE Reservation (
     arrivalTime VARCHAR(50) NOT NULL,
     departureDate DATE NOT NULL,
     departureTime VARCHAR(50) NOT NULL,
-    numberOfPeople INT NOT NULL,
-    totalCost DOUBLE,
     submittedOn DATE NOT NULL,
     checkin BOOLEAN,
     chekout BOOLEAN,
+    singleRooms INT NOT NULL, 
+    doubleRooms INT NOT NULL,
+	tripleRooms INT NOT NULL,
+    quadrupleRooms INT NOT NULL,
+    confirmed BOOLEAN,
     username_hotel VARCHAR(20) NOT NULL,
     username_agency VARCHAR(20) NOT NULL,
     PRIMARY KEY (reservationId),
@@ -71,20 +78,7 @@ CREATE TABLE Service (
     FOREIGN KEY (hotel_username)
 		REFERENCES Hotel (username)
 );
-             
-CREATE TABLE Group_Customer (
-    customerId INT NOT NULL auto_increment,
-    name VARCHAR(50),
-    surname VARCHAR(50),
-    telephone VARCHAR(50),
-    email VARCHAR(50),
-    identityNumber VARCHAR(50),
-    reservationId INT NOT NULL,
-    PRIMARY KEY (customerId),
-    FOREIGN KEY (reservationId)
-        REFERENCES Reservation (reservationId)
-);
-                            
+                                        
 CREATE TABLE Room (
     number INT NOT NULL,
     username VARCHAR(20) NOT NULL,
@@ -115,25 +109,30 @@ CREATE TABLE Review (
 		REFERENCES Reservation (reservationId)
 );
 
-CREATE TABLE RoomType (
-	type VARCHAR(50) NOT NULL,
-    numberOfRooms INT,
-    price DOUBLE,
-    reservationId INT,
-    PRIMARY KEY (type, reservationId),
-    FOREIGN KEY (reservationId)
-		REFERENCES Reservation (reservationId) 
-);
-
-CREATE TABLE Customer_Room (
-	customerId INT NOT NULL,
-    number INT NOT NULL,
-    PRIMARY KEY (customerId, number),
-    FOREIGN KEY (customerId)
-		REFERENCES Group_Customer (customerId),
-	FOREIGN KEY (number)
+CREATE TABLE Grouping (
+	groupingId INT NOT NULL auto_increment,
+    roomType VARCHAR(10) NOT NULL,
+    number INT,
+	PRIMARY KEY(groupingId),
+    FOREIGN KEY (number)
 		REFERENCES Room (number)
-);             
+);         
+
+CREATE TABLE GroupCustomer (
+    customerId INT NOT NULL auto_increment,
+    name VARCHAR(50),
+    surname VARCHAR(50),
+    telephone VARCHAR(50),
+    email VARCHAR(50),
+    identityNumber VARCHAR(50),
+    reservationId INT NOT NULL,
+    groupingId INT NOT NULL,
+    PRIMARY KEY (customerId),
+    FOREIGN KEY (reservationId)
+        REFERENCES Reservation (reservationId),
+	FOREIGN KEY (groupingId)
+        REFERENCES Grouping (groupingId) 
+);
              
 CREATE TABLE Reservation_Service (
     reservationId INT NOT NULL,
@@ -234,7 +233,7 @@ INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.co
 ('Horse Riding','marysrooms@yahoo.com'),
 ('Horse Riding','portoven@gmail.com');
 
-INSERT INTO Group_Customer (name, surname, telephone, email, identityNumber, reservationId)
+INSERT INTO GroupCustomer (name, surname, telephone, email, identityNumber, reservationId)
 VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632', 1),
 ('Maria', 'Iwannidou', '6985214789', 'mariwan@hotmail.com', 'AZ8574152', 1),
 ('Panagiwths', 'Spyrou', 6932145823, 'panspyrou@gmail.com', 'AK963219', 1),
