@@ -223,6 +223,19 @@ public class ReservationDao {
             rs.close();
             con.close();
 
+    public void confirm(int resId) throws Exception {
+        Connection con = null;
+        String sql = "UPDATE Reservation SET confirmed = 'TRUE' WHERE reservationId = ?; ";
+        DB db = new DB();
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, resId);
+            stmt.executeUpdate();
+
+            stmt.close();
+
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
@@ -232,7 +245,12 @@ public class ReservationDao {
 
             }
         }
+
         return services;
     }// End of getAllServices
+
+    }// End of confirm
+
+
 
 }
