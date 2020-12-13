@@ -16,6 +16,14 @@ public class Reservation {
     private boolean checkedIn;
     private boolean checkedOut;
 
+    private int agencyId;
+    private int hotelId;
+    private int singleRooms;
+    private int doubleRooms;
+    private int tripleRooms;
+    private int quadrupleRooms;
+    private String comments;
+
     public Reservation() {
 
     }
@@ -46,6 +54,24 @@ public class Reservation {
         this.departureTime = departureTime;
         this.totalCost = totalCost;
         this.submittedOn = submittedOn;
+    }
+
+    public Reservation(int hotelId, int agencyId, Date arrivalDate, String arrivalTime, Date departureDate,
+            String departureTime, int numberOfPeople, int singleRooms, int doubleRooms, int tripleRooms, 
+            int quadrupleRooms, String comments) {
+        this.hotelId = hotelId;
+        this.agencyId = agencyId;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.numberOfPeople = numberOfPeople;
+        this.singleRooms = singleRooms;
+        this.doubleRooms = doubleRooms;
+        this.tripleRooms = tripleRooms;
+        this.quadrupleRooms = quadrupleRooms;
+        this.comments = comments;
+
     }
 
     public int getReservationId() {
