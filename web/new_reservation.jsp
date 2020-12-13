@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.Service" %>
 
 <!doctype html>
 <html lang="en">
@@ -176,11 +177,16 @@
                         </div>
                         <br>
 
-                        <% for (int i = 0; i< ; i++) {}%>
+                        <% 
+                        ReservationDao rd = new ReservationDao();
+                        List<Service> services = rd.getAllServices(hotelName);
+                        int counter = 0;
+
+                        for (int i = 0; i < services.size() ; i++) {} %>
 
                             <div class="form-group checkbox">
-                                <label class="col-sm-2 control-label">Breakfast </label>
-                                <input type="checkbox" value="">
+                                <label class="col-sm-2 control-label"><%=services.get(i).getName() %></label>
+                                <input type="checkbox" value="" name="<%=++counter%>">
                             </div>
 
                         <% } %>
