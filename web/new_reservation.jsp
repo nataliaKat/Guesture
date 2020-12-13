@@ -52,6 +52,14 @@
         </nav>
     </header>
     
+
+    <% 
+    ReservationDao rd = new ReservationDao();
+
+    Double [] prices = rd.getPricePerRoomType(hotelName);
+
+    %>
+
     <!-- Begin page content -->
     <main class="container">
         <div class="row">
@@ -127,7 +135,7 @@
                                             <tr>
                                                 <td>Single</td>
                                                 <td>
-                                                    <input type="text" name="singleprice" readonly>
+                                                    <input type="text" name="singleprice" readonly class="form-control-plaintext" value="<%=prices[0]%>">
                                                 </td>
                                                 <td>
                                                     <input min="0" name="n-1" id="n-1" type="number" class="table-input"
@@ -137,7 +145,7 @@
                                             <tr>
                                                 <td>Double</td>
                                                 <td>
-                                                    <input type="text" name="doubleprice" readonly>
+                                                    <input type="text" name="doubleprice" readonly class="form-control-plaintext" value="<%=prices[1]%>">
                                                 </td>
                                                 <td>
                                                     <input name="n-2" id="n-2" type="number" class="table-input" min="0"
@@ -147,7 +155,7 @@
                                             <tr>
                                                 <td>Triple</td>
                                                 <td>
-                                                    <input type="text" name="tripleprice" readonly>
+                                                    <input type="text" name="tripleprice" readonly class="form-control-plaintext" value="<%=prices[2]%>">
                                                 </td>
                                                 <td>
                                                     <input name="n-3" id="n-3" type="number" class="table-input" min="0"
@@ -157,7 +165,7 @@
                                             <tr>
                                                 <td>Quadruple</td>
                                                 <td>
-                                                    <input type="text" name="quadruple" readonly>
+                                                    <input type="text" name="quadrupleprice" readonly class="form-control-plaintext" value="<%=prices[3]%>">
                                                 </td>
                                                 <td>
                                                     <input name="n-4" id="n-4" type="number" class="table-input" min="0"
@@ -178,7 +186,7 @@
                         <br>
 
                         <% 
-                        ReservationDao rd = new ReservationDao();
+                        
                         List<Service> services = rd.getAllServices(hotelName);
                         int counter = 0;
 
