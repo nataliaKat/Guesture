@@ -142,6 +142,62 @@ public class Reservation {
         return submittedOn;
     }
 
+    public void setSingleRooms(int singleRooms) {
+        this.singleRooms = singleRooms;
+    }
+
+    public int getSingleRooms() {
+        return singleRooms;
+    }
+
+    public void setDoubleRooms(int doubleRooms) {
+        this.doubleRooms = doubleRooms;
+    }
+
+    public int getDoubleRooms() {
+        return doubleRooms;
+    }
+
+    public void setTripleRooms(int tripleRooms) {
+        this.tripleRooms = tripleRooms;
+    }
+
+    public int getTripleRooms() {
+        return tripleRooms;
+    }
+
+    public void setQuadrupleRooms(int quadrupleRooms) {
+        this.quadrupleRooms = quadrupleRooms;
+    }
+
+    public int getQuadrupleRooms() {
+        return quadrupleRooms;
+    }
+
+    public void setAgencyId(int agencyId) {
+        this.agencyId = agencyId;
+    }
+
+    public int getAgencyId() {
+        return agencyId;
+    }
+
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public int getComments() {
+        return comments;
+    }
+
     public void setSubmittedOn(Date submittedOn) {
         this.submittedOn = submittedOn;
     }
