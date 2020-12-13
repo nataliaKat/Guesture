@@ -60,8 +60,8 @@
                 <h1 class="text-center">New Reservation</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
                 <form class="form-horizontal" action="makeReservation.jsp" method="POST">
-                    <input type="hidden" id="agencyId" name="agencyId" value="">
-                    <input type="hidden" id="hotelId" name="hotelId" value="">
+                    <input type="hidden" id="agencyName" name="agencyName" value="">
+                    <input type="hidden" id="hotelName" name="hotelName" value="">
 
                     <div class="form-group">
                         <label for="arrival" class="col-sm-4 control-label">Arrival Date</label>

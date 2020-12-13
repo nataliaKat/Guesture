@@ -264,10 +264,57 @@ public class ReservationDao {
             }
         }
 
-    
-    
     }// End of confirm
 
+    public double[] getPricePerRoomType (String hotelName) throws Exception {
+
+        Connection con = null;
+        ResultSet rs = null;
+        double [] prices = new double [4];
+        String sql = "SELECT priceSingle, priceDouble, priceTriple, priceQuadruple FROM Hotel WHERE username = ? ;";
+        DB db = new DB();
+
+        try {
+
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, hotelName);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                
+                double priceSingle = rs.getDouble("priceSingle");
+                double priceDouble = rs.getDouble("priceDouble");
+                double priceTriple = rs.getDouble("priceTriple");
+                double priceQuadruple = rs.getDouble("priceQuadruple");
+
+                prices[0] = priceSingle;
+                prices[1] = priceDouble;
+                prices[2] = priceTriple;
+                prices[3] = priceQuadruple;
+
+            }
+
+            stmt.close();
+            rs.close();
+            con.close();
+            
+        } catch (SQLException e) {
+
+			throw new SQLException(e.getMessage());
+
+		} finally {
+
+            try {
+                dbobject.close();
+            } catch (Exception e) {                
+
+            }
+        }
+
+		return prices;
+		
+	} // End of getAllServices
 
 
 }
