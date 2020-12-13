@@ -222,6 +222,24 @@ public class ReservationDao {
             stmt.close();
             rs.close();
             con.close();
+            
+        } catch (SQLException e) {
+
+			throw new SQLException(e.getMessage());
+
+		} finally {
+
+            try {
+                dbobject.close();
+            } catch (Exception e) {                
+
+            }
+        }
+
+		return services;
+		
+	} // End of getAllServices
+
 
     public void confirm(int resId) throws Exception {
         Connection con = null;
@@ -246,9 +264,8 @@ public class ReservationDao {
             }
         }
 
-        return services;
-    }// End of getAllServices
-
+    
+    
     }// End of confirm
 
 
