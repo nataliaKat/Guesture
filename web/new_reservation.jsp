@@ -1,20 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Dream Hotel | New Reservation</title>
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="../web/css/style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../web/images/favicon.png" />
+    <title>Dream Agency | New Reservation</title>
+    <%@include file="header.jsp"%>
+
 </head>
 
 <body id="new_reservation">
@@ -65,19 +58,9 @@
             <div id="res-form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
                 <h1 class="text-center">New Reservation</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="agency" class="col-sm-2 control-label">Agency </label>
-                        <div class="col-sm-10">
-                            <select id="agency" name="agency" class="form-control" required>
-                                <option value="">Select agency</option>
-                                <option value="1">Agency 1</option>
-                                <option value="2">Agency 2</option>
-                                <option value="3">Agency 3</option>
-                                <option value="4">Agency 4</option>
-                            </select>
-                        </div>
-                    </div>
+                <form class="form-horizontal" action="makeReservation.jsp" method="POST">
+                    <input type="hidden" id="agencyId" name="agencyId" value="">
+                    <input type="hidden" id="hotelId" name="hotelId" value="">
 
                     <div class="form-group">
                         <label for="arrival" class="col-sm-4 control-label">Arrival Date</label>
@@ -153,8 +136,7 @@
                                             <tr>
                                                 <td>Double</td>
                                                 <td>
-                                                    <input name="p-2" id="p-2" type="number" class="table-input" min="0"
-                                                        required>
+                                                    <input type="text" name="doubleprice" readonly>
                                                 </td>
                                                 <td>
                                                     <input name="n-2" id="n-2" type="number" class="table-input" min="0"
@@ -164,8 +146,7 @@
                                             <tr>
                                                 <td>Triple</td>
                                                 <td>
-                                                    <input name="p-3" id="p-3" type="number" class="table-input" min="0"
-                                                        required>
+                                                    <input type="text" name="tripleprice" readonly>
                                                 </td>
                                                 <td>
                                                     <input name="n-3" id="n-3" type="number" class="table-input" min="0"
@@ -175,8 +156,7 @@
                                             <tr>
                                                 <td>Quadruple</td>
                                                 <td>
-                                                    <input name="p-4" id="p-4" type="number" class="table-input" min="0"
-                                                        required>
+                                                    <input type="text" name="quadruple" readonly>
                                                 </td>
                                                 <td>
                                                     <input name="n-4" id="n-4" type="number" class="table-input" min="0"
@@ -195,20 +175,22 @@
                             </div>
                         </div>
                         <br>
-                        <div class="form-group checkbox">
-                            <label class="col-sm-2 control-label">Breakfast </label>
-                            <input type="checkbox" value="">
-                        </div>
-                        <div class="form-group checkbox">
-                            <label class="col-sm-2 control-label">Water Sports </label>
-                            <input type="checkbox" value="">
-                        </div>
+
+                        <% for (int i = 0; i< ; i++) {}%>
+
+                            <div class="form-group checkbox">
+                                <label class="col-sm-2 control-label">Breakfast </label>
+                                <input type="checkbox" value="">
+                            </div>
+
+                        <% } %>
+                        
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Comments </label>
                             <div class="col-sm-10">
 
-                                <textarea class="form-control" rows="3" maxlength="200"
+                                <textarea class="form-control" rows="3" maxlength="200" name="comments"
                                     placeholder="Insert any comments here"></textarea>
 
                             </div>
@@ -228,20 +210,7 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <span class="text-muted">Made with &hearts; by Guesture - Group Management</span>
-        </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <%@include file="footer.jsp"%>
     <script src="../web/js/res_form.js"></script>
 </body>
 
