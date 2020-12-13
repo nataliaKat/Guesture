@@ -314,7 +314,7 @@ public class ReservationDao {
 
 		return prices;
 		
-	} // End of getAllServices
+	} // End of getPricePerRoomType
 
 
 }
