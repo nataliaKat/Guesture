@@ -150,6 +150,50 @@ public class ReservationDao {
     }// End of checkOut
 
 
+    public void insertReservation(Reservation reservation) {
+
+        DB db = new DB();
+		PreparedStatement stmt = null;;
+        String sql = "INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, username_hotel, username_agency)"
+			+ " VALUES (?, ?, ?, ?, ?, ?, ?. ?, ?, ?);";
+
+        try {
+			
+            Connection con = dbobject.getConnection();
+
+            stmt = con.prepareStatement(sql);
+			stmt.setDate(1, reservation.getArrivalDate());
+            stmt.setString(2, reservation.getArrivalTime());
+            stmt.setDate(3, reservation.getDepartureDate());
+			stmt.setString(4, reservation.getDepartureTime());
+            stmt.setInt(5, reservation.getSingleRooms());
+            stmt.setInt(6, reservation.getDoubleRooms());
+            stmt.setInt(7, reservation.getTripleRooms());
+            stmt.setInt(8, reservation.getQuadrupleRooms());
+            stmt.setInt(9, reservation.getHotelId());
+            stmt.setInt(10, reservation.getAgencyId());	
+            
+            stmt.executeUpdate();
+            
+			stmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+
+			throw new SQLException(e.getMessage());
+
+		} finally {
+
+            try {
+                db.close();
+            } catch (Exception e) {                
+
+            }
+        }
+	}//end of insertReservation
+
+    }
+
     public void confirm(int resId) throws Exception {
         Connection con = null;
         String sql = "UPDATE Reservation SET confirmed = 'TRUE' WHERE reservationId = ?; ";
@@ -173,4 +217,6 @@ public class ReservationDao {
             }
         }
     }// End of confirm
+
+
 }
