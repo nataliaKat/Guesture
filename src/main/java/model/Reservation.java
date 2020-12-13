@@ -16,8 +16,8 @@ public class Reservation {
     private boolean checkedIn;
     private boolean checkedOut;
 
-    private int agencyId;
-    private int hotelId;
+    private String agencyName;
+    private String hotelName;
     private int singleRooms;
     private int doubleRooms;
     private int tripleRooms;
@@ -56,11 +56,11 @@ public class Reservation {
         this.submittedOn = submittedOn;
     }
 
-    public Reservation(int hotelId, int agencyId, Date arrivalDate, String arrivalTime, Date departureDate,
+    public Reservation(String hotelName, String agencyName, Date arrivalDate, String arrivalTime, Date departureDate,
             String departureTime, int numberOfPeople, int singleRooms, int doubleRooms, int tripleRooms, 
             int quadrupleRooms, String comments) {
-        this.hotelId = hotelId;
-        this.agencyId = agencyId;
+        this.hotelName = hotelName;
+        this.agencyName = agencyName;
         this.arrivalDate = arrivalDate;
         this.arrivalTime = arrivalTime;
         this.departureDate = departureDate;
@@ -174,27 +174,27 @@ public class Reservation {
         return quadrupleRooms;
     }
 
-    public void setAgencyId(int agencyId) {
-        this.agencyId = agencyId;
+    public void setAgencyName(String agencyName) {
+        this.agencyName = agencyName;
     }
 
-    public int getAgencyId() {
-        return agencyId;
+    public String getAgencyName() {
+        return agencyName;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public String getHotelName() {
+        return hotelName;
     }
 
     public void setComments(String comments) {
         this.comments = comments;
     }
 
-    public int getComments() {
+    public String getComments() {
         return comments;
     }
 

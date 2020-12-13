@@ -171,8 +171,8 @@ public class ReservationDao {
             stmt.setInt(6, reservation.getDoubleRooms());
             stmt.setInt(7, reservation.getTripleRooms());
             stmt.setInt(8, reservation.getQuadrupleRooms());
-            stmt.setInt(9, reservation.getHotelId());
-            stmt.setInt(10, reservation.getAgencyId());	
+            stmt.setString(9, reservation.getHotelName());
+            stmt.setString(10, reservation.getAgencyName());	
             
             stmt.executeUpdate();
             
