@@ -1,6 +1,14 @@
 $(document).ready(function() {
     customers = []
     counter = 0
+    grouping = []
+    customers.push(grouping)
+
+
+    $("#new-room").click(function(e) {
+        grouping = []
+        customers.push(grouping)
+    });
 
     $("#myform").submit(function(e) {
         console.log("submitted")
@@ -8,13 +16,12 @@ $(document).ready(function() {
         let content = `<tr id='row-${++counter}'>`
                         // <td scope='row'>${counter}</td>`;
         let customer = {
-            id : counter,
-            cust_name : e.target[0].value,
-            cust_sname : e.target[1].value,
-            cust_id : e.target[2].value,
-            cust_tel : e.target[3].value,
-            cust_mail : e.target[4].value,
-            cust_room : e.target[5].value
+            num : counter,
+            name : e.target[0].value,
+            surname : e.target[1].value,
+            identityNumber : e.target[2].value,
+            telephone : e.target[3].value,
+            email : e.target[4].value,
         }
 
         for (key in customer) {
@@ -26,49 +33,45 @@ $(document).ready(function() {
                     </td>`
         content += "</tr>" 
         $('#my-table tr:last').after(content);
-        customers.push(customer)
+        grouping.push(customer)
 
         $(".delete-buttons").on("click", function(e) {
             let row = e.currentTarget.parentElement.parentElement;
             let data = row.firstChild.innerHTML;
-            for (cust in customers) {
-                if (data == cust[0]) {
-                    customers.remove(cust);
-                    break;
+            for (let i = 0; i < customers.length; i++) {
+                for (let j = 0; j < customers[i].length; j++) {
+                    if (data == customer.num) {
+                        console.log(j, "is");
+                        customers[i].splice(j, 1);
+                        row.remove();
+                        console.log(customers)
+
+                        break;
+                    }
                 }
+
             }
-            console.log(customers)
-            row.remove();
         })
 
     })
 
-    function createXML(obj) {
-        xml = '<customers>';
-        for (let c in customers) {
-            xml += '<customer>';
-            xml += `<name>${customers[c].cust_name}</name>
-                    <surname>${customers[c].cust_sname}</surname>
-                    <identity>${customers[c].cust_id}</identity>
-                    <tel>${customers[c].cust_tel}</tel>
-                    <mail>${customers[c].cust_mail}</mail>
-                    <room>${customers[c].cust_room}</room>`
-            xml += '</customer>'
+    $("#final-submit").click(function() {
+        console.log(customers)
+            $.ajax({
+                type: "POST",
+                url: "groupCustomers",
+                dataType: 'JSON',
+                data: {"custs" : JSON.stringify(customers)},
+                complete: function() {
+                    window.location.replace("index.jsp")
+                },
+                fail: function(xhr, textStatus, errorThrown){
+                    alert('fail');
+                    console.log("oooffff")
+                }
+            });
         }
-        xml += '</customers>'
-        return xml;
-    }
-
-
-
-    $("#final-submit").on('click', function sendXML() {
-        createXML(customers);
-        let url = 'groupCustomers';
-        let data = createXML(customers);
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", url, true);
-        xhr.send(data);
-    });
+    );
 
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus');

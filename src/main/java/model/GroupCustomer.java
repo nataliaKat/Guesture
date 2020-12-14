@@ -8,6 +8,7 @@ public class GroupCustomer {
     private String telephone;
     private String email;
     private String identityNumber;
+    private Reservation reservation;
 
     public GroupCustomer() {
     }
@@ -19,6 +20,25 @@ public class GroupCustomer {
         this.telephone = telephone;
         this.email = email;
         this.identityNumber = identityNumber;
+    }
+
+    public GroupCustomer(int customerId, String name, String surname, String telephone, String email, String identityNumber, Reservation reservation) {
+        this.customerId = customerId;
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.email = email;
+        this.identityNumber = identityNumber;
+        this.reservation = reservation;
+    }
+
+    public GroupCustomer(String name, String surname, String telephone, String email, String identityNumber, Reservation reservation) {
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.email = email;
+        this.identityNumber = identityNumber;
+        this.reservation = reservation;
     }
 
     public int getCustomerId() {
@@ -69,6 +89,14 @@ public class GroupCustomer {
         this.identityNumber = identityNumber;
     }
 
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,7 +109,9 @@ public class GroupCustomer {
         if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
         if (telephone != null ? !telephone.equals(that.telephone) : that.telephone != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        return identityNumber != null ? identityNumber.equals(that.identityNumber) : that.identityNumber == null;
+        if (identityNumber != null ? !identityNumber.equals(that.identityNumber) : that.identityNumber != null)
+            return false;
+        return reservation != null ? reservation.equals(that.reservation) : that.reservation == null;
     }
 
     @Override
@@ -92,6 +122,7 @@ public class GroupCustomer {
         result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (identityNumber != null ? identityNumber.hashCode() : 0);
+        result = 31 * result + (reservation != null ? reservation.hashCode() : 0);
         return result;
     }
 
@@ -104,6 +135,7 @@ public class GroupCustomer {
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
                 ", identityNumber='" + identityNumber + '\'' +
+                ", reservation=" + reservation +
                 '}';
     }
 }

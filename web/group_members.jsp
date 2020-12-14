@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <button type="submit" class="my-button">Enter</button>
+                        <button type="submit" class="brownButton">Insert</button>
                         <button type="reset" class="blueButton">Clear</button>
 
                     </div>
@@ -83,7 +83,6 @@
                             <th scope="col">Identity Number</th>
                             <th scope="col">Phone</th>
                             <th scope="col">email</th>
-                            <th scope="col">Room</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -95,9 +94,10 @@
                 <button class="btn btn-secondary" onclick="location.href='group.html'"
                         style="border-radius: 7px; margin-left: 3px;">Back</button>
                 <!-- Button trigger modal -->
-                <button type="button" class="my-button" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="brownButton" data-toggle="modal" data-target="#exampleModal">
                     Submit
                 </button>
+                <button id="new-room" style="border-radius: 7px; margin-right: 3px;" class="darkBlueButton">New Room</button>
             </div>
 
             <!-- Modal -->
@@ -116,7 +116,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="blueButton" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="my-button" id="final-submit">Yes</button>
+                            <button type="button" class="brownButton" id="final-submit">Yes</button>
                         </div>
                     </div>
                 </div>

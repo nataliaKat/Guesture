@@ -15,6 +15,8 @@ public class HelloServlet extends javax.servlet.http.HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         System.out.println("hello");
         PrintWriter out = new PrintWriter(response.getWriter(), true);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+//        response.sendRedirect(request.getContextPath() + "/index.jsp");
+
+        request.getRequestDispatcher("/group_members.jsp").forward(request, response);
     }
 }

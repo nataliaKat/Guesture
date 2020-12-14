@@ -81,9 +81,9 @@ public class ReservationDao {
         try {
             con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setDate(1, r.getArrivalDate());
+//            stmt.setDate(1, r.getArrivalDate());
             stmt.setString(2, r.getArrivalTime());
-            stmt.setDate(3, r.getDepartureDate());
+//            stmt.setDate(3, r.getDepartureDate());
             stmt.setString(4, r.getDepartureTime());
             stmt.setInt(5, r.getReservationId());
             stmt.executeUpdate();
@@ -91,7 +91,7 @@ public class ReservationDao {
             stmt.close();
 
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+//            throw new Exception(e.getMessage());
         } finally {
             try {
                 db.close();

@@ -50,7 +50,7 @@ table td {
 
 /* Button styles
 ---------------------------------------------------*/
-.my-button {
+.brownButton {
   /* width: 40%; */
   /* height: 50px; */
   border-radius: 7px;
@@ -75,6 +75,19 @@ table td {
   background-color: #a4dcd7;
 }
 
+.darkBlueButton {
+    border-radius: 7px;
+    background-color: #353745;
+    border: none;
+    color:white;
+    padding: 10px;
+}
+
+.darkBlueButton:hover {
+    transition: 0.5s;
+    background-color: #a4dcd7;
+}
+
 #editButton {
   margin-top: 10%;
   margin-bottom: 10%;
@@ -86,7 +99,7 @@ table td {
   color: black;
 }
 
-.my-button:hover {
+.brownButton:hover {
   transition: 0.2s;
   background-color: #7d6b41;  
 }
@@ -106,7 +119,6 @@ table td {
 /* Customers' table styles
 ---------------------------------------------------*/
 #my-table{
-  overflow-y:scroll;
   height:500px;
   display:block;
 }

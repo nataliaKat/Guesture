@@ -50,7 +50,7 @@ table td {
 
 /* Button styles
 ---------------------------------------------------*/
-.my-button {
+.brownButton {
   /* width: 40%; */
   /* height: 50px; */
   border-radius: 7px;
@@ -86,7 +86,7 @@ table td {
   color: black;
 }
 
-.my-button:hover {
+.brownButton:hover {
   transition: 0.2s;
   background-color: #7d6b41;  
 }
