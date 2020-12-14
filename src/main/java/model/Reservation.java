@@ -16,6 +16,14 @@ public class Reservation {
     private boolean checkedIn;
     private boolean checkedOut;
 
+    private String agencyName;
+    private String hotelName;
+    private int singleRooms;
+    private int doubleRooms;
+    private int tripleRooms;
+    private int quadrupleRooms;
+    private String comments;
+
     public Reservation() {
 
     }
@@ -46,6 +54,24 @@ public class Reservation {
         this.departureTime = departureTime;
         this.totalCost = totalCost;
         this.submittedOn = submittedOn;
+    }
+
+    public Reservation(String hotelName, String agencyName, Date arrivalDate, String arrivalTime, Date departureDate,
+            String departureTime, int numberOfPeople, int singleRooms, int doubleRooms, int tripleRooms, 
+            int quadrupleRooms, String comments) {
+        this.hotelName = hotelName;
+        this.agencyName = agencyName;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.numberOfPeople = numberOfPeople;
+        this.singleRooms = singleRooms;
+        this.doubleRooms = doubleRooms;
+        this.tripleRooms = tripleRooms;
+        this.quadrupleRooms = quadrupleRooms;
+        this.comments = comments;
+
     }
 
     public int getReservationId() {
@@ -114,6 +140,62 @@ public class Reservation {
 
     public Date getSubmittedOn() {
         return submittedOn;
+    }
+
+    public void setSingleRooms(int singleRooms) {
+        this.singleRooms = singleRooms;
+    }
+
+    public int getSingleRooms() {
+        return singleRooms;
+    }
+
+    public void setDoubleRooms(int doubleRooms) {
+        this.doubleRooms = doubleRooms;
+    }
+
+    public int getDoubleRooms() {
+        return doubleRooms;
+    }
+
+    public void setTripleRooms(int tripleRooms) {
+        this.tripleRooms = tripleRooms;
+    }
+
+    public int getTripleRooms() {
+        return tripleRooms;
+    }
+
+    public void setQuadrupleRooms(int quadrupleRooms) {
+        this.quadrupleRooms = quadrupleRooms;
+    }
+
+    public int getQuadrupleRooms() {
+        return quadrupleRooms;
+    }
+
+    public void setAgencyName(String agencyName) {
+        this.agencyName = agencyName;
+    }
+
+    public String getAgencyName() {
+        return agencyName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getComments() {
+        return comments;
     }
 
     public void setSubmittedOn(Date submittedOn) {

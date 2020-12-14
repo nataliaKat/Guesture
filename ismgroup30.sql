@@ -2,12 +2,11 @@ USE ismgroup30;
 
 DROP TABLE Review_Criterion; 
 DROP TABLE Reservation_Service;
-DROP TABLE Customer_Room;
-DROP TABLE RoomType;
+DROP TABLE GroupCustomer;   
+DROP TABLE Grouping;
 DROP TABLE Review;
 DROP TABLE Criterion;
 DROP TABLE Room;
-DROP TABLE GroupCustomer;             
 DROP TABLE Service;
 DROP TABLE Reservation;  
 DROP TABLE Agency; 
@@ -180,14 +179,14 @@ VALUES ('luxury@gmail.com', '11111', 'Hotel'),
        ('travelling@gmail.com', '10258', 'Agency'),
        ('vacay@yahoo.com', '20789', 'Agency');
 
-INSERT INTO Hotel (username, name, address, phoneNumber, head, description)
-VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '2565241236', 'Ανδρέας Γεωργίου', ''),
-	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', '2152365236', 'Ελένη Παπαδοπούλου', ''),
-       ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', '2194526325', 'Γιώργος Λινός', ''),
-       ('homepoetry@gmail.com', 'Home and Poetry', 'Ερμού 114, Αθήνα', '2198545632', 'Δήμητρα Σωτηρίου', ''),
-       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', '1254563289', 'Chris Green', ''),
-       ('iraklion@gmail.com', 'Iraklion Hotel', 'Καλοκαιρινού 128, Ηράκλειο', '2563245639', 'Σωτήρης Φανταράκης', ''),
-       ('portoven@gmail.com', 'Porto Veneziano Hotel', 'Ακτή Ενώσεως και Γλαύκου, Χανιά', '2569685632', 'Μαρία Κωσταντάκη', '');
+INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple)
+VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '2565241236', 'Ανδρέας Γεωργίου', '', 35.50, 50.00, 75.50, 100.00),
+	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', '2152365236', 'Ελένη Παπαδοπούλου', '', 30.00, 45.50, 60.00, 85.50),
+       ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', '2194526325', 'Γιώργος Λινός', '', 50.00, 75.50, 100.00, 130.00),
+       ('homepoetry@gmail.com', 'Home and Poetry', 'Ερμού 114, Αθήνα', '2198545632', 'Δήμητρα Σωτηρίου', '', 45.00, 63.50, 80.00, 105.50),
+       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', '1254563289', 'Chris Green', '', 40.00, 55.50, 70.00, 100.00),
+       ('iraklion@gmail.com', 'Iraklion Hotel', 'Καλοκαιρινού 128, Ηράκλειο', '2563245639', 'Σωτήρης Φανταράκης', '', 30.50, 40.50, 51.50, 65.00),
+       ('portoven@gmail.com', 'Porto Veneziano Hotel', 'Ακτή Ενώσεως και Γλαύκου, Χανιά', '2569685632', 'Μαρία Κωσταντάκη', '', 37.50, 45.00, 52.50, 65.00);
             
 INSERT INTO Agency (name, telephone, mail, vatNumber, registrationDate, username)
 VALUES ('Holidays', '2562532145', 'holidays@gmail.com', 'GR52125232', '2008-10-16', 'holidays@gmail.com'),
@@ -207,15 +206,15 @@ VALUES ('Holidays', '2562532145', 'holidays@gmail.com', 'GR52125232', '2008-10-1
         ('Vacation', '2152545225', 'vacay@yahoo.com', 'GR15214563', '2013-03-03', 'vacay@yahoo.com');
         
         
-INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, numberOfPeople, totalCost, submittedOn, checkin, chekout, username_hotel, username_agency)
-VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', 32, 1000.99, '2020-11-10', FALSE, FALSE, 'luxury@gmail.com', 'holidays@gmail.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', 21, 865.32, '2020-11-29', TRUE, FALSE, 'iraklion@gmail.com', 'vacay@yahoo.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', 45, 865.32, '2020-11-29', TRUE, FALSE, 'sweethome@yahoo.com', 'travel@gmail.com'),
-('2020-12-12', 'morning', '2020-12-20', 'evening', 29, 1000.99, '2020-11-10', FALSE, FALSE, 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
-('2020-11-29', 'evening', '2020-12-05', 'evening', 32, 1623.99, '2020-11-10', TRUE, FALSE, 'sweethome@yahoo.com', 'holidays@gmail.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 1789.95, '2020-11-13', TRUE, FALSE, 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
-('2020-11-30', 'evening', '2021-01-03', 'morning', 35, 421.95, '2020-11-13', TRUE, FALSE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', 35, 652.99, '2020-11-13', TRUE, TRUE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
+INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, confirmed, username_hotel, username_agency)
+VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', '2020-11-10', FALSE, FALSE, 10, 10, 5, 5, TRUE, 'luxury@gmail.com', 'holidays@gmail.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 15, 15, 10, 5, FALSE, 'iraklion@gmail.com', 'vacay@yahoo.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 7, 5, 3, 1, TRUE, 'sweethome@yahoo.com', 'travel@gmail.com'),
+('2020-12-12', 'morning', '2020-12-20', 'evening', '2020-11-10', FALSE, FALSE, 10, 3, 5, 5,TRUE, 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
+('2020-11-29', 'evening', '2020-12-05', 'evening', '2020-11-10', TRUE, FALSE, 8, 9, 2, 4, FALSE, 'sweethome@yahoo.com', 'holidays@gmail.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 10, 10, 7, 1, TRUE, 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
+('2020-11-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 6, 12, 7, 5, TRUE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, TRUE, 15, 15, 10, 5, FALSE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
             
 INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.com'),
 ('Fishing','iraklion@gmail.com'),
@@ -232,18 +231,6 @@ INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.co
 ('Massage & Spa','homepoetry@gmail.com'),
 ('Horse Riding','marysrooms@yahoo.com'),
 ('Horse Riding','portoven@gmail.com');
-
-INSERT INTO GroupCustomer (name, surname, telephone, email, identityNumber, reservationId)
-VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632', 1),
-('Maria', 'Iwannidou', '6985214789', 'mariwan@hotmail.com', 'AZ8574152', 1),
-('Panagiwths', 'Spyrou', 6932145823, 'panspyrou@gmail.com', 'AK963219', 1),
-('Katerina', 'Kalogerakh', '6952391768', 'katekalog@gmail.com', 'AH851793', 1),
-('Stavroula', 'Kalergh', '6954712695', 'kalerghhhh@hotmail.com', 'AX223964', 1),
-('Alexis', 'Kwstopoulos', '697235648', 'alexkwst@gmail.com', 'AH765542', 2),
-('Ahilleas', 'Gewrgiou', '6928346635', 'ahilleasgewr@hotmail.gr', 'AK932647', 2),
-('Aristeidhs', 'Nikolaou', '6921053678', 'aristnikol@gmail.com', 'AM371420', 2),
-('Kleiw', 'Vasilopoulou', '6930806004', 'kleiwvas@gmail.com', 'AH659841', 2),
-('Foivos', 'Maroglou', '6975263104', 'foivmar@hotmail.com', 'AK203691', 2);
 
 INSERT INTO Room (number, username, type, floor)
 VALUES (101, 'luxury@gmail.com', 'single', 1),
@@ -275,29 +262,28 @@ VALUES ('2020-07-10 14:55:30', 'Reception staff were friendly, rooms not clean e
 ('2020-05-16 20:15:36', 'prices too high!', 6),
 ('2020-05-04 11:45:26', 'excellent stay at your hotel', 7);
 
-INSERT INTO Roomtype (type, numberOfRooms, price, reservationId)
-VALUES ('single', 5, 155.60, 1),
-('double', 10, 500, 1),
-('triple', 2, 120.50, 1),
-('single', 7, 215.30, 2),
-('double', 3, 155.70, 2),
-('triple', 1, 60.50, 2),
-('quad', 1, 140.20, 2),
-('double', 6, 325.75, 3),
-('triple', 10, 750.25, 3),
-('single', 15, 475.80, 4),
-('triple', 5, 360.30, 4), 
-('quad', 3, 205.10, 4);
+INSERT INTO Grouping (roomType, number)
+VALUES ("Single", 105),
+("Double", 402),
+("Single", 107),
+("Triple", 505),
+("Quadruple", 702),
+("Single", 300),
+("Double", 603),
+("Triple", 210),
+("Single", 302);
 
-INSERT INTO Customer_Room (customerId, number)
-VALUES (1, 101),
-(2, 101),
-(3, 106),
-(4, 208),
-(5, 208),
-(6, 307),
-(7, 505),
-(8, 405);
+INSERT INTO GroupCustomer (name, surname, telephone, email, identityNumber, reservationId, groupingId)
+VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632', 1, 1),
+('Maria', 'Iwannidou', '6985214789', 'mariwan@hotmail.com', 'AZ8574152', 1, 2),
+('Panagiwths', 'Spyrou', 6932145823, 'panspyrou@gmail.com', 'AK963219', 1, 2),
+('Katerina', 'Kalogerakh', '6952391768', 'katekalog@gmail.com', 'AH851793', 1, 3),
+('Stavroula', 'Kalergh', '6954712695', 'kalerghhhh@hotmail.com', 'AX223964', 1, 3),
+('Alexis', 'Kwstopoulos', '697235648', 'alexkwst@gmail.com', 'AH765542', 2, 3),
+('Ahilleas', 'Gewrgiou', '6928346635', 'ahilleasgewr@hotmail.gr', 'AK932647', 2, 4),
+('Aristeidhs', 'Nikolaou', '6921053678', 'aristnikol@gmail.com', 'AM371420', 2, 4),
+('Kleiw', 'Vasilopoulou', '6930806004', 'kleiwvas@gmail.com', 'AH659841', 2, 4),
+('Foivos', 'Maroglou', '6975263104', 'foivmar@hotmail.com', 'AK203691', 2, 4);
 
 INSERT INTO Reservation_Service (reservationId, serviceId, value) 
 VALUES (1, 1, TRUE),

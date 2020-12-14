@@ -2,6 +2,7 @@ package dao;
 
 import model.Agency;
 import model.Reservation;
+import model.Service;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,5 +149,172 @@ public class ReservationDao {
             }
         }
     }// End of checkOut
+
+
+    public void insertReservation(Reservation reservation) {
+
+        DB db = new DB();
+		PreparedStatement stmt = null;;
+        String sql = "INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, username_hotel, username_agency)"
+			+ " VALUES (?, ?, ?, ?, ?, ?, ?. ?, ?, ?);";
+
+        try {
+			
+            Connection con = dbobject.getConnection();
+
+            stmt = con.prepareStatement(sql);
+			stmt.setDate(1, reservation.getArrivalDate());
+            stmt.setString(2, reservation.getArrivalTime());
+            stmt.setDate(3, reservation.getDepartureDate());
+			stmt.setString(4, reservation.getDepartureTime());
+            stmt.setInt(5, reservation.getSingleRooms());
+            stmt.setInt(6, reservation.getDoubleRooms());
+            stmt.setInt(7, reservation.getTripleRooms());
+            stmt.setInt(8, reservation.getQuadrupleRooms());
+            stmt.setString(9, reservation.getHotelName());
+            stmt.setString(10, reservation.getAgencyName());	
+            
+            stmt.executeUpdate();
+            
+			stmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+
+			throw new SQLException(e.getMessage());
+
+		} finally {
+
+            try {
+                db.close();
+            } catch (Exception e) {                
+
+            }
+        }
+	}//end of insertReservation
+
+
+    public List<Service> getAllServices (String hotelName) throws Exception {
+
+        Connection con = null;
+        ResultSet rs = null;
+        List<Service> services = new ArrayList<Service>();
+        String sql = "SELECT * FROM Service WHERE hotel_username = ? ;";
+        DB db = new DB();
+
+        try {
+
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, hotelName);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                
+                int serviceId = rs.getInt("serviceId");
+                String name = rs.getString("name");
+                
+                Service service = new Service (serviceId, name, hotelName);
+
+                services.add(service);
+            }
+
+            stmt.close();
+            rs.close();
+            con.close();
+            
+        } catch (SQLException e) {
+
+			throw new SQLException(e.getMessage());
+
+		} finally {
+
+            try {
+                dbobject.close();
+            } catch (Exception e) {                
+
+            }
+        }
+
+		return services;
+		
+	} // End of getAllServices
+
+
+    public void confirm(int resId) throws Exception {
+        Connection con = null;
+        String sql = "UPDATE Reservation SET confirmed = 'TRUE' WHERE reservationId = ?; ";
+        DB db = new DB();
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, resId);
+            stmt.executeUpdate();
+
+            stmt.close();
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            try {
+                db.close();
+            } catch (Exception e) {
+
+            }
+        }
+
+    }// End of confirm
+
+    public double[] getPricePerRoomType (String hotelName) throws Exception {
+
+        Connection con = null;
+        ResultSet rs = null;
+        double [] prices = new double [4];
+        String sql = "SELECT priceSingle, priceDouble, priceTriple, priceQuadruple FROM Hotel WHERE username = ? ;";
+        DB db = new DB();
+
+        try {
+
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, hotelName);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                
+                double priceSingle = rs.getDouble("priceSingle");
+                double priceDouble = rs.getDouble("priceDouble");
+                double priceTriple = rs.getDouble("priceTriple");
+                double priceQuadruple = rs.getDouble("priceQuadruple");
+
+                prices[0] = priceSingle;
+                prices[1] = priceDouble;
+                prices[2] = priceTriple;
+                prices[3] = priceQuadruple;
+
+            }
+
+            stmt.close();
+            rs.close();
+            con.close();
+            
+        } catch (SQLException e) {
+
+			throw new SQLException(e.getMessage());
+
+		} finally {
+
+            try {
+                dbobject.close();
+            } catch (Exception e) {                
+
+            }
+        }
+
+		return prices;
+		
+	} // End of getPricePerRoomType
+
 
 }
