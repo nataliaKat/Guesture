@@ -90,8 +90,6 @@
                         <th scope="col">Made on</th>
                         <th scope="col">Show members</th>
                         <th scope="col">Show services</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody style="text-align: center;">

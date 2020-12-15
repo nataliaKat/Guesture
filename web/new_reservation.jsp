@@ -68,7 +68,7 @@
                 <h1 class="text-center">New Reservation</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
                 <form class="form-horizontal" action="makeReservation.jsp" method="POST">
-                    <input type="hidden" id="agencyName" name="agencyName" value="">
+                    <input type="hidden" id="agencyName" name="agencyName" value="<%=session.getAttribute("userObj")%>">
                     <input type="hidden" id="hotelName" name="hotelName" value="">
 
                     <div class="form-group">
@@ -188,13 +188,12 @@
                         <% 
                         
                         List<Service> services = rd.getAllServices(hotelName);
-                        int counter = 0;
 
                         for (int i = 0; i < services.size() ; i++) {} %>
 
                             <div class="form-group checkbox">
                                 <label class="col-sm-2 control-label"><%=services.get(i).getName() %></label>
-                                <input type="checkbox" value="" name="<%=++counter%>">
+                                <input type="checkbox" value="" name="<%=i%>">
                             </div>
 
                         <% } %>

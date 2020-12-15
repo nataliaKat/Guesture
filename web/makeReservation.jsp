@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.util.ArrayList" %>
 
 <%
 int hotelId = request.getParameter("hotelId");
@@ -12,6 +13,12 @@ int n-1 = request.getParameter("n-1");
 int n-2 = request.getParameter("n-2");
 int n-3 = request.getParameter("n-3");
 int n-4 = request.getParameter("n-4");
+
+/* read names of all checkboxes and turn them to String */
+ArrayList<String> services_list = new ArrayList<String>();
+for (int i=0; i<= services.size(); i ++){
+     services_list.add(request.getParameter(String.valueOf(i)));
+}
 String comments = request.getParameter("comments");
 
 comments = new String(comments.getBytes("ISO-8859-1"), "UTF-8");
