@@ -8,6 +8,10 @@ public class Hotel {
     private String phoneNumber;
     private String head;
     private String description;
+    private Double priceSingle;
+    private Double priceDouble;
+    private Double priceTriple;
+    private Double priceQuadruple;
 
     public Hotel() {
     }
@@ -21,13 +25,18 @@ public class Hotel {
         this.description = description;
     }
 
-    public Hotel(String username, String name, String address, String phoneNumber, String head, String description, priceSingle, priceDouble, priceTriple, priceQuadruple) {
+    public Hotel(String username, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple) {
         this.username = username;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.head = head;
         this.description = description;
+        this.priceSingle = priceSingle;
+        this.priceDouble = priceDouble;
+        this.priceTriple = priceTriple;
+        this.priceQuadruple = priceQuadruple;
+
     }
 
     public String getUsername() {
@@ -78,6 +87,37 @@ public class Hotel {
         this.description = description;
     }
 
+    public Double getPriceSingle() {
+        return priceSingle;
+    }
+
+    public void setPriceSingle() {
+        this.priceSingle = priceSingle;
+    }
+
+    public Double getPriceDouble() {
+        return priceDouble;
+    }
+
+    public void setPriceDouble() {
+        this.priceDouble = priceDouble;
+    }
+
+    public Double priceTriple() {
+        return priceTriple;
+    }
+
+    public void setPriceTriple() {
+        this.priceTriple = priceTriple
+    }
+
+    public Double getPriceQuadruple() {
+        return priceQuadruple;
+    }
+
+    public void setPriceQuadruple() {
+        this.priceQuadruple = priceQuadruple
+    }
     @Override
     public int hashCode() {
         final int prime = 31;
