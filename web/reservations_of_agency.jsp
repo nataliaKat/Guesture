@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.Service" %>
+<%@ page import="model.Reservation" %>
+<%@ page import="dao.ReservationDao" %>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -90,18 +95,25 @@
                     </tr>
                 </thead>
                 <tbody style="text-align: center;">
-
                 
+                    <% 
+                    ReservationDao rd = new ReservationDao();
+                    List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(hotelName);
 
+                    for (int i = 0; i < reservationsOfAgencyList.size(); i++) {
+
+                    %>
+        
                     <tr>
-                        <td>32153</td>
-                        <td>Pame Diakopes</td>
-                        <td>25/05/2021</td>
-                        <td>morning</td>
-                        <td>30/05/2021</td>
-                        <td>evening</td>
-                        <td>500</td>
-                        <td>10/05/2021</td>
+                        <td><%=reservationsOfAgencyList.get(i).getReservationId()%></td>
+                        <td><%=reservationsOfAgencyList.get(i).getHotelName()%></td>
+                        <td><%=reservationsOfAgencyList.get(i).getConfirmed()%></td>
+                        <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
+                        <td><%=reservationsOfAgencyList.get(i).getArrivalTime()%></td>
+                        <td><%=reservationsOfAgencyList.get(i).getDepartureDate()%></td>
+                        <td><%=reservationsOfAgencyList.get(i).getDepartureTime()%></td>
+                        <td><%=reservationsOfAgencyList.get(i).getTotalCost()</td>
+                        <td><%=reservationsOfAgencyList.get(i).getSubmittedOn()%></td>
                         <td>
 
                             <button type="button" class="btn btn-info" data-toggle="modal"
@@ -128,10 +140,7 @@
                     </tr>
                     
 
-
-
-
-
+                    <% } %>
 
 
                 <tfoot>
