@@ -54,15 +54,15 @@ public class UserDao {
 	 * @param user, User
 	 * @throws Exception, if encounter any error.
 	 */
-	public void register(User user) throws Exception {
+	public void register(Hotel hotel) throws Exception {
 		Connection con = null;
-		String sql = "SELECT * FROM User " +
+		String sql = "SELECT * FROM Hotel " +
 						"WHERE username = ?";
 		DB db = new DB();
 		try {
 			con = db.getConnection();
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, user.getUsername());
+			pst.setString(1, hotel.getUsername());
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				rs.close();
@@ -73,16 +73,16 @@ public class UserDao {
 			String sql = "INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple)" + 
 							"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pst = con.prepareStatement(sql);
-			pst.setString(1, user.getUsername());
-			pst.setString(2, user.getName());
-			pst.setString(3, user.getAddress());
-			pst.setString(4, user.getPhoneNumber());
-            pst.setString(5, user.getHead());
-            pst.setString(6, user.getDescription());
-            pst.setDouble(7, user.getPriceSingle());
-            pst.setDouble(8, user.getPriceDouble());
-            pst.setDouble(9, user.getPriceTriple());
-            pst.setDouble(10, user.getPriceQuadruple());
+			pst.setString(1, hotel.getUsername());
+			pst.setString(2, hotel.getName());
+			pst.setString(3, hotel.getAddress());
+			pst.setString(4, hotel.getPhoneNumber());
+            pst.setString(5, hotel.getHead());
+            pst.setString(6, hotel.getDescription());
+            pst.setDouble(7, hotel.getPriceSingle());
+            pst.setDouble(8, hotel.getPriceDouble());
+            pst.setDouble(9, hotel.getPriceTriple());
+            pst.setDouble(10, hotel.getPriceQuadruple());
 			pst.executeUpdate();
 
 			rs.close();
