@@ -108,7 +108,7 @@ public class Hotel {
     }
 
     public void setPriceTriple() {
-        this.priceTriple = priceTriple
+        this.priceTriple = priceTriple;
     }
 
     public Double getPriceQuadruple() {
@@ -116,7 +116,7 @@ public class Hotel {
     }
 
     public void setPriceQuadruple() {
-        this.priceQuadruple = priceQuadruple
+        this.priceQuadruple = priceQuadruple;
     }
     @Override
     public int hashCode() {

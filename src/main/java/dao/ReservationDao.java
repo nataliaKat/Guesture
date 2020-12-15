@@ -323,7 +323,7 @@ public class ReservationDao {
 
         Connection con = null;
         ResultSet rs = null;
-        List<Reservation> reservationsOfAgencyList = new List<Reservation>();
+        List<Reservation> reservationsOfAgencyList = new ArrayList<Reservation>();
         String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, username_hotel FROM Reservation WHERE username = ? ;";
         DB db = new DB();
 
