@@ -21,6 +21,15 @@ public class Hotel {
         this.description = description;
     }
 
+    public Hotel(String username, String name, String address, String phoneNumber, String head, String description, priceSingle, priceDouble, priceTriple, priceQuadruple) {
+        this.username = username;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.head = head;
+        this.description = description;
+    }
+
     public String getUsername() {
         return username;
     }
