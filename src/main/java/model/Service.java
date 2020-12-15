@@ -23,7 +23,7 @@ public class Service {
     }
 
     public void setServiceId(int serviceId) {
-        this.serviceId = servicwId;
+        this.serviceId = serviceId;
     }
 
     public String getName() {

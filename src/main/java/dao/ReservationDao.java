@@ -181,9 +181,11 @@ public class ReservationDao {
 
 		} catch (SQLException e) {
 
-			throw new SQLException(e.getMessage());
+//			throw new SQLException(e.getMessage());
 
-		} finally {
+		} catch (Exception e) {
+            e.printStackTrace();
+        } finally {
 
             try {
                 db.close();

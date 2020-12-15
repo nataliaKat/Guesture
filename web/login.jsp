@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +55,7 @@
                         <button class="brownButton" id="submit-button" type="submit">Login</button>
                         <hr style="color: gray;">
                         <div>New User?<br> <a href="hotel_registration.html"><u>Sign Up As a Hotel!</u></a> <br>
-                            <a href="new_agency.html"><u>Sign Up As an Agency!</u></a></div>    
+                            <a href="new_agency.html"><u>Sign Up As an Agency!</u></a></div>     
                     </form>
                 </div>
             </div>
