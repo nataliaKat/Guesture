@@ -79,11 +79,12 @@ CREATE TABLE Service (
 );
                                         
 CREATE TABLE Room (
+	roomId INT NOT NULL auto_increment,
     number INT NOT NULL,
     username VARCHAR(20) NOT NULL,
     type VARCHAR(30),
     floor INT,
-    PRIMARY KEY (number , username),
+    PRIMARY KEY (roomId),
     FOREIGN KEY (username)
         REFERENCES Hotel (username)
 );
@@ -110,11 +111,11 @@ CREATE TABLE Review (
 
 CREATE TABLE Grouping (
 	groupingId INT NOT NULL auto_increment,
-    roomType VARCHAR(10) NOT NULL,
-    number INT,
+    roomId INT,
+    reservationId INT NOT NULL,
 	PRIMARY KEY(groupingId),
-    FOREIGN KEY (number)
-		REFERENCES Room (number)
+    FOREIGN KEY (roomId)
+		REFERENCES Room (roomId)
 );         
 
 CREATE TABLE GroupCustomer (
@@ -124,11 +125,8 @@ CREATE TABLE GroupCustomer (
     telephone VARCHAR(50),
     email VARCHAR(50),
     identityNumber VARCHAR(50),
-    reservationId INT NOT NULL,
     groupingId INT NOT NULL,
     PRIMARY KEY (customerId),
-    FOREIGN KEY (reservationId)
-        REFERENCES Reservation (reservationId),
 	FOREIGN KEY (groupingId)
         REFERENCES Grouping (groupingId) 
 );
@@ -262,28 +260,24 @@ VALUES ('2020-07-10 14:55:30', 'Reception staff were friendly, rooms not clean e
 ('2020-05-16 20:15:36', 'prices too high!', 6),
 ('2020-05-04 11:45:26', 'excellent stay at your hotel', 7);
 
-INSERT INTO Grouping (roomType, number)
-VALUES ("Single", 105),
-("Double", 402),
-("Single", 107),
-("Triple", 505),
-("Quadruple", 702),
-("Single", 300),
-("Double", 603),
-("Triple", 210),
-("Single", 302);
 
-INSERT INTO GroupCustomer (name, surname, telephone, email, identityNumber, reservationId, groupingId)
-VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632', 1, 1),
-('Maria', 'Iwannidou', '6985214789', 'mariwan@hotmail.com', 'AZ8574152', 1, 2),
-('Panagiwths', 'Spyrou', 6932145823, 'panspyrou@gmail.com', 'AK963219', 1, 2),
-('Katerina', 'Kalogerakh', '6952391768', 'katekalog@gmail.com', 'AH851793', 1, 3),
-('Stavroula', 'Kalergh', '6954712695', 'kalerghhhh@hotmail.com', 'AX223964', 1, 3),
-('Alexis', 'Kwstopoulos', '697235648', 'alexkwst@gmail.com', 'AH765542', 2, 3),
-('Ahilleas', 'Gewrgiou', '6928346635', 'ahilleasgewr@hotmail.gr', 'AK932647', 2, 4),
-('Aristeidhs', 'Nikolaou', '6921053678', 'aristnikol@gmail.com', 'AM371420', 2, 4),
-('Kleiw', 'Vasilopoulou', '6930806004', 'kleiwvas@gmail.com', 'AH659841', 2, 4),
-('Foivos', 'Maroglou', '6975263104', 'foivmar@hotmail.com', 'AK203691', 2, 4);
+INSERT INTO Grouping (reservationId, roomId)
+VALUES (1, 4),
+	   (1, 9),
+       (1, 10),
+       (1, 1);
+
+INSERT INTO GroupCustomer (name, surname, telephone, email, identityNumber, groupingId)
+VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859632', 1),
+('Maria', 'Iwannidou', '6985214789', 'mariwan@hotmail.com', 'AZ8574152', 2),
+('Panagiwths', 'Spyrou', 6932145823, 'panspyrou@gmail.com', 'AK963219', 2),
+('Katerina', 'Kalogerakh', '6952391768', 'katekalog@gmail.com', 'AH851793', 3),
+('Stavroula', 'Kalergh', '6954712695', 'kalerghhhh@hotmail.com', 'AX223964', 3),
+('Alexis', 'Kwstopoulos', '697235648', 'alexkwst@gmail.com', 'AH765542', 3),
+('Ahilleas', 'Gewrgiou', '6928346635', 'ahilleasgewr@hotmail.gr', 'AK932647', 4),
+('Aristeidhs', 'Nikolaou', '6921053678', 'aristnikol@gmail.com', 'AM371420', 4),
+('Kleiw', 'Vasilopoulou', '6930806004', 'kleiwvas@gmail.com', 'AH659841', 4),
+('Foivos', 'Maroglou', '6975263104', 'foivmar@hotmail.com', 'AK203691', 4);
 
 INSERT INTO Reservation_Service (reservationId, serviceId, value) 
 VALUES (1, 1, TRUE),
