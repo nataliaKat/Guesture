@@ -76,6 +76,7 @@
                     <tr>
                         <th scope="col">Reservation code</th>
                         <th scope="col">Hotel</th>
+                        <th scope="col">Confirmed</th>
                         <th scope="col">Arrival date</th>
                         <th scope="col">Arrival time</th>
                         <th scope="col">Departure date</th>
