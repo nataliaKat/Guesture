@@ -316,7 +316,60 @@ public class ReservationDao {
 
 		return prices;
 		
-	} // End of getPricePerRoomType
+    } // End of getPricePerRoomType
+    
 
+    public List<Reservation> getReservationsPerAgency (String agencyName) throws Exception {
+
+        Connection con = null;
+        ResultSet rs = null;
+        List<Reservation> reservationsOfAgencyList = new List<Reservation>();
+        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, username_hotel FROM Reservation WHERE username = ? ;";
+        DB db = new DB();
+
+        try {
+
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, agencyName);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                
+                int reservationId = rs.getInt("reservationId");
+                Date arrivalDate = rs.getDate("arrivalDate");
+                String arrivalTime = rs.getString("arrivalTime");
+                Date departureDate = rs.getDate("departureDate");
+                String departureTime = rs.getString("departureTime");
+                Date submittedOn = rs.getDate("submittedOn");
+                Boolean confirmed = rs.getBoolean("confirmed");
+                String hotel_username = rs.getString("hotel_username");
+
+                Reservation reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, hotel_username);
+
+                reservationsOfAgencyList.add(reservation);
+
+            }
+
+            stmt.close();
+            rs.close();
+            con.close();
+            
+        } catch (SQLException e) {
+
+			throw new SQLException(e.getMessage());
+
+		} finally {
+
+            try {
+                db.close();
+            } catch (Exception e) {                
+
+            }
+        }
+
+		return reservationsOfAgencyList;
+		
+    } // End of getReservationsPerAgency
 
 }

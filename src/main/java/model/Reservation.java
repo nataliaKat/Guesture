@@ -24,6 +24,8 @@ public class Reservation {
     private int quadrupleRooms;
     private String comments;
 
+    private Boolean confirmed;
+
     public Reservation() {
 
     }
@@ -71,6 +73,20 @@ public class Reservation {
         this.tripleRooms = tripleRooms;
         this.quadrupleRooms = quadrupleRooms;
         this.comments = comments;
+
+    }
+
+    public Reservation (int reservationId, Date arrivalDate, String arrivalTime, Date departureDate,
+    String departureTime, Date submittedOn, Boolean confirmed, String hotelName) {
+
+        this.reservationId = reservationId;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.submittedOn = submittedOn;
+        this.confirmed = confirmed;
+        this.hotelName = hotelName;
 
     }
 
@@ -216,6 +232,14 @@ public class Reservation {
 
     public void setCheckedOut(boolean checkedOut) {
         this.checkedOut = checkedOut;
+    }
+
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+     
+    public Boolean getConfirmed() {
+        return confirmed;
     }
 
     @Override
