@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Agency {
+public class Agency extends User {
 
     private String name;
     private String telephone;

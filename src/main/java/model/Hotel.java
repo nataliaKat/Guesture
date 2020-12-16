@@ -1,6 +1,6 @@
 package model;
 
-public class Hotel {
+public class Hotel extends User {
 
     private String username;
     private String name;

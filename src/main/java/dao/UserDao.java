@@ -20,20 +20,30 @@ public class UserDao {
 	public User authenticate(String username, String password) throws Exception {
 		Connection con = null;
 		DB db = new DB();
-		String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+		String sql = "SELECT user.username FROM user WHERE password = ? INNER JOIN hotel ON user.username = ? AND user.username = hotel.username";
 		User user = null;
 		try {
 			con = db.getConnection();
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, username);
-			pst.setString(2, password);
+			pst.setString(1, password);
+			pst.setString(2, username);
 			ResultSet rs = pst.executeQuery();
 			if (!rs.next()) {
-				rs.close();
-				pst.close();
-			    throw new Exception("Wrong username or password.");
+				String sql = "SELECT user.username FROM user WHERE password = ? INNER JOIN agency ON user.username = ? AND user.username = agency.username";
+				pst = con.prepareStatement(sql);
+				pst.setString(1, password);
+				pst.setString(2, username);
+				ResultSet rs = pst.executeQuery();
+				if (!rs.next()) {
+					rs.close();
+					pst.close();
+					throw new Exception("Wrong username or password.");
+				}
+				User user = new Agency(rs.getString("username"), rs.getString("password"));
+
+			} else {
+                User user = new Hotel(rs.getString("username"), rs.getString("password"));
 			}
-			user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"));
             rs.close();
             pst.close();          
         } catch (Exception e) {
