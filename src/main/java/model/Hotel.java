@@ -13,7 +13,12 @@ public class Hotel extends User {
     private Double priceTriple;
     private Double priceQuadruple;
 
-    public Hotel() {
+    public Hotel(){
+
+    }
+    
+    public Hotel(String username, String password) {
+        super(username,password);
     }
 
     public Hotel(String username, String name, String address, String phoneNumber, String head, String description) {
