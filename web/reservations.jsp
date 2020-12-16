@@ -287,7 +287,8 @@
                                         </div><!-- /.modal -->
                                     </div>
 
-
+                                    <% 
+                                    for (int i=0; i < reservations.size(); i++) { %>
                                     <!-- Modal For Confirm -->
                                     <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog"
                                         aria-labelledby="Confirm Reservation" aria-hidden="true">
@@ -301,16 +302,16 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form role="form" method="POST" action="edit.jsp">
+                                                    <form role="form" method="POST" action="confirmController.jsp">
                                                         <div class="form-group">
                                                             <label class="control-label">The reservation will be
                                                                 confirmed</label>
                                                         </div>
                                                         <div class="form-group">
 
-                                                            <button type="button" class="btn btn-success"
-                                                                data-dismiss="modal">Confirm</button>
-                                                            <button type="button" class="btn btn-secondary"
+                                                            <button type="button" class="btn btn-success" 
+                                                                data-dismiss="modal" onclick="location.href = 'confirmController.jsp'">Confirm</button>
+                                                            <button type="button" class="btn btn-secondary" 
                                                                 data-dismiss="modal">Close</button>
                                                         </div>
                                                     </form>
@@ -318,6 +319,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <% } %>
 
 
                                     <%@include file="footer.jsp" %>
