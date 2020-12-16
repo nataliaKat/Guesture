@@ -1,5 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
+
 <%@ page import="model.Service" %>
+<%@ page import="model.User" %>
+
+<%@ page import="dao.ReservationDao" %>
+
 
 <!doctype html>
 <html lang="en">
@@ -56,7 +63,14 @@
     <% 
     ReservationDao rd = new ReservationDao();
 
-    Double [] prices = rd.getPricePerRoomType(hotelName);
+    /* */
+    String hotelName = "luxury@gmail.com";
+    String agencyName = "ivnwie";
+
+    double [] prices = rd.getPricePerRoomType(hotelName);
+
+    User user = (User)session.getAttribute("userObj");
+    // agencyName = user.getUsername();
 
     %>
 
@@ -68,8 +82,8 @@
                 <h1 class="text-center">New Reservation</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
                 <form class="form-horizontal" action="makeReservation.jsp" method="POST">
-                    <input type="hidden" id="agencyName" name="agencyName" value="<%=session.getAttribute("userObj")%>">
-                    <input type="hidden" id="hotelName" name="hotelName" value="">
+                    <input type="hidden" id="agencyName" name="agencyName" value="<%=agencyName%>">
+                    <input type="hidden" id="hotelName" name="hotelName" value="<%=hotelName%>">
 
                     <div class="form-group">
                         <label for="arrival" class="col-sm-4 control-label">Arrival Date</label>
@@ -114,7 +128,7 @@
                     <div class="form-group">
                         <label for="num-of-people" class="col-sm-4 control-label">Number of People</label>
                         <div class="col-sm-3">
-                            <input type="number" min="2" id="num-of-people" name="num-of-people" class="form-control" required>
+                            <input type="number" min="2" id="numOfPeople" name="numOfPeople" class="form-control" required>
                         </div>
                     </div>
 
@@ -135,40 +149,40 @@
                                             <tr>
                                                 <td>Single</td>
                                                 <td>
-                                                    <input type="text" name="singleprice" readonly class="form-control-plaintext" value="<%=prices[0]%>">
+                                                    <input type="text" name="singleprice" readonly class="form-control-plaintext" value="<%=prices[0]%>&#8364">
                                                 </td>
                                                 <td>
-                                                    <input min="0" name="n-1" id="n-1" type="number" class="table-input"
+                                                    <input min="0" name="n1" id="n1" type="number" class="table-input"
                                                         required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Double</td>
                                                 <td>
-                                                    <input type="text" name="doubleprice" readonly class="form-control-plaintext" value="<%=prices[1]%>">
+                                                    <input type="text" name="doubleprice" readonly class="form-control-plaintext" value="<%=prices[1]%>&#8364">
                                                 </td>
                                                 <td>
-                                                    <input name="n-2" id="n-2" type="number" class="table-input" min="0"
+                                                    <input name="n2" id="n2" type="number" class="table-input" min="0"
                                                         required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Triple</td>
                                                 <td>
-                                                    <input type="text" name="tripleprice" readonly class="form-control-plaintext" value="<%=prices[2]%>">
+                                                    <input type="text" name="tripleprice" readonly class="form-control-plaintext" value="<%=prices[2]%>&#8364">
                                                 </td>
                                                 <td>
-                                                    <input name="n-3" id="n-3" type="number" class="table-input" min="0"
+                                                    <input name="n3" id="n3" type="number" class="table-input" min="0"
                                                         required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Quadruple</td>
                                                 <td>
-                                                    <input type="text" name="quadrupleprice" readonly class="form-control-plaintext" value="<%=prices[3]%>">
+                                                    <input type="text" name="quadrupleprice" readonly class="form-control-plaintext" value="<%=prices[3]%>&#8364">
                                                 </td>
                                                 <td>
-                                                    <input name="n-4" id="n-4" type="number" class="table-input" min="0"
+                                                    <input name="n4" id="n4" type="number" class="table-input" min="0"
                                                         required>
                                                 </td>
                                             </tr>
@@ -180,7 +194,7 @@
                         <div class="form-group">
                             <label for="num-of-people" class="col-sm-4 control-label">Total Cost</label>
                             <div class="col-sm-3">
-                                <input readonly id="total-cost" class="form-control">
+                                <input readonly id="total-cost" class="form-control" value="">
                             </div>
                         </div>
                         <br>
@@ -189,7 +203,7 @@
                         
                         List<Service> services = rd.getAllServices(hotelName);
 
-                        for (int i = 0; i < services.size() ; i++) {} %>
+                        for (int i = 0; i < services.size() ; i++) { %>
 
                             <div class="form-group checkbox">
                                 <label class="col-sm-2 control-label"><%=services.get(i).getName() %></label>
