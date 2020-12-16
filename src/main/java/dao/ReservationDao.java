@@ -1,17 +1,11 @@
 package dao;
 
-import model.Agency;
 import model.Reservation;
 import model.Service;
-import java.util.ArrayList;
-import java.util.List;
-
 
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReservationDao {
 
@@ -372,5 +366,47 @@ public class ReservationDao {
 		
     } // End of getReservationsPerAgency
 
+    public Reservation getById(int reservationId) {
+        Connection con = null;
+        Reservation reservation = null;
+        ResultSet rs = null;
+        DB db = new DB();
+        String sql = "SELECT * FROM reservation WHERE reservationId = ?";
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, reservationId);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                reservationId = rs.getInt("reservationId");
+                Date arrivalDate = rs.getDate("arrivalDate");
+                String arrivalTime = rs.getString("arrivalTime");
+                Date departureDate = rs.getDate("departureDate");
+                String departureTime = rs.getString("departureTime");
+                Date submittedOn = rs.getDate("submittedOn");
+                Boolean confirmed = rs.getBoolean("confirmed");
+                String hotel_username = rs.getString("username_hotel");
+
+                reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, hotel_username);
+
+
+            }
+
+            stmt.close();
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                db.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return reservation;
+    }
 
 }
