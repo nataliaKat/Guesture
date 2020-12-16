@@ -116,8 +116,9 @@
                                                                         class="fas fa-trash-alt"></i></button>
                                                             </td>
                                                             <td>
-                                                                <button type="button" class="btn btn-warning"><i
-                                                                        class="fal fa-badge-check"></i></button>
+                                                                <button type="button" class="btn btn-warning"
+                                                                    data-toggle="modal" data-target="#confirm-modal"><i
+                                                                        class="fas fa-check"></i></button>
                                                             </td>
 
                                                         </tr>
@@ -288,6 +289,32 @@
                                     </div><!-- /.modal -->
                                 </div>
 
+
+                                <!-- Modal For Confirm -->
+                                <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog"
+                                    aria-labelledby="Confirm Reservation" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title" id="Confirm">Confirm</h1>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label class="control-label">The reservation will be confirmed</label>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success"
+                                                    data-dismiss="modal">Confirm</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 <%@include file="footer.jsp" %>
