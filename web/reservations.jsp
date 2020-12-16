@@ -147,201 +147,199 @@
                                     </div>
                                 </main>
 
-                                <!-- Modal For Members-->
-                                <div class="modal fade" id="members-modal" tabindex="-1" role="dialog"
-                                    aria-labelledby="Group Customers" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="Group Customers">Customers</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <table class="table table-hover table-bordered text-center">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">First Name</th>
-                                                            <th scope="col">Last Name</th>
-                                                            <th scope="col">Identity Number</th>
-                                                            <th scope="col">Phone</th>
-                                                            <th scope="col">email</th>
-                                                            <th scope="col">Room</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>AT321678327</td>
-                                                            <td>5327154671</td>
-                                                            <td>mark@o.com</td>
-                                                            <td>114</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>AT321678327</td>
-                                                            <td>5327154671</td>
-                                                            <td>mark@o.com</td>
-                                                            <td>114</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td>Traintafyllia Maria</td>
-                                                            <td>Papadopoulou</td>
-                                                            <td>AT321678327</td>
-                                                            <td>5327154671</td>
-                                                            <td>traintafyllia.papadopoulou@somemail.com</td>
-                                                            <td>114</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                <% int j=1; GroupingDao g = new GroupingDao(); 
+                                for (int i=0; i < reservations.size(); i++) { %>
+                                    <!-- Modal For Members-->
+                                    <div class="modal fade" id="members-modal" tabindex="-1" role="dialog"
+                                        aria-labelledby="Group Customers" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="Group Customers">Customers</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-hover table-bordered text-center">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">First Name</th>
+                                                                <th scope="col">Last Name</th>
+                                                                <th scope="col">Identity Number</th>
+                                                                <th scope="col">Phone</th>
+                                                                <th scope="col">email</th>
+                                                                <th scope="col">Room</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">j++</th>
+                                                                <td>
+                                                                    <%= g.getName() %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= g.getSurname() %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= g.getIdentityNumber() %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= g.getTelephone() %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= g.getEmail() %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= gc.getName() %>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Modal For Services-->
-                                <div class="modal fade" id="services-modal" tabindex="-1" role="dialog"
-                                    aria-labelledby="Group Customers" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="Services">Services</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="list-group">
-                                                    <li class="list-group-item">Breakfast</li>
-                                                    <li class="list-group-item">Spa</li>
-                                                    <li class="list-group-item">Horse Riding</li>
+                                    <% } %>
 
-                                                </ul>
-                                            </div>
+                                    <!-- Modal For Services-->
+                                    <div class="modal fade" id="services-modal" tabindex="-1" role="dialog"
+                                        aria-labelledby="Group Customers" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="Services">Services</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">Breakfast</li>
+                                                        <li class="list-group-item">Spa</li>
+                                                        <li class="list-group-item">Horse Riding</li>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                                    </ul>
+                                                </div>
 
-                                <!-- Modal For Edit -->
-                                <div id="modal-edit" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title">Edit Reservation</h1>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form role="form" method="POST" action="edit.jsp">
-                                                    <input type="hidden" id="resiId" name="resId">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Arrival date</label>
-                                                        <div>
-                                                            <input id="ar_date" type="date"
-                                                                class="form-control input-lg" name="ar_date">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Arrival time</label>
-                                                        <div>
-                                                            <input id="ar_time" type="text"
-                                                                class="form-control input-lg" name="ar_time">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Departure date</label>
-                                                        <div>
-                                                            <input id="dep_date" type="date"
-                                                                class="form-control input-lg" name="dep_date">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Departure time</label>
-                                                        <div>
-                                                            <input id="dep_time" type="text"
-                                                                class="form-control input-lg" name="dep_time">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <input type="submit" class="ml-auto my-button"
-                                                            style="margin-right: 10px;" value="Edit">
-                                                    </div>
-                                                </form>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
-                                </div>
-
-
-                                <!-- Modal For Confirm -->
-                                <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog"
-                                    aria-labelledby="Confirm Reservation" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title" id="Confirm">Confirm</h1>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form role="form" method="POST" action="edit.jsp">
-                                                    <div class="form-group">
-                                                        <label class="control-label">The reservation will be
-                                                            confirmed</label>
-                                                    </div>
-                                                    <div class="form-group">
-
-                                                        <button type="button" class="btn btn-success"
-                                                            data-dismiss="modal">Confirm</button>
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </form>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                    <!-- Modal For Edit -->
+                                    <div id="modal-edit" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title">Edit Reservation</h1>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form role="form" method="POST" action="edit.jsp">
+                                                        <input type="hidden" id="resiId" name="resId">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Arrival date</label>
+                                                            <div>
+                                                                <input id="ar_date" type="date"
+                                                                    class="form-control input-lg" name="ar_date">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Arrival time</label>
+                                                            <div>
+                                                                <input id="ar_time" type="text"
+                                                                    class="form-control input-lg" name="ar_time">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Departure date</label>
+                                                            <div>
+                                                                <input id="dep_date" type="date"
+                                                                    class="form-control input-lg" name="dep_date">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Departure time</label>
+                                                            <div>
+                                                                <input id="dep_time" type="text"
+                                                                    class="form-control input-lg" name="dep_time">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <input type="submit" class="ml-auto my-button"
+                                                                style="margin-right: 10px;" value="Edit">
+                                                        </div>
+                                                    </form>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                    </div>
 
 
-                                <%@include file="footer.jsp" %>
-                                    <script src="../web/js/reservations.js"></script>
+                                    <!-- Modal For Confirm -->
+                                    <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog"
+                                        aria-labelledby="Confirm Reservation" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title" id="Confirm">Confirm</h1>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form role="form" method="POST" action="edit.jsp">
+                                                        <div class="form-group">
+                                                            <label class="control-label">The reservation will be
+                                                                confirmed</label>
+                                                        </div>
+                                                        <div class="form-group">
 
-                                    <script
-                                        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                                    <script
-                                        src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-                                    <script
-                                        src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-                                    <script
-                                        src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
-                                    <script
-                                        src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-                                    <script
-                                        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-                                    <script
-                                        src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-                                    <script
-                                        src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
-                                    </main>
+                                                            <button type="button" class="btn btn-success"
+                                                                data-dismiss="modal">Confirm</button>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <%@include file="footer.jsp" %>
+                                        <script src="../web/js/reservations.js"></script>
+
+                                        <script
+                                            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                                        <script
+                                            src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+                                        <script
+                                            src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+                                        <script
+                                            src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+                                        <script
+                                            src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+                                        <script
+                                            src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+                                        <script
+                                            src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+                                        <script
+                                            src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+                                        </main>
                         </body>
 
                         </html>
