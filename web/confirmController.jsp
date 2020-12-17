@@ -2,7 +2,7 @@
 <%@ page import="dao.ReservationDao" %>
 <%
 
-int resId = request.getParameter("resId")
+int resId = request.getParameter("resId");
 
 %>
     <!doctype html>
@@ -22,7 +22,7 @@ int resId = request.getParameter("resId")
             <main class="container">
                 <% ReservationDao rd = new ReservationDao();
                    rd.confirm(resId);
-                   
+                %>  
                 <div class="alert alert-success" role="alert">
                     <h1>Reservation has been cofirmed successfully</h1>
                 </div>
