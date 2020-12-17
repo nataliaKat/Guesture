@@ -91,7 +91,7 @@ public class GroupCustomerDao {
                 groupC.add(new GroupCustomer(
                         rs.getString("name"), rs.getString("surname"),
                         rs.getString("telephone"), rs.getString("email"),
-                        rs.getString("identityNumber"), rs.getInt(gd.getGroupingsPerReservation(resId))
+                        rs.getString("identityNumber"), gd.getGroupingsPerReservation(resId)
                 ));
             }
             rs.close();

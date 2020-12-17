@@ -202,7 +202,7 @@
                                                                             %>
                                                                     </td>
                                                                     <td>
-                                                                        <%= gc.getGroupCustomersPerReservation(reservations.get(i).getReservationId()).getRoomId()
+                                                                        <%= gc.getGroupCustomersPerReservation(reservations.get(i).getReservationId()).getGrouping().getRoom().getNumber()
                                                                             %>
                                                                     </td>
                                                                 </tr>

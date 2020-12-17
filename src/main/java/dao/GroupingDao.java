@@ -71,7 +71,7 @@ public class GroupingDao {
         return groupings;
     }
 
-    public int getRoomIdFromGrouping(int resId) {
+    public Grouping getGroupingsPerRes(int resId) {
         List<Grouping> groupings = new ArrayList<Grouping>();
         DB db = new DB();
         Connection con = null;
