@@ -160,7 +160,7 @@ public class ReservationDao {
 
         try {
 			
-            Connection con = db.getConnection();
+            Connection con = db.getConnection ();
 
             stmt = con.prepareStatement(sql);
 			stmt.setDate(1, reservation.getArrivalDate());
@@ -179,9 +179,9 @@ public class ReservationDao {
 			stmt.close();
 			con.close();
 
-		} catch (SQLException e) {
+		//} catch (Exception e) {
 
-//			throw new SQLException(e.getMessage());
+		//	throw new Exception(e.getMessage());
 
 		} catch (Exception e) {
             e.printStackTrace();
@@ -193,7 +193,7 @@ public class ReservationDao {
 
             }
         }
-	}//end of insertReservation
+	} //end of insertReservation
 
 
     public void confirm(int resId) throws Exception {

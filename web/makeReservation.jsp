@@ -8,6 +8,7 @@
 <%@ page import="model.Service" %>
 <%@ page import="model.Reservation" %>
 <%@ page import="dao.ReservationDao" %>
+<%@ page import="dao.ServiceDao" %>
 
 
 <%
@@ -45,7 +46,8 @@ java.sql.Date sqlDateDeparture = new java.sql.Date(date1.getTime());
 /* read names of all checkboxes and turn them to String */
 
 ReservationDao rd = new ReservationDao();
-List<Service> services = rd.getAllServices(hotelName);
+ServiceDao sd = new ServiceDao();
+List<Service> services = sd.getAllServices(hotelName);
 ArrayList<String> name_list = new ArrayList<String>();
 
 for (int i=0; i <= services.size(); i ++){

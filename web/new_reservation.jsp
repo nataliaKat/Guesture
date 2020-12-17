@@ -6,6 +6,7 @@
 <%@ page import="model.User" %>
 
 <%@ page import="dao.ReservationDao" %>
+<%@ page import="dao.ServiceDao" %>
 
 
 <!doctype html>
@@ -201,7 +202,8 @@
 
                         <% 
                         
-                        List<Service> services = rd.getAllServices(hotelName);
+                        ServiceDao sd = new ServiceDao();
+                        List<Service> services = sd.getAllServices(hotelName);
 
                         for (int i = 0; i < services.size() ; i++) { %>
 
