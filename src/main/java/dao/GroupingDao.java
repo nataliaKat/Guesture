@@ -77,7 +77,7 @@ public class GroupingDao {
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        String sql = "SELECT roomId FROM Grouping WHERE reservationId = ?";
+        String sql = "SELECT * FROM Grouping WHERE reservationId = ?";
         try {
             con = db.getConnection();
             pst = con.prepareStatement(sql);
