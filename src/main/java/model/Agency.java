@@ -19,13 +19,13 @@ public class Agency extends User {
         super(username, password);
     }
 
-    public Agency(String name, String telephone, String mail, String vatNumber, Date registrationDate, String username) {
+    public Agency( String username,String password, String name, String telephone, String mail, String vatNumber, Date registrationDate) {
+        super(username, password);
         this.name = name;
         this.telephone = telephone;
         this.mail = mail;
         this.vatNumber = vatNumber;
         this.registrationDate = registrationDate;
-        this.username = username;
     }
 
     public String getName() {
