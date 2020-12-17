@@ -154,17 +154,21 @@ table td {
 
 /* Customers' table styles
 ---------------------------------------------------*/
-#my-table{
+#customer-table{
   height:500px;
   display:block;
 }
 
-#my-table td {
+#customer-table td {
   text-align: right;
 }
 
-#my-table th {
+#customer-table th {
   text-align: center;
+}
+
+.color-on-bg {
+    background-color: #ede5d1;
 }
 
 /* Sticky footer styles

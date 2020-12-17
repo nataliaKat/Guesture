@@ -1,9 +1,9 @@
 package dao;
 
 import model.Reservation;
-import model.Service;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -149,11 +149,11 @@ public class ReservationDao {
 
         DB db = new DB();
 		PreparedStatement stmt = null;;
-        String sql = "INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, username_hotel, username_agency)"
-			+ " VALUES (?, ?, ?, ?, ?, ?, ?. ?, ?, ?);";
+        String sql = "INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, username_hotel, username_agency, submittedOn)"
+			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
-			
+            System.out.println(reservation);
             Connection con = db.getConnection ();
 
             stmt = con.prepareStatement(sql);
@@ -166,7 +166,8 @@ public class ReservationDao {
             stmt.setInt(7, reservation.getTripleRooms());
             stmt.setInt(8, reservation.getQuadrupleRooms());
             stmt.setString(9, reservation.getHotelName());
-            stmt.setString(10, reservation.getAgencyName());	
+            stmt.setString(10, reservation.getAgencyName());
+            stmt.setDate(11,  Date.valueOf(LocalDate.now()));
             
             stmt.executeUpdate();
             

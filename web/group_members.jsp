@@ -76,7 +76,7 @@
         <div class="col-xs-12 col-lg-7">
             <div class="row">
                 <div class="table-responsive table-striped table-sm">
-                    <table id="my-table" class="table">
+                    <table id="customer-table" class="table">
                         <thead>
                         <tr>
                             <th scope="col">#</th>

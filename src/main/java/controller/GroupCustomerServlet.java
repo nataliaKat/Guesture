@@ -25,6 +25,7 @@ public class GroupCustomerServlet extends HttpServlet {
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);;
         for (String g : groups){
             List<GroupCustomer> customers = mapper.readValue(g, mapper.getTypeFactory().constructCollectionType(List.class, GroupCustomer.class));
+            request.setAttribute("pelates", customers);
             Grouping grouping  = new Grouping(customers);
             GroupCustomerService groupCustomerService = new GroupCustomerService();
             groupCustomerService.save(grouping, reservationId);

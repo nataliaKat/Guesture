@@ -9,6 +9,9 @@ public class Grouping {
     private Reservation reservation;
     List<GroupCustomer> groupCustomers;
 
+    public Grouping() {
+    }
+
     public Grouping(int groupingId, Room room, Reservation reservation) {
         this.groupingId = groupingId;
         this.room = room;

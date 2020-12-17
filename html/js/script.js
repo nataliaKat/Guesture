@@ -23,7 +23,7 @@ $(document).ready(function() {
                         <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt fa-xs"></i></button>    
                     </td>`
         content += "</tr>" 
-        $('#my-table tr:last').after(content);
+        $('#customer-table tr:last').after(content);
         customers.push(customer)
         console.log(customers)
     })

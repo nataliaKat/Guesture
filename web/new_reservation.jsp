@@ -20,45 +20,7 @@
 </head>
 
 <body id="new_reservation">
-    <header>
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-light  custom-nav">
-            <a class="navbar-brand" href="index.html"><img class="logo" src="../web/images/logo_blue_nav.png" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agencies.html">Agencies</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="reservations.html">Reservations<span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="reviews.html">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="chart.html">Statistics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<%@include file="navbar.jsp"%>
     
 
     <% 
@@ -66,7 +28,7 @@
 
     /* */
     String hotelName = "luxury@gmail.com";
-    String agencyName = "ivnwie";
+    String agencyName = "holidays@gmail.com";
 
     double [] prices = rd.getPricePerRoomType(hotelName);
 
@@ -82,7 +44,7 @@
             <div id="res-form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
                 <h1 class="text-center">New Reservation</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
-                <form class="form-horizontal" action="makeReservation.jsp" method="POST">
+                <form class="form-horizontal" action="makeReservationController.jsp" method="POST">
                     <input type="hidden" id="agencyName" name="agencyName" value="<%=agencyName%>">
                     <input type="hidden" id="hotelName" name="hotelName" value="<%=hotelName%>">
 
@@ -98,10 +60,10 @@
                         <div class="col-sm-10">
                             <select id="time1" name="time1" class="form-control" required>
                                 <option value="">Select zone</option>
-                                <option value="1">Morning</option>
-                                <option value="2">Noon</option>
-                                <option value="3">Afternoon</option>
-                                <option value="4">Evening</option>
+                                <option value="morning">Morning</option>
+                                <option value="noon">Noon</option>
+                                <option value="afternoon">Afternoon</option>
+                                <option value="evening">Evening</option>
                             </select>
                         </div>
                     </div>
@@ -129,7 +91,7 @@
                     <div class="form-group">
                         <label for="num-of-people" class="col-sm-4 control-label">Number of People</label>
                         <div class="col-sm-3">
-                            <input type="number" min="2" id="numOfPeople" name="numOfPeople" class="form-control" required>
+                            <input type="number" min="2" id="num-of-people" name="numOfPeople" class="form-control" required>
                         </div>
                     </div>
 
@@ -142,15 +104,15 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Room Type</th>
-                                                <th scope="col">Price per Room</th>
+                                                <th scope="col">Price per Room (&#8364)</th>
                                                 <th scope="col">Number of Rooms Needed</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>Single</td>
-                                                <td>
-                                                    <input type="text" name="singleprice" readonly class="form-control-plaintext" value="<%=prices[0]%>&#8364">
+                                                <td class="display-flex">
+                                                    <input name="singleprice" id="singleprice" readonly class="form-control-plaintext" value="<%=prices[0]%>">
                                                 </td>
                                                 <td>
                                                     <input min="0" name="n1" id="n1" type="number" class="table-input"
@@ -159,8 +121,8 @@
                                             </tr>
                                             <tr>
                                                 <td>Double</td>
-                                                <td>
-                                                    <input type="text" name="doubleprice" readonly class="form-control-plaintext" value="<%=prices[1]%>&#8364">
+                                                <td class="display-flex">
+                                                    <input name="doubleprice" id="doubleprice" readonly class="form-control-plaintext" value="<%=prices[1]%>">
                                                 </td>
                                                 <td>
                                                     <input name="n2" id="n2" type="number" class="table-input" min="0"
@@ -169,8 +131,8 @@
                                             </tr>
                                             <tr>
                                                 <td>Triple</td>
-                                                <td>
-                                                    <input type="text" name="tripleprice" readonly class="form-control-plaintext" value="<%=prices[2]%>&#8364">
+                                                <td class="display-flex">
+                                                    <input name="tripleprice" id="tripleprice" readonly class="form-control-plaintext" value="<%=prices[2]%>">
                                                 </td>
                                                 <td>
                                                     <input name="n3" id="n3" type="number" class="table-input" min="0"
@@ -180,8 +142,7 @@
                                             <tr>
                                                 <td>Quadruple</td>
                                                 <td>
-                                                    <input type="text" name="quadrupleprice" readonly class="form-control-plaintext" value="<%=prices[3]%>&#8364">
-                                                </td>
+                                                    <input type="text" name="quadrupleprice" id="quadrupleprice" readonly class="form-control-plaintext" value="<%=prices[3]%>">
                                                 <td>
                                                     <input name="n4" id="n4" type="number" class="table-input" min="0"
                                                         required>
@@ -209,7 +170,7 @@
 
                             <div class="form-group checkbox">
                                 <label class="col-sm-2 control-label"><%=services.get(i).getName() %></label>
-                                <input type="checkbox" value="" name="<%=i%>">
+                                <input type="checkbox" value="" name="ser-<%=i%>">
                             </div>
 
                         <% } %>
@@ -227,7 +188,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <button type="submit" class="my-button">Submit</button>
+                                <button type="submit" class="brownButton">Submit</button>
                                 <button type="reset" class="blueButton">Clear</button>
 
                             </div>
@@ -240,7 +201,7 @@
     </main>
 
     <%@include file="footer.jsp"%>
-    <script src="../web/js/res_form.js"></script>
+    <script src="js/res_form.js"></script>
 </body>
 
 </html>

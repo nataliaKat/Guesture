@@ -23,7 +23,7 @@ $(document).ready(function() {
                         <button id="delete-${counter}" type="button" class="delete-buttons btn btn-danger"><i class="fas fa-trash-alt fa-xs"></i></button>    
                     </td>`
         content += "</tr>" 
-        $('#my-table tr:last').after(content);
+        $('#customer-table tr:last').after(content);
         customers.push(customer)
 
         $(".delete-buttons").on("click", function(e) {
