@@ -23,6 +23,7 @@
         throw new Exception("Customers cannot be inserted");
     }
 %>
+<div id="cover-spin"></div>
 <main class="container-fluid" id="group">
     <div class="row">
         <!-- Form -->

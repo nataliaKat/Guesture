@@ -56,27 +56,26 @@ $(document).ready(function() {
     })
 
     $("#final-submit").click(function() {
+        $('#cover-spin').show(0)
+        const queryString = window.location.search;
+        let urlParams = new URLSearchParams(queryString);
+        const reservationId = urlParams.get('reservation')
         console.log(customers)
             $.ajax({
                 type: "POST",
                 url: "groupCustomers",
                 dataType: 'JSON',
-                data: {"custs" : JSON.stringify(customers)},
+                data: {"custs" : JSON.stringify(customers),
+                        "reservation" : reservationId},
                 complete: function() {
                     window.location.replace("index.jsp")
                 },
                 fail: function(xhr, textStatus, errorThrown){
                     alert('fail');
-                    console.log("oooffff")
                 }
             });
         }
     );
-
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus');
-
-    })
 
 })
 

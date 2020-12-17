@@ -20,9 +20,7 @@ public class GroupCustomerServlet extends HttpServlet {
         sb.deleteCharAt(0);
         sb.deleteCharAt(sb.length() - 1);
         String[] groups = sb.toString().replace("],[", "]$[").split("\\$");
-//        int reservationId = Integer.parseInt(request.getParameter("reservation"));
-        int reservationId = 10;
-        System.out.println(request.getParameter("reservation"));
+        int reservationId = Integer.parseInt(request.getParameter("reservation"));
         ObjectMapper mapper = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);;
         for (String g : groups){
