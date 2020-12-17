@@ -271,7 +271,7 @@ public class ReservationDao {
         Connection con = null;
         ResultSet rs = null;
         List<Reservation> reservationsOfAgencyList = new ArrayList<Reservation>();
-        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, username_hotel FROM Reservation WHERE username = ? ;";
+        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, username_hotel FROM Reservation WHERE username_agency = ? ;";
         DB db = new DB();
 
         try {
@@ -290,7 +290,7 @@ public class ReservationDao {
                 String departureTime = rs.getString("departureTime");
                 Date submittedOn = rs.getDate("submittedOn");
                 Boolean confirmed = rs.getBoolean("confirmed");
-                String hotel_username = rs.getString("hotel_username");
+                String hotel_username = rs.getString("username_hotel");
 
                 Reservation reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, hotel_username);
 

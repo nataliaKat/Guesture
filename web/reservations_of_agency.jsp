@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Service" %>
+<%@ page import="model.User" %>
+
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
+
 <%@ page import="model.Reservation" %>
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
@@ -8,8 +13,10 @@
 
 <%  
 
+String hotelName = "luxury@gmail.com";
+    String agencyName = "holidays@gmail.com";
     User user = (User)session.getAttribute("userObj");
-//  agencyName = user.getUsername();
+    //String agencyName = user.getUsername();
 
 %>
 
@@ -101,19 +108,30 @@
                     ReservationDao rd = new ReservationDao();
                     List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyName);
 
+                    int reservationId = 0;
+
                     for (int i = 0; i < reservationsOfAgencyList.size(); i++) {
+
+                        reservationId = reservationsOfAgencyList.get(i).getReservationId();
 
                     %>
         
                     <tr>
-                        <td><%=reservationsOfAgencyList.get(i).getReservationId()%></td>
+                        <td><%=reservationId%></td>
                         <td><%=reservationsOfAgencyList.get(i).getHotelName()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getConfirmed()%></td>
+                        <td>
+                            <% if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
+                                Yes
+                            <% } else { %>
+                                No
+                            <% } %>
+                            
+                        </td>
                         <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getArrivalTime()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getDepartureDate()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getDepartureTime()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getTotalCost()</td>
+                        <td><%=reservationsOfAgencyList.get(i).getTotalCost()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getSubmittedOn()%></td>
 
                         <td>
@@ -124,9 +142,20 @@
                         </td>
                         
                         <td>
-                            <form action="group_members.jsp" target="_blank">
-                                <button class="blueButton">Add Members</button>
-                            </form>
+                            <% 
+                            GroupCustomerDao gcd = new GroupCustomerDao();
+                            List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationId);
+                            
+                            if (reservationsOfAgencyList.get(i).getConfirmed().equals("true") && groupCustomers.size().equals(0)) {
+                                
+                                <form action="group_members.jsp" target="_blank">
+                                    <button class="blueButton">Add Members</button>
+                                </form>
+
+                            <% } else if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
+                                    
+                            <% } else if (groupCustomers.size().equals(0)) %>
+                            
                         </td>
                     </tr>
                     
@@ -134,24 +163,21 @@
                     <% } %>
 
 
-                <tfoot>
-                    <tr>
-                        <th scope="col">Reservation code</th>
-                        <th scope="col">Agency</th>
-                        <th scope="col">Arrival date</th>
-                        <th scope="col">Arrival time</th>
-                        <th scope="col">Departure date</th>
-                        <th scope="col">Departure time</th>
-                        <th scope="col">Revenue</th>
-                        <th scope="col">Made on</th>
-                        <th scope="col">Show members</th>
-                        <th scope="col">Show services</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Check-in</th>
-                        <th scope="col">Check-out</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                </tfoot>
+                    <tfoot>
+                        <tr>
+                            <th scope="col">Reservation code</th>
+                            <th scope="col">Hotel</th>
+                            <th scope="col">Confirmed</th>
+                            <th scope="col">Arrival date</th>
+                            <th scope="col">Arrival time</th>
+                            <th scope="col">Departure date</th>
+                            <th scope="col">Departure time</th>
+                            <th scope="col">Cost</th>
+                            <th scope="col">Made on</th>
+                            <th scope="col">Show services</th>
+                            <th scope="col">Add Members</th>
+                        </tr>
+                    </tfoot>
                 </tbody>
             </table>
         </div>
@@ -174,7 +200,7 @@
 
                         <% 
                         ServiceDao sd = new ServiceDao();
-                        String reservationId = reservationsOfAgencyList.get(i).getReservationId();
+                        
                         List<Service> servicesOfReservation = sd.getServicesPerReservation(reservationId, hotelName);
                         
                         for (int i = 0; i < servicesOfReservation.size(); i++) { %>

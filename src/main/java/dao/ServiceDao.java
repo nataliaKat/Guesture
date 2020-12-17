@@ -28,10 +28,10 @@ public class ServiceDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                
+
                 int serviceId = rs.getInt("serviceId");
                 String name = rs.getString("name");
-                
+
                 Service service = new Service (serviceId, name, hotelName);
 
                 services.add(service);
@@ -40,7 +40,7 @@ public class ServiceDao {
             stmt.close();
             rs.close();
             con.close();
-            
+
         } catch (SQLException e) {
 
             throw new SQLException(e.getMessage());
@@ -49,13 +49,13 @@ public class ServiceDao {
 
             try {
                 db.close();
-            } catch (Exception e) {                
+            } catch (Exception e) {
 
             }
         }
 
         return services;
-        
+
     } // End of getAllServices
 
     public List<Service> getServicesPerReservation (int reservationId, String hotelName) throws Exception {
@@ -74,11 +74,11 @@ public class ServiceDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                
+
                 String serviceName = rs.getString("name");
                 int serviceId = rs.getInt("serviceId");
-                
-                Service service = new Service (serviceId, name, hotelName);
+
+                Service service = new Service (serviceId, serviceName, hotelName);
 
                 services.add(service);
             }
@@ -86,7 +86,7 @@ public class ServiceDao {
             stmt.close();
             rs.close();
             con.close();
-            
+
         } catch (SQLException e) {
 
             throw new SQLException(e.getMessage());
@@ -95,7 +95,7 @@ public class ServiceDao {
 
             try {
                 db.close();
-            } catch (Exception e) {                
+            } catch (Exception e) {
 
             }
         }
