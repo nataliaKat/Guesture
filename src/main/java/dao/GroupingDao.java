@@ -71,5 +71,29 @@ public class GroupingDao {
         return groupings;
     }
 
-
+    public Grouping getGroupingsPerRes(int resId) {
+        List<Grouping> groupings = new ArrayList<Grouping>();
+        DB db = new DB();
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Grouping WHERE reservationId = ?";
+        try {
+            con = db.getConnection();
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, resId);
+            rs = pst.executeQuery();
+            
+            rs.close();
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                db.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
 }

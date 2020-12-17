@@ -20,29 +20,29 @@ public class UserDao {
 	public User authenticate(String username, String password) throws Exception {
 		Connection con = null;
 		DB db = new DB();
-		String sql = "SELECT user.username, hotel.username FROM user INNER JOIN hotel ON  user.username = hotel.username where user.password=?";
+		String sql = "SELECT * FROM user INNER JOIN hotel ON  user.username = hotel.username where user.password=?";
 		User user = null;
 		try {
 			con = db.getConnection();
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, password);
-			pst.setString(2, username);
+			pst.setString(1, username);
+			pst.setString(2, password);
 			ResultSet rs = pst.executeQuery();
 			if (!rs.next()) {
-				String sql = "SELECT user.username, agency.username FROM user INNER JOIN hotel ON  user.username = agency.username where user.password=?";
+				String sql = "SELECT * FROM user INNER JOIN hotel ON  user.username = agency.username where user.password=?";
 				pst = con.prepareStatement(sql);
-				pst.setString(1, password);
-				pst.setString(2, username);
+				pst.setString(1,username);
+				pst.setString(2, password);
 				ResultSet rs = pst.executeQuery();
 				if (!rs.next()) {
 					rs.close();
 					pst.close();
 					throw new Exception("Wrong username or password.");
 				}
-				User user = new Agency(rs.getString("username"), rs.getString("password"));
+				User user = new Agency(rs.getString("username"), rs.getString("password"), rs.getString("name"), rs.getInt("telephone"), rs.getString("mail"), rs.getString("vatNumber"), rs.getDate("registrationDate"));
 
 			} else {
-                User user = new Hotel(rs.getString("username"), rs.getString("password"));
+                User user = new Hotel(rs.getString("username"), rs.getString("password"),  rs.getString("name"), rs.getString("address"), rs.getString("phoneNumber"), rs.getString("head"), rs.getString("description"), rs.getString("priceSingle"), rs.getString("priceDouble"), rs.getString("priceTriple"), rs.getString("priceQuadruple"));
 			}
             rs.close();
             pst.close();          

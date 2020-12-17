@@ -1,34 +1,44 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Service" %>
+<%@ page import="model.User" %>
+
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
+
 <%@ page import="model.Reservation" %>
 <%@ page import="dao.ReservationDao" %>
+<%@ page import="dao.ServiceDao" %>
+<%@ page import="dao.GroupCustomerDao" %>
 
 
+<%  
+
+String hotelName = "luxury@gmail.com";
+    String agencyName = "holidays@gmail.com";
+    User user = (User)session.getAttribute("userObj");
+    //String agencyName = user.getUsername();
+
+%>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>Dream Hotel | Reservations Of Agency</title>
+    <%@include file="header.jsp" %>
+                            
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="../web/css/style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../web/images/favicon.png" />
+    
 </head>
 
-<body id="reservation_of_agency">
+<body id="reservationOfAgency">
     <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-light  custom-nav">
@@ -88,36 +98,41 @@
                         <th scope="col">Departure time</th>
                         <th scope="col">Cost</th>
                         <th scope="col">Made on</th>
-                        <th scope="col">Show members</th>
                         <th scope="col">Show services</th>
+                        <th scope="col">Add Members</th>
                     </tr>
                 </thead>
                 <tbody style="text-align: center;">
                 
                     <% 
                     ReservationDao rd = new ReservationDao();
-                    List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(hotelName);
+                    List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyName);
+
+                    int reservationId = 0;
 
                     for (int i = 0; i < reservationsOfAgencyList.size(); i++) {
+
+                        reservationId = reservationsOfAgencyList.get(i).getReservationId();
 
                     %>
         
                     <tr>
-                        <td><%=reservationsOfAgencyList.get(i).getReservationId()%></td>
+                        <td><%=reservationId%></td>
                         <td><%=reservationsOfAgencyList.get(i).getHotelName()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getConfirmed()%></td>
+                        <td>
+                            <% if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
+                                Yes
+                            <% } else { %>
+                                No
+                            <% } %>
+                            
+                        </td>
                         <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getArrivalTime()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getDepartureDate()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getDepartureTime()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getTotalCost()</td>
+                        <td><%=reservationsOfAgencyList.get(i).getTotalCost()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getSubmittedOn()%></td>
-                        <td>
-
-                            <button type="button" class="btn btn-info" data-toggle="modal"
-                                data-target="#members-modal"><i class="fas fa-users"></i></button>
-
-                        </td>
 
                         <td>
 
@@ -125,15 +140,22 @@
                                 data-target="#services-modal"><i class="fas fa-utensils"></i></button>
 
                         </td>
-                        <td><button type="button" class="btn btn-warning" data-target="#modal-edit" data-res="32153"
-                                data-ar_date="2021-05-25" data-ar_time="morning" data-dep_date="2021-05-30"
-                                data-dep_time="evening" data-toggle="modal"><i class="fas fa-edit"></i></button>
-                        </td>
+                        
+                        <td>
+                            <% 
+                            GroupCustomerDao gcd = new GroupCustomerDao();
+                            List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationId);
+                            
+                            if (reservationsOfAgencyList.get(i).getConfirmed().equals("true") && groupCustomers.size().equals(0)) {
+                                
+                                <form action="group_members.jsp" target="_blank">
+                                    <button class="blueButton">Add Members</button>
+                                </form>
 
-                        <td><button type="button" class="btn btn-success"><i class="fas fa-door-closed"></i></button>
-                        </td>
-                        <td>-</td>
-                        <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            <% } else if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
+                                    
+                            <% } else if (groupCustomers.size().equals(0)) %>
+                            
                         </td>
                     </tr>
                     
@@ -141,92 +163,28 @@
                     <% } %>
 
 
-                <tfoot>
-                    <tr>
-                        <th scope="col">Reservation code</th>
-                        <th scope="col">Agency</th>
-                        <th scope="col">Arrival date</th>
-                        <th scope="col">Arrival time</th>
-                        <th scope="col">Departure date</th>
-                        <th scope="col">Departure time</th>
-                        <th scope="col">Revenue</th>
-                        <th scope="col">Made on</th>
-                        <th scope="col">Show members</th>
-                        <th scope="col">Show services</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Check-in</th>
-                        <th scope="col">Check-out</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                </tfoot>
+                    <tfoot>
+                        <tr>
+                            <th scope="col">Reservation code</th>
+                            <th scope="col">Hotel</th>
+                            <th scope="col">Confirmed</th>
+                            <th scope="col">Arrival date</th>
+                            <th scope="col">Arrival time</th>
+                            <th scope="col">Departure date</th>
+                            <th scope="col">Departure time</th>
+                            <th scope="col">Cost</th>
+                            <th scope="col">Made on</th>
+                            <th scope="col">Show services</th>
+                            <th scope="col">Add Members</th>
+                        </tr>
+                    </tfoot>
                 </tbody>
             </table>
         </div>
     </main>
-    <!-- Modal For Members-->
-    <div class="modal fade" id="members-modal" tabindex="-1" role="dialog" aria-labelledby="Group Customers"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Group Customers">Customers</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-hover table-bordered text-center">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Identity Number</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">email</th>
-                                <th scope="col">Room</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>AT321678327</td>
-                                <td>5327154671</td>
-                                <td>mark@o.com</td>
-                                <td>114</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>AT321678327</td>
-                                <td>5327154671</td>
-                                <td>mark@o.com</td>
-                                <td>114</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Traintafyllia Maria</td>
-                                <td>Papadopoulou</td>
-                                <td>AT321678327</td>
-                                <td>5327154671</td>
-                                <td>traintafyllia.papadopoulou@somemail.com</td>
-                                <td>114</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <!-- Modal For Members-->
+    
+    <!-- Modal For Services -->
     <div class="modal fade" id="services-modal" tabindex="-1" role="dialog" aria-labelledby="Group Customers"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
@@ -239,11 +197,19 @@
                 </div>
                 <div class="modal-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Breakfast</li>
-                        <li class="list-group-item">Spa</li>
-                        <li class="list-group-item">Horse Riding</li>
 
-                      </ul>
+                        <% 
+                        ServiceDao sd = new ServiceDao();
+                        
+                        List<Service> servicesOfReservation = sd.getServicesPerReservation(reservationId, hotelName);
+                        
+                        for (int i = 0; i < servicesOfReservation.size(); i++) { %>
+
+                            <li class="list-group-item"><%=servicesOfReservation.get(i).getName()%></li>
+
+                     <% } %>
+
+                    </ul>
                 </div>
                     
                 <div class="modal-footer">

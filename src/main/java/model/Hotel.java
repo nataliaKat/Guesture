@@ -30,8 +30,8 @@ public class Hotel extends User {
         this.description = description;
     }
 
-    public Hotel(String username, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple) {
-        this.username = username;
+    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple) {
+        super(username,password);
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
