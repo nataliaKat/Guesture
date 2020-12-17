@@ -20,7 +20,7 @@ public class UserDao {
 	public User authenticate(String username, String password) throws Exception {
 		Connection con = null;
 		DB db = new DB();
-		String sql = "SELECT user.username FROM user WHERE password = ? INNER JOIN hotel ON user.username = ? AND user.username = hotel.username";
+		String sql = "SELECT user.username, hotel.username FROM user INNER JOIN hotel ON  user.username = hotel.username where user.password=?";
 		User user = null;
 		try {
 			con = db.getConnection();
@@ -29,7 +29,7 @@ public class UserDao {
 			pst.setString(2, username);
 			ResultSet rs = pst.executeQuery();
 			if (!rs.next()) {
-				String sql = "SELECT user.username FROM user WHERE password = ? INNER JOIN agency ON user.username = ? AND user.username = agency.username";
+				String sql = "SELECT user.username, agency.username FROM user INNER JOIN hotel ON  user.username = agency.username where user.password=?";
 				pst = con.prepareStatement(sql);
 				pst.setString(1, password);
 				pst.setString(2, username);

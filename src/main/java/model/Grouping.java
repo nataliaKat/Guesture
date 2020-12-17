@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Grouping {
 
-    private int id;
+    private int groupingId;
     private Room room;
     private Reservation reservation;
     List<GroupCustomer> groupCustomers;
 
-    public Grouping(int id, Room room, Reservation reservation) {
-        this.id = id;
+    public Grouping(int groupingId, Room room, Reservation reservation) {
+        this.groupingId = groupingId;
         this.room = room;
         this.reservation = reservation;
     }
@@ -28,12 +28,16 @@ public class Grouping {
         this.reservation = reservation;
     }
 
-    public int getId() {
-        return id;
+    public Grouping(int groupingId) {
+        this.groupingId = groupingId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getGroupingId() {
+        return groupingId;
+    }
+
+    public void setGroupingId(int groupingId) {
+        this.groupingId = groupingId;
     }
 
     public Room getRoom() {
@@ -67,7 +71,7 @@ public class Grouping {
 
         Grouping grouping = (Grouping) o;
 
-        if (id != grouping.id) return false;
+        if (groupingId != grouping.groupingId) return false;
         if (room != null ? !room.equals(grouping.room) : grouping.room != null) return false;
         if (reservation != null ? !reservation.equals(grouping.reservation) : grouping.reservation != null)
             return false;
@@ -76,7 +80,7 @@ public class Grouping {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = groupingId;
         result = 31 * result + (room != null ? room.hashCode() : 0);
         result = 31 * result + (reservation != null ? reservation.hashCode() : 0);
         result = 31 * result + (groupCustomers != null ? groupCustomers.hashCode() : 0);
@@ -86,7 +90,7 @@ public class Grouping {
     @Override
     public String toString() {
         return "Grouping{" +
-                "id=" + id +
+                "id=" + groupingId +
                 ", room=" + room +
                 ", reservation=" + reservation +
                 ", groupCustomers=" + groupCustomers +

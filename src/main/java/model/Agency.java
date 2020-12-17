@@ -11,7 +11,12 @@ public class Agency extends User {
     private Date registrationDate;
     private String username;
 
-    public Agency() {
+    public Agency(){
+
+    }
+    
+    public Agency(String username, String password) {
+        super(username, password);
     }
 
     public Agency(String name, String telephone, String mail, String vatNumber, Date registrationDate, String username) {

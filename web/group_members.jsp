@@ -1,10 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kat26
-  Date: 12/5/2020
-  Time: 12:06 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="dao.GroupingDao" %>
+<%@ page import="dao.ReservationDao" %>
+<%@ page import="model.Reservation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +9,21 @@
 </head>
 <body>
 <%@include file="navbar.jsp"%>
-<% int counter = 0; %>
+<%
+    int reservationId = Integer.parseInt(request.getParameter("reservation"));
+    request.setAttribute("reservation", reservationId);
+
+    GroupingDao groupingDao = new GroupingDao();
+    ReservationDao reservationDao = new ReservationDao();
+    Reservation foundReservation = reservationDao.getById(reservationId);
+    if (foundReservation == null) {
+        throw new Exception("Reservation not found!");
+    }
+    if (!groupingDao.getGroupingsPerReservation(reservationId).isEmpty() || foundReservation.getConfirmed() == false) {
+        throw new Exception("Customers cannot be inserted");
+    }
+%>
+<div id="cover-spin"></div>
 <main class="container-fluid" id="group">
     <div class="row">
         <!-- Form -->
@@ -52,14 +62,6 @@
                         <input type="tel" id="email" name="cust_mail" class="form-control" placeholder="mail">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="room" class="control-label">Room Number</label>
-                    <div class="col-sm-10">
-                        <input type="number" id="room" name="cust_room" min="101" class="form-control"
-                               placeholder="number" required>
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
                         <button type="submit" class="brownButton">Insert</button>
