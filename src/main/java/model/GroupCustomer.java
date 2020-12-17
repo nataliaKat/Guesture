@@ -9,11 +9,13 @@ public class GroupCustomer {
     private String email;
     private String identityNumber;
     private Reservation reservation;
+    private Grouping grouping;
 
     public GroupCustomer() {
     }
 
-    public GroupCustomer(int customerId, String name, String surname, String telephone, String email, String identityNumber) {
+    public GroupCustomer(int customerId, String name, String surname, String telephone, String email,
+            String identityNumber) {
         this.customerId = customerId;
         this.name = name;
         this.surname = surname;
@@ -22,7 +24,8 @@ public class GroupCustomer {
         this.identityNumber = identityNumber;
     }
 
-    public GroupCustomer(int customerId, String name, String surname, String telephone, String email, String identityNumber, Reservation reservation) {
+    public GroupCustomer(int customerId, String name, String surname, String telephone, String email,
+            String identityNumber, Reservation reservation) {
         this.customerId = customerId;
         this.name = name;
         this.surname = surname;
@@ -32,13 +35,24 @@ public class GroupCustomer {
         this.reservation = reservation;
     }
 
-    public GroupCustomer(String name, String surname, String telephone, String email, String identityNumber, Reservation reservation) {
+    public GroupCustomer(String name, String surname, String telephone, String email, String identityNumber,
+            Reservation reservation) {
         this.name = name;
         this.surname = surname;
         this.telephone = telephone;
         this.email = email;
         this.identityNumber = identityNumber;
         this.reservation = reservation;
+    }
+
+    public GroupCustomer(String name, String surname, String telephone, String email, String identityNumber,
+            Grouping grouping) {
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.email = email;
+        this.identityNumber = identityNumber;
+        this.grouping = grouping;
     }
 
     public int getCustomerId() {
@@ -97,45 +111,83 @@ public class GroupCustomer {
         this.reservation = reservation;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public Grouping getGrouping() {
+        return grouping;
+    }
 
-        GroupCustomer that = (GroupCustomer) o;
-
-        if (customerId != that.customerId) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
-        if (telephone != null ? !telephone.equals(that.telephone) : that.telephone != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (identityNumber != null ? !identityNumber.equals(that.identityNumber) : that.identityNumber != null)
-            return false;
-        return reservation != null ? reservation.equals(that.reservation) : that.reservation == null;
+    public void setGrouping(Grouping grouping) {
+        this.grouping = grouping;
     }
 
     @Override
     public int hashCode() {
-        int result = customerId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (identityNumber != null ? identityNumber.hashCode() : 0);
-        result = 31 * result + (reservation != null ? reservation.hashCode() : 0);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + customerId;
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((grouping == null) ? 0 : grouping.hashCode());
+        result = prime * result + ((identityNumber == null) ? 0 : identityNumber.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((reservation == null) ? 0 : reservation.hashCode());
+        result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+        result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
         return result;
     }
 
     @Override
-    public String toString() {
-        return "GroupCustomer{" +
-                "customerId=" + customerId +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", email='" + email + '\'' +
-                ", identityNumber='" + identityNumber + '\'' +
-                ", reservation=" + reservation +
-                '}';
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        GroupCustomer other = (GroupCustomer) obj;
+        if (customerId != other.customerId)
+            return false;
+        if (email == null) {
+            if (other.email != null)
+                return false;
+        } else if (!email.equals(other.email))
+            return false;
+        if (grouping == null) {
+            if (other.grouping != null)
+                return false;
+        } else if (!grouping.equals(other.grouping))
+            return false;
+        if (identityNumber == null) {
+            if (other.identityNumber != null)
+                return false;
+        } else if (!identityNumber.equals(other.identityNumber))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (reservation == null) {
+            if (other.reservation != null)
+                return false;
+        } else if (!reservation.equals(other.reservation))
+            return false;
+        if (surname == null) {
+            if (other.surname != null)
+                return false;
+        } else if (!surname.equals(other.surname))
+            return false;
+        if (telephone == null) {
+            if (other.telephone != null)
+                return false;
+        } else if (!telephone.equals(other.telephone))
+            return false;
+        return true;
     }
+
+    @Override
+    public String toString() {
+        return "GroupCustomer [customerId=" + customerId + ", email=" + email + ", grouping=" + grouping
+                + ", identityNumber=" + identityNumber + ", name=" + name + ", reservation=" + reservation
+                + ", surname=" + surname + ", telephone=" + telephone + "]";
+    }
+
 }
