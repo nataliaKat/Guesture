@@ -145,7 +145,7 @@ public class ReservationDao {
     }// End of checkOut
 
 
-    public void insertReservation(Reservation reservation) {
+    public int insertReservation(Reservation reservation) {
 
         DB db = new DB();
 		PreparedStatement stmt = null;;
@@ -153,10 +153,9 @@ public class ReservationDao {
 			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
-            System.out.println(reservation);
             Connection con = db.getConnection ();
 
-            stmt = con.prepareStatement(sql);
+            stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setDate(1, reservation.getArrivalDate());
             stmt.setString(2, reservation.getArrivalTime());
             stmt.setDate(3, reservation.getDepartureDate());
@@ -169,19 +168,22 @@ public class ReservationDao {
             stmt.setString(10, reservation.getAgencyName());
             stmt.setDate(11,  Date.valueOf(LocalDate.now()));
             
-            stmt.executeUpdate();
-            
-			stmt.close();
-			con.close();
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating reservation failed, no rows affected.");
+            }
 
-		//} catch (Exception e) {
-
-		//	throw new Exception(e.getMessage());
-
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Creating reservation failed, no ID obtained.");
+            }
 		} catch (Exception e) {
             e.printStackTrace();
+            return -1;
         } finally {
-
             try {
                 db.close();
             } catch (Exception e) {                

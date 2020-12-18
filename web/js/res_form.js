@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $("#final-submit").click(function() {
+        $('#cover-spin').show(0);
+    })
+
     let table = $("#cost-table")
     table.on("keyup click", function (e) {
         let items = $("#cost-table").children();
