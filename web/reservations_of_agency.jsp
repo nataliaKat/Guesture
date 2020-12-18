@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Service" %>
 <%@ page import="model.User" %>
+<%@ page import="model.Reservation" %>
+<%@ page import="model.GroupCustomer" %>
 
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
 
-<%@ page import="model.Reservation" %>
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
 <%@ page import="dao.GroupCustomerDao" %>
@@ -13,10 +14,10 @@
 
 <%  
 
-String hotelName = "luxury@gmail.com";
-    String agencyName = "holidays@gmail.com";
+    String hotelUsername = "luxury@gmail.com";
+    String agencyUsername = "holidays@gmail.com";
     User user = (User)session.getAttribute("userObj");
-    //String agencyName = user.getUsername();
+    //String agencyUsername = user.getUsername();
 
 %>
 
@@ -81,7 +82,7 @@ String hotelName = "luxury@gmail.com";
     <!-- Begin page content -->
     <main class="container">
         <div class="row">
-            <a href="new_reservation.html"><button location.href="" class="brownButton"><i class="fas fa-plus"></i> New
+            <a href="new_reservation.jsp"><button location.href="" class="brownButton"><i class="fas fa-plus"></i> New
                     Reservation</button></a>
         </div>
         <div class="mb-3 mt-3">
@@ -106,7 +107,7 @@ String hotelName = "luxury@gmail.com";
                 
                     <% 
                     ReservationDao rd = new ReservationDao();
-                    List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyName);
+                    List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
 
                     int reservationId = 0;
 
@@ -119,14 +120,13 @@ String hotelName = "luxury@gmail.com";
                     <tr>
                         <td><%=reservationId%></td>
                         <td><%=reservationsOfAgencyList.get(i).getHotelName()%></td>
-                        <td>
-                            <% if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
-                                Yes
-                            <% } else { %>
-                                No
-                            <% } %>
+                        
+                        <% if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
+                            <td>Yes</td>
+                        <% } else { %>
+                            <td>No</td>
+                        <% } %>
                             
-                        </td>
                         <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getArrivalTime()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getDepartureDate()%></td>
@@ -141,27 +141,32 @@ String hotelName = "luxury@gmail.com";
 
                         </td>
                         
-                        <td>
-                            <% 
-                            GroupCustomerDao gcd = new GroupCustomerDao();
-                            List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationId);
-                            
-                            if (reservationsOfAgencyList.get(i).getConfirmed().equals("true") && groupCustomers.size().equals(0)) {
-                                
+                        <% 
+                        GroupCustomerDao gcd = new GroupCustomerDao();
+                        List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationId);
+                        String s1 = "true";
+
+                        if (reservationsOfAgencyList.get(i).getConfirmed().equals(s1) && groupCustomers.size() == 0) { %>
+                               
+                            <td> 
                                 <form action="group_members.jsp" target="_blank">
                                     <button class="blueButton">Add Members</button>
                                 </form>
+                           </td>
 
-                            <% } else if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
-                                    
-                            <% } else if (groupCustomers.size().equals(0)) %>
-                            
-                        </td>
+                        <% } else if (reservationsOfAgencyList.get(i).getConfirmed().equals(s1)) { %>
+
+                            <td>You have already added members!</td>
+
+                        <% } else { %> 
+
+                            <td>Please wait until the hotel confirms your reservation!</td>
+
+                        <% } %>
+
                     </tr>
-                    
 
                     <% } %>
-
 
                     <tfoot>
                         <tr>
@@ -201,13 +206,13 @@ String hotelName = "luxury@gmail.com";
                         <% 
                         ServiceDao sd = new ServiceDao();
                         
-                        List<Service> servicesOfReservation = sd.getServicesPerReservation(reservationId, hotelName);
+                        List<Service> servicesOfReservation = sd.getServicesPerReservation(reservationId, hotelUsername);
                         
                         for (int i = 0; i < servicesOfReservation.size(); i++) { %>
 
                             <li class="list-group-item"><%=servicesOfReservation.get(i).getName()%></li>
 
-                     <% } %>
+                        <% } %>
 
                     </ul>
                 </div>
@@ -219,63 +224,10 @@ String hotelName = "luxury@gmail.com";
         </div>
     </div>
 
-    <!-- Modal For Edit -->
-    <div id="modal-edit" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title">Edit Reservation</h1>
-                </div>
-                <div class="modal-body">
-                    <form role="form" method="POST" action="edit.jsp">
-                        <input type="hidden" id="resiId" name="resId">
-                        <div class="form-group">
-                            <label class="control-label">Arrival date</label>
-                            <div>
-                                <input id="ar_date" type="date" class="form-control input-lg" name="ar_date">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Arrival time</label>
-                            <div>
-                                <input id="ar_time" type="text" class="form-control input-lg" name="ar_time">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Departure date</label>
-                            <div>
-                                <input id="dep_date" type="date" class="form-control input-lg" name="dep_date">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Departure time</label>
-                            <div>
-                                <input id="dep_time" type="text" class="form-control input-lg" name="dep_time">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <input type="submit" class="ml-auto brownButton" style="margin-right: 10px;" value="Edit">
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-    </div>
-    <footer class="footer">
-        <div class="container">
-            <span class="text-muted">Made with &hearts; by Guesture - Group Management</span>
-        </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-        <script src="../web/js/reservations.js"></script>
+    
+    <%@include file="footer.jsp" %>
+
+    <script src="../web/js/reservations.js"></script>
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>

@@ -35,33 +35,35 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 d-flex justify-content-center animated fadeInRight">
-                <div id="login-form">
-                    <form>
-                        <h4>Sign in</h4>
-                        <label class="sr-only" for="username">Username</label>
-                        <div class="input-group my-input">
-                            <div class="input-group-text"><i class="fa fa-user"></i></div>
-                            <input name="username" type="text" class="form-control" id="username" placeholder="Username">
-                        </div>
-                        <label class="sr-only" for="password">Password</label>
-                        <div class="input-group my-input">
-                            <div class="input-group-text"><i class="fa fa-lock"></i></div>
-                            <input name="password" type="text" class="form-control" id="password" placeholder="Password">
-                        </div>
-                        <input type="checkbox" checked> Remember me</input>
-                        <button class="brownButton" id="submit-button" type="submit">Login</button>
-                        <hr style="color: gray;">
-                        <div>New User?<br> <a href="hotel_registration.html"><u>Sign Up As a Hotel!</u></a> <br>
-                            <a href="new_agency.html"><u>Sign Up As an Agency!</u></a></div>     
-                    </form>
+    <form action="loginController.jsp" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex justify-content-center animated fadeInRight">
+                    <div id="login-form">
+                        <form>
+                            <h4>Sign in</h4>
+                            <label class="sr-only" for="username">Username</label>
+                            <div class="input-group my-input">
+                                <div class="input-group-text"><i class="fa fa-user"></i></div>
+                                <input name="username" type="text" class="form-control" id="username" placeholder="Username">
+                            </div>
+                            <label class="sr-only" for="password">Password</label>
+                            <div class="input-group my-input">
+                                <div class="input-group-text"><i class="fa fa-lock"></i></div>
+                                <input name="password" type="text" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <input type="checkbox" checked> Remember me</input>
+                            <button class="brownButton" id="submit-button" type="submit">Login</button>
+                            <hr style="color: gray;">
+                            <div>New User?<br> <a href="hotel_registration.jsp"><u>Sign Up As a Hotel!</u></a> <br>
+                                <a href="new_agency.jsp"><u>Sign Up As an Agency!</u></a></div>     
+                        </form>
+                    </div>
                 </div>
+                <div id="quote"> "Group reservations<br>             made easier than ever..."</div>
             </div>
-            <div id="quote"> "Group reservations<br>             made easier than ever..."</div>
         </div>
-    </div>
+    </form>
     <footer class="footer">
         <div class="container">
             <span class="text-muted">Made with &hearts; by Guesture - Group Management</span>

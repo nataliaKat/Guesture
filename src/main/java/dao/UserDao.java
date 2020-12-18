@@ -55,9 +55,9 @@ public class UserDao {
                 db.close();
             } catch (Exception e) {                
 
-            }
-		return user;
+			}
 		}
+		return user;
 	} // End of authenticate
 
 	/**

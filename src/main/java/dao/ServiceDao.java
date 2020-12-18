@@ -63,7 +63,7 @@ public class ServiceDao {
         Connection con = null;
         ResultSet rs = null;
         List<Service> services = new ArrayList<Service>();
-        String sql = "SELECT Service.name, Service.serviceId FROM Service INNER JOIN Reservation_Service ON Reservation_Service.serviceId = Service.serviceId where reservationId=?";
+        String sql = "SELECT Service.name, Service.serviceId FROM Service, Reservation_Service WHERE Reservation_Service.serviceId = Service.serviceId AND reservationId=?";
         DB db = new DB();
 
         try {
