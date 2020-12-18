@@ -34,7 +34,6 @@ CREATE TABLE Hotel (
     FOREIGN KEY (username)
         REFERENCES User (username)
 );
-
 CREATE TABLE Agency (
     name VARCHAR(50) NOT NULL,
     telephone VARCHAR(50) NOT NULL,
@@ -53,8 +52,8 @@ CREATE TABLE Reservation (
     departureDate DATE NOT NULL,
     departureTime VARCHAR(50) NOT NULL,
     submittedOn DATE NOT NULL,
-    checkin BOOLEAN,
-    chekout BOOLEAN,
+    checkin BOOLEAN DEFAULT FALSE,
+    chekout BOOLEAN DEFAULT FALSE,
     singleRooms INT NOT NULL, 
     doubleRooms INT NOT NULL,
 	tripleRooms INT NOT NULL,

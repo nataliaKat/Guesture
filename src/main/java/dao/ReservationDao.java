@@ -24,9 +24,9 @@ public class ReservationDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                reservations.add(new Reservation(rs.getInt(1), adao.getByName(rs.getString(2)),
-                        rs.getDate(3), rs.getString(4), rs.getDate(5),
-                        rs.getString(6), rs.getDouble(7), rs.getDate(8)));
+//                reservations.add(new Reservation(rs.getInt(1), adao.getByName(rs.getString(2)),
+//                        rs.getDate(3), rs.getString(4), rs.getDate(5),
+//                        rs.getString(6), rs.getDouble(7), rs.getDate(8)));
             }
 
             stmt.close();
@@ -149,8 +149,8 @@ public class ReservationDao {
 
         DB db = new DB();
 		PreparedStatement stmt = null;;
-        String sql = "INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, username_hotel, username_agency, submittedOn)"
-			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, username_hotel, username_agency, submittedOn, comments)"
+			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
             Connection con = db.getConnection ();
@@ -167,6 +167,7 @@ public class ReservationDao {
             stmt.setString(9, reservation.getHotelName());
             stmt.setString(10, reservation.getAgencyName());
             stmt.setDate(11,  Date.valueOf(LocalDate.now()));
+            stmt.setString(12, reservation.getComments());
             
             int affectedRows = stmt.executeUpdate();
             if (affectedRows == 0) {

@@ -88,11 +88,11 @@ public class GroupCustomerDao {
             pst.setInt(1, resId);
             rs = pst.executeQuery();
             while (rs.next()) {
-                groupC.add(new GroupCustomer(
-                        rs.getString("name"), rs.getString("surname"),
-                        rs.getString("telephone"), rs.getString("email"),
-                        rs.getString("identityNumber"), gd.getGroupingsPerReservation(resId)
-                ));
+//                groupC.add(new GroupCustomer(
+//                        rs.getString("name"), rs.getString("surname"),
+//                        rs.getString("telephone"), rs.getString("email"),
+//                        rs.getString("identityNumber"), gd.getGroupingsPerReservation(resId)
+//                ));
             }
             rs.close();
             pst.close();
