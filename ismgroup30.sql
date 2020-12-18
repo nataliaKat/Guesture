@@ -134,14 +134,13 @@ CREATE TABLE GroupCustomer (
 CREATE TABLE Reservation_Service (
     reservationId INT NOT NULL,
     serviceId INT NOT NULL,
-    value BOOLEAN NOT NULL,
     PRIMARY KEY (reservationId , serviceId),
     FOREIGN KEY (reservationId)
         REFERENCES Reservation (reservationId),
     FOREIGN KEY (serviceId)
         REFERENCES Service (serviceId)
 );
-			             
+
 CREATE TABLE Review_Criterion (
     criterionId INT NOT NULL,
     score INT NOT NULL,
@@ -279,13 +278,12 @@ VALUES ('Angeliki', 'Papadopoulou', '6947852369', 'angpapadop@gmail.com', 'AH859
 ('Kleiw', 'Vasilopoulou', '6930806004', 'kleiwvas@gmail.com', 'AH659841', 4),
 ('Foivos', 'Maroglou', '6975263104', 'foivmar@hotmail.com', 'AK203691', 4);
 
-INSERT INTO Reservation_Service (reservationId, serviceId, value) 
-VALUES (1, 1, TRUE),
-(1, 2, FALSE),
-(1, 4, TRUE),
-(2, 1, TRUE), 
-(2, 2, FALSE),
-(2, 4, FALSE);
+INSERT INTO Reservation_Service (reservationId, serviceId)
+VALUES (1, 1),
+(1, 2),
+(1, 4),
+(2, 1), 
+(2, 2);
 
 INSERT INTO Review_Criterion (criterionId, score, datetime)
 VALUES (1, 10, '2020-07-05 13:25:42'),

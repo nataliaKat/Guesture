@@ -27,17 +27,19 @@
     ReservationDao rd = new ReservationDao();
 
     /* */
-    String hotelUsername = "luxury@gmail.com";
+    String hotelUsername = "portoven@gmail.com";
     String agencyUsername = "holidays@gmail.com";
 
     double [] prices = rd.getPricePerRoomType(hotelUsername);
 
     User user = (User)session.getAttribute("userObj");
-     agencyUsername = user.getUsername();
+//     agencyUsername = user.getUsername();
 
     %>
 
     <!-- Begin page content -->
+    <div id="cover-spin"></div>
+
     <main class="container">
         <div class="row">
             <!-- Form -->
@@ -170,7 +172,7 @@
 
                             <div class="form-group checkbox">
                                 <label class="col-sm-2 control-label"><%=services.get(i).getName() %></label>
-                                <input type="checkbox" value="" name="ser-<%=i%>">
+                                <input type="checkbox" value="" name="ser-<%=services.get(i).getServiceId()%>">
                             </div>
 
                         <% } %>
@@ -188,7 +190,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <button type="submit" class="brownButton">Submit</button>
+                                <button type="submit" id="final-submit" class="brownButton">Submit</button>
                                 <button type="reset" class="blueButton">Clear</button>
 
                             </div>

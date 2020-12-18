@@ -1,14 +1,13 @@
 package dao;
 
 import model.Service;
-import java.util.List;
-import java.util.ArrayList;
 
-import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceDao {
 
@@ -101,6 +100,30 @@ public class ServiceDao {
         }
 
         return services;
+    }
+
+    public void save(int reservationID, int serviceId) throws Exception{
+        DB db = new DB();
+        Connection con = null;
+        PreparedStatement pst = null;
+        String sql = "INSERT INTO reservation_service VALUES (?, ?)";
+        try {
+            con = db.getConnection();
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, reservationID);
+            pst.setInt(2, serviceId);
+            pst.executeUpdate();
+            pst.close();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e) {
+                throw new Exception(e.getMessage());
+            }
+        }
+
     }
 
 }
