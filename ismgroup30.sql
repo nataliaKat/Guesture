@@ -13,10 +13,10 @@ DROP TABLE Agency;
 DROP TABLE Hotel;
 DROP TABLE User;
 
+
 CREATE TABLE User (
     username VARCHAR(20) NOT NULL,
     password VARCHAR(30),
-    role VARCHAR(30),
     PRIMARY KEY (username)
 );
 
@@ -60,6 +60,7 @@ CREATE TABLE Reservation (
 	tripleRooms INT NOT NULL,
     quadrupleRooms INT NOT NULL,
     confirmed BOOLEAN,
+    comments VARCHAR(250),
     username_hotel VARCHAR(20) NOT NULL,
     username_agency VARCHAR(20) NOT NULL,
     PRIMARY KEY (reservationId),
@@ -152,29 +153,29 @@ CREATE TABLE Review_Criterion (
 
 
 /*INSERTS*/
-INSERT INTO User(username, password, role)
-VALUES ('luxury@gmail.com', '11111', 'Hotel'),
-       ('marysrooms@yahoo.com', '14523', 'Hotel'),
-       ('acropolisv@gmail.com', '45236', 'Hotel'),
-       ('homepoetry@gmail.com', '15236', 'Hotel'),
-       ('sweethome@yahoo.com', '78562', 'Hotel'),
-       ('iraklion@gmail.com', '12546', 'Hotel'),
-       ('portoven@gmail.com', '45623', 'Hotel'),
-       ('oreakomot@gmail.com', '45638', 'Agency'),
-       ('pamediak@yahoo.com', '45821', 'Agency'),
-       ('peripatos@yahoo.com', '45629', 'Agency'),
-       ('planet@gmail.com', '78542', 'Agency'),
-       ('plantrips@gmail.com', '85479', 'Agency'),
-       ('pamekromi@gmail.com', '428510', 'Agency'),
-       ('summer@yahoo.com', '45845', 'Agency'),
-       ('taxidi@gmail.com', '45879', 'Agency'),
-       ('holidays@gmail.com', '56458', 'Agency'),
-       ('memorablet@yahoo.com', '87452', 'Agency'),
-       ('taxidiot@gmail.com', '85743', 'Agency'),
-       ('tours@gmail.com', '52169', 'Agency'),
-       ('travel@gmail.com', '40236', 'Agency'),
-       ('travelling@gmail.com', '10258', 'Agency'),
-       ('vacay@yahoo.com', '20789', 'Agency');
+INSERT INTO User(username, password)
+VALUES ('luxury@gmail.com', '11111'),
+       ('marysrooms@yahoo.com', '14523'),
+       ('acropolisv@gmail.com', '45236'),
+       ('homepoetry@gmail.com', '15236'),
+       ('sweethome@yahoo.com', '78562'),
+       ('iraklion@gmail.com', '12546'),
+       ('portoven@gmail.com', '45623'),
+       ('oreakomot@gmail.com', '45638'),
+       ('pamediak@yahoo.com', '45821'),
+       ('peripatos@yahoo.com', '45629'),
+       ('planet@gmail.com', '78542'),
+       ('plantrips@gmail.com', '85479'),
+       ('pamekromi@gmail.com', '428510'),
+       ('summer@yahoo.com', '45845'),
+       ('taxidi@gmail.com', '45879'),
+       ('holidays@gmail.com', '56458'),
+       ('memorablet@yahoo.com', '87452'),
+       ('taxidiot@gmail.com', '85743'),
+       ('tours@gmail.com', '52169'),
+       ('travel@gmail.com', '40236'),
+       ('travelling@gmail.com', '10258'),
+       ('vacay@yahoo.com', '20789');
 
 INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple)
 VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '2565241236', 'Ανδρέας Γεωργίου', '', 35.50, 50.00, 75.50, 100.00),
@@ -203,15 +204,15 @@ VALUES ('Holidays', '2562532145', 'holidays@gmail.com', 'GR52125232', '2008-10-1
         ('Vacation', '2152545225', 'vacay@yahoo.com', 'GR15214563', '2013-03-03', 'vacay@yahoo.com');
         
         
-INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, confirmed, username_hotel, username_agency)
-VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', '2020-11-10', FALSE, FALSE, 10, 10, 5, 5, TRUE, 'luxury@gmail.com', 'holidays@gmail.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 15, 15, 10, 5, FALSE, 'iraklion@gmail.com', 'vacay@yahoo.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 7, 5, 3, 1, TRUE, 'sweethome@yahoo.com', 'travel@gmail.com'),
-('2020-12-12', 'morning', '2020-12-20', 'evening', '2020-11-10', FALSE, FALSE, 10, 3, 5, 5,TRUE, 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
-('2020-11-29', 'evening', '2020-12-05', 'evening', '2020-11-10', TRUE, FALSE, 8, 9, 2, 4, FALSE, 'sweethome@yahoo.com', 'holidays@gmail.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 10, 10, 7, 1, TRUE, 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
-('2020-11-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 6, 12, 7, 5, TRUE, 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, TRUE, 15, 15, 10, 5, FALSE, 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
+INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, confirmed, comments, username_hotel, username_agency)
+VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', '2020-11-10', FALSE, FALSE, 10, 10, 5, 5, TRUE, " ", 'luxury@gmail.com', 'holidays@gmail.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 15, 15, 10, 5, FALSE, " ", 'iraklion@gmail.com', 'vacay@yahoo.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 7, 5, 3, 1, TRUE, " ", 'sweethome@yahoo.com', 'travel@gmail.com'),
+('2020-12-12', 'morning', '2020-12-20', 'evening', '2020-11-10', FALSE, FALSE, 10, 3, 5, 5,TRUE, " ", 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
+('2020-11-29', 'evening', '2020-12-05', 'evening', '2020-11-10', TRUE, FALSE, 8, 9, 2, 4, FALSE, " ", 'sweethome@yahoo.com', 'holidays@gmail.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 10, 10, 7, 1, TRUE, " ", 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
+('2020-11-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 6, 12, 7, 5, TRUE, " ", 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, TRUE, 15, 15, 10, 5, FALSE, " ", 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
             
 INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.com'),
 ('Fishing','iraklion@gmail.com'),
