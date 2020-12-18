@@ -96,7 +96,6 @@
                         <th scope="col">Arrival time</th>
                         <th scope="col">Departure date</th>
                         <th scope="col">Departure time</th>
-                        <th scope="col">Cost</th>
                         <th scope="col">Made on</th>
                         <th scope="col">Show services</th>
                         <th scope="col">Add Members</th>
@@ -130,7 +129,6 @@
                         <td><%=reservationsOfAgencyList.get(i).getArrivalTime()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getDepartureDate()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getDepartureTime()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getTotalCost()%></td>
                         <td><%=reservationsOfAgencyList.get(i).getSubmittedOn()%></td>
 
                         <td>
@@ -176,7 +174,6 @@
                             <th scope="col">Arrival time</th>
                             <th scope="col">Departure date</th>
                             <th scope="col">Departure time</th>
-                            <th scope="col">Cost</th>
                             <th scope="col">Made on</th>
                             <th scope="col">Show services</th>
                             <th scope="col">Add Members</th>
