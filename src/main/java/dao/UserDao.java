@@ -1,10 +1,12 @@
 package dao;
 
+import model.Agency;
+import model.Hotel;
 import model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
 
 
 public class UserDao {
@@ -20,7 +22,7 @@ public class UserDao {
 	public User authenticate(String username, String password) throws Exception {
 		Connection con = null;
 		DB db = new DB();
-		String sql = "SELECT * FROM user INNER JOIN hotel ON  user.username = hotel.username where user.password=?";
+		String sql = "SELECT * FROM user INNER JOIN hotel ON  user.username = hotel.username where user.username=? AND user.password=?";
 		User user = null;
 		try {
 			con = db.getConnection();
@@ -29,20 +31,20 @@ public class UserDao {
 			pst.setString(2, password);
 			ResultSet rs = pst.executeQuery();
 			if (!rs.next()) {
-				String sql = "SELECT * FROM user INNER JOIN hotel ON  user.username = agency.username where user.password=?";
+				sql = "SELECT * FROM user INNER JOIN hotel ON  user.username = agency.username where user.password=?";
 				pst = con.prepareStatement(sql);
 				pst.setString(1,username);
 				pst.setString(2, password);
-				ResultSet rs = pst.executeQuery();
+				rs = pst.executeQuery();
 				if (!rs.next()) {
 					rs.close();
 					pst.close();
 					throw new Exception("Wrong username or password.");
 				}
-				User user = new Agency(rs.getString("username"), rs.getString("password"), rs.getString("name"), rs.getInt("telephone"), rs.getString("mail"), rs.getString("vatNumber"), rs.getDate("registrationDate"));
+				user = new Agency(rs.getString("username"), rs.getString("password"), rs.getString("name"), rs.getString("telephone"), rs.getString("mail"), rs.getString("vatNumber"), rs.getDate("registrationDate"));
 
 			} else {
-                User user = new Hotel(rs.getString("username"), rs.getString("password"),  rs.getString("name"), rs.getString("address"), rs.getString("phoneNumber"), rs.getString("head"), rs.getString("description"), rs.getString("priceSingle"), rs.getString("priceDouble"), rs.getString("priceTriple"), rs.getString("priceQuadruple"));
+                user = new Hotel(rs.getString("username"), rs.getString("password"),  rs.getString("name"), rs.getString("address"), rs.getString("phoneNumber"), rs.getString("head"), rs.getString("description"), rs.getDouble("priceSingle"), rs.getDouble("priceDouble"), rs.getDouble("priceTriple"), rs.getDouble("priceQuadruple"));
 			}
             rs.close();
             pst.close();          
@@ -59,9 +61,9 @@ public class UserDao {
 	} // End of authenticate
 
 	/**
-	 * Register/create new User.
+	 * Register/create new Hotel user.
 	 * 
-	 * @param user, User
+	 * @param hotel, Hotel
 	 * @throws Exception, if encounter any error.
 	 */
 	public void register(Hotel hotel) throws Exception {
@@ -80,9 +82,9 @@ public class UserDao {
 				db.close();
 				throw new Exception("username already registered"); 
 			}
-			String sql = "INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple)" + 
-							"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			pst = con.prepareStatement(sql);
+			String sql1 = "INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple)" +
+							" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			pst = con.prepareStatement(sql1);
 			pst.setString(1, hotel.getUsername());
 			pst.setString(2, hotel.getName());
 			pst.setString(3, hotel.getAddress());

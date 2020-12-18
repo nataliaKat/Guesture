@@ -8,10 +8,10 @@ public class Hotel extends User {
     private String phoneNumber;
     private String head;
     private String description;
-    private Double priceSingle;
-    private Double priceDouble;
-    private Double priceTriple;
-    private Double priceQuadruple;
+    private double priceSingle;
+    private double priceDouble;
+    private double priceTriple;
+    private double priceQuadruple;
 
     public Hotel(){
 
@@ -92,7 +92,7 @@ public class Hotel extends User {
         this.description = description;
     }
 
-    public Double getPriceSingle() {
+    public double getPriceSingle() {
         return priceSingle;
     }
 
@@ -100,7 +100,7 @@ public class Hotel extends User {
         this.priceSingle = priceSingle;
     }
 
-    public Double getPriceDouble() {
+    public double getPriceDouble() {
         return priceDouble;
     }
 
@@ -108,7 +108,7 @@ public class Hotel extends User {
         this.priceDouble = priceDouble;
     }
 
-    public Double priceTriple() {
+    public double getPriceTriple() {
         return priceTriple;
     }
 
@@ -116,7 +116,7 @@ public class Hotel extends User {
         this.priceTriple = priceTriple;
     }
 
-    public Double getPriceQuadruple() {
+    public double getPriceQuadruple() {
         return priceQuadruple;
     }
 

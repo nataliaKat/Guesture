@@ -71,7 +71,7 @@ public class GroupingDao {
         return groupings;
     }
 
-    public Grouping getGroupingsPerRes(int resId) {
+    public List<Grouping> getGroupingsPerRes(int resId) {
         List<Grouping> groupings = new ArrayList<Grouping>();
         DB db = new DB();
         Connection con = null;
@@ -83,7 +83,7 @@ public class GroupingDao {
             pst = con.prepareStatement(sql);
             pst.setInt(1, resId);
             rs = pst.executeQuery();
-            
+
             rs.close();
             pst.close();
         } catch (Exception e) {
@@ -95,5 +95,6 @@ public class GroupingDao {
                 e.printStackTrace();
             }
         }
-        
+        return groupings;
+    }
 }

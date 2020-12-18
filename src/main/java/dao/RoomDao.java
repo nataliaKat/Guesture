@@ -1,16 +1,5 @@
 package dao;
 
-import model.Hotel;
-import model.Room;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 public class RoomDao {
 
 //    private HotelDao hotelDao;
@@ -51,7 +40,7 @@ public class RoomDao {
 //        String sql = "SELECT * FROM room WHERE "
 //    }
 
-}
+//}
 
 
 

@@ -27,13 +27,13 @@
     ReservationDao rd = new ReservationDao();
 
     /* */
-    String hotelName = "luxury@gmail.com";
-    String agencyName = "holidays@gmail.com";
+    String hotelUsername = "luxury@gmail.com";
+    String agencyUsername = "holidays@gmail.com";
 
-    double [] prices = rd.getPricePerRoomType(hotelName);
+    double [] prices = rd.getPricePerRoomType(hotelUsername);
 
     User user = (User)session.getAttribute("userObj");
-    // agencyName = user.getUsername();
+     agencyUsername = user.getUsername();
 
     %>
 
@@ -45,8 +45,8 @@
                 <h1 class="text-center">New Reservation</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
                 <form class="form-horizontal" action="makeReservationController.jsp" method="POST">
-                    <input type="hidden" id="agencyName" name="agencyName" value="<%=agencyName%>">
-                    <input type="hidden" id="hotelName" name="hotelName" value="<%=hotelName%>">
+                    <input type="hidden" id="agencyName" name="agencyName" value="<%=agencyUsername%>">
+                    <input type="hidden" id="hotelName" name="hotelName" value="<%=hotelUsername%>">
 
                     <div class="form-group">
                         <label for="arrival" class="col-sm-4 control-label">Arrival Date</label>
@@ -164,7 +164,7 @@
                         <% 
                         
                         ServiceDao sd = new ServiceDao();
-                        List<Service> services = sd.getAllServices(hotelName);
+                        List<Service> services = sd.getAllServices(hotelUsername);
 
                         for (int i = 0; i < services.size() ; i++) { %>
 

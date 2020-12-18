@@ -10,13 +10,23 @@ $(document).ready(function() {
         // rows.classList.toggle('color-on-bg');
         grouping = []
         customers.push(grouping)
+        let content = `<tr style="background-color: #353745">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>    
+                        </tr>`
+        $('#customer-table tr:last').after(content);
+
     });
 
     $("#myform").submit(function(e) {
         console.log("submitted")
         e.preventDefault();
-        let content = `<tr id='row-${++counter}'>`
-                        // <td scope='row'>${counter}</td>`;
+        let content = `<tr id='row-${++counter}'>`;
         let customer = {
             num : counter,
             name : e.target[0].value,
