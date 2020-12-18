@@ -82,10 +82,10 @@
                         <div class="col-sm-10">
                             <select id="time2" name="time2" class="form-control" required>
                                 <option value="">Select zone</option>
-                                <option value="1">Morning</option>
-                                <option value="2">Noon</option>
-                                <option value="3">Afternoon</option>
-                                <option value="4">Evening</option>
+                                <option value="morning">Morning</option>
+                                <option value="noon">Noon</option>
+                                <option value="afternoon">Afternoon</option>
+                                <option value="evening">Evening</option>
                             </select>
                         </div>
                     </div>
