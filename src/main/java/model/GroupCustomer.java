@@ -126,19 +126,19 @@ public class GroupCustomer {
         this.reservation = reservation;
     }
 
-    public Grouping getGroupingList() {
+    public List<Grouping> getGroupingList() {
         return groupingList;
     }
 
-    public void setGroupingList(Grouping groupingList) {
+    public void setGroupingList(List<Grouping> groupingList) {
         this.groupingList = groupingList;
     }
 
-    public List<Grouping> getGrouping() {
+    public Grouping getGrouping() {
         return grouping;
     }
 
-    public void setGrouping(List<Grouping> grouping) {
+    public void setGrouping(Grouping grouping) {
         this.grouping = grouping;
     }
 

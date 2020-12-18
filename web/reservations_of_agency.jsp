@@ -85,9 +85,8 @@
             <a href="new_reservation.jsp"><button location.href="" class="brownButton"><i class="fas fa-plus"></i> New
                     Reservation</button></a>
         </div>
-        <div class="mb-3 mt-3">
-            <table id="example" class="table table-hover table-striped table-bordered dt-responsive nowrap table-dark"
-                style="width: 100%;">
+        <div class="mb-3 mt-3" style="padding: 20px">
+            <table id="example" class="table table-hover table-striped table-bordered dt-responsive nowrap table-dark" style="width: 100%;">
                 <thead>
                     <tr>
                         <th scope="col">Reservation code</th>
