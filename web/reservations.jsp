@@ -353,7 +353,7 @@
 
 
                                                         <%@include file="footer.jsp" %>
-                                                            <script src="../web/js/reservations.js"></script>
+                                                            <script src="js/reservations.js"></script>
 
                                                             <script
                                                                 src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
