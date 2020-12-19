@@ -96,6 +96,10 @@ public class NewReservationServlet extends HttpServlet {
 
             }
         }
+        request.setAttribute("successMessage", "<h1>Reservation almost done!</h1>\n" +
+                "                <hr>\n" +
+                "                <h2> Please wait until the hotel confirms your reservation. </h2>");
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

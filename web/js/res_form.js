@@ -1,6 +1,6 @@
-$(document).ready(function () {
+$(document).ready(() => {
 
-    $("#final-submit").click(function() {
+    $("#res-form").submit(() => {
         $('#cover-spin').show(0);
     })
 
@@ -9,7 +9,7 @@ $(document).ready(function () {
         let items = $("#cost-table").children();
 
         sum = 0;
-        for (i = 1; i < items[1].childNodes.length; i += 2) {
+        for (let i = 1; i < items[1].childNodes.length; i += 2) {
             let field = items[1].childNodes[i].children[1];
             let id = field.lastElementChild.id;
             let price = $("#" + id).val(); 

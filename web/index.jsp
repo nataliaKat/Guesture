@@ -20,6 +20,18 @@
 
         </div>
       </div>
+      <%
+        if (request.getAttribute("successMessage") != null) {
+          %>
+      <div class="row">
+      <div class="alert alert-success mt-3 col-12 text-center" role="alert">
+        <div class="page-header">
+          <%=request.getAttribute("successMessage")%>
+        </div>
+      </div>
+    </div>
+        <%}%>
+
     </div>
   </section>
 </main>

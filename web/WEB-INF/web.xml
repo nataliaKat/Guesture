@@ -21,6 +21,14 @@
         <url-pattern>/groupCustomers</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>NewReservationServlet</servlet-name>
+        <servlet-class>controller.NewReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewReservationServlet</servlet-name>
+        <url-pattern>/newReservation</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ErrorHandler</servlet-name>
         <servlet-class>controller.ErrorHandler</servlet-class>
     </servlet>

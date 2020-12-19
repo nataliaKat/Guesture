@@ -46,7 +46,7 @@
             <div id="res-form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
                 <h1 class="text-center">New Reservation</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
-                <form class="form-horizontal" action="makeReservationController.jsp" method="POST">
+                <form class="form-horizontal" action="newReservation" method="POST">
                     <input type="hidden" id="agencyName" name="agencyName" value="<%=agencyUsername%>">
                     <input type="hidden" id="hotelName" name="hotelName" value="<%=hotelUsername%>">
 
