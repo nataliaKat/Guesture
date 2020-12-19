@@ -16,27 +16,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("index.jsp") ||
-                request.getRequestURI().replace(request.getContextPath() + "/", "").equals("") ? "active": "" %>">
+                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("index.jsp") ? "active": "" %>">
                     <a class="nav-link" href="index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
                 </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("agencies.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="agencies.jsp">Agencies</a>
+                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("hotels.jsp") ? "active": "" %>">
+                    <a class="nav-link" href="agencies.jsp">Hotels</a>
                 </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reservations.jsp") ? "active": "" %>">
+                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reservations_of_agency.jsp") ? "active": "" %>">
                     <a class="nav-link" href="reservations.jsp">Reservations<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reviews.jsp") ? "active": "" %>">
                     <a class="nav-link" href="reviews.jsp">Reviews</a>
                 </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("chart.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="chart.jsp">Statistics</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Oraia Komotini Agency</a>
 
                 </li>
                 <li class="nav-item">

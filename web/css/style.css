@@ -26,8 +26,7 @@ main {
     -o-background-size: cover;
 }
 
-#group, #reservation, #new_reservation, #agency, #new_agency, #review, #chart, #showReview, #agencyReview, #hotelRegistration, #login {
-
+body {
     background: url(../images/login_background.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;

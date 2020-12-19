@@ -11,13 +11,21 @@
         <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
-        <servlet-name>GroupCustomerServlet</servlet-name>
-        <servlet-class>controller.GroupCustomerServlet</servlet-class>
-    </servlet>
+    <servlet-name>GroupCustomerServlet</servlet-name>
+    <servlet-class>controller.GroupCustomerServlet</servlet-class>
+</servlet>
     <servlet-mapping>
         <servlet-name>GroupCustomerServlet</servlet-name>
         <url-pattern>/groupCustomers</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ErrorHandler</servlet-name>
+        <servlet-class>controller.ErrorHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorHandler</servlet-name>
+        <url-pattern>/ErrorHandler</url-pattern>
     </servlet-mapping>
 </web-app>

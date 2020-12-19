@@ -4,7 +4,6 @@
 <%@ page import="model.Reservation" %>
 <%@ page import="model.GroupCustomer" %>
 
-<%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
 
 <%@ page import="dao.ReservationDao" %>
@@ -31,54 +30,12 @@
 
     <title>Dream Hotel | Reservations Of Agency</title>
     <%@include file="header.jsp" %>
-                            
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <%@include file="datatables_stylesheets.jsp"%>
     
 </head>
 
 <body id="reservationOfAgency">
-    <header>
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-light  custom-nav">
-            <a class="navbar-brand" href="index.html"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agencies.html">Agencies</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="reservations.html">Reservations<span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="reviews.html">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="chart.html">Statistics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<%@include file="agency_navbar.jsp"%>
     <!-- Begin page content -->
     <main class="container">
         <div class="row">
@@ -222,17 +179,9 @@
 
     
     <%@include file="footer.jsp" %>
-
+    <%@include file="datatables_scripts.jsp"%>
     <script src="js/reservations.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 </body>
 
 </html>

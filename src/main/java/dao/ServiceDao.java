@@ -119,8 +119,8 @@ public class ServiceDao {
         } finally {
             try {
                 con.close();
-            } catch (Exception e) {
-                throw new Exception(e.getMessage());
+            } catch (SQLException e) {
+                throw new SQLException(e.getMessage());
             }
         }
 
