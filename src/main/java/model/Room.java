@@ -2,12 +2,20 @@ package model;
 
 public class Room {
 
+    private int id;
     private int number;
     private String type;
     private int floor;
     private Hotel hotel;
 
     public Room() {
+    }
+
+    public Room(int id, int number, String type, int floor) {
+        this.id = id;
+        this.number = number;
+        this.type = type;
+        this.floor = floor;
     }
 
     public Room(int number, String type, int floor, Hotel hotel) {
