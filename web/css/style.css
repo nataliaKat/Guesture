@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
-  font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Navbar styles
 ---------------------------------------------------*/
 .custom-nav {
-  background-color: #bfd9d7;
-  border-bottom: 3px solid #353745;
+    background-color: #bfd9d7;
+    border-bottom: 3px solid #353745;
 }
 
 /* Background styles
 ---------------------------------------------------*/
 main {
-  padding-top: 5%;
-  z-index: 1;
+    padding-top: 5%;
+    z-index: 1;
 }
 
 #home {
@@ -28,10 +28,10 @@ main {
 
 body {
     background: url(../images/login_background.jpg) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
-        -o-background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 
 }
 
@@ -50,35 +50,35 @@ table td {
 /* Button styles
 ---------------------------------------------------*/
 .brownButton {
-  /* width: 40%; */
-  /* height: 50px; */
-  border-radius: 7px;
-  background-color: #af975d;
-  border: none;
-  color:white;
-  padding: 10px;
+    /* width: 40%; */
+    /* height: 50px; */
+    border-radius: 7px;
+    background-color: #af975d;
+    border: none;
+    color: white;
+    padding: 10px;
 }
 
 .blueButton {
-  /* width: 100%; */
-  border-radius: 7px;
-  background-color:#bfd9d9;
-  border: none;
-  color: black;
-  padding: 10px;
+    /* width: 100%; */
+    border-radius: 7px;
+    background-color: #bfd9d9;
+    border: none;
+    color: black;
+    padding: 10px;
 
 }
 
 .blueButton:hover {
-  transition: 0.5s;
-  background-color: #a4dcd7;
+    transition: 0.5s;
+    background-color: #a4dcd7;
 }
 
 .darkBlueButton {
     border-radius: 7px;
     background-color: #353745;
     border: none;
-    color:white;
+    color: white;
     padding: 10px;
 }
 
@@ -88,86 +88,105 @@ table td {
 }
 
 #editButton {
-  margin-top: 10%;
-  margin-bottom: 10%;
-  width: 102%;
-  height: 60px;
-  border-radius: 7px;
-  background-color:#bfd9d7;
-  border: none;
-  color: black;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 102%;
+    height: 60px;
+    border-radius: 7px;
+    background-color: #bfd9d7;
+    border: none;
+    color: black;
 }
 
 .brownButton:hover {
-  transition: 0.2s;
-  background-color: #7d6b41;  
+    transition: 0.2s;
+    background-color: #7d6b41;
 }
 
-#cust-submit{
-  width: 100%;
-  flex-direction: row-reverse; 
-  margin-bottom: 20px;
-}
-
-#agency-submit{
+#cust-submit {
     width: 100%;
-    flex-direction: row-reverse; 
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+}
+
+#agency-submit {
+    width: 100%;
+    flex-direction: row-reverse;
     margin-bottom: 20px;
 }
 
 /* Spinner
 ---------------------------------------------------*/
 #cover-spin {
-    position:fixed;
-    width:100%;
-    left:0;right:0;top:0;bottom:0;
-    background-color: rgba(255,255,255,0.7);
-    z-index:9999;
-    display:none;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
+    display: none;
 }
 
 @-webkit-keyframes spin {
-    from {-webkit-transform:rotate(0deg);}
-    to {-webkit-transform:rotate(360deg);}
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 #cover-spin::after {
-    content:'';
-    display:block;
-    position:absolute;
-    left:48%;top:40%;
-    width:40px;height:40px;
-    border-style:solid;
-    border-color:black;
-    border-top-color:transparent;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 48%;
+    top: 40%;
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-color: black;
+    border-top-color: transparent;
     border-width: 4px;
-    border-radius:50%;
+    border-radius: 50%;
     -webkit-animation: spin .8s linear infinite;
     animation: spin .8s linear infinite;
 }
 
 /* Customers' table styles
 ---------------------------------------------------*/
-#customer-table{
-  height:500px;
-  display:block;
+#customer-table {
+    height: 500px;
+    display: block;
 }
 
 #customer-table td {
-  text-align: right;
+    text-align: right;
 }
 
 #customer-table th {
-  text-align: center;
+    text-align: center;
 }
 
 .color-on-bg {
     background-color: #ede5d1;
+}
+
+/* Rooms to customers table styles
+-------------------------------------------------- */
+#rooms-table td, #rooms-table th {
+    border: solid #353745;
 }
 
 /* Sticky footer styles
@@ -175,13 +194,14 @@ table td {
 html {
     position: relative;
     min-height: 100%;
-  }
-  body {
+}
+
+body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-  }
+}
 
-  .footer {
+.footer {
     margin-top: 10px;
     position: absolute;
     bottom: 0;
@@ -190,24 +210,27 @@ html {
     height: 35px;
     line-height: 35px; /* Vertically center the text there */
     background-color: #d0c398;
-  }
+}
 
 
-.chart  {
-  margin: 100px auto;
-  width: 1000px;
-  height: 500px;
+.chart {
+    margin: 100px auto;
+    width: 1000px;
+    height: 500px;
 }
 
 #registration_form, #res-form, #new-agency {
-  border: 2px solid #2b526e;
-  border-width: medium;
-  border-radius: 12px;
-  /* margin-right: 600px; */
-  /* padding-top: 25px; */
-  /* padding-right: 0%; */
-  
-
+    border: 2px solid #2b526e;
+    border-width: medium;
+    border-radius: 12px;
+    /* margin-right: 600px; */
+    /* padding-top: 25px; */
+    /* padding-right: 0%; */
 }
 
+.room {
+    border: 2px solid grey;
+    margin: 3px;
+    padding: 1px;
+}
 

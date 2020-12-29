@@ -2,7 +2,7 @@
 <%@ page import="dao.ReservationDao" %>
 <%
 
-int resId = request.getParameter("resId");
+int resId = Integer.parseInt(request.getParameter("resId"));
 
 %>
     <!doctype html>

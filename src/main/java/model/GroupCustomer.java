@@ -1,9 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List ;
-import model.Grouping;
-
 public class GroupCustomer {
 
     private int customerId;
@@ -14,7 +10,6 @@ public class GroupCustomer {
     private String identityNumber;
     private Reservation reservation;
     private Grouping grouping;
-    private List<Grouping> groupingList;
 
     public GroupCustomer() {
     }
@@ -58,16 +53,6 @@ public class GroupCustomer {
         this.email = email;
         this.identityNumber = identityNumber;
         this.grouping = grouping;
-    }
-
-    public GroupCustomer(String name, String surname, String telephone, String email, String identityNumber,
-            List<Grouping> groupingList) {
-        this.name = name;
-        this.surname = surname;
-        this.telephone = telephone;
-        this.email = email;
-        this.identityNumber = identityNumber;
-        this.groupingList = groupingList;
     }
 
     public int getCustomerId() {
@@ -126,13 +111,6 @@ public class GroupCustomer {
         this.reservation = reservation;
     }
 
-    public List<Grouping> getGroupingList() {
-        return groupingList;
-    }
-
-    public void setGroupingList(List<Grouping> groupingList) {
-        this.groupingList = groupingList;
-    }
 
     public Grouping getGrouping() {
         return grouping;

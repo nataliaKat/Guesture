@@ -56,6 +56,7 @@ public class GroupingDao {
             rs = pst.executeQuery();
             while (rs.next()) {
                 Grouping g = new Grouping(rs.getInt("groupingId"));
+                groupings.add(g);
             }
             rs.close();
             pst.close();

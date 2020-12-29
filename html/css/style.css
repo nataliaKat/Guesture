@@ -160,3 +160,9 @@ html {
 }
 
 
+.room {
+  border: 2px solid grey;
+  margin: 3px;
+  padding: 1px;
+}
+

@@ -5,6 +5,8 @@ import dao.GroupingDao;
 import model.GroupCustomer;
 import model.Grouping;
 
+import java.util.List;
+
 public class GroupCustomerService {
 
     public void save(Grouping g, int reservationId) {
@@ -18,6 +20,16 @@ public class GroupCustomerService {
             }
         }
 
+    }
+
+    public List<Grouping> getGroupings(int reservationId) {
+        GroupingDao gd = new GroupingDao();
+        GroupCustomerDao customerDao = new GroupCustomerDao();
+        List<Grouping> groupings = gd.getGroupingsPerReservation(reservationId);
+        for (Grouping g : groupings) {
+            g.setGroupCustomers(customerDao.getCustomersPerGrouping(g.getGroupingId()));
+        }
+        return groupings;
     }
 
 }

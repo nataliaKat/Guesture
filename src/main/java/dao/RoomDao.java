@@ -1,5 +1,11 @@
 package dao;
 
+import model.Room;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.util.List;
+
 public class RoomDao {
 
 //    private HotelDao hotelDao;
@@ -34,13 +40,13 @@ public class RoomDao {
 //        return rooms;
 //    }
 
-//    public List<Room> getAvailableRooms(Date startDate, Date endDate) {
-//        DB db = new DB();
-//        Connection con = null;
-//        String sql = "SELECT * FROM room WHERE "
-//    }
+    public List<Room> getAvailableRooms(Date startDate, Date endDate, String hotelId) {
+        DB db = new DB();
+        Connection con = null;
+        String sql = "SELECT * FROM room WHERE "
+    }
 
-//}
+}
 
 
 
