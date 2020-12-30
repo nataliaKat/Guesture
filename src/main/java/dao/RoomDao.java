@@ -10,35 +10,34 @@ public class RoomDao {
 
 //    private HotelDao hotelDao;
 
-//    public List<Room> getAll(String hotelUsername) {
-//        DB db = new DB();
-//        Connection con = null;
-//        String sql = "SELECT * FROM room WHERE hotelId = ?";
-//        List<Room> rooms = null;
-//        try {
-//            con = db.getConnection();
-//            PreparedStatement pst = con.prepareStatement(sql);
-//            pst.setString(1, hotelUsername);
-//            ResultSet rs = pst.executeQuery();
-//            rooms = new ArrayList<Room>();
-//            Hotel owner = hotelDao.getByUsernmame(hotelUsername);
-//            while (rs.next()) {
-//                rooms.add(new Room(rs.getInt("number"), rs.getString("type"), rs.getInt("floor"), owner));
-//            }
-//
-//            rs.close();
-//            pst.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                con.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return rooms;
-//    }
+    public List<Room> getAll(String hotelUsername) {
+        DB db = new DB();
+        Connection con = null;
+        String sql = "SELECT * FROM room WHERE username = ?";
+        List<Room> rooms = null;
+        try {
+            con = db.getConnection();
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, hotelUsername);
+            ResultSet rs = pst.executeQuery();
+            rooms = new ArrayList<Room>();
+            while (rs.next()) {
+                rooms.add(new Room(rs.getInt("roomId"), rs.getInt("number"), rs.getString("type"), rs.getInt("floor")));
+            }
+
+            rs.close();
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return rooms;
+    }
 
     public List<Room> getAvailableRooms(Date startDate, Date endDate, String hotelId) {
         DB db = new DB();
@@ -59,8 +58,11 @@ public class RoomDao {
             pst.setDate(2, endDate);
             pst.setDate(3, startDate);
             ResultSet rs = pst.executeQuery();
+            System.out.println("startdate is " + startDate);
+            System.out.println("endate is " + endDate);
             while (rs.next()) {
                 rooms.add(new Room(rs.getInt("roomId"), rs.getInt("number"), rs.getString("type"), rs.getInt("floor")));
+
             }
             rs.close();
             pst.close();

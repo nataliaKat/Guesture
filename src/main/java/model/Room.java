@@ -25,6 +25,14 @@ public class Room {
         this.hotel = hotel;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getNumber() {
         return number;
     }
@@ -60,10 +68,11 @@ public class Room {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Room)) return false;
 
         Room room = (Room) o;
 
+        if (id != room.id) return false;
         if (number != room.number) return false;
         if (floor != room.floor) return false;
         if (type != null ? !type.equals(room.type) : room.type != null) return false;
@@ -72,7 +81,8 @@ public class Room {
 
     @Override
     public int hashCode() {
-        int result = number;
+        int result = id;
+        result = 31 * result + number;
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + floor;
         result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
@@ -82,7 +92,8 @@ public class Room {
     @Override
     public String toString() {
         return "Room{" +
-                "number=" + number +
+                "id=" + id +
+                ", number=" + number +
                 ", type='" + type + '\'' +
                 ", floor=" + floor +
                 ", hotel=" + hotel +
