@@ -29,11 +29,11 @@
         <url-pattern>/newReservation</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ErrorHandler</servlet-name>
-        <servlet-class>controller.ErrorHandler</servlet-class>
+        <servlet-name>RoomToGroupingServlet</servlet-name>
+        <servlet-class>controller.RoomToGroupingServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ErrorHandler</servlet-name>
-        <url-pattern>/ErrorHandler</url-pattern>
+        <servlet-name>RoomToGroupingServlet</servlet-name>
+        <url-pattern>/roomsToCustomers</url-pattern>
     </servlet-mapping>
 </web-app>

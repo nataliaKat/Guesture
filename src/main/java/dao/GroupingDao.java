@@ -98,4 +98,28 @@ public class GroupingDao {
         }
         return groupings;
     }
+
+    public void setRoomsToGrouping(int roomId, int groupingId) {
+        DB db = new DB();
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "UPDATE grouping SET roomId = ? WHERE groupingId = ?";
+        try {
+            con = db.getConnection();
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, roomId);
+            pst.setInt(2, groupingId);
+            pst.executeUpdate();
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                db.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

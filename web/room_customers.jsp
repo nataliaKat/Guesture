@@ -74,7 +74,7 @@
                         </td>
                         <% if (i == 0) {%>
                         <td id="gr-<%=custs.get(i).getCustomerId()%>"
-                            data-groupingId="<%=custs.get(i).getCustomerId()%>" rowspan="<%=custs.size()%>"
+                            data-groupingId="<%=grouping.getGroupingId()%>" rowspan="<%=custs.size()%>"
                             ondrop="drop(event, this)" ondragover="allowDrop(event, this)"></td>
                         <% } %>
                     </tr>
@@ -122,6 +122,11 @@
                     if (roomCell.firstChild) {
                         let roomId = roomCell.firstChild.getAttribute('data-roomId');
                         console.log("grouping is", groupingId, "room is", roomId);
+                        let grouping = {
+                            groupingId : groupingId,
+                            roomId : roomId
+                        }
+                        groupingRooms.push(grouping)
                     } else {
                         alert('Not all customers have rooms');
                         break;
@@ -129,7 +134,18 @@
 
                 }
             }
-
+            $.ajax({
+                type: "POST",
+                url: "roomsToCustomers",
+                dataType: 'JSON',
+                data: {"groupings" : JSON.stringify(groupingRooms)},
+                complete: function() {
+                    window.location.replace("index.jsp")
+                },
+                fail: function(xhr, textStatus, errorThrown){
+                    alert('fail');
+                }
+            });
         })
     })
     function allowDrop(ev, ele) {

@@ -1,5 +1,6 @@
 package controller;
 
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.GroupCustomer;
@@ -30,10 +31,6 @@ public class GroupCustomerServlet extends HttpServlet {
             GroupCustomerService groupCustomerService = new GroupCustomerService();
             groupCustomerService.save(grouping, reservationId);
         }
-
-//        for (Grouping g : myObjects) {
-//            System.out.println(g);
-//        }
         request.getRequestDispatcher("/index.jsp").forward(request, response);
         return;
     }
