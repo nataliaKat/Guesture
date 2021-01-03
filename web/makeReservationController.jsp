@@ -93,10 +93,10 @@ rd.insertReservation(reservation);
                     <li class="nav-item">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="agencies.html">Agencies</a>
+                        <a class="nav-link" href="agencies.jsp">Agencies</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="reservations.html">Reservations<span
+                        <a class="nav-link" href="reservations.jsp">Reservations<span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
