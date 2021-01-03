@@ -167,14 +167,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="url" class="col-sm-4 control-label">Enter an https:// URL for an image:</label>
+                            <label for="url" class="col-sm-4 control-label">Enter an https:// URL of an image:</label>
                             <div>
                                 <input type="text" id="de" name="description" class="form-control"
                                     placeholder="https://example.com"
                                     required>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-30">
                                 <div class="checkbox">
