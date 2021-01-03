@@ -1,5 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%@page import="java.util.List" %>
+
+<%@ page import="model.Service" %>
+<%@ page import="model.User" %>
+<%@ page import="model.Reservation" %>
+<%@ page import="model.GroupCustomer" %>
+
+<%@ page import="dao.ReservationDao" %>
+<%@ page import="dao.ServiceDao" %>
+<%@ page import="dao.GroupCustomerDao" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -155,7 +166,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
+                                <% 
+
+                                GroupCustomerDao gcd = new GroupCustomerDao();
+                                List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(id);
+                                for (int i = 0; i < groupMembers.size() ; i++) {
+                                    
+                                %>
+
+                                <tr>
+                                    <td><%=id%></td>
+                                    <td><%=groupMembers.get(i).getName() %></td>
+                                    <td><%=groupMembers.get(i).getSurname() %></td>
+                                    <td><%=groupMembers.get(i).getIdentityNumber() %></td>
+                                    <td><%=groupMembers.get(i).getTelephone() %></td>
+                                    <td><%=groupMembers.get(i).getEmail() %></td>
+                                    <td><%=groupMembers.get(i).getSurname() %></td>
+                                    <td><%=groupMembers.get(i).getGrouping().getRoomId() %></td>
+                                </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
