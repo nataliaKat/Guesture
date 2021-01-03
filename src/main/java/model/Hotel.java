@@ -1,4 +1,6 @@
 package model;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Hotel extends User {
 
@@ -12,6 +14,8 @@ public class Hotel extends User {
     private double priceDouble;
     private double priceTriple;
     private double priceQuadruple;
+    private List<String> services = new ArrayList<String>();
+    private List<String> criteria = new ArrayList<String>();
 
     public Hotel(){
 
@@ -30,7 +34,7 @@ public class Hotel extends User {
         this.description = description;
     }
 
-    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple) {
+    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple, List<String> services, List<String> criteria) {
         super(username,password);
         this.name = name;
         this.address = address;
@@ -41,6 +45,8 @@ public class Hotel extends User {
         this.priceDouble = priceDouble;
         this.priceTriple = priceTriple;
         this.priceQuadruple = priceQuadruple;
+        this.services = services;
+        this.criteria = criteria;
 
     }
 
@@ -123,6 +129,23 @@ public class Hotel extends User {
     public void setPriceQuadruple() {
         this.priceQuadruple = priceQuadruple;
     }
+
+    public List<String> getServices() {
+        return services;
+    }
+
+    public void setServices() {
+        this.services = services;
+    }
+
+    public List<String> getCriteria() {
+        return criteria;
+    }
+
+    public void setCriteria() {
+        this.criteria = criteria;
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;
