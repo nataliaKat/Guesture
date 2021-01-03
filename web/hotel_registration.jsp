@@ -94,6 +94,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="head" class="col-sm-4 control-label">Head</label>
+                            <div>
+                                <input type="text" id="head" name="head" class="form-control"
+                                    placeholder="Enter a head" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="description" class="col-sm-4 control-label">Description</label>
                             <div>
                                 <input type="text" id="description" name="description" class="form-control"
@@ -157,6 +165,16 @@
                             <label for="criteria">Enter criteria, each one in new line</label>
                             <textarea class="form-control" id="criteria"></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label for="url" class="col-sm-4 control-label">Enter an https:// URL for an image:</label>
+                            <div>
+                                <input type="text" id="de" name="description" class="form-control"
+                                    placeholder="https://example.com"
+                                    required>
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-30">
                                 <div class="checkbox">
