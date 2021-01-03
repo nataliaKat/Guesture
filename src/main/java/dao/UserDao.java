@@ -44,7 +44,7 @@ public class UserDao {
 				user = new Agency(rs.getString("username"), rs.getString("password"), rs.getString("name"), rs.getString("telephone"), rs.getString("mail"), rs.getString("vatNumber"), rs.getDate("registrationDate"));
 
 			} else {
-                user = new Hotel(rs.getString("username"), rs.getString("password"),  rs.getString("name"), rs.getString("address"), rs.getString("phoneNumber"), rs.getString("head"), rs.getString("description"), rs.getDouble("priceSingle"), rs.getDouble("priceDouble"), rs.getDouble("priceTriple"), rs.getDouble("priceQuadruple"));
+				user = new Hotel(rs.getString("username"), rs.getString("password"),  rs.getString("name"), rs.getString("address"), rs.getString("phoneNumber"), rs.getString("head"), rs.getString("description"), rs.getDouble("priceSingle"), rs.getDouble("priceDouble"), rs.getDouble("priceTriple"), rs.getDouble("priceQuadruple"));
 			}
             rs.close();
             pst.close();          

@@ -44,7 +44,7 @@
                 <!-- Form -->
                 <div class="col-xs-12 col-md-10 col-lg-8">
                     <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="registerControllerHotel.jsp" method="post">
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label">Username </label>
                             <div>

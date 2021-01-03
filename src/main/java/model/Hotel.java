@@ -47,7 +47,19 @@ public class Hotel extends User {
         this.priceQuadruple = priceQuadruple;
         this.services = services;
         this.criteria = criteria;
+    }
 
+    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, double priceSingle, double priceDouble, double priceTriple, double priceQuadruple) {
+        super(username, password);
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.head = head;
+        this.description = description;
+        this.priceSingle = priceSingle;
+        this.priceDouble = priceDouble;
+        this.priceTriple = priceTriple;
+        this.priceQuadruple = priceQuadruple;
     }
 
     public String getUsername() {
