@@ -1,9 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@page import="java.util.List" %>
+
+<%@ page import="model.Service" %>
+<%@ page import="model.User" %>
+<%@ page import="model.Reservation" %>
+<%@ page import="model.GroupCustomer" %>
+
+<%@ page import="dao.ReservationDao" %>
+<%@ page import="dao.ServiceDao" %>
+<%@ page import="dao.GroupCustomerDao" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    
+    <%@include file="header.jsp" %>
 
     <meta name="description" content="">
     <meta name="author" content="">
@@ -52,6 +65,24 @@
         </nav>
     </header>
 
+    <% 
+        /* */
+        String hotelUsername = "portoven@gmail.com";
+        String agencyUsername = "holidays@gmail.com";
+
+        ReservationDao rd = new ReservationDao();
+
+        double [] prices = rd.getPricePerRoomType(hotelUsername);
+
+        User user = (User)session.getAttribute("userObj");
+//      agencyUsername = user.getUsername();
+
+        int id = 1;
+//      int id = request.getParameter("id");
+        
+        List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
+
+    %>
 
     <main>
         <div class="container">
@@ -74,10 +105,6 @@
                     <br>
                 </div>
 
-                <%
-                    double [] prices = rd.getPricePerRoomType(hotelUsername);
-
-                %>
                 <div class="col-md-4">
                     <div class="table-responsive table-striped">
                         <table class="table table-hover table-striped table-bordered" style="text-align: center;">
@@ -99,17 +126,17 @@
                             <tr>
                               <td>Double</td>
                               <td><%=prices[1]%></td>
-                              <td><%=reservationsOfAgencyList.get(id).getDoubleRooms()</td>
+                              <td><%=reservationsOfAgencyList.get(id).getDoubleRooms() %></td>
                             </tr>
                             <tr>
                               <td>Triple</td>
                               <td><%=prices[2]%></td>
-                              <td><%=reservationsOfAgencyList.get(id).getTripleRooms()</td>
+                              <td><%=reservationsOfAgencyList.get(id).getTripleRooms() %></td>
                             </tr>
                             <tr>
                               <td>Quad</td>
                               <td><%=prices[3]%></td>
-                              <td><%=reservationsOfAgencyList.get(id).getQuadrupleRooms()</td>
+                              <td><%=reservationsOfAgencyList.get(id).getQuadrupleRooms() %></td>
                             </tr>
                           </tbody>
                         </table>
