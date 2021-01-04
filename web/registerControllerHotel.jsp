@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="dao.*" %>
+<%@ page import="dao.UserDao" %>
+<%@ page import="model.Hotel" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 
 
 <% 
@@ -44,11 +44,11 @@ try {
 		throw new Exception(username + " is not a valid email address!");
     }	
 
-    if ( password.length() < = 8 ) {
+    if ( password.length() <= 8 ) {
         throw new Exception("Password must be at least 8 characters");
     }
     
-    if ( (!(repeat_password.equals(password)) ) {
+    if ( (!(repeat_password.equals(password))  {
         throw new Exception("Password and Repeat Password do not match");
     }
 
@@ -88,11 +88,11 @@ try {
         throw new Exception("No Price per Quadruple Room inserted");
     }
 
-    if ( services.length() == 0 ) {
+    if ( services.size() == 0 ) {
         throw new Exception("No Services inserted");
     }
 
-    if ( criteria.length() == 0 ) {
+    if ( criteria.size() == 0 ) {
         throw new Exception("No Criteria inserted");
     }
 

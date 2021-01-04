@@ -7,6 +7,7 @@
 
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
+<%@ page import="dao.HotelDao" %>
 
 
 <!doctype html>
@@ -25,7 +26,7 @@
 
     <% 
     ReservationDao rd = new ReservationDao();
-
+    HotelDao hotelDao = new HotelDao();
     /* */
     String hotelUsername = "portoven@gmail.com";
     String agencyUsername = "holidays@gmail.com";

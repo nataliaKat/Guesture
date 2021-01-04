@@ -234,3 +234,7 @@ body {
     padding: 1px;
 }
 
+.card > img {
+    height: 200px;
+}
+

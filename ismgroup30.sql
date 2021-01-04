@@ -31,6 +31,7 @@ CREATE TABLE Hotel (
     priceDouble DOUBLE NOT NULL,
     priceTriple DOUBLE NOT NULL,
     priceQuadruple DOUBLE NOT NULL,
+    photo_url VARCHAR(100),
     FOREIGN KEY (username)
         REFERENCES User (username)
 );
