@@ -77,10 +77,11 @@
         User user = (User)session.getAttribute("userObj");
 //      agencyUsername = user.getUsername();
 
-        int id = 1;
+        int id = 0;
 //      int id = request.getParameter("id");
         
         List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
+        int reservationId = reservationsOfAgencyList.get(id).getReservationId();
 
     %>
 
@@ -88,7 +89,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 box">
-                    <b>Reservation id:</b> <%=reservationsOfAgencyList.get(id).getReservationId() %><br>
+                    <b>Reservation id:</b> <%=reservationId %><br>
                     <b>Hotel:</b> <%=reservationsOfAgencyList.get(id).getHotelName() %><br>
                     <b>Arrival Date:</b> <%=reservationsOfAgencyList.get(id).getArrivalDate() %><br>
                     <b>Arrival Time:</b> <%=reservationsOfAgencyList.get(id).getArrivalTime() %><br>
@@ -144,7 +145,11 @@
                 </div>
                 <div class="col-md-4 box">
                     <h5>Comments</h5>
-                    <%=reservationsOfAgencyList.get(id).getComments() %>
+                    <% if (reservationsOfAgencyList.get(id).getComments() == null) { %>
+                        
+                    <% } else { %>
+                        <%=reservationsOfAgencyList.get(id).getComments() %>
+                    <% } %>
                 </div>
             </div>
             <div class="row mt-3">
@@ -168,13 +173,13 @@
                                 <% 
 
                                 GroupCustomerDao gcd = new GroupCustomerDao();
-                                List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(id);
+                                List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(reservationId);
                                 for (int i = 0; i < groupMembers.size() ; i++) {
                                     
                                 %>
 
                                 <tr>
-                                    <td><%=id%></td>
+                                    <td><%=reservationId %></td>
                                     <td><%=groupMembers.get(i).getName() %></td>
                                     <td><%=groupMembers.get(i).getSurname() %></td>
                                     <td><%=groupMembers.get(i).getIdentityNumber() %></td>
@@ -194,7 +199,7 @@
                     <%
 
                     ServiceDao sd = new ServiceDao();
-                    List<Service> services = sd.getServicesPerReservation(id, hotelUsername);
+                    List<Service> services = sd.getServicesPerReservation(reservationId, hotelUsername);
                     for (int i = 0; i < services.size(); i++) {
                         
                     %>
