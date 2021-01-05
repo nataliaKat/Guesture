@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
 <%@ page import="dao.UserDao" %>
 <%@ page import="model.Hotel" %>
 <%@ page import="java.util.List" %>
