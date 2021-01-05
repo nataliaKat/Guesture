@@ -13,8 +13,7 @@ public class ReservationDao {
         Connection con = null;
         ResultSet rs = null;
         List<Reservation> reservations = new ArrayList<Reservation>();
-        AgencyDao adao = new AgencyDao();
-        String sql = "SELECT reservationId, name, arrivalDate, arrivalTime, departureDate, departureTime, totalCost, submittedOn FROM Reservation, Agency WHERE Reservation.username_agency=Agency.username AND username_hotel = ?;";
+        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, confirmed, username_agency FROM reservation WHERE username_hotel = ?;";
         DB db = new DB();
 
         try {
@@ -24,9 +23,10 @@ public class ReservationDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-//                reservations.add(new Reservation(rs.getInt(1), adao.getByName(rs.getString(2)),
-//                        rs.getDate(3), rs.getString(4), rs.getDate(5),
-//                        rs.getString(6), rs.getDouble(7), rs.getDate(8)));
+                reservations.add(new Reservation(rs.getInt(1),
+                        rs.getDate(2), rs.getString(3), rs.getDate(4),
+                        rs.getString(5), rs.getDate(6), rs.getBoolean(7), rs.getBoolean(8),
+                        rs.getBoolean(9), rs.getString(10)));
             }
 
             stmt.close();
