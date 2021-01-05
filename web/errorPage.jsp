@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="alert alert-danger" role="alert">
-    <%=request.getAttribute("message")%>
+    <%=exception.getMessage()%>
 </div>
 </body>
 </html>
