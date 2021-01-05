@@ -3,6 +3,7 @@
 <%@page import="dao.ReservationDao" %>
 <%@ page import="model.Reservation" %>
 <%@ page import="java.util.List" %>
+<%@ page import="dao.AgencyDao" %>
 <%@ page errorPage="errorPage.jsp"%>
 
 
@@ -19,8 +20,8 @@
 <%@include file="navbar.jsp" %>
 
 <!-- Begin page content -->
-<main class="container">
-    <div class="mb-3 mt-3">
+<main class="container-fluid">
+    <div class="m-3">
         <table id="example"
                class="table table-hover table-striped table-bordered dt-responsive nowrap table-dark"
                style="width: 100%;">
@@ -41,6 +42,7 @@
             </thead>
             <tbody style="text-align: center;">
                 <% ReservationDao rd=new ReservationDao();
+                AgencyDao agencyDao = new AgencyDao();
                 String username = "sweethome@yahoo.com"; //temporary
                 List<Reservation> reservations = rd.getAll(username);
                  for (int i = 0; i < reservations.size(); i++) { %>
@@ -51,7 +53,7 @@
 
                 </td>
                 <td>
-                    <%=reservations.get(i).getAgencyName()%>
+                    <%=agencyDao.getByUsername(reservations.get(i).getAgencyName()).getName()%>
                 </td>
                 <td>
                     <%=reservations.get(i).getArrivalDate()%>
@@ -70,11 +72,11 @@
                     <%=reservations.get(i).getSubmittedOn()%>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-success"><i
+                    <button type="button" class="btn btn-info"><i
                             class="fas fa-door-closed"></i></button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-success"><i
+                    <button type="button" class="btn btn-info"><i
                             class="fas fa-door-open"></i></button>
                 </td>
                 <td>
@@ -82,7 +84,7 @@
                             class="fas fa-trash-alt"></i></button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-warning"
+                    <button type="button" class="btn btn-success"
                             data-toggle="modal"
                             data-target="#confirm-modal"><i
                             class="fas fa-check"></i></button>
