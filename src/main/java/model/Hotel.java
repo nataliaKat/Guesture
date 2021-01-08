@@ -1,6 +1,5 @@
 package model;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class Hotel extends User {
     private String name;
@@ -167,28 +166,16 @@ public class Hotel extends User {
         this.photoUrl = photoUrl;
     }
 
-    public void setServices(List<String> services) {
+    public void setServices(String[] services) {
         this.services = services;
     }
 
-    public void setCriteria(List<String> criteria) {
-        this.criteria = criteria;
-    }
-
-    public List<String> getServices() {
+    public String[] getServices() {
         return services;
     }
 
     public void setServices() {
         this.services = services;
-    }
-
-    public List<String> getCriteria() {
-        return criteria;
-    }
-
-    public void setCriteria() {
-        this.criteria = criteria;
     }
 
     @Override
@@ -209,8 +196,8 @@ public class Hotel extends User {
         if (head != null ? !head.equals(hotel.head) : hotel.head != null) return false;
         if (description != null ? !description.equals(hotel.description) : hotel.description != null) return false;
         if (photoUrl != null ? !photoUrl.equals(hotel.photoUrl) : hotel.photoUrl != null) return false;
-        if (services != null ? !services.equals(hotel.services) : hotel.services != null) return false;
-        return criteria != null ? criteria.equals(hotel.criteria) : hotel.criteria == null;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(services, hotel.services);
     }
 
     @Override
@@ -231,26 +218,7 @@ public class Hotel extends User {
         temp = Double.doubleToLongBits(priceQuadruple);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (photoUrl != null ? photoUrl.hashCode() : 0);
-        result = 31 * result + (services != null ? services.hashCode() : 0);
-        result = 31 * result + (criteria != null ? criteria.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(services);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", head='" + head + '\'' +
-                ", description='" + description + '\'' +
-                ", priceSingle=" + priceSingle +
-                ", priceDouble=" + priceDouble +
-                ", priceTriple=" + priceTriple +
-                ", priceQuadruple=" + priceQuadruple +
-                ", photoUrl='" + photoUrl + '\'' +
-                ", services=" + services +
-                ", criteria=" + criteria +
-                '}';
     }
 }

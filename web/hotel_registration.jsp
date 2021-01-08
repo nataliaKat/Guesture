@@ -148,7 +148,7 @@
 
                         <div class="form-group">
                             <label for="services">Enter services, each one in new line</label>
-                            <textarea class="form-control" id="services"></textarea>
+                            <textarea class="form-control" id="services" name="services"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="criteria">Enter criteria, each one in new line</label>
@@ -158,7 +158,7 @@
                         <div class="form-group">
                             <label for="url" class="col-sm-4 control-label">Enter an https:// URL of an image:</label>
                             <div>
-                                <input type="text" id="de" name="description" class="form-control"
+                                <input type="text" id="url" name="description" class="form-control"
                                     placeholder="https://example.com"
                                     required>
                             </div>

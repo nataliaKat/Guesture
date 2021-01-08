@@ -19,17 +19,23 @@ String priceSingle = request.getParameter("p-1");
 String priceDouble = request.getParameter("p-2");
 String priceTriple = request.getParameter("p-3");
 String priceQuadruple = request.getParameter("p-4");
-String[] services = request.getParameterValues("services");
+String servicesAsString = request.getParameter("services");
 String terms = request.getParameter("terms");
 
-if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || terms == null) {
-    
+
+    System.out.println(username);
+    System.out.println(password);
+    String[] services = servicesAsString.split("\n");
+    for (String s : services) {
+        System.out.println("hello new string");
+        System.out.println(s);
+    }
+    if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || terms == null) {
+    System.out.println("hello im here");
    response.sendRedirect("hotel_registration.jsp");
    return;
 
 }
-
-try {
     
     if ( username.length() == 0 ) {
         throw new Exception("No email inserted");
@@ -91,7 +97,7 @@ try {
         throw new Exception("No Price per Quadruple Room inserted");
     }
 
-    if ( services.length == 0 ) {
+    if ( services.length == 0) {
         throw new Exception("No Services inserted");
     }
 
@@ -99,23 +105,13 @@ try {
         throw new Exception("You must agree to terms and conditions");
     }
 
-    Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services);
+    Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple));
     
     UserDao userdao = new UserDao();
     userdao.register(hotel);
    
     request.setAttribute("hotel_obj", hotel);
-%>    
-    <jsp:forward page="index.jsp"/>
-<% 
-
-} catch(Exception e) {
-    // adding error message to request and forward to form page
-    request.setAttribute( "error_message", e.getMessage() );
-
 %>
-    <jsp:forward page="hotel_registration.jsp"/>
-<%    
-}
 
-%>
+<jsp:forward page="hotel_registration.jsp"/>
+
