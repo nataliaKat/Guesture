@@ -22,7 +22,7 @@ String priceQuadruple = request.getParameter("p-4");
 String[] services = request.getParameterValues("services");
 String terms = request.getParameter("terms");
 
-if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || criteria == null || terms == null) {
+if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || terms == null) {
     
    response.sendRedirect("hotel_registration.jsp");
    return;
@@ -49,13 +49,8 @@ try {
         throw new Exception("Password must be at least 8 characters");
     }
     
-    if ( !(repeat_password.equals(password)) ) {
-
-    if ( password.length() <= 8 ) {
-        throw new Exception("Password must be at least 8 characters");
-    }
     
-    if ( (!(repeat_password.equals(password))  {
+    if ( !(repeat_password.equals(password) ) )  {
 
         throw new Exception("Password and Repeat Password do not match");
     }
@@ -96,7 +91,7 @@ try {
         throw new Exception("No Price per Quadruple Room inserted");
     }
 
-    if ( services.length() == 0 ) {
+    if ( services.length == 0 ) {
         throw new Exception("No Services inserted");
     }
 
@@ -104,7 +99,7 @@ try {
         throw new Exception("You must agree to terms and conditions");
     }
 
-    Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services, criteria);
+    Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services);
     
     UserDao userdao = new UserDao();
     userdao.register(hotel);
@@ -121,5 +116,6 @@ try {
 %>
     <jsp:forward page="hotel_registration.jsp"/>
 <%    
-} 
+}
+
 %>

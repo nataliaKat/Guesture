@@ -13,8 +13,8 @@ public class Hotel extends User {
     private double priceTriple;
     private double priceQuadruple;
     private String photoUrl;
-    private List<String> services = new ArrayList<String>();
-    private List<String> criteria = new ArrayList<String>();
+    private String[] services;
+    
 
     public Hotel(){
 
@@ -33,7 +33,7 @@ public class Hotel extends User {
         this.description = description;
     }
 
-    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple, List<String> services, List<String> criteria) {
+    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple, String [] services) {
         super(username,password);
         this.name = name;
         this.address = address;
@@ -45,7 +45,6 @@ public class Hotel extends User {
         this.priceTriple = priceTriple;
         this.priceQuadruple = priceQuadruple;
         this.services = services;
-        this.criteria = criteria;
     }
 
     public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, double priceSingle, double priceDouble, double priceTriple, double priceQuadruple) {
