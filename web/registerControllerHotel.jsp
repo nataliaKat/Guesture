@@ -44,11 +44,11 @@ try {
 		throw new Exception(username + " is not a valid email address!");
     }	
 
-    if ( password.length() < = 8 ) {
+    if ( password.length() < 8 ) {
         throw new Exception("Password must be at least 8 characters");
     }
     
-    if ( (!(repeat_password.equals(password)) ) {
+    if ( !(repeat_password.equals(password)) ) {
         throw new Exception("Password and Repeat Password do not match");
     }
 
@@ -88,11 +88,11 @@ try {
         throw new Exception("No Price per Quadruple Room inserted");
     }
 
-    if ( services.length() == 0 ) {
+    if ( services.size() == 0 ) {
         throw new Exception("No Services inserted");
     }
 
-    if ( criteria.length() == 0 ) {
+    if ( criteria.size() == 0 ) {
         throw new Exception("No Criteria inserted");
     }
 
@@ -100,7 +100,7 @@ try {
         throw new Exception("You must agree to terms and conditions");
     }
 
-    Hotel hotel = new Hotel(username, password, name, address, phoneNumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services, criteria);
+    Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services, criteria);
     
     UserDao userdao = new UserDao();
     userdao.register(hotel);
