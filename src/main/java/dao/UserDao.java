@@ -97,22 +97,15 @@ public class UserDao {
             pst.setDouble(10, hotel.getPriceQuadruple());
 			pst.executeUpdate();
 
-			for (String service : hotel.getServices()) {
+			/*for (String service : hotel.getServices()) {
 				String sql2 = "INSERT INTO Service (name, hotel_username) VALUES (?, ?)";
 			    pst = con.prepareStatement(sql2);
 			    pst.setString(1, service);
 				pst.setString(2, hotel.getUsername());
 				pst.executeUpdate();
-			}
+			} */
 
-			for (String criterion : hotel.getCriteria()) {
-				String sql3 = "INSERT INTO Criterion (name, min, max, username)" + 
-				"VALUES ('Cleanness', 1, 10, 'luxury@gmail.com')";
-			    pst = con.prepareStatement(sql3);
-			    pst.setString(1, criterion);
-				pst.setString(2, hotel.getUsername());
-				pst.executeUpdate();
-			}
+			
 			
 
 			rs.close();

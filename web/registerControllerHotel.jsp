@@ -19,8 +19,7 @@ String priceSingle = request.getParameter("p-1");
 String priceDouble = request.getParameter("p-2");
 String priceTriple = request.getParameter("p-3");
 String priceQuadruple = request.getParameter("p-4");
-List<String> services = request.getParameterValues("services");
-List<String> criteria = request.getParameterValues("criteria");
+String[] services = request.getParameterValues("services");
 String terms = request.getParameter("terms");
 
 if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || criteria == null || terms == null) {
@@ -45,19 +44,19 @@ try {
 		throw new Exception(username + " is not a valid email address!");
     }	
 
-<<<<<<< HEAD
+
     if ( password.length() < 8 ) {
         throw new Exception("Password must be at least 8 characters");
     }
     
     if ( !(repeat_password.equals(password)) ) {
-=======
+
     if ( password.length() <= 8 ) {
         throw new Exception("Password must be at least 8 characters");
     }
     
     if ( (!(repeat_password.equals(password))  {
->>>>>>> 6ceffb9b423261fff8ee091df90423a2f8c1cb28
+
         throw new Exception("Password and Repeat Password do not match");
     }
 
@@ -97,12 +96,8 @@ try {
         throw new Exception("No Price per Quadruple Room inserted");
     }
 
-    if ( services.size() == 0 ) {
+    if ( services.length() == 0 ) {
         throw new Exception("No Services inserted");
-    }
-
-    if ( criteria.size() == 0 ) {
-        throw new Exception("No Criteria inserted");
     }
 
     if ( terms.length() == 0 ) {
