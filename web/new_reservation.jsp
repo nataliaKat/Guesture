@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
 
@@ -7,6 +8,7 @@
 
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
+<%@ page import="dao.HotelDao" %>
 
 
 <!doctype html>
@@ -20,14 +22,14 @@
 </head>
 
 <body id="new_reservation">
-<%@include file="navbar.jsp"%>
+<%@include file="agency_navbar.jsp"%>
     
 
     <% 
     ReservationDao rd = new ReservationDao();
-
+    HotelDao hotelDao = new HotelDao();
     /* */
-    String hotelUsername = "portoven@gmail.com";
+    String hotelUsername = (String)request.getAttribute("hotel");
     String agencyUsername = "holidays@gmail.com";
 
     double [] prices = rd.getPricePerRoomType(hotelUsername);

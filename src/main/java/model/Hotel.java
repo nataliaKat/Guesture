@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hotel extends User {
-
-    private String username;
     private String name;
     private String address;
     private String phoneNumber;
@@ -14,6 +12,7 @@ public class Hotel extends User {
     private double priceDouble;
     private double priceTriple;
     private double priceQuadruple;
+    private String photoUrl;
     private List<String> services = new ArrayList<String>();
     private List<String> criteria = new ArrayList<String>();
 
@@ -26,7 +25,7 @@ public class Hotel extends User {
     }
 
     public Hotel(String username, String name, String address, String phoneNumber, String head, String description) {
-        this.username = username;
+        super(username);
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -62,13 +61,16 @@ public class Hotel extends User {
         this.priceQuadruple = priceQuadruple;
     }
 
-    public String getUsername() {
-        return username;
+    public Hotel(String username, String name, String address, String phoneNumber, String head, String description, String photoUrl) {
+        super(username);
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.head = head;
+        this.description = description;
+        this.photoUrl = photoUrl;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getName() {
         return name;
@@ -142,6 +144,38 @@ public class Hotel extends User {
         this.priceQuadruple = priceQuadruple;
     }
 
+    public void setPriceSingle(double priceSingle) {
+        this.priceSingle = priceSingle;
+    }
+
+    public void setPriceDouble(double priceDouble) {
+        this.priceDouble = priceDouble;
+    }
+
+    public void setPriceTriple(double priceTriple) {
+        this.priceTriple = priceTriple;
+    }
+
+    public void setPriceQuadruple(double priceQuadruple) {
+        this.priceQuadruple = priceQuadruple;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public void setServices(List<String> services) {
+        this.services = services;
+    }
+
+    public void setCriteria(List<String> criteria) {
+        this.criteria = criteria;
+    }
+
     public List<String> getServices() {
         return services;
     }
@@ -157,66 +191,67 @@ public class Hotel extends User {
     public void setCriteria() {
         this.criteria = criteria;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Hotel)) return false;
+        if (!super.equals(o)) return false;
+
+        Hotel hotel = (Hotel) o;
+
+        if (Double.compare(hotel.priceSingle, priceSingle) != 0) return false;
+        if (Double.compare(hotel.priceDouble, priceDouble) != 0) return false;
+        if (Double.compare(hotel.priceTriple, priceTriple) != 0) return false;
+        if (Double.compare(hotel.priceQuadruple, priceQuadruple) != 0) return false;
+        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
+        if (address != null ? !address.equals(hotel.address) : hotel.address != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(hotel.phoneNumber) : hotel.phoneNumber != null) return false;
+        if (head != null ? !head.equals(hotel.head) : hotel.head != null) return false;
+        if (description != null ? !description.equals(hotel.description) : hotel.description != null) return false;
+        if (photoUrl != null ? !photoUrl.equals(hotel.photoUrl) : hotel.photoUrl != null) return false;
+        if (services != null ? !services.equals(hotel.services) : hotel.services != null) return false;
+        return criteria != null ? criteria.equals(hotel.criteria) : hotel.criteria == null;
+    }
+
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((address == null) ? 0 : address.hashCode());
-        result = prime * result + ((description == null) ? 0 : description.hashCode());
-        result = prime * result + ((head == null) ? 0 : head.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-        result = prime * result + ((username == null) ? 0 : username.hashCode());
+        int result = super.hashCode();
+        long temp;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (head != null ? head.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        temp = Double.doubleToLongBits(priceSingle);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(priceDouble);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(priceTriple);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(priceQuadruple);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (photoUrl != null ? photoUrl.hashCode() : 0);
+        result = 31 * result + (services != null ? services.hashCode() : 0);
+        result = 31 * result + (criteria != null ? criteria.hashCode() : 0);
         return result;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Hotel other = (Hotel) obj;
-        if (address == null) {
-            if (other.address != null)
-                return false;
-        } else if (!address.equals(other.address))
-            return false;
-        if (description == null) {
-            if (other.description != null)
-                return false;
-        } else if (!description.equals(other.description))
-            return false;
-        if (head == null) {
-            if (other.head != null)
-                return false;
-        } else if (!head.equals(other.head))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (phoneNumber == null) {
-            if (other.phoneNumber != null)
-                return false;
-        } else if (!phoneNumber.equals(other.phoneNumber))
-            return false;
-        if (username == null) {
-            if (other.username != null)
-                return false;
-        } else if (!username.equals(other.username))
-            return false;
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "Hotel [address=" + address + ", description=" + description + ", head=" + head + ", name=" + name
-                + ", phoneNumber=" + phoneNumber + ", username=" + username + "]";
+        return "Hotel{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", head='" + head + '\'' +
+                ", description='" + description + '\'' +
+                ", priceSingle=" + priceSingle +
+                ", priceDouble=" + priceDouble +
+                ", priceTriple=" + priceTriple +
+                ", priceQuadruple=" + priceQuadruple +
+                ", photoUrl='" + photoUrl + '\'' +
+                ", services=" + services +
+                ", criteria=" + criteria +
+                '}';
     }
-
 }

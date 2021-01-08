@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="dao.*" %>
+<%@ page errorPage="errorPage.jsp" %>
+<%@ page import="dao.UserDao" %>
+<%@ page import="model.Hotel" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 
 
 <% 
@@ -44,11 +45,19 @@ try {
 		throw new Exception(username + " is not a valid email address!");
     }	
 
+<<<<<<< HEAD
     if ( password.length() < 8 ) {
         throw new Exception("Password must be at least 8 characters");
     }
     
     if ( !(repeat_password.equals(password)) ) {
+=======
+    if ( password.length() <= 8 ) {
+        throw new Exception("Password must be at least 8 characters");
+    }
+    
+    if ( (!(repeat_password.equals(password))  {
+>>>>>>> 6ceffb9b423261fff8ee091df90423a2f8c1cb28
         throw new Exception("Password and Repeat Password do not match");
     }
 
