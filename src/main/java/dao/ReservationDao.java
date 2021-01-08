@@ -23,12 +23,21 @@ public class ReservationDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                reservations.add(new Reservation(rs.getInt(1),
-                        rs.getDate(2), rs.getString(3), rs.getDate(4),
-                        rs.getString(5), rs.getDate(6), rs.getBoolean(7), rs.getBoolean(8),
-                        rs.getBoolean(9), rs.getString(10)));
-            }
+                
+            int reservationId = rs.getInt("reservationId");
+                Date arrivalDate = rs.getDate("arrivalDate");
+                String arrivalTime = rs.getString("arrivalTime");
+                Date departureDate = rs.getDate("departureDate");
+                String departureTime = rs.getString("departureTime");
+                Date submittedOn = rs.getDate("submittedOn");
+                Boolean checkin = rs.getBoolean("checkin");
+                Boolean chekout = rs.getBoolean("chekout");
+                Boolean confirmed = rs.getBoolean("confirmed");
 
+                Reservation reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, confirmed);
+
+                reservationsOfAgencyList.add(reservation);
+            }
             stmt.close();
             rs.close();
 

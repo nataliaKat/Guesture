@@ -6,24 +6,52 @@
 </head>
 <body>
 <%@include file="navbar.jsp"%>
+
+<% 
+        /* */
+        String hotelUsername = "portoven@gmail.com";
+        String agencyUsername = "holidays@gmail.com";
+
+        ReservationDao rd = new ReservationDao();
+
+        double [] prices = rd.getPricePerRoomType(hotelUsername);
+
+        User user = (User)session.getAttribute("userObj");
+//      hotelUsername = user.getUsername();
+
+        int id = 0;
+//      int id = request.getParameter("id");
+        
+        List<Reservation> reservationsOfHotelList = rd.getAll(hotelUsername);
+        int reservationId = reservationsOfHotelList.get(id).getReservationId();
+
+    %>
 <main>
     <div class="container">
         <div class="row mb-3">
             <div class="col-md-12">
-                <h2><i>Reservation #18 Details</i></h2>
+                <h2><i>Reservation <%=reservationId %> Details</i></h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="box">
-                    <b>Reservation id:</b> 18<br>
-                    <b>Agency:</b> Dream Agency<br>
-                    <b>Created on:</b> 2020/02/12<br>
-                    <b>Confirmed: </b> Yes<br>
-                    <b>Checked in: </b> Yes<br>
-                    <b>Checked out: </b> No<br>
+                    <b>Reservation id:</b> <%=reservationId %><br>
+                    <b>Agency:</b> <%=reservationsOfHotelList.get(id).getAgencyName() %><br>
+                    <b>Created on:</b> <%=reservationsOfHotelList.get(id).getSubmittedOn() %><br>
+                    <b>Confirmed: </b> <%=reservationsOfHotelList.get(id).getConfirmed() %><br>
+                    <b>Checked in: </b> <% 
+                    if (reservationsOfHotelList.get(id).isCheckedOut()) { %>
+                        No
+                    <% } %>
+                    <br>
+                    <b>Checked out: </b> <% 
+                    if (reservationsOfHotelList.get(id).isCheckedOut()) { %>
+                        Yes
+                    <% } %>
+                    <br>
                     <b>Comments: </b>
-                    Mrs X wants a room in the 1st floor, Vegan menu
+                    <%=reservationsOfHotelList.get(id).getComments() %>
                 </div>
             </div>
             <div class="col-md-4">
@@ -37,28 +65,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Single</td>
-                            <td>
-                                45
-                            </td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>Double</td>
-                            <td>50</td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>Triple</td>
-                            <td>55</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td>Quad</td>
-                            <td>60</td>
-                            <td>13</td>
-                        </tr>
+                            <tr>
+                                <td>Single</td>
+                                <td><%=prices[0]%></td>
+                                <td><%=reservationsOfHotelList.get(id).getSingleRooms() %></td>
+                              </tr>
+                              <tr>
+                                <td>Double</td>
+                                <td><%=prices[1]%></td>
+                                <td><%=reservationsOfHotelList.get(id).getDoubleRooms() %></td>
+                              </tr>
+                              <tr>
+                                <td>Triple</td>
+                                <td><%=prices[2]%></td>
+                                <td><%=reservationsOfHotelList.get(id).getTripleRooms() %></td>
+                              </tr>
+                              <tr>
+                                <td>Quad</td>
+                                <td><%=prices[3]%></td>
+                                <td><%=reservationsOfHotelList.get(id).getQuadrupleRooms() %></td>
+                              </tr>
                         </tbody>
                     </table>
                 </div>
@@ -121,7 +147,24 @@
                         </tr>
                         </thead>
                         <tbody>
+                            <% 
 
+                            GroupCustomerDao gcd = new GroupCustomerDao();
+                            List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(reservationId);
+                            for (int i = 0; i < groupMembers.size() ; i++) {
+                                
+                            %>
+
+                            <tr>
+                                <td><%=reservationId %></td>
+                                <td><%=groupMembers.get(i).getName() %></td>
+                                <td><%=groupMembers.get(i).getSurname() %></td>
+                                <td><%=groupMembers.get(i).getIdentityNumber() %></td>
+                                <td><%=groupMembers.get(i).getTelephone() %></td>
+                                <td><%=groupMembers.get(i).getEmail() %></td>
+                                <td><%=groupMembers.get(i).getGrouping().getRoomId() %></td>
+                            </tr>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -129,7 +172,16 @@
             <div class="col-md-3">
                 <h4 class="text-center">Services</h4>
                 <ol>
-                    <li>...</li>
+                    <%
+
+                    ServiceDao sd = new ServiceDao();
+                    List<Service> services = sd.getServicesPerReservation(reservationId, hotelUsername);
+                    for (int i = 0; i < services.size(); i++) {
+                        
+                    %>
+                        <li><%=services.get(i).getName() %></li>
+
+                    <% } %>
                 </ol>
             </div>
         </div>
