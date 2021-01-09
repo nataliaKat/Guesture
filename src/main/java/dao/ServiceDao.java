@@ -126,4 +126,31 @@ public class ServiceDao {
 
     }
 
+    public void register(Service service) throws Exception {
+		Connection con = null;
+        DB db = new DB();
+        
+		try {
+			con = db.getConnection();
+	
+            String sql = "INSERT INTO Service (name, hotel_username) VALUES (?, ?)";
+            pst = con.prepareStatement(sql);
+            pst.setString(1, service.getName());
+            pst.setString(2, service.getHotelName());
+            pst.executeUpdate();
+
+			rs.close();
+			pst.close();			
+		} catch(Exception e) {
+			throw new Exception(e.getMessage());
+		} finally {
+            try {
+                db.close();
+            } catch (Exception e) {                
+
+            }
+		}		
+    }
+    // end of register
+
 }

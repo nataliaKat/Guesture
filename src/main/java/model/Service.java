@@ -5,6 +5,7 @@ public class Service {
     private int serviceId;
     private String name;
     private String hotelName;
+    private String [] services;
 
     public Service() {
 
@@ -16,6 +17,11 @@ public class Service {
         this.name = name;
         this.hotelName = hotelName;
 
+    }
+
+    public Service (String name, String hotelName) {
+        this.name = name;
+        this.hotelName = hotelName;
     }
 
     public int getServiceId() {
