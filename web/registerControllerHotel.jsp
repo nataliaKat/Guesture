@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage="errorPage.jsp" %>
 <%@ page import="dao.UserDao" %>
+<%@ page import="dao.HotelDao" %>
+<%@ page import="dao.ServiceDao" %>
+<%@ page import="model.Hotel" %>
+<%@ page import="model.Service" %>
 <%@ page import="model.Hotel" %>
 <%@ page import="java.util.List" %>
 
@@ -102,9 +106,16 @@ String terms = request.getParameter("terms");
     }
 
     Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services);
-    
-    UserDao userdao = new UserDao();
-    userdao.register(hotel);
+    HotelDao hoteldao = new HotelDao();
+    hoteldao.register(hotel);
+ 
+    int arrayLength = services.length;
+    for (int i = 0; i <= arrayLength - 1; i++) {
+
+        Service service = new Service(services[i], username);
+        ServiceDao servicedao = new ServiceDao();
+        servicedao.register(service);
+    }
    
     request.setAttribute("hotel_obj", hotel);
 %>
