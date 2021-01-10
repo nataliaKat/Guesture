@@ -26,12 +26,8 @@ String terms = request.getParameter("terms");
     System.out.println(username);
     System.out.println(password);
     String[] services = servicesAsString.split("\n");
-    for (String s : services) {
-        System.out.println("hello new string");
-        System.out.println(s);
-    }
+
     if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || terms == null) {
-    System.out.println("hello im here");
    response.sendRedirect("hotel_registration.jsp");
    return;
 
@@ -105,7 +101,7 @@ String terms = request.getParameter("terms");
         throw new Exception("You must agree to terms and conditions");
     }
 
-    Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple));
+    Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services);
     
     UserDao userdao = new UserDao();
     userdao.register(hotel);

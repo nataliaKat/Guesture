@@ -24,19 +24,24 @@ public class ReservationDao {
 
             while (rs.next()) {
                 
-            int reservationId = rs.getInt("reservationId");
+                int reservationId = rs.getInt("reservationId");
                 Date arrivalDate = rs.getDate("arrivalDate");
                 String arrivalTime = rs.getString("arrivalTime");
                 Date departureDate = rs.getDate("departureDate");
                 String departureTime = rs.getString("departureTime");
                 Date submittedOn = rs.getDate("submittedOn");
-                Boolean checkin = rs.getBoolean("checkin");
-                Boolean chekout = rs.getBoolean("chekout");
-                Boolean confirmed = rs.getBoolean("confirmed");
-
-                Reservation reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, confirmed);
-
-                reservationsOfAgencyList.add(reservation);
+                boolean checkin = rs.getBoolean("checkin");
+                boolean chekout = rs.getBoolean("chekout");
+                int singleRooms = rs.getInt("singleRooms");
+                int doubleRooms = rs.getInt("doubleRooms");
+                int tripleRooms = rs.getInt("tripleRooms");
+                int quadrupleRooms = rs.getInt("quadrupleRooms");
+                boolean confirmed = rs.getBoolean("confirmed");
+                String comments = rs.getString("comments");
+                String agencyUsername = rs.getString("username_agency");
+                Reservation reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout,
+                        agencyUsername, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, comments, confirmed);
+                reservations.add(reservation);
             }
             stmt.close();
             rs.close();
