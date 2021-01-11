@@ -50,11 +50,7 @@
                         <th scope="col">Hotel</th>
                         <th scope="col">Confirmed</th>
                         <th scope="col">Arrival date</th>
-                        <th scope="col">Arrival time</th>
-                        <th scope="col">Departure date</th>
-                        <th scope="col">Departure time</th>
-                        <th scope="col">Made on</th>
-                        <th scope="col">Show services</th>
+                        <th scope="col">Reservation Details</th>
                         <th scope="col">Add Members</th>
                     </tr>
                 </thead>
@@ -76,24 +72,19 @@
                         <td><%=reservationId%></td>
                         <td><%=reservationsOfAgencyList.get(i).getHotelName()%></td>
                         
-                        <% if (reservationsOfAgencyList.get(i).getConfirmed().equals("true")) { %>
+                        <% if (reservationsOfAgencyList.get(i).getConfirmed().equals(true)) { %>
                             <td>Yes</td>
                         <% } else { %>
                             <td>No</td>
                         <% } %>
                             
                         <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getArrivalTime()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getDepartureDate()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getDepartureTime()%></td>
-                        <td><%=reservationsOfAgencyList.get(i).getSubmittedOn()%></td>
 
-                        <td>
-
-                            <button type="button" class="btn btn-info" data-toggle="modal"
-                                data-target="#services-modal"><i class="fas fa-utensils"></i></button>
-
-                        </td>
+                        <td> 
+                            <form action="reservation_details.jsp" target="_blank">
+                                <button class="blueButton">Reservation Details</button>
+                            </form>
+                       </td>
                         
                         <% 
                         GroupCustomerDao gcd = new GroupCustomerDao();
@@ -128,11 +119,7 @@
                             <th scope="col">Hotel</th>
                             <th scope="col">Confirmed</th>
                             <th scope="col">Arrival date</th>
-                            <th scope="col">Arrival time</th>
-                            <th scope="col">Departure date</th>
-                            <th scope="col">Departure time</th>
-                            <th scope="col">Made on</th>
-                            <th scope="col">Show services</th>
+                            <th scope="col">Reservation Details</th>
                             <th scope="col">Add Members</th>
                         </tr>
                     </tfoot>
@@ -140,42 +127,6 @@
             </table>
         </div>
     </main>
-    
-    
-    <!-- Modal For Services -->
-    <div class="modal fade" id="services-modal" tabindex="-1" role="dialog" aria-labelledby="Group Customers"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Services">Services</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <ul class="list-group">
-
-                        <% 
-                        ServiceDao sd = new ServiceDao();
-                        
-                        List<Service> servicesOfReservation = sd.getServicesPerReservation(reservationId, hotelUsername);
-                        
-                        for (int i = 0; i < servicesOfReservation.size(); i++) { %>
-
-                            <li class="list-group-item"><%=servicesOfReservation.get(i).getName()%></li>
-
-                        <% } %>
-
-                    </ul>
-                </div>
-                    
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     
     <%@include file="footer.jsp" %>
