@@ -61,6 +61,7 @@
                     List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
 
                     int reservationId = 0;
+                    boolean b1 = true;
 
                     for (int i = 0; i < reservationsOfAgencyList.size(); i++) {
 
@@ -72,7 +73,7 @@
                         <td><%=reservationId%></td>
                         <td><%=reservationsOfAgencyList.get(i).getHotelName()%></td>
                         
-                        <% if (reservationsOfAgencyList.get(i).getConfirmed().equals(true)) { %>
+                        <% if (reservationsOfAgencyList.get(i).getConfirmed() == b1) { %>
                             <td>Yes</td>
                         <% } else { %>
                             <td>No</td>
@@ -89,9 +90,8 @@
                         <% 
                         GroupCustomerDao gcd = new GroupCustomerDao();
                         List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationId);
-                        String s1 = "true";
-
-                        if (reservationsOfAgencyList.get(i).getConfirmed().equals(s1) && groupCustomers.size() == 0) { %>
+                       
+                        if ((reservationsOfAgencyList.get(i).getConfirmed() == b1) && (groupCustomers.size() == 0)) { %>
                                
                             <td> 
                                 <form action="group_members.jsp" target="_blank">
@@ -99,7 +99,7 @@
                                 </form>
                            </td>
 
-                        <% } else if (reservationsOfAgencyList.get(i).getConfirmed().equals(s1)) { %>
+                        <% } else if (reservationsOfAgencyList.get(i).getConfirmed() == b1) { %>
 
                             <td>You have already added members!</td>
 
