@@ -43,7 +43,7 @@
             <tbody style="text-align: center;">
                 <% ReservationDao rd=new ReservationDao();
                 AgencyDao agencyDao = new AgencyDao();
-                String username = "sweethome@yahoo.com"; //temporary
+                String username = ((Hotel)session.getAttribute("userObj")).getUsername();
                 List<Reservation> reservations = rd.getAll(username);
                  for (int i = 0; i < reservations.size(); i++) { %>
 

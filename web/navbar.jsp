@@ -22,18 +22,9 @@
                 </li>
                 <li class="nav-item">
                 </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("agencies.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="agencies.jsp">Agencies</a>
-                </li>
                 <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reservations.jsp") ? "active": "" %>">
                     <a class="nav-link" href="reservations.jsp">Reservations<span
                             class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reviews.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="reviews.jsp">Reviews</a>
-                </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("chart.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="chart.jsp">Statistics</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-user"></i><%= ((Hotel)session.getAttribute("userObj")).getName()%></a>
