@@ -14,6 +14,7 @@ public class Hotel extends User {
     private String photoUrl;
     private String[] services;
     
+    
 
     public Hotel(){
 
@@ -32,7 +33,7 @@ public class Hotel extends User {
         this.description = description;
     }
 
-    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple, String [] services) {
+    public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, Double priceSingle, Double priceDouble, Double priceTriple, Double priceQuadruple, String [] services, String photoUrl) {
         super(username,password);
         this.name = name;
         this.address = address;
@@ -44,6 +45,7 @@ public class Hotel extends User {
         this.priceTriple = priceTriple;
         this.priceQuadruple = priceQuadruple;
         this.services = services;
+        this.photoUrl = photoUrl;
     }
 
     public Hotel(String username, String password, String name, String address, String phoneNumber, String head, String description, double priceSingle, double priceDouble, double priceTriple, double priceQuadruple) {
