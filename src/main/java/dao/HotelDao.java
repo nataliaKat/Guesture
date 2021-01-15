@@ -69,8 +69,8 @@ public class HotelDao {
             pst.setString(2, hotel.getPassword());
             pst.executeUpdate();
 
-			String sql2 = "INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple)" +
-							" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql2 = "INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple, url)" +
+							" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pst = con.prepareStatement(sql2);
 			pst.setString(1, hotel.getUsername());
 			pst.setString(2, hotel.getName());
@@ -82,6 +82,7 @@ public class HotelDao {
             pst.setDouble(8, hotel.getPriceDouble());
             pst.setDouble(9, hotel.getPriceTriple());
             pst.setDouble(10, hotel.getPriceQuadruple());
+            pst.setString(11, hotel.getPhotoUrl());
 			pst.executeUpdate();
 
 			rs.close();
