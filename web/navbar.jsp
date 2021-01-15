@@ -1,4 +1,4 @@
-<%--
+<%@ page import="model.Hotel" %><%--
   Created by IntelliJ IDEA.
   User: kat26
   Date: 12/5/2020
@@ -36,7 +36,7 @@
                     <a class="nav-link" href="chart.jsp">Statistics</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i><%= ((Hotel)session.getAttribute("userObj")).getName()%></a>
 
                 </li>
                 <li class="nav-item">

@@ -72,8 +72,8 @@ public class AgencyDao {
 			pst.setString(2, agency.getTelephone());
 			pst.setString(3, agency.getMail());
             pst.setString(4, agency.getVatNumber());
-            pst.setString(5, agency.getRegistrationDate());
-            pst.setDouble(6, agency.getUsername());
+//            pst.setString(5, agency.getRegistrationDate());
+//            pst.setDouble(6, agency.getUsername());
 			pst.executeUpdate();
 
 			rs.close();

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Hotel" %>
+<%@ page import="model.Agency" %><%--
   Created by IntelliJ IDEA.
   User: kat26
   Date: 12/5/2020
@@ -32,7 +33,7 @@
                     <a class="nav-link" href="reviews.jsp">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Oraia Komotini Agency</a>
+                    <a class="nav-link" href="#"><i class="fas fa-user"><%= ((Agency)session.getAttribute("userObj")).getName()%></i></a>
 
                 </li>
                 <li class="nav-item">
