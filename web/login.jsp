@@ -38,9 +38,9 @@
                             <label class="sr-only" for="password">Password</label>
                             <div class="input-group my-input">
                                 <div class="input-group-text"><i class="fa fa-lock"></i></div>
-                                <input name="password" type="text" class="form-control" id="password" placeholder="Password">
+                                <input name="password" type="password" class="form-control" id="password" placeholder="Password">
                             </div>
-                            <input type="checkbox" checked> Remember me</input>
+                            
                             <button class="brownButton" id="submit-button" type="submit">Login</button>
                             <hr style="color: gray;">
                             <div>New User?<br> <a href="hotel_registration.jsp"><u>Sign Up As a Hotel!</u></a> <br>

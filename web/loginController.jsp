@@ -4,10 +4,10 @@
 <%@ page errorPage="errorPage.jsp" %>
 
 <%
-String uname = request.getParameter("username");
-String passwd = request.getParameter("password");
+String username = request.getParameter("username");
+String password = request.getParameter("password");
 
-if (uname == null || passwd == null) {
+if (username == null || password == null) {
 
     response.sendRedirect("login.jsp");
     return;
@@ -22,7 +22,7 @@ try {
    <jsp:forward page="index.jsp" />
    <% } if (user instanceof Agency){
     %>
-    <jsp:forward page="" />
+    <jsp:forward page="view_hotels.jsp" />
    <% } %>
    <% } catch (Exception e) {
        request.setAttribute("message", "Wrong username or password" + e.getMessage());

@@ -2,6 +2,7 @@ package dao;
 
 import model.Hotel;
 
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +42,7 @@ public class HotelDao {
 
     /**
 	 * Register/create new Hotel user.
-	 * 
+	 *
 	 * @param hotel, Hotel
 	 * @throws Exception, if encounter any error.
 	 */
@@ -59,7 +60,7 @@ public class HotelDao {
 				rs.close();
 				pst.close();
 				db.close();
-				throw new Exception("username already registered"); 
+				throw new Exception("username already registered");
             }
 
             String sql1 = "INSERT INTO User(username, password) VALUES (?, ?)";
@@ -84,16 +85,16 @@ public class HotelDao {
 			pst.executeUpdate();
 
 			rs.close();
-			pst.close();			
+			pst.close();
 		} catch(Exception e) {
 			throw new Exception(e.getMessage());
 		} finally {
             try {
                 db.close();
-            } catch (Exception e) {                
+            } catch (Exception e) {
 
             }
-		}		
+		}
     }
     // end of register
 

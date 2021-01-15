@@ -58,7 +58,7 @@ if ( name == null || phone == null || mail == null || vat == null || date == nul
     request.setAttribute( "error_message", e.getMessage() );
     
  %>
-        <jsp:forward page="hotel_registration.jsp"/>
+        <jsp:forward page="new_agency.jsp"/>
  <%    
  } 
  %>

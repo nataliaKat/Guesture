@@ -74,6 +74,21 @@
                                required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-10 control-label">Password </label>
+                    <div class="col-sm-10">
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Enter Password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="repeat_password" class="col-sm-12 control-label">Repeat Password </label>
+                    <div class="col-sm-10">
+                        <input type="password" id="repeat_password" name="repeat_password" class="form-control"
+                            placeholder="Repeat Password" required>
+                    </div>
+                </div>
+
                 <div class="form-agency">
                     <label for="tel" class="col-sm-4 control-label" style="padding-top: 2%;">Telephone</label>
                     <div class="col-sm-10">

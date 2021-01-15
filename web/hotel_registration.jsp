@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Back</a>
+                        <a class="nav-link" href="login.jsp">Back</a>
                     </li>
                 </ul>
             </div>
@@ -91,7 +91,7 @@
                             <label for="description" class="col-sm-10 control-label">Description</label>
                             <div class="col-sm-10">
                                 <textarea id="description" name="description" class="form-control"
-                                          placeholder="Enter a description" required></textarea>
+                                          placeholder="Enter a description"></textarea>
                             </div>
                         </div>
                          
@@ -148,13 +148,8 @@
                             <div class="col-sm-10">
                                 <textarea class="form-control" id="services" name="services"></textarea>
                             </div>
-                            </div>
-                        <div class="form-group">
-                            <label class="col-sm-10 control-label" for="criteria">Enter criteria, each one in new line</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" id="criteria"></textarea>
-                            </div>
                         </div>
+                       
 
                         <div class="form-group">
                             <label for="url" class="col-sm-10 control-label">Enter an https:// URL of an image:</label>
