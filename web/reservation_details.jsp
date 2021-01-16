@@ -29,40 +29,11 @@
 
 <body>
     <header>
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-light  custom-nav">
-            <a class="navbar-brand" href="index.html"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agencies.jsp">Agencies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="reservations.jsp">Reservations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="reviews.jsp">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="chart.jsp">Statistics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <title>Dream Hotel | Reservation Details</title>
+        <%@include file="header.jsp" %>
     </header>
 
     <% 
@@ -78,7 +49,7 @@
 //      agencyUsername = user.getUsername();
 
         int id = 0;
-//      int id = request.getParameter("id");
+//      int id = request.getAttribute("id");
         
         List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
         int reservationId = reservationsOfAgencyList.get(id).getReservationId();

@@ -78,43 +78,11 @@ rd.insertReservation(reservation);
 
 <body id="makeReservation">
     <header>
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-light  custom-nav">
-            <a class="navbar-brand" href="index.html"><img class="logo" src="../web/images/logo_blue_nav.png" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agencies.jsp">Agencies</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="reservations.jsp">Reservations<span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="reviews.html">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="chart.html">Statistics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <title>Dream Hotel | New Reservation</title>
+        <%@include file="header.jsp" %>
     </header>
     
     <!-- Begin page content -->
