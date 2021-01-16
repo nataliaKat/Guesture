@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.sql.Date"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.text.SimpleDateFormat"%>  
 <%@page import="java.util.List" %>
 <%@page import="java.text.ParseException"%>
@@ -59,6 +60,18 @@ for (int i=0; i <= services.size(); i ++){
 String comments = request.getParameter("comments");
 
 comments = new String(comments.getBytes("ISO-8859-1"), "UTF-8");
+
+/* get today's date and convert it to Date type */
+LocalDate localdate = LocalDate.now();
+Date localDateDate = java.sql.Date.valueOf(localdate);
+
+
+/* show errors */
+String errors = "";
+
+if (date.after(date1)) errors += "<li>Departure date is later than arrival date</li>";
+if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that today's date</li>";
+
 
 Reservation reservation = new Reservation(hotelName, agencyName, sqlDateArrival, time1, sqlDateDeparture, time2, numOfPeopleInt, n1Int, n2Int, n3Int, n4Int, comments);
 rd.insertReservation(reservation);
