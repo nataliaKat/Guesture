@@ -69,7 +69,7 @@ public class HotelDao {
             pst.setString(2, hotel.getPassword());
             pst.executeUpdate();
 
-			String sql2 = "INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple, url)" +
+			String sql2 = "INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple, photo_url)" +
 							" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pst = con.prepareStatement(sql2);
 			pst.setString(1, hotel.getUsername());
