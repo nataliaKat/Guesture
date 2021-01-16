@@ -25,6 +25,7 @@ String priceTriple = request.getParameter("p-3");
 String priceQuadruple = request.getParameter("p-4");
 String servicesAsString = request.getParameter("services");
 String terms = request.getParameter("terms");
+String photoUrl = request.getParameter("photoUrl");
 
 // convert from ISO-8859-1 (latin) to UTF-8 so as to support Greek characters
 address = new String(address.getBytes("ISO-8859-1"), "UTF-8");
@@ -32,7 +33,7 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
 
     String[] services = servicesAsString.split("\n");
 
-    if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || terms == null) {
+    if (username == null || password == null || repeat_password == null || name == null || address == null || phonenumber == null || description == null || priceSingle == null || priceDouble == null || priceTriple == null || priceQuadruple == null || services == null || terms == null || photoUrl == null) {
    response.sendRedirect("hotel_registration.jsp");
    return;
 
@@ -58,6 +59,7 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
     if (priceTriple.length() == 0) errors += "<li>No Price per Triple Room inserted</li>";
     if (priceQuadruple.length() == 0) errors += "<li>No Price per Quadruple Room inserted</li>";
     if (services.length == 0) errors += "<li>No Services inserted</li>";
+    if (photoUrl.length() == 0) errors += "<li>No Logo Photo inserted</li>";
     if (terms == null) errors += "<li>You must agree to terms and conditions</li>";
 
 %>
@@ -89,21 +91,18 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
     <!-- Begin page content -->
     <main class="container">
         <div id="registration_form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
-            <% if (errors == "") {%>
-                <div class="page-header">
-                    <h1>Registration almost done!</h1>
+            <% if (errors == "") { %>
+
+                <div class="alert alert-success" role="alert"> Registration form has been successfully completed!
                 </div>
-                <div class="alert alert-success" role="alert">
-                    <b>Note: </b>A verification link has been sent to the email <%=username%>
-                </div>
+
                 <%
-                   Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services);
+                Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services, photoUrl);
                    HotelDao hoteldao = new HotelDao();
                    hoteldao.register(hotel);
  
                    int arrayLength = services.length;
                    for (int i = 0; i <= arrayLength - 1; i++) {
-
 
                        Service service = new Service(services[i], username);
                        ServiceDao servicedao = new ServiceDao();
@@ -111,17 +110,9 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
                    }
    
                    request.setAttribute("hotel_obj", hotel);
-            
-               
-                %> <jsp:forward page="index.jsp"/>
-            
-            <%
-            
-            
-            
-           
-            
-            } else { %>
+                  %>  
+
+            <% } else { %>
                     <div class="page-header">
                         <h1>The Registration form has errors</h1>
                     </div>

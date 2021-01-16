@@ -154,7 +154,7 @@
                         <div class="form-group">
                             <label for="url" class="col-sm-10 control-label">Enter an https:// URL of an image:</label>
                             <div class="col-sm-10">
-                                <input type="text" id="url" name="description" class="form-control"
+                                <input type="text" id="url" name="photoUrl" class="form-control"
                                     placeholder="https://example.com"
                                     required>
                             </div>
