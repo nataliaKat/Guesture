@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage="errorPage.jsp" %>
-<%@ page import="dao.*" %>
-<%@ page import="model.*" %>
+<%@ page import="dao.AgencyDao" %>
+<%@ page import="model.Agency" %>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
 
 
 <% 
@@ -14,7 +16,7 @@ String mail = request.getParameter("mail");
 String vatNumber = request.getParameter("vat");
 String date = request.getParameter("date");
 
-if ( name == null || phone == null || mail == null || vat == null || date == null) {
+if ( name == null || telephone == null || mail == null || vatNumber == null || date == null) {
     
     response.sendRedirect("new_agency.jsp");
     return;
@@ -70,7 +72,8 @@ if (date.length() == 0) errors += "<li>No Date inserted</li>";
                 <div class="alert alert-success" role="alert"> Registration form has been successfully completed!
                 </div>
                 <%
-                   Agency agency = new Agency(mail, password, name, telephone, mail, vatNumber, date);
+                   Date obj_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                   Agency agency = new Agency(mail, password, name, telephone, mail, vatNumber, obj_date);
                    AgencyDao agencydao  = new AgencyDao();
                    agencydao.register(agency);
                    
@@ -79,7 +82,7 @@ if (date.length() == 0) errors += "<li>No Date inserted</li>";
                    
                 } else { %>
                     <div class="page-header">
-                        <h1>The Registration form has errors</h1>
+                        <h1> Registration form has errors</h1>
                     </div>
                     <div class="alert alert-danger" role="alert">
                         <ol>

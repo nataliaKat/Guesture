@@ -13,7 +13,6 @@
 
 <%  
 
-    String hotelUsername = "luxury@gmail.com";
     String agencyUsername = "holidays@gmail.com";
     User user = (User)session.getAttribute("userObj");
     //String agencyUsername = user.getUsername();
