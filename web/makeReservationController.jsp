@@ -10,7 +10,7 @@
 <%@ page import="model.Reservation" %>
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
-
+<%@ page import="dao.RoomDao" %>
 
 <%
 
@@ -65,12 +65,48 @@ comments = new String(comments.getBytes("ISO-8859-1"), "UTF-8");
 LocalDate localdate = LocalDate.now();
 Date localDateDate = java.sql.Date.valueOf(localdate);
 
+RoomDao roomdao = new RoomDao();
+List<Room> availableRooms = roomdao.getAvailableRooms(sqlDateArrival, sqlDateDeparture, hotelName);
+int availableRoomsPerType [] = new int[4];
+
+for (int i = 0; i < 4; i++) {
+
+    availableRoomsPerType[i] = 0;
+
+}
+
+for (int i = 0; i < availableRooms.size(); i++) {
+
+    if (availableRooms(i).getType() == "Single") {
+
+        availableRoomsPerType [0] = availableRoomsPerType [0] + 1;
+
+    } else if (availableRooms(i).getType() == "Double") {
+
+        availableRoomsPerType [1] = availableRoomsPerType [1] + 1;
+
+    } else if (availableRooms(i).getType() == "Triple") {
+
+        availableRoomsPerType [2] = availableRoomsPerType [2] + 1;
+
+    } else {
+
+        availableRoomsPerType [3] = availableRoomsPerType [3] + 1;
+
+    }
+
+}
+
 
 /* show errors */
 String errors = "";
 
 if (date.after(date1)) errors += "<li>Departure date is later than arrival date</li>";
 if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that today's date</li>";
+if (n1Int > availableRoomsPerType[0]) errors += "<li>There aren't enough available Single rooms.</li>";
+if (n2Int > availableRoomsPerType[1]) errors += "<li>There aren't enough available Double rooms.</li>";
+if (n3Int > availableRoomsPerType[2]) errors += "<li>There aren't enough available Triple rooms.</li>";
+if (n4Int > availableRoomsPerType[3]) errors += "<li>There aren't enough available Quadruple rooms.</li>";
 
 
 Reservation reservation = new Reservation(hotelName, agencyName, sqlDateArrival, time1, sqlDateDeparture, time2, numOfPeopleInt, n1Int, n2Int, n3Int, n4Int, comments);
