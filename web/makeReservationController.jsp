@@ -62,8 +62,11 @@ String comments = request.getParameter("comments");
 comments = new String(comments.getBytes("ISO-8859-1"), "UTF-8");
 
 /* get today's date and convert it to Date type */
+
 LocalDate localdate = LocalDate.now();
 Date localDateDate = java.sql.Date.valueOf(localdate);
+
+/* count available rooms of each type */
 
 RoomDao roomdao = new RoomDao();
 List<Room> availableRooms = roomdao.getAvailableRooms(sqlDateArrival, sqlDateDeparture, hotelName);
@@ -99,6 +102,7 @@ for (int i = 0; i < availableRooms.size(); i++) {
 
 
 /* show errors */
+
 String errors = "";
 
 if (date.after(date1)) errors += "<li>Departure date is later than arrival date</li>";
@@ -107,10 +111,6 @@ if (n1Int > availableRoomsPerType[0]) errors += "<li>There aren't enough availab
 if (n2Int > availableRoomsPerType[1]) errors += "<li>There aren't enough available Double rooms.</li>";
 if (n3Int > availableRoomsPerType[2]) errors += "<li>There aren't enough available Triple rooms.</li>";
 if (n4Int > availableRoomsPerType[3]) errors += "<li>There aren't enough available Quadruple rooms.</li>";
-
-
-Reservation reservation = new Reservation(hotelName, agencyName, sqlDateArrival, time1, sqlDateDeparture, time2, numOfPeopleInt, n1Int, n2Int, n3Int, n4Int, comments);
-rd.insertReservation(reservation);
 
 %>
 
@@ -135,18 +135,37 @@ rd.insertReservation(reservation);
     </header>
     
     <!-- Begin page content -->
+
     <main class="container">
-        <div class="row">
-    
-            <!-- form -->
-    
-            <div class="alert alert-success" role="alert">
-                <div class="page-header">
-                    <h1>Reservation almost done!</h1>
-                    <hr>
-                    <h2> Please wait until the hotel confirms your reservation. </h2>
-                </div>
-            </div>
+        <div id="makeReservation_form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
+            <% if (errors == "") { %>
+
+                    <div class="alert alert-success" role="alert">
+                        <div class="page-header">
+                            <h1>Reservation almost done!</h1>
+                            <hr>
+                            <h2> Please wait until the hotel confirms your reservation. </h2>
+                        </div>
+                    </div>
+
+                    <%
+                
+                    Reservation reservation = new Reservation(hotelName, agencyName, sqlDateArrival, time1, sqlDateDeparture, time2, numOfPeopleInt, n1Int, n2Int, n3Int, n4Int, comments);
+                
+                    rd.insertReservation(reservation);
+                   
+                } else { %>
+
+                    <div class="page-header">
+                        <h1>The Reservation form has errors</h1>
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        <ol>
+                            <%=errors%>
+                        </ol>
+                    </div>
+
+            <% } %>                               
         </div>
     </main>
 
