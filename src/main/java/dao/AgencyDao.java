@@ -39,7 +39,7 @@ public class AgencyDao {
 
     /**
 	 * Register/create new Agency user.
-	 * 
+	 *
 	 * @param agency, Agency
 	 * @throws Exception, if encounter any error.
 	 */
@@ -57,9 +57,9 @@ public class AgencyDao {
 				rs.close();
 				pst.close();
 				db.close();
-				throw new Exception("username already registered"); 
+				throw new Exception("username already registered");
             }
-            
+
             String sql1 = "INSERT INTO User(username, password) VALUES (?, ?)";
             pst = con.prepareStatement(sql1);
             pst.setString(1, agency.getUsername());
@@ -72,25 +72,25 @@ public class AgencyDao {
 			pst.setString(2, agency.getTelephone());
 			pst.setString(3, agency.getMail());
             pst.setString(4, agency.getVatNumber());
-//            pst.setString(5, agency.getRegistrationDate());
-//            pst.setDouble(6, agency.getUsername());
+            pst.setDate(5, agency.getRegistrationDate());
+            pst.setString(6, agency.getUsername());
 			pst.executeUpdate();
 
 			rs.close();
-			pst.close();			
+			pst.close();
 		} catch(Exception e) {
 			throw new Exception(e.getMessage());
 		} finally {
             try {
                 db.close();
-            } catch (Exception e) {                
+            } catch (Exception e) {
 
             }
-		}		
+		}
     }
     // end of register
 
 
 
-   
+
 }

@@ -76,11 +76,11 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
             ServiceDao servicedao = new ServiceDao();
             servicedao.register(service);
         }
-        
+        request.setAttribute("message", "Registration form has been successfully completed. Login now!");
  %>
         <jsp:forward page="login.jsp" />
 
-<%      request.setAttribute("message", "Registration form has been successfully completed!");
+<%     
     } else { %>
 
 <!doctype html>

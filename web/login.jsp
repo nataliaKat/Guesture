@@ -23,8 +23,12 @@
             </div>
         </nav>
     </header>
+        
     <form action="loginController.jsp" method="POST">
         <div class="container">
+            <% if(request.getAttribute("message") != null) { %>
+                <div class="alert alert-success text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
+             <% } %>
             <div class="row">
                 <div class="col-md-6 d-flex justify-content-center animated fadeInRight">
                     <div id="login-form">

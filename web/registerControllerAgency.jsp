@@ -2,8 +2,7 @@
 <%@ page errorPage="errorPage.jsp" %>
 <%@ page import="dao.AgencyDao" %>
 <%@ page import="model.Agency" %>
-<%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="java.util.Date"%>
+<%@ page import="java.sql.Date"%>
 
 
 <% 
@@ -72,7 +71,7 @@ if (date.length() == 0) errors += "<li>No Date inserted</li>";
                 <div class="alert alert-success" role="alert"> Registration form has been successfully completed!
                 </div>
                 <%
-                   Date obj_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                   Date obj_date = Date.valueOf(date);
                    Agency agency = new Agency(mail, password, name, telephone, mail, vatNumber, obj_date);
                    AgencyDao agencydao  = new AgencyDao();
                    agencydao.register(agency);
