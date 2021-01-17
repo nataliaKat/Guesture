@@ -62,7 +62,26 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
     if (photoUrl.length() == 0) errors += "<li>No Logo Photo inserted</li>";
     if (terms == null) errors += "<li>You must agree to terms and conditions</li>";
 
-%>
+    if (errors == "") {
+
+        Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services, photoUrl);
+        HotelDao hoteldao = new HotelDao();
+        hoteldao.register(hotel);
+ 
+        int arrayLength = services.length;
+        for (int i = 0; i <= arrayLength - 1; i++) {
+
+
+            Service service = new Service(services[i], username);
+            ServiceDao servicedao = new ServiceDao();
+            servicedao.register(service);
+        }
+        
+ %>
+        <jsp:forward page="login.jsp" />
+
+<%      request.setAttribute("message", "Registration form has been successfully completed!");
+    } else { %>
 
 <!doctype html>
 <html lang="en">
@@ -91,37 +110,15 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
     <!-- Begin page content -->
     <main class="container">
         <div id="registration_form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
-            <% if (errors == "") { %>
-
-                <div class="alert alert-success" role="alert"> Registration form has been successfully completed!
-                </div>
-
-                <%
-                Hotel hotel = new Hotel(username, password, name, address, phonenumber, head, description, Double.parseDouble(priceSingle), Double.parseDouble(priceDouble), Double.parseDouble(priceTriple), Double.parseDouble(priceQuadruple), services, photoUrl);
-                   HotelDao hoteldao = new HotelDao();
-                   hoteldao.register(hotel);
- 
-                   int arrayLength = services.length;
-                   for (int i = 0; i <= arrayLength - 1; i++) {
-
-                       Service service = new Service(services[i], username);
-                       ServiceDao servicedao = new ServiceDao();
-                       servicedao.register(service);
-                   }
-   
-                   request.setAttribute("hotel_obj", hotel);
-                  %>  
-
-            <% } else { %>
+            
                     <div class="page-header">
-                        <h1>The Registration form has errors</h1>
+                        <h1>Registration form has errors</h1>
                     </div>
                     <div class="alert alert-danger" role="alert">
                         <ol>
                             <%=errors%>
                         </ol>
-                    </div>
-                 <% } %>                               
+                    </div>                               
         </div>
     </main>
 
@@ -129,6 +126,7 @@ head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
 </body>
 
 </html>
+<% } %> 
 
 
     

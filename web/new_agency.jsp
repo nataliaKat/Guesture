@@ -66,7 +66,7 @@
         <div id="new-agency" class="col-sm-12 col-lg-8 col-ml-5" style="padding: 20px;">
             <h1 class="text-center">New Agency</h1>
 
-            <form action="" class="form-horizontal" >
+            <form action="registerControllerAgency.jsp" class="form-horizontal" method="post">
                 <div class="form-agency">
                     <label for="name" class="col-sm-4 control-label">Name</label>
                     <div class="col-sm-10">
@@ -116,7 +116,7 @@
 
                 <div class="form-agency">
                     <div class="col-sm-10 col-sm-offset-2" style="padding-top: 5%;">
-                        <button type="submit" class="brownButton" onclick="location.href='agencies.html'">Submit</button>
+                        <button type="submit" class="brownButton">Submit</button>
                         <button type="reset" class="blueButton">Clear</button>
                     </div>
                 </div>
