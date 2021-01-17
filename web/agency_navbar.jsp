@@ -32,10 +32,10 @@
                 <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reviews.jsp") ? "active": "" %>">
                     <a class="nav-link" href="reviews.jsp">Reviews</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"><%= ((Agency)session.getAttribute("userObj")).getName()%></i></a>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link" href="#"><i class="fas fa-user"><%= ((Agency)session.getAttribute("userObj")).getName()%></i></a>--%>
 
-                </li>
+<%--                </li>--%>
                 <li class="nav-item">
                     <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
                 </li>

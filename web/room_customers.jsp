@@ -10,10 +10,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<%
+<% Hotel signedHotel = (Hotel)session.getAttribute("userObj");
+    if (signedHotel == null) {
+        request.setAttribute("loginmessage", "You are not authorized to view this page");%>
+<jsp:forward page="login.jsp"/>
+
+<% return;
+    }
+    String hotelUsername = ((Hotel)session.getAttribute("userObj")).getUsername();
+
     int reservationId = Integer.parseInt(request.getParameter("reservation"));
     request.setAttribute("reservation", reservationId);
-    String hotelUsername = "luxury@gmail.com";
 
     GroupingDao groupingDao = new GroupingDao();
     ReservationDao reservationDao = new ReservationDao();
