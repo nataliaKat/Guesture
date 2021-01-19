@@ -7,6 +7,7 @@
 <%@page import="java.text.ParseException"%>
 
 <%@ page import="model.Service" %>
+<%@ page import="model.Room" %>
 <%@ page import="model.Reservation" %>
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
@@ -80,15 +81,15 @@ for (int i = 0; i < 4; i++) {
 
 for (int i = 0; i < availableRooms.size(); i++) {
 
-    if (availableRooms(i).getType() == "Single") {
+    if (availableRooms.get(i).getType() == "Single") {
 
         availableRoomsPerType [0] = availableRoomsPerType [0] + 1;
 
-    } else if (availableRooms(i).getType() == "Double") {
+    } else if (availableRooms.get(i).getType() == "Double") {
 
         availableRoomsPerType [1] = availableRoomsPerType [1] + 1;
 
-    } else if (availableRooms(i).getType() == "Triple") {
+    } else if (availableRooms.get(i).getType() == "Triple") {
 
         availableRoomsPerType [2] = availableRoomsPerType [2] + 1;
 
@@ -105,8 +106,8 @@ for (int i = 0; i < availableRooms.size(); i++) {
 
 String errors = "";
 
-if (date.after(date1)) errors += "<li>Departure date is later than arrival date</li>";
-if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that today's date</li>";
+if (date.after(date1)) errors += "<li>Departure date is later than arrival date.</li>";
+if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that today's date.</li>";
 if (n1Int > availableRoomsPerType[0]) errors += "<li>There aren't enough available Single rooms.</li>";
 if (n2Int > availableRoomsPerType[1]) errors += "<li>There aren't enough available Double rooms.</li>";
 if (n3Int > availableRoomsPerType[2]) errors += "<li>There aren't enough available Triple rooms.</li>";

@@ -12,11 +12,9 @@
 
 
 <%  
-
     String agencyUsername = "holidays@gmail.com";
     User user = (User)session.getAttribute("userObj");
     //String agencyUsername = user.getUsername();
-
 %>
 
 <!doctype html>
@@ -38,7 +36,7 @@
     <!-- Begin page content -->
     <main class="container">
         <div class="row">
-            <a href="new_reservation.jsp"><button location.href="" class="brownButton"><i class="fas fa-plus"></i> New
+            <a href="view_hotels.jsp"><button location.href="" class="brownButton"><i class="fas fa-plus"></i> New
                     Reservation</button></a>
         </div>
         <div class="mb-3 mt-3" style="padding: 20px">
@@ -58,14 +56,10 @@
                     <% 
                     ReservationDao rd = new ReservationDao();
                     List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
-
                     int reservationCode = 0;
                     boolean b1 = true;
-
                     for (int i = 0; i < reservationsOfAgencyList.size(); i++) {
-
                         reservationCode = reservationsOfAgencyList.get(i).getReservationId();
-
                     %>
         
                     <tr>
@@ -81,7 +75,7 @@
                         <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
 
                         <td> 
-                            <form action="reservation_details.jsp?rid=<%=reservationCode%>" target="_blank" method="POST">
+                            <form action="reservation_details.jsp?rid=<%=i%>" target="_blank" method="POST">
                                 <button class="blueButton">Reservation Details</button>
                             </form>
                        </td>
@@ -93,7 +87,7 @@
                         if ((reservationsOfAgencyList.get(i).getConfirmed() == b1) && (groupCustomers.size() == 0)) { %>
                                
                             <td> 
-                                <form action="group_members.jsp" target="_blank">
+                                <form action="group_members.jsp?reservation=<%=reservationCode%>" target="_blank" method="POST">
                                     <button class="blueButton">Add Members</button>
                                 </form>
                            </td>
