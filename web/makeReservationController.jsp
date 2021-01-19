@@ -127,6 +127,8 @@ if (n4Int > availableRoomsPerType[3]) errors += "<li>There aren't enough availab
 </head>
 
 <body id="makeReservation">
+    <%@include file="agency_navbar.jsp"%>
+
     <header>
         <meta name="description" content="">
         <meta name="author" content="">
