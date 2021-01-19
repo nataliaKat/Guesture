@@ -59,17 +59,17 @@
                     ReservationDao rd = new ReservationDao();
                     List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
 
-                    int reservationId = 0;
+                    int reservationCode = 0;
                     boolean b1 = true;
 
                     for (int i = 0; i < reservationsOfAgencyList.size(); i++) {
 
-                        reservationId = reservationsOfAgencyList.get(i).getReservationId();
+                        reservationCode = reservationsOfAgencyList.get(i).getReservationId();
 
                     %>
         
                     <tr>
-                        <td><%=reservationId%></td>
+                        <td><%=reservationCode%></td>
                         <td><%=reservationsOfAgencyList.get(i).getHotelName()%></td>
                         
                         <% if (reservationsOfAgencyList.get(i).getConfirmed() == b1) { %>
@@ -81,14 +81,14 @@
                         <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
 
                         <td> 
-                            <form action="reservation_details.jsp" target="_blank">
+                            <form action="reservation_details.jsp?rid=<%=reservationCode%>" target="_blank" method="POST">
                                 <button class="blueButton">Reservation Details</button>
                             </form>
                        </td>
                         
                         <% 
                         GroupCustomerDao gcd = new GroupCustomerDao();
-                        List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationId);
+                        List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationCode);
                        
                         if ((reservationsOfAgencyList.get(i).getConfirmed() == b1) && (groupCustomers.size() == 0)) { %>
                                

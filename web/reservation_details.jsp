@@ -35,24 +35,27 @@
         <title>Dream Hotel | Reservation Details</title>
         <%@include file="header.jsp" %>
     </header>
+    <%@include file="agency_navbar.jsp"%>
 
     <% 
-        /* */
-        String hotelUsername = "portoven@gmail.com";
-        String agencyUsername = "holidays@gmail.com";
-
+        
         ReservationDao rd = new ReservationDao();
 
-        double [] prices = rd.getPricePerRoomType(hotelUsername);
+        /* */
+        String agencyUsername = "holidays@gmail.com";
 
         User user = (User)session.getAttribute("userObj");
-//      agencyUsername = user.getUsername();
+        //      agencyUsername = user.getUsername();
 
-        int id = 0;
-//      int id = request.getAttribute("id");
-        
+        String idString = request.getParameter("rid");
+        int id = Integer.parseInt(idString);
+
         List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
         int reservationId = reservationsOfAgencyList.get(id).getReservationId();
+
+        String hotelUsername = reservationsOfAgencyList.get(id).getHotelName();
+    
+        double [] prices = rd.getPricePerRoomType(hotelUsername);
 
     %>
 
