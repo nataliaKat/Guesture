@@ -289,7 +289,9 @@ public class ReservationDao {
         Connection con = null;
         ResultSet rs = null;
         List<Reservation> reservationsOfAgencyList = new ArrayList<Reservation>();
-        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, username_hotel FROM Reservation WHERE username_agency = ? ;";
+        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed" 
+                    + ", username_hotel, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, comments)" 
+                    + "FROM Reservation WHERE username_agency = ? ;";
         DB db = new DB();
 
         try {
@@ -309,8 +311,15 @@ public class ReservationDao {
                 Date submittedOn = rs.getDate("submittedOn");
                 Boolean confirmed = rs.getBoolean("confirmed");
                 String hotel_username = rs.getString("username_hotel");
+                int singleRooms = rs.getInt("singleRooms");
+                int doubleRooms = rs.getInt("doubleRooms");
+                int tripleRooms = rs.getInt("tripleRooms");
+                int quadrupleRooms = rs.getInt("quadrupleRooms");
+                String comments = rs.getString("comments");
 
-                Reservation reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed, hotel_username);
+                Reservation reservation = new Reservation(hotel_username, agencyName, arrivalDate, arrivalTime, 
+                        departureDate, departureTime, submittedOn, singleRooms, doubleRooms, tripleRooms, 
+                        quadrupleRooms, comments);
 
                 reservationsOfAgencyList.add(reservation);
 

@@ -119,9 +119,9 @@
                     <div class="col-md-4 box">
                         <h5>Comments</h5>
                         <% if (reservationsOfAgencyList.get(id).getComments() == null) { %>
-                            
+                            <b> </b>
                         <% } else { %>
-                            <%=reservationsOfAgencyList.get(id).getComments() %>
+                            <b><%=reservationsOfAgencyList.get(id).getComments() %></b>
                         <% } %>
                     </div>
                 </div>
