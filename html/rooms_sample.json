@@ -1,0 +1,34 @@
+{
+    "rooms" : [
+        {
+            "number": "101",
+            "username": "luxury@gmail.com",
+            "floor": 1,
+            "type": "single"
+        },
+        {
+            "number": "402",
+            "username": "luxury@gmail.com",
+            "floor": 4,
+            "type": "double"
+        },
+        {
+            "number": "a47",
+            "username": "luxury@gmail.com",
+            "floor": 8,
+            "type": "single"
+        },
+        {
+            "number": "b112",
+            "username": "luxury@gmail.com",
+            "floor": 2,
+            "type": "quadruple"
+        },
+        {
+            "number": "24",
+            "username": "luxury@gmail.com",
+            "floor": 3,
+            "type": "single"
+        }
+    ]
+}
