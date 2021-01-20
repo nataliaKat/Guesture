@@ -36,4 +36,12 @@
         <servlet-name>RoomToGroupingServlet</servlet-name>
         <url-pattern>/roomsToCustomers</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GetAllRoomsServlet</servlet-name>
+        <servlet-class>controller.GetAllRoomsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllRoomsServlet</servlet-name>
+        <url-pattern>/getAllRooms</url-pattern>
+    </servlet-mapping>
 </web-app>
