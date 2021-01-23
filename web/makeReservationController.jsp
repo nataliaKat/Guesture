@@ -114,15 +114,15 @@ List<Room> availableRooms = roomdao.getAll(hotelName);
     
     for (int i = 0; i < availableRooms.size(); i++) {
     
-        if (availableRooms.get(i).getType() == "Single") {
+        if (availableRooms.get(i).getType().equals("single")) {
     
             availableRoomsPerType [0] = availableRoomsPerType [0] + 1;
     
-        } else if (availableRooms.get(i).getType() == "Double") {
+        } else if (availableRooms.get(i).getType().equals("double")) {
     
             availableRoomsPerType [1] = availableRoomsPerType [1] + 1;
     
-        } else if (availableRooms.get(i).getType() == "Triple") {
+        } else if (availableRooms.get(i).getType().equals("triple")) {
     
             availableRoomsPerType [2] = availableRoomsPerType [2] + 1;
     
