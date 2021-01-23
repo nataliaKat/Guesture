@@ -13,18 +13,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form>
+                <form id="room-to-register" action="submitRoom" method="post">
                     <div class="form-group">
                         <label for="number">Room Number</label>
-                        <input type="text" class="form-control" id="number" placeholder="number">
+                        <input type="text" class="form-control" id="number" name="number" placeholder="number">
                     </div>
                     <div class="form-group">
                         <label for="floor">Floor</label>
-                        <input type="number" class="form-control" id="floor" placeholder="number">
+                        <input type="number" class="form-control" id="floor" name="floor" placeholder="number">
                     </div>
                     <div class="form-group">
                         <label for="type">Room Type</label>
-                        <select class="form-control" id="type">
+                        <select class="form-control" name="type" id="type">
                             <option>Select room type</option>
                             <option value="single">single</option>
                             <option value="double">double</option>

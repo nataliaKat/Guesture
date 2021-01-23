@@ -44,4 +44,12 @@
         <servlet-name>GetAllRoomsServlet</servlet-name>
         <url-pattern>/getAllRooms</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RoomRegistrationServlet</servlet-name>
+        <servlet-class>controller.RoomRegistrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RoomRegistrationServlet</servlet-name>
+        <url-pattern>/submitRoom</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -6,7 +6,7 @@ public class Room {
     private int number;
     private String type;
     private int floor;
-    private Hotel hotel;
+    private String hotelUsername;
 
     public Room() {
     }
@@ -18,11 +18,18 @@ public class Room {
         this.floor = floor;
     }
 
-    public Room(int number, String type, int floor, Hotel hotel) {
+    public Room(int number, String type, int floor) {
         this.number = number;
         this.type = type;
         this.floor = floor;
-        this.hotel = hotel;
+    }
+
+    public Room(int number, String type, int floor, String hotelUsername) {
+        this.id = id;
+        this.number = number;
+        this.type = type;
+        this.floor = floor;
+        this.hotelUsername = hotelUsername;
     }
 
     public int getId() {
@@ -57,36 +64,12 @@ public class Room {
         this.floor = floor;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public String getHotelUsername() {
+        return hotelUsername;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Room)) return false;
-
-        Room room = (Room) o;
-
-        if (id != room.id) return false;
-        if (number != room.number) return false;
-        if (floor != room.floor) return false;
-        if (type != null ? !type.equals(room.type) : room.type != null) return false;
-        return hotel != null ? hotel.equals(room.hotel) : room.hotel == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + number;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + floor;
-        result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
-        return result;
+    public void setHotelUsername(String hotelUsername) {
+        this.hotelUsername = hotelUsername;
     }
 
     @Override
@@ -96,7 +79,7 @@ public class Room {
                 ", number=" + number +
                 ", type='" + type + '\'' +
                 ", floor=" + floor +
-                ", hotel=" + hotel +
+                ", hotelUsername='" + hotelUsername + '\'' +
                 '}';
     }
 }

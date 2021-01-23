@@ -10,6 +10,29 @@ public class RoomDao {
 
 //    private HotelDao hotelDao;
 
+    public void insertRoom(Room room) {
+        DB db = new DB();
+        Connection con = null;
+        String sql = "INSERT INTO room(number, username, type, floor) VALUES(?, ?, ?, ?)";
+        try {
+            con = db.getConnection();
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, room.getNumber());
+            pst.setString(2, room.getHotelUsername());
+            pst.setString(3, room.getType());
+            pst.setInt(4, room.getFloor());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public List<Room> getAll(String hotelUsername) {
         DB db = new DB();
         Connection con = null;
