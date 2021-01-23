@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
+
 <%@ page import="model.Service" %>
 <%@ page import="model.User" %>
 <%@ page import="model.Reservation" %>
@@ -12,9 +14,8 @@
 
 
 <%  
-    String agencyUsername = "holidays@gmail.com";
-    User user = (User)session.getAttribute("userObj");
-    //String agencyUsername = user.getUsername();
+String agencyUsername = ((Agency)session.getAttribute("userObj")).getUsername();
+
 %>
 
 <!doctype html>

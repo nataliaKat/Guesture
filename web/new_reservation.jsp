@@ -32,7 +32,7 @@
 
     double [] prices = rd.getPricePerRoomType(hotelUsername);
 
-    ((Agency)session.getAttribute("userObj")).getUsername();
+    String agencyUsername = ((Agency)session.getAttribute("userObj")).getUsername();
 
     %>
 

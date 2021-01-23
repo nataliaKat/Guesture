@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
+
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.sql.Date"%>
 <%@page import="java.time.LocalDate"%>
@@ -70,9 +72,9 @@ Date localDateDate = java.sql.Date.valueOf(localdate);
 /* count available rooms of each type */
 
 RoomDao roomdao = new RoomDao();
-/* 
-List<Room> availableRooms = roomdao.getAvailableRooms(sqlDateArrival, sqlDateDeparture, hotelName);
-*/
+
+//    List<Room> availableRooms = roomdao.getAvailableRooms(sqlDateArrival, sqlDateDeparture, hotelName);
+
 
 List<Room> availableRooms = roomdao.getAll(hotelName);
 int availableRoomsPerType [] = new int[4];
