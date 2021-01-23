@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
 
 <%@page import="java.util.List" %>
 
@@ -41,11 +42,7 @@
         
         ReservationDao rd = new ReservationDao();
 
-        /* */
-        String agencyUsername = "holidays@gmail.com";
-
-        User user = (User)session.getAttribute("userObj");
-        //      agencyUsername = user.getUsername();
+        String agencyUsername = ((Agency)session.getAttribute("userObj")).getUsername();
 
         String idString = request.getParameter("rid");
         int id = Integer.parseInt(idString);
