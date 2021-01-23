@@ -170,7 +170,7 @@
                             <button type="button"
                                     class="btn btn-success"
                                     data-dismiss="modal"
-                                    onclick="location.href = 'confirmController.jsp'">Confirm</button>
+                                    onclick="location.href = 'confirmController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">Confirm</button>
                             <button type="button"
                                     class="btn btn-secondary"
                                     data-dismiss="modal">Close</button>

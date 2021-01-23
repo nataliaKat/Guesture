@@ -13,7 +13,7 @@ public class ReservationDao {
         Connection con = null;
         ResultSet rs = null;
         List<Reservation> reservations = new ArrayList<Reservation>();
-        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, confirmed, username_agency FROM reservation WHERE username_hotel = ?;";
+        String sql = "SELECT * FROM reservation WHERE username_hotel = ?;";
         DB db = new DB();
 
         try {
@@ -210,7 +210,7 @@ public class ReservationDao {
 
     public void confirm(int resId) throws Exception {
         Connection con = null;
-        String sql = "UPDATE Reservation SET confirmed = 'TRUE' WHERE reservationId = ?; ";
+        String sql = "UPDATE Reservation SET confirmed = 1 WHERE reservationId = ?; ";
         DB db = new DB();
 
         try {

@@ -1,5 +1,6 @@
 <%@ page import="dao.GroupingDao" %>
 <%@ page import="dao.ReservationDao" %>
+<%@ page import="model.Agency" %>
 <%@ page import="model.Reservation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage="errorPage.jsp" %>
@@ -18,6 +19,9 @@
     GroupingDao groupingDao = new GroupingDao();
     ReservationDao reservationDao = new ReservationDao();
     Reservation foundReservation = reservationDao.getById(reservationId);
+    if (!foundReservation.getAgencyName().equals(((Agency)session.getAttribute("userObj")).getUsername())) {
+        throw new Exception("You are trying to view content you are not allowed to");
+    }
     if (foundReservation == null) {
         throw new Exception("Reservation not found!");
     }
