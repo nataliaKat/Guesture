@@ -317,9 +317,9 @@ public class ReservationDao {
                 int quadrupleRooms = rs.getInt("quadrupleRooms");
                 String comments = rs.getString("comments");
 
-                Reservation reservation = new Reservation(hotel_username, agencyName, arrivalDate, arrivalTime, 
+                Reservation reservation = new Reservation(reservationId, hotel_username, agencyName, arrivalDate, arrivalTime, 
                         departureDate, departureTime, submittedOn, singleRooms, doubleRooms, tripleRooms, 
-                        quadrupleRooms, comments);
+                        quadrupleRooms, comments, confirmed);
 
                 reservationsOfAgencyList.add(reservation);
 

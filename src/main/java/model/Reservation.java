@@ -103,9 +103,10 @@ public class Reservation {
         this.confirmed = confirmed;
     }
 
-    public Reservation(String hotelName, String agencyName, Date arrivalDate, String arrivalTime, Date departureDate,
+    public Reservation(int reservationId, String hotelName, String agencyName, Date arrivalDate, String arrivalTime, Date departureDate,
                        String departureTime, Date submittedOn, int singleRooms, int doubleRooms, int tripleRooms,
-                       int quadrupleRooms, String comments) {
+                       int quadrupleRooms, String comments, Boolean confirmed) {
+        this.reservationId = reservationId;
         this.hotelName = hotelName;
         this.agencyName = agencyName;
         this.arrivalDate = arrivalDate;
@@ -118,6 +119,7 @@ public class Reservation {
         this.tripleRooms = tripleRooms;
         this.quadrupleRooms = quadrupleRooms;
         this.comments = comments;
+        this.confirmed = confirmed;
 
     }
 
@@ -252,7 +254,7 @@ public class Reservation {
     public void setConfirmed(boolean confirmed) {
         this.confirmed = confirmed;
     }
-     
+
     public boolean getConfirmed() {
         return confirmed;
     }
