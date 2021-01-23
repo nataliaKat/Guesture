@@ -24,19 +24,15 @@
 <body id="new_reservation">
 <%@include file="agency_navbar.jsp"%>
     
-
     <% 
     ReservationDao rd = new ReservationDao();
     HotelDao hotelDao = new HotelDao();
 
-    /* */
     String hotelUsername = (String)request.getParameter("hotel");
-    String agencyUsername = "holidays@gmail.com";
 
     double [] prices = rd.getPricePerRoomType(hotelUsername);
 
-    User user = (User)session.getAttribute("userObj");
-//     agencyUsername = user.getUsername();
+    ((Agency)session.getAttribute("userObj")).getUsername();
 
     %>
 
@@ -47,7 +43,7 @@
         <div class="row">
             <!-- Form -->
             <div id="res-form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
-                <h1 class="text-center">New Reservation</h1>
+                <h1 class="text-center">New Reservation for <%=hotelUsername%> Hotel</h1>
                 <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
                 <!--    <form class="form-horizontal" action="makeReservationController.jsp" method="POST">     -->
                 <form class="form-horizontal" action="makeReservationController.jsp" method="POST">

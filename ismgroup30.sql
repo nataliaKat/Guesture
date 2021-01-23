@@ -1,11 +1,8 @@
 USE ismgroup30;
-
-DROP TABLE Review_Criterion; 
+ 
 DROP TABLE Reservation_Service;
 DROP TABLE GroupCustomer;   
 DROP TABLE Grouping;
-DROP TABLE Review;
-DROP TABLE Criterion;
 DROP TABLE Room;
 DROP TABLE Service;
 DROP TABLE Reservation;  
@@ -15,33 +12,33 @@ DROP TABLE User;
 
 
 CREATE TABLE User (
-    username VARCHAR(20) NOT NULL,
-    password VARCHAR(30),
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(100),
     PRIMARY KEY (username)
 );
 
 CREATE TABLE Hotel (
-    username VARCHAR(20) NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    address VARCHAR(50) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    address VARCHAR(100) NOT NULL,
     phoneNumber VARCHAR(50) NOT NULL,
-    head VARCHAR(50) NOT NULL,
+    head VARCHAR(100) NOT NULL,
     description TINYTEXT,
     priceSingle DOUBLE NOT NULL,
     priceDouble DOUBLE NOT NULL,
     priceTriple DOUBLE NOT NULL,
     priceQuadruple DOUBLE NOT NULL,
-    photo_url VARCHAR(100),
+    photo_url VARCHAR(10000),
     FOREIGN KEY (username)
         REFERENCES User (username)
 );
 CREATE TABLE Agency (
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     telephone VARCHAR(50) NOT NULL,
-    mail VARCHAR(50) NOT NULL,
+    mail VARCHAR(100) NOT NULL,
     vatNumber VARCHAR(50) NOT NULL,
     registrationDate DATE,
-    username VARCHAR(20) NOT NULL,
+    username VARCHAR(100) NOT NULL,
     FOREIGN KEY (username)
 		REFERENCES User (username)
 );
@@ -60,9 +57,9 @@ CREATE TABLE Reservation (
 	tripleRooms INT NOT NULL,
     quadrupleRooms INT NOT NULL,
     confirmed BOOLEAN,
-    comments VARCHAR(250),
-    username_hotel VARCHAR(20) NOT NULL,
-    username_agency VARCHAR(20) NOT NULL,
+    comments VARCHAR(1000),
+    username_hotel VARCHAR(100) NOT NULL,
+    username_agency VARCHAR(100) NOT NULL,
     PRIMARY KEY (reservationId),
     FOREIGN KEY (username_hotel)
         REFERENCES Hotel (username),
@@ -73,7 +70,7 @@ CREATE TABLE Reservation (
 CREATE TABLE Service (
     serviceId INT NOT NULL auto_increment,
     name VARCHAR(50),
-    hotel_username varchar(50),
+    hotel_username varchar(100),
     PRIMARY KEY (serviceId),
     FOREIGN KEY (hotel_username)
 		REFERENCES Hotel (username)
@@ -82,32 +79,12 @@ CREATE TABLE Service (
 CREATE TABLE Room (
 	roomId INT NOT NULL auto_increment,
     number INT NOT NULL,
-    username VARCHAR(20) NOT NULL,
+    username VARCHAR(100) NOT NULL,
     type VARCHAR(30),
     floor INT,
     PRIMARY KEY (roomId),
     FOREIGN KEY (username)
         REFERENCES Hotel (username)
-);
-
-CREATE TABLE Criterion (
-	criterionId INT NOT NULL auto_increment,
-    name VARCHAR(50),
-    min INT,
-    max INT, 
-	username VARCHAR(20) NOT NULL,
-    PRIMARY KEY (criterionId),
-    FOREIGN KEY (username)
-		REFERENCES Hotel (username)
-);
-
-CREATE TABLE Review (
-	datetime DATETIME NOT NULL,
-    comments VARCHAR(250),
-    reservationId INT,
-    PRIMARY KEY (datetime),
-    FOREIGN KEY (reservationId)
-		REFERENCES Reservation (reservationId)
 );
 
 CREATE TABLE Grouping (
@@ -121,10 +98,10 @@ CREATE TABLE Grouping (
 
 CREATE TABLE GroupCustomer (
     customerId INT NOT NULL auto_increment,
-    name VARCHAR(50),
-    surname VARCHAR(50),
+    name VARCHAR(100),
+    surname VARCHAR(100),
     telephone VARCHAR(50),
-    email VARCHAR(50),
+    email VARCHAR(100),
     identityNumber VARCHAR(50),
     groupingId INT NOT NULL,
     PRIMARY KEY (customerId),
@@ -137,18 +114,10 @@ CREATE TABLE Reservation_Service (
     serviceId INT NOT NULL,
     PRIMARY KEY (reservationId , serviceId),
     FOREIGN KEY (reservationId)
-        REFERENCES Reservation (reservationId),
+        REFERENCES Reservation (reservationId)
+        ON DELETE CASCADE,
     FOREIGN KEY (serviceId)
         REFERENCES Service (serviceId)
-);
-
-CREATE TABLE Review_Criterion (
-    criterionId INT NOT NULL,
-    score INT NOT NULL,
-    datetime DATETIME NOT NULL,
-    PRIMARY KEY (datetime),
-    FOREIGN KEY (criterionId)
-        REFERENCES Criterion (criterionId)
 );
 
 
@@ -242,25 +211,6 @@ VALUES (101, 'luxury@gmail.com', 'single', 1),
 (303, 'luxury@gmail.com', 'quad', 3),
 (106, 'luxury@gmail.com', 'double', 1);
 
-INSERT INTO Criterion (name, min, max, username)
-VALUES ('Cleanness', 1, 10, 'luxury@gmail.com'),
-('Reception staff', 1, 10, 'luxury@gmail.com'),
-('Comfort', 1, 10, 'luxury@gmail.com'),
-('Comfort', 1, 5,'iraklion@gmail.com'),
-('Prices', 1, 5, 'iraklion@gmail.com'), 
-('Breakfast', 1, 5, 'iraklion@gmail.com'),
-('Cleanness', 1, 100, 'homepoetry@gmail.com');
-
-INSERT INTO Review (datetime, comments, reservationId)
-VALUES ('2020-07-10 14:55:30', 'Reception staff were friendly, rooms not clean enough', 1),
-('2020-07-05 13:25:42', 'Breakfast was great, rooms were cold', 2),
-('2020-06-29 10:36:51', 'TV broken in 3 rooms', 3),
-('2020-06-25 17:19:19', 'Customers not satisfied from lunch', 4),
-('2020-05-27 22:09:52', 'Great experience at your hotel!', 5),
-('2020-05-16 20:15:36', 'prices too high!', 6),
-('2020-05-04 11:45:26', 'excellent stay at your hotel', 7);
-
-
 INSERT INTO Grouping (reservationId, roomId)
 VALUES (1, 4),
 	   (1, 9),
@@ -285,24 +235,6 @@ VALUES (1, 1),
 (1, 4),
 (2, 1), 
 (2, 2);
-
-INSERT INTO Review_Criterion (criterionId, score, datetime)
-VALUES (1, 10, '2020-07-05 13:25:42'),
-(2, 7, '2020-06-05 13:25:42'), 
-(4, 3, '2020-05-27 22:09:52'), 
-(7, 50, '2020-05-04 11:45:26'), 
-(7, 70, '2020-06-25 17:19:19'),
-(6, 4,'2020-05-16 20:15:36'),
-(5, 5, '2020-06-29 10:36:51');
-
-
-
-
-
-
-
-
-
 
 
 

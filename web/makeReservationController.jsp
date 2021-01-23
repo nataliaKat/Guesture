@@ -72,39 +72,10 @@ Date localDateDate = java.sql.Date.valueOf(localdate);
 RoomDao roomdao = new RoomDao();
 /* 
 List<Room> availableRooms = roomdao.getAvailableRooms(sqlDateArrival, sqlDateDeparture, hotelName);
-int availableRoomsPerType [] = new int[4];
-
-for (int i = 0; i < 4; i++) {
-
-    availableRoomsPerType[i] = 0;
-
-}
-
-for (int i = 0; i < availableRooms.size(); i++) {
-
-    if (availableRooms.get(i).getType() == "Single") {
-
-        availableRoomsPerType [0] = availableRoomsPerType [0] + 1;
-
-    } else if (availableRooms.get(i).getType() == "Double") {
-
-        availableRoomsPerType [1] = availableRoomsPerType [1] + 1;
-
-    } else if (availableRooms.get(i).getType() == "Triple") {
-
-        availableRoomsPerType [2] = availableRoomsPerType [2] + 1;
-
-    } else {
-
-        availableRoomsPerType [3] = availableRoomsPerType [3] + 1;
-
-    }
-
-}
 */
 
 List<Room> availableRooms = roomdao.getAll(hotelName);
-    int availableRoomsPerType [] = new int[4];
+int availableRoomsPerType [] = new int[4];
 
     for (int i = 0; i < 4; i++) {
     
