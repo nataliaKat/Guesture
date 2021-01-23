@@ -72,16 +72,21 @@
                                                                     <%=reservations.get(i).getSubmittedOn()%>
                                                                 </td>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-info"><i
+                                                                    <button type="button" class="btn btn-info"
+                                                                        data-toggle="modal"
+                                                                        data-target="#checkin-modal"><i
                                                                             class="fas fa-door-closed"></i></button>
                                                                 </td>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-info"><i
+                                                                    <button type="button" class="btn btn-info"
+                                                                        data-toggle="modal"
+                                                                        data-target="#checkout-modal"><i
                                                                             class="fas fa-door-open"></i></button>
                                                                 </td>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                                    data-target="#delete-modal"><i
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-toggle="modal"
+                                                                        data-target="#delete-modal"><i
                                                                             class="fas fa-trash-alt"></i></button>
                                                                 </td>
                                                                 <td>
@@ -150,42 +155,123 @@
                                             </div>
                                             <% } %>
 
-                                            <% for (int i=0; i < reservations.size(); i++) { %>
-                                                <!-- Modal For Delete -->
-                                                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
-                                                    aria-labelledby="Delete Reservation" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg modal-dialog-scrollable"
-                                                        role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title" id="Delete">Delete</h1>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form role="form" method="POST"
-                                                                    action="deleteController.jsp">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label">The reservation
-                                                                            will be
-                                                                            deleted</label>
-                                                                    </div>
-                                                                    <div class="form-group">
-    
-                                                                        <button type="button" class="btn btn-success"
-                                                                            data-dismiss="modal"
-                                                                            onclick="location.href = 'deleteController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">Delete</button>
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Close</button>
-                                                                    </div>
-                                                                </form>
+                                                <% for (int i=0; i < reservations.size(); i++) { %>
+                                                    <!-- Modal For Delete -->
+                                                    <div class="modal fade" id="delete-modal" tabindex="-1"
+                                                        role="dialog" aria-labelledby="Delete Reservation"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg modal-dialog-scrollable"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title" id="Delete">Delete</h1>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form role="form" method="POST"
+                                                                        action="deleteController.jsp">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">The reservation
+                                                                                will be
+                                                                                deleted</label>
+                                                                        </div>
+                                                                        <div class="form-group">
+
+                                                                            <button type="button"
+                                                                                class="btn btn-success"
+                                                                                data-dismiss="modal"
+                                                                                onclick="location.href = 'deleteController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">Delete</button>
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <% } %>
+                                                    <% } %>
+
+                                                        <% for (int i=0; i < reservations.size(); i++) {
+                                                            rd.checkOut(reservations.get(i).getReservationId()); %>
+                                                            <!-- Modal For Check-out -->
+                                                            <div class="modal fade" id="checkout-modal" tabindex="-1"
+                                                                role="dialog" aria-labelledby="Checkout Reservation"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg modal-dialog-scrollable"
+                                                                    role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h1 class="modal-title" id="Checkout">
+                                                                                Check-out</h1>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+
+                                                                            <div class="form-group">
+                                                                                <label class="control-label">The
+                                                                                    reservation
+                                                                                    has been checked out</label>
+                                                                            </div>
+                                                                            <div class="form-group">
+
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">Close</button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <% } %>
+
+                                                                <% for (int i=0; i < reservations.size(); i++) {
+                                                                    rd.checkIn(reservations.get(i).getReservationId());
+                                                                    %>
+                                                                    <!-- Modal For Check-in -->
+                                                                    <div class="modal fade" id="checkin-modal"
+                                                                        tabindex="-1" role="dialog"
+                                                                        aria-labelledby="Checkin Reservation"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-lg modal-dialog-scrollable"
+                                                                            role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h1 class="modal-title"
+                                                                                        id="Checkin">Check-in</h1>
+                                                                                    <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                        <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">The
+                                                                                            reservation
+                                                                                            has been checked in</label>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-dismiss="modal">Close</button>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <% } %>
                                     </main>
                                     <%@include file="footer.jsp" %>
                                         <%@include file="datatables_scripts.jsp" %>
