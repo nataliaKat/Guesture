@@ -439,4 +439,54 @@ public class ReservationDao {
         }
         return reservation;
     }
+
+    public Reservation getReservationOfHotelById(int reservationId, String hotelUsername) {
+        Connection con = null;
+        Reservation reservation = null;
+        ResultSet rs = null;
+        DB db = new DB();
+        String sql = "SELECT * FROM reservation WHERE reservationId = ? AND username_hotel = ?";
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, reservationId);
+            stmt.setString(2, hotelUsername);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                reservationId = rs.getInt("reservationId");
+                Date arrivalDate = rs.getDate("arrivalDate");
+                String arrivalTime = rs.getString("arrivalTime");
+                Date departureDate = rs.getDate("departureDate");
+                String departureTime = rs.getString("departureTime");
+                Date submittedOn = rs.getDate("submittedOn");
+                Boolean confirmed = rs.getBoolean("confirmed");
+                String agency_username = rs.getString("username_agency");
+                int singleRooms = rs.getInt("singleRooms");
+                int doubleRooms = rs.getInt("doubleRooms");
+                int tripleRooms = rs.getInt("tripleRooms");
+                int quadrupleRooms = rs.getInt("quadrupleRooms");
+                String comments = rs.getString("comments");
+
+                reservation = new Reservation(reservationId, hotelUsername, agency_username, arrivalDate, arrivalTime, 
+                        departureDate, departureTime, submittedOn, singleRooms, doubleRooms, tripleRooms, 
+                        quadrupleRooms, comments, confirmed);
+
+            }
+
+            stmt.close();
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                db.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return reservation;
+    }
 }

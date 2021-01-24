@@ -116,9 +116,9 @@
                     <div class="col-md-4 box">
                         <h5>Comments</h5>
                         <% if (reservation.getComments() == null) { %>
-                            <b> </b>
+                            
                         <% } else { %>
-                            <b><%=reservation.getComments() %></b>
+                            <%=reservation.getComments() %>
                         <% } %>
                     </div>
                 </div>

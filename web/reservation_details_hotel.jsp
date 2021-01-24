@@ -23,41 +23,50 @@
 
         String hotelUsername = ((Hotel)session.getAttribute("userObj")).getUsername();
 
-        String idString = request.getParameter("rid");
-        int id = Integer.parseInt(idString);
+        String reservationCode = request.getParameter("rid");
+        int reservationCodeInt = Integer.parseInt(reservationCode);
 
-        double [] prices = rd.getPricePerRoomType(hotelUsername);
+        Reservation reservation = rd.getReservationOfHotelById(reservationCodeInt, hotelUsername);
+
+        String agencyUsername = reservation.getAgencyName();
         
-        List<Reservation> reservationsOfHotelList = rd.getAll(hotelUsername);
-        int reservationId = reservationsOfHotelList.get(id).getReservationId();
+        double [] prices = rd.getPricePerRoomType(hotelUsername);
 
     %>
 <main>
     <div class="container">
         <div class="row mb-3">
             <div class="col-md-12">
-                <h2><i>Reservation <%=reservationId %> Details</i></h2>
+                <h2><i>Reservation <%=reservationCodeInt %> Details</i></h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="box">
-                    <b>Reservation id:</b> <%=reservationId %><br>
-                    <b>Agency:</b> <%=reservationsOfHotelList.get(id).getAgencyName() %><br>
-                    <b>Created on:</b> <%=reservationsOfHotelList.get(id).getSubmittedOn() %><br>
-                    <b>Confirmed: </b> <%=reservationsOfHotelList.get(id).getConfirmed() %><br>
+                    <b>Reservation id:</b> <%=reservationCodeInt %><br>
+                    <b>Agency:</b> <%=agencyUsername %><br>
+                    <b>Created on:</b> <%=reservation.getSubmittedOn() %><br>
+                    <b>Confirmed: </b> <%=reservation.getConfirmed() %><br>
                     <b>Checked in: </b> <% 
-                    if (reservationsOfHotelList.get(id).isCheckedOut()) { %>
+                    if (reservation.isCheckedIn()) { %>
+                        Yes
+                    <% } else { %>
                         No
                     <% } %>
                     <br>
                     <b>Checked out: </b> <% 
-                    if (reservationsOfHotelList.get(id).isCheckedOut()) { %>
+                    if (reservation.isCheckedOut()) { %>
                         Yes
+                    <% } else { %>
+                        No
                     <% } %>
                     <br>
                     <b>Comments: </b>
-                    <%=reservationsOfHotelList.get(id).getComments() %>
+                    <% if (reservation.getComments() == null) { %>
+                        
+                    <% } else { %>
+                        <%=reservation.getComments() %>
+                    <% } %>
                 </div>
             </div>
             <div class="col-md-4">
@@ -74,22 +83,22 @@
                             <tr>
                                 <td>Single</td>
                                 <td><%=prices[0]%></td>
-                                <td><%=reservationsOfHotelList.get(id).getSingleRooms() %></td>
+                                <td><%=reservation.getSingleRooms() %></td>
                               </tr>
                               <tr>
                                 <td>Double</td>
                                 <td><%=prices[1]%></td>
-                                <td><%=reservationsOfHotelList.get(id).getDoubleRooms() %></td>
+                                <td><%=reservation.getDoubleRooms() %></td>
                               </tr>
                               <tr>
                                 <td>Triple</td>
                                 <td><%=prices[2]%></td>
-                                <td><%=reservationsOfHotelList.get(id).getTripleRooms() %></td>
+                                <td><%=reservation.getTripleRooms() %></td>
                               </tr>
                               <tr>
                                 <td>Quad</td>
                                 <td><%=prices[3]%></td>
-                                <td><%=reservationsOfHotelList.get(id).getQuadrupleRooms() %></td>
+                                <td><%=reservation.getQuadrupleRooms() %></td>
                               </tr>
                         </tbody>
                     </table>
@@ -156,13 +165,13 @@
                             <% 
 
                             GroupCustomerDao gcd = new GroupCustomerDao();
-                            List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(reservationId);
+                            List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(reservationCodeInt);
                             for (int i = 0; i < groupMembers.size() ; i++) {
                                 
                             %>
 
                             <tr>
-                                <td><%=reservationId %></td>
+                                <td><%=reservationCodeInt %></td>
                                 <td><%=groupMembers.get(i).getName() %></td>
                                 <td><%=groupMembers.get(i).getSurname() %></td>
                                 <td><%=groupMembers.get(i).getIdentityNumber() %></td>
@@ -181,7 +190,7 @@
                     <%
 
                     ServiceDao sd = new ServiceDao();
-                    List<Service> services = sd.getServicesPerReservation(reservationId, hotelUsername);
+                    List<Service> services = sd.getServicesPerReservation(reservationCodeInt, hotelUsername);
                     for (int i = 0; i < services.size(); i++) {
                         
                     %>

@@ -35,26 +35,31 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody style="text-align: center;">
-                                                    <% ReservationDao rd=new ReservationDao(); AgencyDao agencyDao=new
-                                                        AgencyDao(); String
-                                                        username=((Hotel)session.getAttribute("userObj")).getUsername();
+                                                    <% ReservationDao rd=new ReservationDao(); 
+                                                        AgencyDao agencyDao=new AgencyDao(); 
+                                                        String username=((Hotel)session.getAttribute("userObj")).getUsername();
+                                                        int reservationCode = 0;
 
                                                         boolean btrue = true;
                                                         boolean bfalse = false;
 
                                                         List<Reservation> reservations = rd.getAll(username);
-                                                        for (int i = 0; i < reservations.size(); i++) { %>
+                                                        for (int i = 0; i < reservations.size(); i++) { 
+
+                                                            reservationCode = reservations.get(i).getReservationId();
+
+                                                    %>
 
                                                             <tr>
                                                                 <td>
-                                                                    <%=reservations.get(i).getReservationId()%>
+                                                                    <%=reservationCode%>
 
                                                                 </td>
                                                                 <td>
                                                                     <%=agencyDao.getByUsername(reservations.get(i).getAgencyName()).getName()%>
                                                                 </td>
                                                                 <td>
-                                                                    <form action="reservation_details_hotel.jsp?rid=<%=i%>" target="_blank" method="POST">
+                                                                    <form action="reservation_details_hotel.jsp?rid=<%=reservationCode%>" target="_blank" method="POST">
                                                                         <button class="blueButton">Reservation Details</button>
                                                                     </form>
                                                                 </td>
