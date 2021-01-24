@@ -24,7 +24,12 @@
 
     <title>Dream Hotel | Reservation</title>
 
-
+<%
+    Agency signedInAgency = (Agency)session.getAttribute("userObj");
+    if (signedInAgency == null) {
+        throw new Exception("You are not authorized to view this content");
+    }
+%>
 
 </head>
 

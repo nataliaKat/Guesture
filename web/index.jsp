@@ -1,8 +1,13 @@
+<%@ page import="model.Agency" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage="errorPage.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%Hotel signedInHotel = (Hotel)session.getAttribute("userObj");
+if (signedInHotel == null) {
+throw new Exception("You are not authorized to view this content");
+}
+%>
 <head>
   <title>Dream Hotel | Home</title>
   <%@include file="header.jsp"%>

@@ -8,6 +8,8 @@
 <%@ page import="model.Reservation" %>
 <%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
+<%--<%@ page errorPage="errorPage.jsp" %>--%>
+
 <html>
 <head>
     <%@include file="header.jsp"%>
@@ -15,13 +17,15 @@
 </head>
 <body>
 <%@include file="navbar.jsp"%>
-
-<% 
+<%Hotel signedInHotel = (Hotel)session.getAttribute("userObj");
+    if (signedInHotel == null) {
+        throw new Exception("You are not authorized to view this content");
+    }
         /* */
-        String hotelUsername = "portoven@gmail.com";
         String agencyUsername = "holidays@gmail.com";
-
+        String hotelUsername = signedInHotel.getUsername();
         ReservationDao rd = new ReservationDao();
+
 
         double [] prices = rd.getPricePerRoomType(hotelUsername);
 
