@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
 
 <%@ page import="dao.GroupCustomerDao" %>
 <%@ page import="dao.ReservationDao" %>
@@ -17,19 +18,15 @@
 <%@include file="navbar.jsp"%>
 
 <% 
-        /* */
-        String hotelUsername = "portoven@gmail.com";
-        String agencyUsername = "holidays@gmail.com";
 
         ReservationDao rd = new ReservationDao();
 
+        String hotelUsername = ((Hotel)session.getAttribute("userObj")).getUsername();
+
+        String idString = request.getParameter("rid");
+        int id = Integer.parseInt(idString);
+
         double [] prices = rd.getPricePerRoomType(hotelUsername);
-
-        User user = (User)session.getAttribute("userObj");
-//      hotelUsername = user.getUsername();
-
-        int id = 0;
-//      int id = request.getParameter("id");
         
         List<Reservation> reservationsOfHotelList = rd.getAll(hotelUsername);
         int reservationId = reservationsOfHotelList.get(id).getReservationId();
