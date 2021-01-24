@@ -76,7 +76,7 @@ String agencyUsername = ((Agency)session.getAttribute("userObj")).getUsername();
                         <td><%=reservationsOfAgencyList.get(i).getArrivalDate()%></td>
 
                         <td> 
-                            <form action="reservation_details.jsp?rid=<%=i%>" target="_blank" method="POST">
+                            <form action="reservation_details.jsp?rid=<%=reservationCode%>" target="_blank" method="POST">
                                 <button class="blueButton">Reservation Details</button>
                             </form>
                        </td>
