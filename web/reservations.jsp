@@ -215,9 +215,11 @@
                                                                             </div>
                                                                             <div class="form-group">
 
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-dismiss="modal">Close</button>
+                                                                                <button type="button" class="btn btn-success"
+                                                                                data-dismiss="modal"
+                                                                                onclick="location.href = 'checkoutController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">Check-out</button>
+                                                                                <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
                                                                             </div>
 
                                                                         </div>
@@ -256,9 +258,11 @@
                                                                                     </div>
                                                                                     <div class="form-group">
 
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-dismiss="modal">Close</button>
+                                                                                        <button type="button" class="btn btn-success"
+                                                                                        data-dismiss="modal"
+                                                                                        onclick="location.href = 'checkinController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">Check-in</button>
+                                                                                        <button type="button" class="btn btn-secondary"
+                                                                                        data-dismiss="modal">Close</button>
                                                                                     </div>
 
                                                                                 </div>
