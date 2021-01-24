@@ -37,7 +37,7 @@
 
 <%--                </li>--%>
                 <li class="nav-item">
-                    <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                    <a class="nav-link logout" href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Log out</a>
                 </li>
             </ul>
         </div>
