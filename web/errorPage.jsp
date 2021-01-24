@@ -21,7 +21,7 @@
 <main class="container">
     <div class="row">
         <div class="alert alert-danger col-md-12" role="alert">
-            <%=exception.getMessage()%>
+            <%=exception.get%>
         </div>
     </div>
 </main>

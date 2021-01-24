@@ -15,12 +15,17 @@
 <%
     int reservationId = Integer.parseInt(request.getParameter("reservation"));
     request.setAttribute("reservation", reservationId);
-
+    Agency signedInAgency = (Agency)session.getAttribute("userObj");
+    if (signedInAgency == null) {
+        throw new Exception("You are not authorized to view this content");
+    }
     GroupingDao groupingDao = new GroupingDao();
     ReservationDao reservationDao = new ReservationDao();
     Reservation foundReservation = reservationDao.getById(reservationId);
-    if (!foundReservation.getAgencyName().equals(((Agency)session.getAttribute("userObj")).getUsername())) {
+
+    if (!foundReservation.getAgencyName().equals((signedInAgency).getUsername())) {
         throw new Exception("You are trying to view content you are not allowed to");
+
     }
     if (foundReservation == null) {
         throw new Exception("Reservation not found!");
