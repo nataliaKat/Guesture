@@ -35,6 +35,15 @@ public class Agency extends User {
         this.registrationDate = registrationDate;
     }
 
+    public Agency(String username, String password, String name, String telephone, String mail, String vatNumber, Date registrationDate) {
+        super(username, password);
+        this.name = name;
+        this.telephone = telephone;
+        this.mail = mail;
+        this.vatNumber = vatNumber;
+        this.registrationDate = registrationDate;
+    }
+
     public String getName() {
         return name;
     }

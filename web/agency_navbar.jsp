@@ -42,7 +42,7 @@
                     <a class="nav-link logout" href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Log out</a>
                 </li>
                 <%} else {%>
-                <a class="nav-link logout" href="#"><i class="fas fa-sign-in-alt"></i> Log in</a>
+                <a class="nav-link login" href="login.jsp"><i class="fas fa-sign-in-alt"></i> Log in</a>
                 <% }%>
             </ul>
         </div>

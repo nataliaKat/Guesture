@@ -11,16 +11,16 @@
     <%@include file="header.jsp"%>
 </head>
 <body>
-<%@include file="navbar.jsp"%>
+<%@include file="agency_navbar.jsp"%>
 <%
-    int reservationId = Integer.parseInt(request.getParameter("reservation"));
-    request.setAttribute("reservation", reservationId);
     Agency signedInAgency = (Agency)session.getAttribute("userObj");
     if (signedInAgency == null) {
         throw new Exception("You are not authorized to view this content");
     }
     GroupingDao groupingDao = new GroupingDao();
     ReservationDao reservationDao = new ReservationDao();
+    int reservationId = Integer.parseInt(request.getParameter("reservation"));
+    request.setAttribute("reservation", reservationId);
     Reservation foundReservation = reservationDao.getById(reservationId);
 
     if (!foundReservation.getAgencyName().equals((signedInAgency).getUsername())) {
