@@ -33,7 +33,7 @@
                     <a class="nav-link" href="#"><i class="fas fa-user"></i><%= hotel.getName()%></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                    <a class="nav-link logout" href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Log out</a>
                 </li>
                 <%} else {%>
                     <a class="nav-link logout" href="#"><i class="fas fa-sign-in-alt"></i> Log in</a>
