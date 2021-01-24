@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
 
 <%@ page import="dao.GroupCustomerDao" %>
 <%@ page import="dao.ReservationDao" %>
@@ -22,18 +23,16 @@
         throw new Exception("You are not authorized to view this content");
     }
         /* */
-        String agencyUsername = "holidays@gmail.com";
         String hotelUsername = signedInHotel.getUsername();
         ReservationDao rd = new ReservationDao();
 
 
         double [] prices = rd.getPricePerRoomType(hotelUsername);
 
-        User user = (User)session.getAttribute("userObj");
-//      hotelUsername = user.getUsername();
+        String idString = request.getParameter("rid");
+        int id = Integer.parseInt(idString);
 
-        int id = 0;
-//      int id = request.getParameter("id");
+        double [] prices = rd.getPricePerRoomType(hotelUsername);
         
         List<Reservation> reservationsOfHotelList = rd.getAll(hotelUsername);
         int reservationId = reservationsOfHotelList.get(id).getReservationId();
