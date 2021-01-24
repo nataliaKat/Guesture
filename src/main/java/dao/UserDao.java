@@ -31,7 +31,7 @@ public class UserDao {
 			pst.setString(2, password);
 			ResultSet rs = pst.executeQuery();
 			if (!rs.next()) {
-				sql = "SELECT * FROM user INNER JOIN hotel ON  user.username = agency.username where user.password=?";
+				sql = "SELECT * FROM user INNER JOIN agency ON  user.username = agency.username where user.username=? AND user.password=?";
 				pst = con.prepareStatement(sql);
 				pst.setString(1,username);
 				pst.setString(2, password);

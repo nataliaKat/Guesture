@@ -29,7 +29,10 @@ String photoUrl = request.getParameter("photoUrl");
 
 // convert from ISO-8859-1 (latin) to UTF-8 so as to support Greek characters
 address = new String(address.getBytes("ISO-8859-1"), "UTF-8");
-head= new String(head.getBytes("ISO-8859-1"), "UTF-8");
+head = new String(head.getBytes("ISO-8859-1"), "UTF-8");
+description = new String(description.getBytes("ISO-8859-1"), "UTF-8");
+name = new String(name.getBytes("ISO-8859-1"), "UTF-8");
+servicesAsString = new String(servicesAsString.getBytes("ISO-8859-1"), "UTF-8");
 
     String[] services = servicesAsString.split("\n");
 

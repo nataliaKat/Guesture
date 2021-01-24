@@ -5,6 +5,8 @@ import model.Agency;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class AgencyDao {
 
@@ -72,7 +74,7 @@ public class AgencyDao {
 			pst.setString(2, agency.getTelephone());
 			pst.setString(3, agency.getMail());
             pst.setString(4, agency.getVatNumber());
-            pst.setDate(5, agency.getRegistrationDate());
+            pst.setDate(5,  Date.valueOf(LocalDate.now()));
             pst.setString(6, agency.getUsername());
 			pst.executeUpdate();
 

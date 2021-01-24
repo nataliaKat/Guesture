@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="login.jsp">Back</a>
+                        <a class="nav-link" href="login.jsp">Login</a>
                     </li>
                 </ul>
             </div>

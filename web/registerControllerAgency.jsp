@@ -2,7 +2,7 @@
 <%@ page errorPage="errorPage.jsp" %>
 <%@ page import="dao.AgencyDao" %>
 <%@ page import="model.Agency" %>
-<%@ page import="java.sql.Date"%>
+
 
 
 <% 
@@ -13,9 +13,8 @@ String repeat_password = request.getParameter("repeat_password");
 String telephone = request.getParameter("phone");
 String mail = request.getParameter("mail");
 String vatNumber = request.getParameter("vat");
-String date = request.getParameter("date");
 
-if ( name == null || telephone == null || mail == null || vatNumber == null || date == null) {
+if ( name == null || telephone == null || mail == null || vatNumber == null ) {
     
     response.sendRedirect("new_agency.jsp");
     return;
@@ -36,9 +35,19 @@ java.util.regex.Matcher m = p.matcher(mail);
 
 if (!m.matches()) errors += "<li>Mail is not a valid email address!</li>";
 if (vatNumber.length() == 0) errors += "<li>No VAT Number inserted</li>";
-if (date.length() == 0) errors += "<li>No Date inserted</li>";
 
+
+
+if (errors == "") {
+    Agency agency = new Agency(mail, password, name, telephone, mail, vatNumber);
+    AgencyDao agencydao  = new AgencyDao();
+    agencydao.register(agency);
+    request.setAttribute("message", "Registration form has been successfully completed. Login now!");
 %>
+    <jsp:forward page="login.jsp" />
+
+<%     
+} else { %>
 
 <!doctype html>
 <html lang="en">
@@ -67,19 +76,7 @@ if (date.length() == 0) errors += "<li>No Date inserted</li>";
     <!-- Begin page content -->
     <main class="container">
         <div id="registration_form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
-            <% if (errors == "") { %>
-                <div class="alert alert-success" role="alert"> Registration form has been successfully completed!
-                </div>
-                <%
-                   Date obj_date = Date.valueOf(date);
-                   Agency agency = new Agency(mail, password, name, telephone, mail, vatNumber, obj_date);
-                   AgencyDao agencydao  = new AgencyDao();
-                   agencydao.register(agency);
-                   
-                   request.setAttribute("agency_obj", agency);
-                
-                   
-                } else { %>
+        
                     <div class="page-header">
                         <h1> Registration form has errors</h1>
                     </div>
@@ -88,7 +85,7 @@ if (date.length() == 0) errors += "<li>No Date inserted</li>";
                             <%=errors%>
                         </ol>
                     </div>
-             <% } %>                               
+                                          
         </div>
     </main>
 
@@ -96,5 +93,6 @@ if (date.length() == 0) errors += "<li>No Date inserted</li>";
 </body>
 
 </html>
+<% } %> 
 
    

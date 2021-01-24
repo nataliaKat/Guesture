@@ -25,33 +25,11 @@
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light  custom-nav">
-        <a class="navbar-brand" href="index.html"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item current">
-                    <a class="nav-link" href="agencies.html">Agencies</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="reservations.html">Reservations</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="reviews.html">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="chart.html">Statistics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Dream Hotel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link logout" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                    <a class="nav-link" href="login.jsp">Login</a>
                 </li>
             </ul>
         </div>
@@ -107,12 +85,7 @@
                         <input type="text" id="vat" name="vat" class="form-control" placeholder="number" required>
                     </div>
                 </div>
-                <div class="form-agency">
-                    <label for="date" class="col-sm-4 control-label" style="padding-top: 2%;">Date</label>
-                    <div class="col-sm-10">
-                        <input type="date" id="date" name="date" class="form-control" required>
-                    </div>
-                </div>
+                
 
                 <div class="form-agency">
                     <div class="col-sm-10 col-sm-offset-2" style="padding-top: 5%;">
