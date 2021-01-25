@@ -37,19 +37,17 @@
             </div>
             <div class="col-md-6">
                 <h5 class="text-center">Saved rooms</h5>
-                <table class="table table-striped" id="roomtable">
-                    <thead>
+                <div style="max-height: 500px;display: block; overflow-y: scroll">
+                <table class="table table-striped table table-bordered table-sm" id="roomtable">
                     <tr>
                         <th scope="col">Number</th>
                         <th scope="col">Floor</th>
                         <th scope="col">Type</th>
                     </tr>
-                    </thead>
-                    <tbody>
 
-                    </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </div>
 </main>

@@ -24,23 +24,23 @@
 
 <body id="reservation">
 <%@include file="navbar.jsp" %>
-                                    <!-- Begin page content -->
-                                    <main class="container-fluid">
-                                        <div class="m-3">
-                                            <table id="example"
-                                                class="table table-hover table-striped table-bordered dt-responsive nowrap table-dark"
-                                                style="width: 100%;">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Reservation code</th>
-                                                        <th scope="col">Agency</th>
-                                                        <th scope="col">Reservation Details</th>
-                                                        <th scope="col">Action</th>
-                                                        <th scope="col">Delete</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody style="text-align: center;">
-                                                    <% ReservationDao rd=new ReservationDao(); 
+<!-- Begin page content -->
+<main class="container-fluid">
+    <div class="m-3">
+        <table id="example"
+               class="table table-hover table-striped table-bordered dt-responsive nowrap table-dark"
+               style="width: 100%;">
+            <thead>
+            <tr>
+                <th scope="col">Reservation code</th>
+                <th scope="col">Agency</th>
+                <th scope="col">Reservation Details</th>
+                <th scope="col">Action</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                <% ReservationDao rd=new ReservationDao();
                                                         AgencyDao agencyDao=new AgencyDao(); 
                                                         String username=((Hotel)session.getAttribute("userObj")).getUsername();
                                                         int reservationCode = 0;
@@ -55,86 +55,86 @@
 
                                                     %>
 
-                                                            <tr>
-                                                                <td>
-                                                                    <%=reservationCode%>
+            <tr>
+                <td>
+                    <%=reservationCode%>
 
-                                                                </td>
-                                                                <td>
-                                                                    <%=agencyDao.getByUsername(reservations.get(i).getAgencyName()).getName()%>
-                                                                </td>
-                                                                <td>
-                                                                    <form action="reservation_details_hotel.jsp?rid=<%=reservationCode%>" target="_blank" method="POST">
-                                                                        <button class="blueButton">Reservation Details</button>
-                                                                    </form>
-                                                                </td>
-                                                                <td>
+                </td>
+                <td>
+                    <%=agencyDao.getByUsername(reservations.get(i).getAgencyName()).getName()%>
+                </td>
+                <td>
+                    <form action="reservation_details_hotel.jsp?rid=<%=reservationCode%>" target="_blank" method="POST">
+                        <button class="blueButton">Reservation Details</button>
+                    </form>
+                </td>
+                <td>
 
-                                                                    <% if (reservations.get(i).getConfirmed() == bfalse) { %>
+                    <% if (reservations.get(i).getConfirmed() == bfalse) { %>
 
-                                                                        <button type="button" class="btn btn-success"
-                                                                        data-toggle="modal"
-                                                                        data-target="#confirm-modal"><i
-                                                                            class="fas fa-check"></i></button>
-                                                                        
-                                                                    <% } else if (reservations.get(i).getConfirmed() == btrue && reservations.get(i).isCheckedIn() == bfalse) { %>
-                                                                
-                                                                        <button type="button" class="btn btn-info"
-                                                                            data-toggle="modal"
-                                                                            data-target="#checkin-modal"><i
-                                                                                class="fas fa-door-closed"></i></button>
+                    <button type="button" class="btn btn-success"
+                            data-toggle="modal"
+                            data-target="#confirm-modal"><i
+                            class="fas fa-check"></i></button>
 
-                                                                    <% } else { %> 
+                    <% } else if (reservations.get(i).getConfirmed() == btrue && reservations.get(i).isCheckedIn() == bfalse) { %>
 
-                                                                        <button type="button" class="btn btn-info"
-                                                                        data-toggle="modal"
-                                                                        data-target="#checkout-modal"><i
-                                                                            class="fas fa-door-open"></i></button>
+                    <button type="button" class="btn btn-info"
+                            data-toggle="modal"
+                            data-target="#checkin-modal"><i
+                            class="fas fa-door-closed"></i></button>
 
-                                                                    <% } %>
-                                                                 
-                                                                </td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-danger"
-                                                                        data-toggle="modal"
-                                                                        data-target="#delete-modal"><i
-                                                                            class="fas fa-trash-alt"></i></button>
-                                                                </td>
-                                                            </tr>
+                    <% } else { %>
 
-                                                            <% } %>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th scope="col">Reservation code</th>
-                                                        <th scope="col">Agency</th>
-                                                        <th scope="col">Reservation Details</th>
-                                                        <th scope="col">Action</th>
-                                                        <th scope="col">Delete</th>
-                                                    </tr>
-                                                </tfoot>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                    <button type="button" class="btn btn-info"
+                            data-toggle="modal"
+                            data-target="#checkout-modal"><i
+                            class="fas fa-door-open"></i></button>
 
+                    <% } %>
+
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger"
+                            data-toggle="modal"
+                            data-target="#delete-modal"><i
+                            class="fas fa-trash-alt"></i></button>
+                </td>
             </tr>
+
                 <% } %>
             <tfoot>
             <tr>
                 <th scope="col">Reservation code</th>
                 <th scope="col">Agency</th>
-                <th scope="col">Arrival date</th>
-                <th scope="col">Arrival time</th>
-                <th scope="col">Departure date</th>
-                <th scope="col">Departure time</th>
-                <th scope="col">Made on</th>
-                <th scope="col">Check-in</th>
-                <th scope="col">Check-out</th>
+                <th scope="col">Reservation Details</th>
+                <th scope="col">Action</th>
                 <th scope="col">Delete</th>
-                <th scope="col">Confirm</th>
             </tr>
             </tfoot>
             </tbody>
         </table>
+    </div>
+
+    </tr>
+
+    <tfoot>
+    <tr>
+        <th scope="col">Reservation code</th>
+        <th scope="col">Agency</th>
+        <th scope="col">Arrival date</th>
+        <th scope="col">Arrival time</th>
+        <th scope="col">Departure date</th>
+        <th scope="col">Departure time</th>
+        <th scope="col">Made on</th>
+        <th scope="col">Check-in</th>
+        <th scope="col">Check-out</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Confirm</th>
+    </tr>
+    </tfoot>
+    </tbody>
+    </table>
     </div>
 
 
@@ -240,22 +240,25 @@
                 </div>
                 <div class="modal-body">
 
-                                                                                <button type="button" class="btn btn-success"
-                                                                                data-dismiss="modal"
-                                                                                onclick="location.href = 'checkoutController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">Check-out</button>
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                data-dismiss="modal">Close</button>
-                                                                            </div>
-
-                        <button type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal">Close
-                        </button>
-                    </div>
-
+                    <button type="button" class="btn btn-success"
+                            data-dismiss="modal"
+                            onclick="location.href = 'checkoutController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">
+                        Check-out
+                    </button>
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Close
+                    </button>
                 </div>
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
             </div>
+
         </div>
+    </div>
+    </div>
     </div>
     <% } %>
 
@@ -282,22 +285,25 @@
                 </div>
                 <div class="modal-body">
 
-                                                                                        <button type="button" class="btn btn-success"
-                                                                                        data-dismiss="modal"
-                                                                                        onclick="location.href = 'checkinController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">Check-in</button>
-                                                                                        <button type="button" class="btn btn-secondary"
-                                                                                        data-dismiss="modal">Close</button>
-                                                                                    </div>
-
-                        <button type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal">Close
-                        </button>
-                    </div>
-
+                    <button type="button" class="btn btn-success"
+                            data-dismiss="modal"
+                            onclick="location.href = 'checkinController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">
+                        Check-in
+                    </button>
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Close
+                    </button>
                 </div>
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
             </div>
+
         </div>
+    </div>
+    </div>
     </div>
     <% } %>
 </main>
