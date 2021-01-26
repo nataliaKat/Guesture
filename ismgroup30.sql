@@ -23,7 +23,7 @@ CREATE TABLE Hotel (
     address VARCHAR(100) NOT NULL,
     phoneNumber VARCHAR(50) NOT NULL,
     head VARCHAR(100) NOT NULL,
-    description TINYTEXT,
+    description VARCHAR(10000),
     priceSingle DOUBLE NOT NULL,
     priceDouble DOUBLE NOT NULL,
     priceTriple DOUBLE NOT NULL,
@@ -146,14 +146,14 @@ VALUES ('luxury@gmail.com', '11111'),
        ('travelling@gmail.com', '10258'),
        ('vacay@yahoo.com', '20789');
 
-INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple)
-VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '2565241236', 'Ανδρέας Γεωργίου', '', 35.50, 50.00, 75.50, 100.00),
-	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', '2152365236', 'Ελένη Παπαδοπούλου', '', 30.00, 45.50, 60.00, 85.50),
-       ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', '2194526325', 'Γιώργος Λινός', '', 50.00, 75.50, 100.00, 130.00),
-       ('homepoetry@gmail.com', 'Home and Poetry', 'Ερμού 114, Αθήνα', '2198545632', 'Δήμητρα Σωτηρίου', '', 45.00, 63.50, 80.00, 105.50),
-       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', '1254563289', 'Chris Green', '', 40.00, 55.50, 70.00, 100.00),
-       ('iraklion@gmail.com', 'Iraklion Hotel', 'Καλοκαιρινού 128, Ηράκλειο', '2563245639', 'Σωτήρης Φανταράκης', '', 30.50, 40.50, 51.50, 65.00),
-       ('portoven@gmail.com', 'Porto Veneziano Hotel', 'Ακτή Ενώσεως και Γλαύκου, Χανιά', '2569685632', 'Μαρία Κωσταντάκη', '', 37.50, 45.00, 52.50, 65.00);
+INSERT INTO Hotel (username, name, address, phoneNumber, head, description, priceSingle, priceDouble, priceTriple, priceQuadruple, photo_url)
+VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '2565241236', 'Ανδρέας Γεωργίου', 'An amazing hotel in the center of Komotini, near the square, with amazing view, friendly reception staff and a very warm atmosphere! An excellent choice for families with children! We guarantee you will have the time of your life! Visit us!', 35.50, 50.00, 75.50, 100.00, "https://i2.wp.com/itravelling.gr/wp-content/uploads/2019/08/Patriarca_AriaHotels_1.jpg?resize=1140%2C700&ssl=1"),
+	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', '2152365236', 'Ελένη Παπαδοπούλου', 'Beautiful apartments in the city of Volos. Enjoy the quiet and friendly city in our modern apartments.', 30.00, 45.50, 60.00, 85.50, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGsjT9APoUYnGw2dajCInA4qXu6hNpal6QOA&usqp=CAU"),
+       ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', '2194526325', 'Γιώργος Λινός', '', 50.00, 75.50, 100.00, 130.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnZyIZM4HWe-GkpeTUcuAZmVuHuuIWQJJUQg&usqp=CAU"),
+       ('homepoetry@gmail.com', 'Home and Poetry', 'Ερμού 114, Αθήνα', '2198545632', 'Δήμητρα Σωτηρίου', 'Ξενοδοχείο στο ιστορικό κέντρο της Αθήνας, μόλις 5 λεπτά από την κεντρική πλατεία Συντάγματος. Θα μείνετε ευχαριστημένοι από τις ανέσεις του ξενοδοχείου μας. Ελπίζουμε να απολαύσετε τις ομορφιές της Αθήνας!', 45.00, 63.50, 80.00, 105.50, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQba19kiOBlMoLonQlOs5AyBlw9rB7w1Bplxw&usqp=CAU"),
+       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', '1254563289', 'Chris Green', '', 40.00, 55.50, 70.00, 100.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGqIP-ZOpHOLxxcNuldZ2ol1AquRmwBz3Bgw&usqp=CAU"),
+       ('iraklion@gmail.com', 'Iraklion Hotel', 'Καλοκαιρινού 128, Ηράκλειο', '2563245639', 'Σωτήρης Φανταράκης', 'Enjoy your stay in the beautiful island of Crete!!! Activities as fishing, breakfast, tour of the island available!', 30.50, 40.50, 51.50, 65.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5T7W8bIylI6_RBfgeO2E9e-kB-rcKYacWXA&usqp=CAU"),
+       ('portoven@gmail.com', 'Porto Veneziano Hotel', 'Ακτή Ενώσεως και Γλαύκου, Χανιά', '2569685632', 'Μαρία Κωσταντάκη', 'Visit Crete!', 37.50, 45.00, 52.50, 65.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUQ0px1iPAM2aNErpkn_3ih27Y-sBR_HHNYA&usqp=CAU");
             
 INSERT INTO Agency (name, telephone, mail, vatNumber, registrationDate, username)
 VALUES ('Holidays', '2562532145', 'holidays@gmail.com', 'GR52125232', '2008-10-16', 'holidays@gmail.com'),
