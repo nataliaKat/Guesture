@@ -20,12 +20,13 @@
                 request.getRequestURI().replace(request.getContextPath() + "/", "").equals("") ? "active": "" %>">
                     <a class="nav-link" href="index.jsp">Home</a>
                 </li>
-                <li class="nav-item">
-                </li>
                 <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reservations.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="reservations.jsp">Reservations<span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="reservations.jsp">Reservations</a>
                 </li>
+                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("rooms_registration.jsp") ? "active": "" %>">
+                    <a class="nav-link" href="rooms_registration.jsp">Add rooms</a>
+                </li>
+
                 <% Hotel hotel = (Hotel)session.getAttribute("userObj");
                     if (hotel != null) {
                 %>

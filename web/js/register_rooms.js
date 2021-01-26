@@ -2,7 +2,7 @@ $(document).ready(() => {
     const queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
     const hotelUsername = urlParams.get('hotel');
-    getRooms(hotelUsername);
+    getRooms();
 
     $("#submit-rooms").click((e) => {
         e.preventDefault();
@@ -21,18 +21,14 @@ $(document).ready(() => {
             },
             complete: function(data) {
                 console.log(data);
-                alert(data.responseText);
-                setInterval(getRooms(hotelUsername), 10000)
-            },
-            success: function (data) {
-                console.log(data);
-                alert(data);
+                    alert(data.responseText);
+                    setInterval(getRooms(), 10000);
             }
         });
     });
 
-    function getRooms(hotelUsername) {
-        $.get(`getAllRooms?username=${hotelUsername}`, function (data, status) {
+    function getRooms() {
+        $.get(`getAllRooms`, function (data, status) {
             let rooms = JSON.parse(data);
             let table = document.getElementById("roomtable");
             for(var i = table.rows.length - 1; i > 0; i--) {
