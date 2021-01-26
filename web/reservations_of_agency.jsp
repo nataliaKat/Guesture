@@ -1,15 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage="errorPage.jsp" %>
 
-<%@ page import="model.Service" %>
-<%@ page import="model.User" %>
 <%@ page import="model.Reservation" %>
 <%@ page import="model.GroupCustomer" %>
 
 <%@page import="java.util.List" %>
 
 <%@ page import="dao.ReservationDao" %>
-<%@ page import="dao.ServiceDao" %>
 <%@ page import="dao.GroupCustomerDao" %>
 
 

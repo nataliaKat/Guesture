@@ -6,8 +6,6 @@ $(document).ready(function() {
 
 
     $("#new-room").click(function(e) {
-        // let rows = document.getElementsByName("tr");
-        // rows.classList.toggle('color-on-bg');
         grouping = []
         customers.push(grouping)
         let content = `<tr style="background-color: #353745">
