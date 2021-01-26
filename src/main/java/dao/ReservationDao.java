@@ -58,6 +58,55 @@ public class ReservationDao {
         return reservations;
     }// End of getAll
 
+    public List<Reservation> getRecent(String username) throws Exception {
+        Connection con = null;
+        ResultSet rs = null;
+        List<Reservation> reservations = new ArrayList<Reservation>();
+        String sql = "SELECT * FROM reservation WHERE username_hotel = ? AND curdate() - submittedOn <= 3;";
+        DB db = new DB();
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, username);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                int reservationId = rs.getInt("reservationId");
+                Date arrivalDate = rs.getDate("arrivalDate");
+                String arrivalTime = rs.getString("arrivalTime");
+                Date departureDate = rs.getDate("departureDate");
+                String departureTime = rs.getString("departureTime");
+                Date submittedOn = rs.getDate("submittedOn");
+                boolean checkin = rs.getBoolean("checkin");
+                boolean chekout = rs.getBoolean("chekout");
+                int singleRooms = rs.getInt("singleRooms");
+                int doubleRooms = rs.getInt("doubleRooms");
+                int tripleRooms = rs.getInt("tripleRooms");
+                int quadrupleRooms = rs.getInt("quadrupleRooms");
+                boolean confirmed = rs.getBoolean("confirmed");
+                String comments = rs.getString("comments");
+                String agencyUsername = rs.getString("username_agency");
+                Reservation reservation = new Reservation(reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout,
+                        agencyUsername, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, comments, confirmed);
+                reservations.add(reservation);
+            }
+            stmt.close();
+            rs.close();
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            try {
+                db.close();
+            } catch (Exception e) {
+
+            }
+        }
+        return reservations;
+    }
+
     public void delete(int resId) throws Exception {
         Connection con = null;
         String sql = "DELETE FROM Reservation WHERE reservationId = ?; ";
@@ -83,7 +132,7 @@ public class ReservationDao {
     }// End of delete
     
 
-    public void edit(int resId) {
+    public void edit(int resId) throws Exception {
         Connection con = null;
         String sql = "UPDATE Reservation SET arrivalDate = ?, arrivalTime = ?, departureDate = ?, departureTime = ? WHERE reservationId = ?; ";
         DB db = new DB();

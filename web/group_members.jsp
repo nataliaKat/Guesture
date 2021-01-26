@@ -1,6 +1,5 @@
 <%@ page import="dao.GroupingDao" %>
 <%@ page import="dao.ReservationDao" %>
-<%@ page import="model.Agency" %>
 <%@ page import="model.Reservation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage="errorPage.jsp" %>
@@ -8,15 +7,20 @@
 <html>
 <head>
     <title>Dream Hotel | Group Members</title>
-    <%@include file="header.jsp"%>
+    <%@include file="header.jsp" %>
 </head>
 <body>
-<%@include file="agency_navbar.jsp"%>
+<%@include file="agency_navbar.jsp" %>
 <%
-    Agency signedInAgency = (Agency)session.getAttribute("userObj");
+    Agency signedInAgency = (Agency) session.getAttribute("userObj");
     if (signedInAgency == null) {
-        throw new Exception("You are not authorized to view this content");
+        request.setAttribute("message", "You should sign in first");
+%>
+<jsp:forward page="login.jsp"></jsp:forward>
+
+<%
     }
+
     GroupingDao groupingDao = new GroupingDao();
     ReservationDao reservationDao = new ReservationDao();
     int reservationId = Integer.parseInt(request.getParameter("reservation"));
@@ -106,12 +110,14 @@
             </div>
             <div id="cust-submit" class="row">
                 <button class="btn btn-secondary" onclick="location.href='group.html'"
-                        style="border-radius: 7px; margin-left: 3px;">Back</button>
+                        style="border-radius: 7px; margin-left: 3px;">Back
+                </button>
                 <!-- Button trigger modal -->
                 <button type="button" class="brownButton" data-toggle="modal" data-target="#exampleModal">
                     Submit
                 </button>
-                <button id="new-room" style="border-radius: 7px; margin-right: 3px;" class="darkBlueButton">New Room</button>
+                <button id="new-room" style="border-radius: 7px; margin-right: 3px;" class="darkBlueButton">New Room
+                </button>
             </div>
 
             <!-- Modal -->
@@ -138,7 +144,7 @@
         </div>
     </div>
 </main>
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 <script src="js/customers.js"></script>
 </body>
 </html>

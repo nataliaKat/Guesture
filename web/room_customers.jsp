@@ -12,7 +12,7 @@
 <html lang="en">
 <% Hotel signedHotel = (Hotel)session.getAttribute("userObj");
     if (signedHotel == null) {
-        request.setAttribute("loginmessage", "You are not authorized to view this page");%>
+        request.setAttribute("message", "You should sign in first.");%>
 <jsp:forward page="login.jsp"/>
 
 <% return;
