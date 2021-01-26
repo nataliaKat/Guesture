@@ -126,7 +126,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="dep_date" class="control-label">Departure date</label>
-                                <input id="dep_date" type="date" class="form-control form-control-sm" name="ar_date"
+                                <input id="dep_date" type="date" class="form-control form-control-sm" name="dep_date"
                                        value="2021-05-20">
                             </div>
                             <div class="col">

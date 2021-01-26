@@ -93,7 +93,9 @@ CREATE TABLE Grouping (
     reservationId INT NOT NULL,
 	PRIMARY KEY(groupingId),
     FOREIGN KEY (roomId)
-		REFERENCES Room (roomId)
+		REFERENCES Room (roomId),
+     FOREIGN KEY (reservationId)
+		REFERENCES Resesrvation (reservationId)    
 );         
 
 CREATE TABLE GroupCustomer (
