@@ -36,7 +36,6 @@
 
         String agencyUsername = reservation.getAgencyName();
         
-        double [] prices = rd.getPricePerRoomType(hotelUsername);
 
     %>
 <main>

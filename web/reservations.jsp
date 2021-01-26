@@ -3,15 +3,8 @@
 <%@page import="dao.ReservationDao" %>
 <%@ page import="model.Reservation" %>
 <%@ page import="java.util.List" %>
-<%--<%@ page errorPage="errorPage.jsp" %>--%>
+<%@ page errorPage="errorPage.jsp" %>
 
-
-<%
-    Hotel signedInHotel = (Hotel) session.getAttribute("userObj");
-    if (signedInHotel == null) {
-        throw new Exception("You are not authorized to view this content");
-    }
-%>
 
 <!doctype html>
 <html lang="en">
@@ -24,6 +17,7 @@
 
 <body id="reservation">
 <%@include file="navbar.jsp" %>
+
 <!-- Begin page content -->
 <main class="container-fluid">
     <div class="m-3">
@@ -40,16 +34,13 @@
             </tr>
             </thead>
             <tbody style="text-align: center;">
-                <% ReservationDao rd=new ReservationDao();
-                                                        AgencyDao agencyDao=new AgencyDao(); 
-                                                        String username=((Hotel)session.getAttribute("userObj")).getUsername();
+                <% ReservationDao rd = new ReservationDao();
+                                                        AgencyDao agencyDao = new AgencyDao();
+                                                        String username = ((Hotel)session.getAttribute("userObj")).getUsername();
                                                         int reservationCode = 0;
 
-                                                        boolean btrue = true;
-                                                        boolean bfalse = false;
-
                                                         List<Reservation> reservations = rd.getAll(username);
-                                                        for (int i = 0; i < reservations.size(); i++) { 
+                                                        for (int i = 0; i < reservations.size(); i++) {
 
                                                             reservationCode = reservations.get(i).getReservationId();
 
@@ -70,34 +61,33 @@
                 </td>
                 <td>
 
-                    <% if (reservations.get(i).getConfirmed() == bfalse) { %>
+                    <% if (reservations.get(i).getConfirmed() == false) { %>
 
                     <button type="button" class="btn btn-success"
-                            data-toggle="modal"
-                            data-target="#confirm-modal"><i
+                            onclick="location.href='confirmController.jsp?resId=<%=reservationCode%>'"><i
                             class="fas fa-check"></i></button>
 
-                    <% } else if (reservations.get(i).getConfirmed() == btrue && reservations.get(i).isCheckedIn() == bfalse) { %>
+                    <% } else if (reservations.get(i).getConfirmed() == true && reservations.get(i).isCheckedIn() == false) { %>
 
                     <button type="button" class="btn btn-info"
-                            data-toggle="modal"
-                            data-target="#checkin-modal"><i
+                            onclick="location.href='checkinController.jsp?resId=<%=reservationCode%>'"><i
                             class="fas fa-door-closed"></i></button>
 
-                    <% } else { %>
+                    <% } else if (reservations.get(i).getConfirmed() == true && reservations.get(i).isCheckedIn() == true &&
+                            reservations.get(i).isCheckedOut() == false) { %>
 
                     <button type="button" class="btn btn-info"
-                            data-toggle="modal"
-                            data-target="#checkout-modal"><i
+                            onclick="location.href='checkoutController.jsp?resId=<%=reservationCode%>'"><i
                             class="fas fa-door-open"></i></button>
 
+                    <% } else { %>
+                        -
                     <% } %>
 
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger"
-                            data-toggle="modal"
-                            data-target="#delete-modal"><i
+                            onclick="location.href='deleteController.jsp?resId=<%=reservationCode%>'"><i
                             class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
@@ -116,200 +106,12 @@
         </table>
     </div>
 
-    </tr>
 
-    <tfoot>
-    <tr>
-        <th scope="col">Reservation code</th>
-        <th scope="col">Agency</th>
-        <th scope="col">Arrival date</th>
-        <th scope="col">Arrival time</th>
-        <th scope="col">Departure date</th>
-        <th scope="col">Departure time</th>
-        <th scope="col">Made on</th>
-        <th scope="col">Check-in</th>
-        <th scope="col">Check-out</th>
-        <th scope="col">Delete</th>
-        <th scope="col">Confirm</th>
-    </tr>
-    </tfoot>
-    </tbody>
-    </table>
-    </div>
-
-
-    <% for (int i = 0; i < reservations.size(); i++) { %>
-    <!-- Modal For Confirm -->
-    <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog"
-         aria-labelledby="Confirm Reservation" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable"
-             role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" id="Confirm">Confirm</h1>
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form role="form" method="POST"
-                          action="confirmController.jsp">
-                        <div class="form-group">
-                            <label class="control-label">The reservation
-                                will be
-                                confirmed</label>
-                        </div>
-                        <div class="form-group">
-
-                            <button type="button" class="btn btn-success"
-                                    data-dismiss="modal"
-                                    onclick="location.href = 'confirmController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">
-                                Confirm
-                            </button>
-                            <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">Close
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <% } %>
-
-    <% for (int i = 0; i < reservations.size(); i++) { %>
-    <!-- Modal For Delete -->
-    <div class="modal fade" id="delete-modal" tabindex="-1"
-         role="dialog" aria-labelledby="Delete Reservation"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable"
-             role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" id="Delete">Delete</h1>
-                    <button type="button" class="close"
-                            data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form role="form" method="POST"
-                          action="deleteController.jsp">
-                        <div class="form-group">
-                            <label class="control-label">The reservation
-                                will be
-                                deleted</label>
-                        </div>
-                        <div class="form-group">
-
-                            <button type="button"
-                                    class="btn btn-success"
-                                    data-dismiss="modal"
-                                    onclick="location.href = 'deleteController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">
-                                Delete
-                            </button>
-                            <button type="button"
-                                    class="btn btn-secondary"
-                                    data-dismiss="modal">Close
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <% } %>
-
-    <% for (int i = 0; i < reservations.size(); i++) {
-        rd.checkOut(reservations.get(i).getReservationId()); %>
-    <!-- Modal For Check-out -->
-    <div class="modal fade" id="checkout-modal" tabindex="-1"
-         role="dialog" aria-labelledby="Checkout Reservation"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable"
-             role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" id="Checkout">
-                        Check-out</h1>
-                    <button type="button" class="close"
-                            data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <button type="button" class="btn btn-success"
-                            data-dismiss="modal"
-                            onclick="location.href = 'checkoutController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">
-                        Check-out
-                    </button>
-                    <button type="button" class="btn btn-secondary"
-                            data-dismiss="modal">Close
-                    </button>
-                </div>
-
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal">Close
-                </button>
-            </div>
-
-        </div>
-    </div>
-    </div>
-    </div>
-    <% } %>
-
-    <% for (int i = 0; i < reservations.size(); i++) {
-        rd.checkIn(reservations.get(i).getReservationId());
-    %>
-    <!-- Modal For Check-in -->
-    <div class="modal fade" id="checkin-modal"
-         tabindex="-1" role="dialog"
-         aria-labelledby="Checkin Reservation"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable"
-             role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title"
-                        id="Checkin">Check-in</h1>
-                    <button type="button" class="close"
-                            data-dismiss="modal"
-                            aria-label="Close">
-                                                                                        <span
-                                                                                                aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <button type="button" class="btn btn-success"
-                            data-dismiss="modal"
-                            onclick="location.href = 'checkinController.jsp?resId=<%=reservations.get(i).getReservationId()%>'">
-                        Check-in
-                    </button>
-                    <button type="button" class="btn btn-secondary"
-                            data-dismiss="modal">Close
-                    </button>
-                </div>
-
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal">Close
-                </button>
-            </div>
-
-        </div>
-    </div>
-    </div>
-    </div>
-    <% } %>
 </main>
 <%@include file="footer.jsp" %>
 <%@include file="datatables_scripts.jsp" %>
 <script src="js/reservations.js"></script>
+
 </body>
 
 </html>
