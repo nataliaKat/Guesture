@@ -24,6 +24,7 @@ public class GroupCustomerServlet extends HttpServlet {
         int reservationId = Integer.parseInt(request.getParameter("reservation"));
         ObjectMapper mapper = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);;
+        String message = "";
         for (String g : groups){
             List<GroupCustomer> customers = mapper.readValue(g, mapper.getTypeFactory().constructCollectionType(List.class, GroupCustomer.class));
             request.setAttribute("pelates", customers);

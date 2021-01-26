@@ -113,7 +113,7 @@ public class ReservationDao {
 
     public void checkIn(int resId) throws Exception {
         Connection con = null;
-        String sql = "UPDATE Reservation SET checkin = 'TRUE' WHERE reservationId = ?; ";
+        String sql = "UPDATE Reservation SET checkin = true WHERE reservationId = ?; ";
         DB db = new DB();
 
         try {
@@ -137,7 +137,7 @@ public class ReservationDao {
 
     public void checkOut(int resId) throws Exception {
         Connection con = null;
-        String sql = "UPDATE Reservation SET checkout = 'TRUE' WHERE reservationId = ?; ";
+        String sql = "UPDATE Reservation SET chekout = true WHERE reservationId = ?; ";
         DB db = new DB();
 
         try {
