@@ -98,4 +98,34 @@ public class HotelDao {
     }
     // end of register
 
+    public Hotel getHotelByUsername (String hotelUsername) {
+        DB db = new DB();
+        Hotel hotel = null;
+        Connection con = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM hotel WHERE username = ?";
+        try {
+
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, hotelUsername);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                hotel = (new Hotel(rs.getString("username"), rs.getString("name"), rs.getString("address"), rs.getString("phoneNumber"), rs.getString("head"), rs.getString("description"), rs.getString("photo_url")));
+            }
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                db.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return hotel;
+    }
+
 }
