@@ -128,14 +128,14 @@
                             <div class="col">
                                 <label for="ar_date" class="control-label">Arrival date</label>
                                 <input id="ar_date" type="date" class="form-control form-control-sm" name="ar_date"
-                                       value="2021-05-12">
+                                       value="<%=reservation.getArrivalDate()%>">
                             </div>
                             <div class="col">
                                 <label for="ar_time" class="control-label">Arrival time</label>
                                 <select id="ar_time" type="selct" class="form-control form-control-sm" name="ar_time">
-                                    <option value="morning">morning</option>
-                                    <option value="noon" selected="selected">noon</option>
-                                    <option value="evening">evening</option>
+                                    <option value="morning"<%if (reservation.getArrivalTime().equals("morning")) { %> selected="selected"<% } %>>morning</option>
+                                    <option value="noon" <%if (reservation.getArrivalTime().equals("noon")) { %> selected="selected"<% } %>>noon</option>
+                                    <option value="evening" <%if (reservation.getArrivalTime().equals("evening")) { %> selected="selected"<% } %>>evening</option>
                                 </select>
                             </div>
                         </div>
@@ -143,14 +143,14 @@
                             <div class="col">
                                 <label for="dep_date" class="control-label">Departure date</label>
                                 <input id="dep_date" type="date" class="form-control form-control-sm" name="dep_date"
-                                       value="2021-05-20">
+                                       value="<%=reservation.getDepartureDate()%>">
                             </div>
                             <div class="col">
                                 <label for="ar_time" class="control-label">Departure time</label>
                                 <select id="dep_time" type="text" class="form-control form-control-sm" name="dep_time">
-                                    <option value="morning">morning</option>
-                                    <option value="noon">noon</option>
-                                    <option value="evening" selected="selected">evening</option>
+                                    <option value="morning"<%if (reservation.getDepartureTime().equals("morning")) { %> selected="selected"<% } %>>morning</option>
+                                    <option value="noon" <%if (reservation.getDepartureTime().equals("noon")) { %> selected="selected"<% } %>>noon</option>
+                                    <option value="evening" <%if (reservation.getDepartureTime().equals("evening")) { %> selected="selected"<% } %>>evening</option>
                                 </select>
                             </div>
                         </div>
