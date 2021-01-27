@@ -37,6 +37,9 @@
 
     String hotelUsername = (String) request.getParameter("hotel");
 
+    Hotel hotel = hotelDao.getHotelByUsername(hotelUsername);
+    String hotelName = hotel.getName();
+
     double[] prices = rd.getPricePerRoomType(hotelUsername);
 
     String agencyUsername = signedInAgency.getUsername();
@@ -50,7 +53,7 @@
     <div class="row">
         <!-- Form -->
         <div id="res-form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
-            <h1 class="text-center">New Reservation for <%=hotelUsername%> Hotel</h1>
+            <h1 class="text-center">New Reservation for <%=hotelName%> Hotel</h1>
             <!-- Form method should be "POST" and action should be included at the real system, removed it for demo purposes -->
             <!--    <form class="form-horizontal" action="makeReservationController.jsp" method="POST">     -->
             <form class="form-horizontal" action="makeReservationController.jsp" method="POST">

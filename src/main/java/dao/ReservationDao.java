@@ -339,9 +339,7 @@ public class ReservationDao {
         Connection con = null;
         ResultSet rs = null;
         List<Reservation> reservationsOfAgencyList = new ArrayList<Reservation>();
-        String sql = "SELECT reservationId, arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, confirmed" 
-                    + ", username_hotel, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, comments "
-                    + "FROM Reservation WHERE username_agency = ? ;";
+        String sql = "SELECT * FROM Reservation WHERE username_agency = ? ;";
         DB db = new DB();
 
         try {
