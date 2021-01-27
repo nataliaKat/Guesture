@@ -420,10 +420,12 @@ public class ReservationDao {
                 int tripleRooms = rs.getInt("tripleRooms");
                 int quadrupleRooms = rs.getInt("quadrupleRooms");
                 String comments = rs.getString("comments");
+                Boolean checkIn = rs.getBoolean("checkin");
+                Boolean checkOut = rs.getBoolean("checkout");
 
-                reservation = new Reservation(reservationId, hotel_username, agencyUsername, arrivalDate, arrivalTime, 
-                        departureDate, departureTime, submittedOn, singleRooms, doubleRooms, tripleRooms, 
-                        quadrupleRooms, comments, confirmed);
+                reservation = new Reservation(reservationId, arrivalDate, arrivalTime, 
+                        departureDate, departureTime, submittedOn, checkIn, checkOut, agencyUsername, hotel_username, 
+                        singleRooms, doubleRooms, tripleRooms, quadrupleRooms, comments, confirmed);
 
             }
 
@@ -470,10 +472,12 @@ public class ReservationDao {
                 int tripleRooms = rs.getInt("tripleRooms");
                 int quadrupleRooms = rs.getInt("quadrupleRooms");
                 String comments = rs.getString("comments");
+                Boolean checkIn = rs.getBoolean("checkin");
+                Boolean checkOut = rs.getBoolean("checkout");
 
-                reservation = new Reservation(reservationId, hotelUsername, agency_username, arrivalDate, arrivalTime, 
-                        departureDate, departureTime, submittedOn, singleRooms, doubleRooms, tripleRooms, 
-                        quadrupleRooms, comments, confirmed);
+                reservation = new Reservation(reservationId, arrivalDate, arrivalTime, 
+                        departureDate, departureTime, submittedOn, checkIn, checkOut, agency_username, hotelUsername, 
+                        singleRooms, doubleRooms, tripleRooms, quadrupleRooms, comments, confirmed);
 
             }
 

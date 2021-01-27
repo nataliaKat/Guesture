@@ -123,6 +123,25 @@ public class Reservation {
 
     }
 
+    public Reservation(int reservationId, Date arrivalDate, String arrivalTime, Date departureDate, String departureTime, Date submittedOn, boolean checkedIn, boolean checkedOut, String agencyName, String hotelName, int singleRooms, int doubleRooms, int tripleRooms, int quadrupleRooms, String comments, boolean confirmed) {
+        this.reservationId = reservationId;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.submittedOn = submittedOn;
+        this.checkedIn = checkedIn;
+        this.checkedOut = checkedOut;
+        this.hotelName = hotelName;
+        this.agencyName = agencyName;
+        this.singleRooms = singleRooms;
+        this.doubleRooms = doubleRooms;
+        this.tripleRooms = tripleRooms;
+        this.quadrupleRooms = quadrupleRooms;
+        this.comments = comments;
+        this.confirmed = confirmed;
+    }
+
     public int getReservationId() {
         return reservationId;
     }
