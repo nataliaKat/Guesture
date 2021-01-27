@@ -495,7 +495,7 @@ public class ReservationDao {
         Reservation reservation = null;
         ResultSet rs = null;
         DB db = new DB();
-        String sql = "SELECT * FROM reservation WHERE reservationId = ? AND username_hotel = ?";
+        String sql = "SELECT * FROM Reservation WHERE reservationId = ? AND username_hotel = ?";
 
         try {
             con = db.getConnection();
@@ -520,7 +520,7 @@ public class ReservationDao {
                 int quadrupleRooms = rs.getInt("quadrupleRooms");
                 String comments = rs.getString("comments");
                 Boolean checkIn = rs.getBoolean("checkin");
-                Boolean checkOut = rs.getBoolean("checkout");
+                Boolean checkOut = rs.getBoolean("chekout");
 
                 reservation = new Reservation(reservationId, arrivalDate, arrivalTime, 
                         departureDate, departureTime, submittedOn, checkIn, checkOut, agency_username, hotelUsername, 
