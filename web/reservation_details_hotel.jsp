@@ -122,7 +122,7 @@
             </div>
             <div class="col-md-4">
                 <div class="box">
-                    <form role="form" method="POST" action="edit.jsp">
+                    <form role="form" method="POST" action="editController.jsp">
                         <input type="hidden" id="resiId" name="resId">
                         <div class="row">
                             <div class="col">

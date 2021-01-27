@@ -132,7 +132,7 @@ public class ReservationDao {
     }// End of delete
     
 
-    public void edit(int resId) throws Exception {
+    public void edit(Reservation r) throws Exception {
         Connection con = null;
         String sql = "UPDATE Reservation SET arrivalDate = ?, arrivalTime = ?, departureDate = ?, departureTime = ? WHERE reservationId = ?; ";
         DB db = new DB();

@@ -123,6 +123,14 @@ public class Reservation {
 
     }
 
+    public Reservation(Date arrivalDate, String arrivalTime, Date departureDate, String departureTime, int reservationId) {
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.reservationId = reservationId;
+}
+
     public int getReservationId() {
         return reservationId;
     }
