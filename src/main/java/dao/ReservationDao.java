@@ -469,8 +469,8 @@ public class ReservationDao {
                 int tripleRooms = rs.getInt("tripleRooms");
                 int quadrupleRooms = rs.getInt("quadrupleRooms");
                 String comments = rs.getString("comments");
-                Boolean checkIn = rs.getBoolean("checkin");
-                Boolean checkOut = rs.getBoolean("checkout");
+                boolean checkIn = rs.getBoolean("checkin");
+                boolean checkOut = rs.getBoolean("chekout");
 
                 reservation = new Reservation(reservationId, arrivalDate, arrivalTime, 
                         departureDate, departureTime, submittedOn, checkIn, checkOut, agencyUsername, hotel_username, 

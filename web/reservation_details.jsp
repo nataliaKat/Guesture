@@ -1,14 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page errorPage="errorPage.jsp" %>
+<%--<%@ page errorPage="errorPage.jsp" %>--%>
 
-<%@page import="dao.GroupCustomerDao" %>
+<%@page import="dao.ReservationDao" %>
 
-<%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
 <%@ page import="model.GroupCustomer" %>
-<%@ page import="model.Reservation" %>
 
+<%@ page import="model.Grouping" %>
+<%@ page import="model.Reservation" %>
 <%@ page import="model.Service" %>
+<%@ page import="service.GroupCustomerService" %>
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -156,31 +157,31 @@
                         <tbody>
 
                         <%
-                            GroupCustomerDao gcd = new GroupCustomerDao();
-                            List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(reservationCodeInt);
-                            for (int i = 0; i < groupMembers.size(); i++) {
-
+                            GroupCustomerService groupCustomerService = new GroupCustomerService();
+                            List<Grouping> groups = groupCustomerService.getGroupings(reservationCodeInt);
+                            for (Grouping grouping : groups) {
+                                for (GroupCustomer groupCustomer : grouping.getGroupCustomers()) {
                         %>
 
                         <tr>
                             <td><%=reservationCodeInt %>
                             </td>
-                            <td><%=groupMembers.get(i).getName() %>
+                            <td><%=groupCustomer.getName() %>
                             </td>
-                            <td><%=groupMembers.get(i).getSurname() %>
+                            <td><%=groupCustomer.getSurname() %>
                             </td>
-                            <td><%=groupMembers.get(i).getIdentityNumber() %>
+                            <td><%=groupCustomer.getIdentityNumber() %>
                             </td>
-                            <td><%=groupMembers.get(i).getTelephone() %>
+                            <td><%=groupCustomer.getTelephone() %>
                             </td>
-                            <td><%=groupMembers.get(i).getEmail() %>
+                            <td><%=groupCustomer.getEmail() %>
                             </td>
-                            <td><%=groupMembers.get(i).getSurname() %>
-                            </td>
-                            <td><%=groupMembers.get(i).getGrouping().getRoomId() %>
+                            <td><%=grouping.getRoomId() %>
                             </td>
                         </tr>
-                        <% } %>
+                        <% }
+                        } %>
+
                         </tbody>
                     </table>
                 </div>

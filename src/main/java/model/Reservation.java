@@ -123,22 +123,26 @@ public class Reservation {
 
     }
 
-<<<<<<< HEAD
-    public Reservation(int reservationId, Date arrivalDate, String arrivalTime, Date departureDate, String departureTime, Date submittedOn, boolean checkedIn, boolean checkedOut, String agencyName, String hotelName, int singleRooms, int doubleRooms, int tripleRooms, int quadrupleRooms, String comments, boolean confirmed) {
-        this.reservationId = reservationId;
-=======
     public Reservation(Date arrivalDate, String arrivalTime, Date departureDate, String departureTime, int reservationId) {
->>>>>>> 240d7ac7d24a12fdcb3533158d5a4e7c38746272
+        this.reservationId = reservationId;
         this.arrivalDate = arrivalDate;
         this.arrivalTime = arrivalTime;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
-<<<<<<< HEAD
+    }
+
+    public Reservation(int reservationId, Date arrivalDate, String arrivalTime, Date departureDate, String departureTime, Date submittedOn, boolean checkedIn, boolean checkedOut, String agencyName, String hotelName, int singleRooms, int doubleRooms,
+                       int tripleRooms, int quadrupleRooms, String comments, boolean confirmed) {
+        this.reservationId = reservationId;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
         this.submittedOn = submittedOn;
         this.checkedIn = checkedIn;
         this.checkedOut = checkedOut;
-        this.hotelName = hotelName;
         this.agencyName = agencyName;
+        this.hotelName = hotelName;
         this.singleRooms = singleRooms;
         this.doubleRooms = doubleRooms;
         this.tripleRooms = tripleRooms;
@@ -146,10 +150,6 @@ public class Reservation {
         this.comments = comments;
         this.confirmed = confirmed;
     }
-=======
-        this.reservationId = reservationId;
-}
->>>>>>> 240d7ac7d24a12fdcb3533158d5a4e7c38746272
 
     public int getReservationId() {
         return reservationId;

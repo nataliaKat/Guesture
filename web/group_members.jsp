@@ -2,7 +2,7 @@
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="model.Reservation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page errorPage="errorPage.jsp" %>
+<%--<%@ page errorPage="errorPage.jsp" %>--%>
 
 <html>
 <head>
@@ -25,12 +25,8 @@
     ReservationDao reservationDao = new ReservationDao();
     int reservationId = Integer.parseInt(request.getParameter("reservation"));
     request.setAttribute("reservation", reservationId);
-    Reservation foundReservation = reservationDao.getById(reservationId);
+    Reservation foundReservation = reservationDao.getReservationOfAgencyById(reservationId, signedInAgency.getUsername());
 
-    if (!foundReservation.getAgencyName().equals((signedInAgency).getUsername())) {
-        throw new Exception("You are trying to view content you are not allowed to");
-
-    }
     if (foundReservation == null) {
         throw new Exception("Reservation not found!");
     }
