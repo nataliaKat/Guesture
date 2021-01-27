@@ -16,8 +16,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("index.jsp") ||
-                request.getRequestURI().replace(request.getContextPath() + "/", "").equals("") ? "active": "" %>">
+                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("index.jsp") ? "active": "" %>">
                     <a class="nav-link" href="index.jsp">Home</a>
                 </li>
                 <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reservations.jsp") ? "active": "" %>">

@@ -17,31 +17,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("index.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="index.jsp">Home</a>
-                </li>
-                <li class="nav-item">
-                </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("hotels.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="agencies.jsp">Hotels</a>
-                </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reservations_of_agency.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="reservations.jsp">Reservations<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reviews.jsp") ? "active": "" %>">
-                    <a class="nav-link" href="reviews.jsp">Reviews</a>
+                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("") ||
+                request.getRequestURI().replace(request.getContextPath() + "/", "").equals("view_hotels.jsp") ? "active": "" %>">
+                    <a class="nav-link" href="view_hotels.jsp">Home</a>
                 </li>
                 <% Agency agency = (Agency)session.getAttribute("userObj");
                     if (agency != null) {
                 %>
+                <li class="nav-item <%=request.getRequestURI().replace(request.getContextPath() + "/", "").equals("reservations_of_agency.jsp") ? "active": "" %>">
+                    <a class="nav-link" href="reservations_of_agency.jsp">Reservations<span
+                            class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i><%= agency.getName()%></a>
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i> <%=agency.getName()%></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link logout" href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Log out</a>
                 </li>
                 <%} else {%>
+                <a class="nav-link" href="hotel_registration.jsp"> Sign up your hotel</a>
+                <a class="nav-link" href="new_agency.jsp"> Sign up your agency</a>
                 <a class="nav-link login" href="login.jsp"><i class="fas fa-sign-in-alt"></i> Log in</a>
                 <% }%>
             </ul>

@@ -1,6 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="dao.ReservationDao" %>
 <%--<%@ page errorPage="errorPage.jsp" %>--%>
+
+<%@page import="java.sql.Date"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+<%@ page import="model.Reservation" %>
+<%@ page import="dao.ReservationDao" %>
+
 <%
 
 int resId = Integer.parseInt(request.getParameter("resId"));
@@ -34,7 +42,7 @@ if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that toda
 
     <head>
 
-        <title>Dream Hotel | Reservations</title>
+        <title>Dream Hotel | Edit</title>
 
         <%@include file="header.jsp" %>
     </head>
@@ -44,13 +52,25 @@ if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that toda
 
             <!-- Begin page content -->
             <main class="container">
-                <% ReservationDao rd = new ReservationDao();
-                   rd.edit(resId);
-                %>  
+                
+                <% if (errors == "") { %>
                 <div class="alert alert-success" role="alert">
                     <h1>Reservation has been edited successfully</h1>
                 </div>
-        
+
+                <% Reservation r = new Reservation(arrival, time1, departure, time2, resId);
+                ReservationDao rd = new ReservationDao();
+                rd.edit(r);
+
+             %>  
+            } else { %>
+                <div class="alert alert-danger" role="alert">
+                    <ol>
+                        <%=errors%>
+                    </ol>
+                </div>
+            <% } %>   
+
             </main>
             <%@include file="footer.jsp" %>
     </body>

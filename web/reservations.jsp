@@ -8,13 +8,19 @@
 
 <!doctype html>
 <html lang="en">
-
 <head>
     <%@include file="header.jsp" %>
     <%@include file="datatables_stylesheets.jsp" %>
     <title>Dream Hotel | Reservations</title>
 </head>
+<%
+    Hotel signedInHotel = (Hotel) session.getAttribute("userObj");
+    if (signedInHotel == null) {
+        request.setAttribute("message", "You should sign in first");
 
+%>
+<jsp:forward page="login.jsp"></jsp:forward>
+<% } %>
 <body id="reservation">
 <%@include file="navbar.jsp" %>
 
@@ -36,7 +42,7 @@
             <tbody style="text-align: center;">
                 <% ReservationDao rd = new ReservationDao();
                                                         AgencyDao agencyDao = new AgencyDao();
-                                                        String username = ((Hotel)session.getAttribute("userObj")).getUsername();
+                                                        String username = signedInHotel.getUsername();
                                                         int reservationCode = 0;
 
                                                         List<Reservation> reservations = rd.getAll(username);
@@ -81,7 +87,7 @@
                             class="fas fa-door-open"></i></button>
 
                     <% } else { %>
-                        -
+                    -
                     <% } %>
 
                 </td>

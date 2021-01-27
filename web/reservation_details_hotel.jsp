@@ -5,39 +5,42 @@
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="dao.ServiceDao" %>
 <%@ page import="model.GroupCustomer" %>
-<%@ page import="model.Service" %>
 <%@ page import="model.Reservation" %>
-<%@ page import="model.User" %>
+<%@ page import="model.Service" %>
 <%@ page import="java.util.List" %>
 <%--<%@ page errorPage="errorPage.jsp" %>--%>
 
 <html>
 <head>
-    <%@include file="header.jsp"%>
+    <%@include file="header.jsp" %>
     <title>Dream Hotel | Reservation Details</title>
 </head>
 <body>
-<%@include file="navbar.jsp"%>
-<%Hotel signedInHotel = (Hotel)session.getAttribute("userObj");
+<%@include file="navbar.jsp" %>
+<%
+    Hotel signedInHotel = (Hotel) session.getAttribute("userObj");
     if (signedInHotel == null) {
-        throw new Exception("You are not authorized to view this content");
+        request.setAttribute("message", "You should sign in first");
+
+%>
+<jsp:forward page="login.jsp"></jsp:forward>
+<%
     }
-        /* */
-        String hotelUsername = signedInHotel.getUsername();
-        ReservationDao rd = new ReservationDao();
+    String hotelUsername = signedInHotel.getUsername();
+    ReservationDao rd = new ReservationDao();
 
 
-        double [] prices = rd.getPricePerRoomType(hotelUsername);
+    double[] prices = rd.getPricePerRoomType(hotelUsername);
 
-        String reservationCode = request.getParameter("rid");
-        int reservationCodeInt = Integer.parseInt(reservationCode);
+    String reservationCode = request.getParameter("rid");
+    int reservationCodeInt = Integer.parseInt(reservationCode);
 
-        Reservation reservation = rd.getReservationOfHotelById(reservationCodeInt, hotelUsername);
+    Reservation reservation = rd.getReservationOfHotelById(reservationCodeInt, hotelUsername);
 
-        String agencyUsername = reservation.getAgencyName();
-        
+    String agencyUsername = reservation.getAgencyName();
 
-    %>
+
+%>
 <main>
     <div class="container">
         <div class="row mb-3">
@@ -52,25 +55,25 @@
                     <b>Agency:</b> <%=agencyUsername %><br>
                     <b>Created on:</b> <%=reservation.getSubmittedOn() %><br>
                     <b>Confirmed: </b> <%=reservation.getConfirmed() %><br>
-                    <b>Checked in: </b> <% 
+                    <b>Checked in: </b> <%
                     if (reservation.isCheckedIn()) { %>
-                        Yes
+                    Yes
                     <% } else { %>
-                        No
+                    No
                     <% } %>
                     <br>
-                    <b>Checked out: </b> <% 
+                    <b>Checked out: </b> <%
                     if (reservation.isCheckedOut()) { %>
-                        Yes
+                    Yes
                     <% } else { %>
-                        No
+                    No
                     <% } %>
                     <br>
                     <b>Comments: </b>
                     <% if (reservation.getComments() == null) { %>
-                        
+
                     <% } else { %>
-                        <%=reservation.getComments() %>
+                    <%=reservation.getComments() %>
                     <% } %>
                 </div>
             </div>
@@ -85,46 +88,54 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Single</td>
-                                <td><%=prices[0]%></td>
-                                <td><%=reservation.getSingleRooms() %></td>
-                              </tr>
-                              <tr>
-                                <td>Double</td>
-                                <td><%=prices[1]%></td>
-                                <td><%=reservation.getDoubleRooms() %></td>
-                              </tr>
-                              <tr>
-                                <td>Triple</td>
-                                <td><%=prices[2]%></td>
-                                <td><%=reservation.getTripleRooms() %></td>
-                              </tr>
-                              <tr>
-                                <td>Quad</td>
-                                <td><%=prices[3]%></td>
-                                <td><%=reservation.getQuadrupleRooms() %></td>
-                              </tr>
+                        <tr>
+                            <td>Single</td>
+                            <td><%=prices[0]%>
+                            </td>
+                            <td><%=reservation.getSingleRooms() %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Double</td>
+                            <td><%=prices[1]%>
+                            </td>
+                            <td><%=reservation.getDoubleRooms() %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Triple</td>
+                            <td><%=prices[2]%>
+                            </td>
+                            <td><%=reservation.getTripleRooms() %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quad</td>
+                            <td><%=prices[3]%>
+                            </td>
+                            <td><%=reservation.getQuadrupleRooms() %>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="box">
-                    <form role="form" method="POST" action="edit.jsp">
+                    <form role="form" method="POST" action="editController.jsp">
                         <input type="hidden" id="resiId" name="resId">
                         <div class="row">
                             <div class="col">
                                 <label for="ar_date" class="control-label">Arrival date</label>
                                 <input id="ar_date" type="date" class="form-control form-control-sm" name="ar_date"
-                                       value="2021-05-12">
+                                       value="<%=reservation.getArrivalDate()%>">
                             </div>
                             <div class="col">
                                 <label for="ar_time" class="control-label">Arrival time</label>
                                 <select id="ar_time" type="selct" class="form-control form-control-sm" name="ar_time">
-                                    <option value="morning">morning</option>
-                                    <option value="noon" selected="selected">noon</option>
-                                    <option value="evening">evening</option>
+                                    <option value="morning"<%if (reservation.getArrivalTime().equals("morning")) { %> selected="selected"<% } %>>morning</option>
+                                    <option value="noon" <%if (reservation.getArrivalTime().equals("noon")) { %> selected="selected"<% } %>>noon</option>
+                                    <option value="evening" <%if (reservation.getArrivalTime().equals("evening")) { %> selected="selected"<% } %>>evening</option>
                                 </select>
                             </div>
                         </div>
@@ -132,14 +143,14 @@
                             <div class="col">
                                 <label for="dep_date" class="control-label">Departure date</label>
                                 <input id="dep_date" type="date" class="form-control form-control-sm" name="dep_date"
-                                       value="2021-05-20">
+                                       value="<%=reservation.getDepartureDate()%>">
                             </div>
                             <div class="col">
                                 <label for="ar_time" class="control-label">Departure time</label>
                                 <select id="dep_time" type="text" class="form-control form-control-sm" name="dep_time">
-                                    <option value="morning">morning</option>
-                                    <option value="noon">noon</option>
-                                    <option value="evening" selected="selected">evening</option>
+                                    <option value="morning"<%if (reservation.getDepartureTime().equals("morning")) { %> selected="selected"<% } %>>morning</option>
+                                    <option value="noon" <%if (reservation.getDepartureTime().equals("noon")) { %> selected="selected"<% } %>>noon</option>
+                                    <option value="evening" <%if (reservation.getDepartureTime().equals("evening")) { %> selected="selected"<% } %>>evening</option>
                                 </select>
                             </div>
                         </div>
@@ -167,24 +178,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <% 
+                        <%
 
                             GroupCustomerDao gcd = new GroupCustomerDao();
                             List<GroupCustomer> groupMembers = gcd.getGroupCustomersPerReservation(reservationCodeInt);
-                            for (int i = 0; i < groupMembers.size() ; i++) {
-                                
-                            %>
+                            for (int i = 0; i < groupMembers.size(); i++) {
 
-                            <tr>
-                                <td><%=reservationCodeInt %></td>
-                                <td><%=groupMembers.get(i).getName() %></td>
-                                <td><%=groupMembers.get(i).getSurname() %></td>
-                                <td><%=groupMembers.get(i).getIdentityNumber() %></td>
-                                <td><%=groupMembers.get(i).getTelephone() %></td>
-                                <td><%=groupMembers.get(i).getEmail() %></td>
-                                <td><%=groupMembers.get(i).getGrouping().getRoomId() %></td>
-                            </tr>
-                            <% } %>
+                        %>
+
+                        <tr>
+                            <td><%=reservationCodeInt %>
+                            </td>
+                            <td><%=groupMembers.get(i).getName() %>
+                            </td>
+                            <td><%=groupMembers.get(i).getSurname() %>
+                            </td>
+                            <td><%=groupMembers.get(i).getIdentityNumber() %>
+                            </td>
+                            <td><%=groupMembers.get(i).getTelephone() %>
+                            </td>
+                            <td><%=groupMembers.get(i).getEmail() %>
+                            </td>
+                            <td><%=groupMembers.get(i).getGrouping().getRoomId() %>
+                            </td>
+                        </tr>
+                        <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -194,12 +212,13 @@
                 <ol>
                     <%
 
-                    ServiceDao sd = new ServiceDao();
-                    List<Service> services = sd.getServicesPerReservation(reservationCodeInt, hotelUsername);
-                    for (int i = 0; i < services.size(); i++) {
-                        
+                        ServiceDao sd = new ServiceDao();
+                        List<Service> services = sd.getServicesPerReservation(reservationCodeInt, hotelUsername);
+                        for (int i = 0; i < services.size(); i++) {
+
                     %>
-                        <li><%=services.get(i).getName() %></li>
+                    <li><%=services.get(i).getName() %>
+                    </li>
 
                     <% } %>
                 </ol>
@@ -208,6 +227,6 @@
     </div>
 </main>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 </body>
 </html>

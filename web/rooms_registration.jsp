@@ -2,12 +2,22 @@
 <html lang="en">
 
 <head>
-    <%@include file="header.jsp"%>
+    <%@include file="header.jsp" %>
     <title>Dream Hotel | Home</title>
 </head>
 
 <body>
-<%@include file="navbar.jsp"%>
+<%@include file="navbar.jsp" %>
+<%
+    Hotel signedInHotel = (Hotel) session.getAttribute("userObj");
+    if (signedInHotel == null) {
+        request.setAttribute("message", "You should sign in first");
+%>
+<jsp:forward page="login.jsp"></jsp:forward>
+
+<%
+    }
+%>
 <!-- Page Content -->
 <main>
     <div class="container">
@@ -38,20 +48,20 @@
             <div class="col-md-6">
                 <h5 class="text-center">Saved rooms</h5>
                 <div style="max-height: 500px;display: block; overflow-y: scroll">
-                <table class="table table-striped table table-bordered table-sm" id="roomtable">
-                    <tr>
-                        <th scope="col">Number</th>
-                        <th scope="col">Floor</th>
-                        <th scope="col">Type</th>
-                    </tr>
+                    <table class="table table-striped table table-bordered table-sm" id="roomtable">
+                        <tr>
+                            <th scope="col">Number</th>
+                            <th scope="col">Floor</th>
+                            <th scope="col">Type</th>
+                        </tr>
 
-                </table>
+                    </table>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </main>
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 <script defer src="js/register_rooms.js"></script>
 </body>
 
