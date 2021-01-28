@@ -25,7 +25,7 @@ int resId = Integer.parseInt(request.getParameter("resId"));
                    rd.confirm(resId);
                 %>  
                 <div class="alert alert-success" role="alert">
-                    <h1>Reservation has been confirmed successfully</h1>
+                    <h1>Reservation has been confirmed successfully!</h1>
                 </div>
         
             </main>

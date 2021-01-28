@@ -25,7 +25,7 @@ int resId = Integer.parseInt(request.getParameter("resId"));
                    rd.checkOut(resId);
                 %>  
                 <div class="alert alert-success" role="alert">
-                    <h1>Reservation has been checked out successfully</h1>
+                    <h1>Reservation has been checked out successfully!</h1>
                 </div>
         
             </main>
