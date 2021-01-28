@@ -38,9 +38,6 @@ $(document).ready(function() {
             content += `<td>${customer[key]}</td>`
 
         }
-        content += `<td>
-                        <button id="delete-${counter}" type="button" class="delete-buttons btn btn-danger"><i class="fas fa-trash-alt fa-xs"></i></button>    
-                    </td>`
         content += "</tr>" 
         $('#customer-table tr:last').after(content);
         grouping.push(customer)

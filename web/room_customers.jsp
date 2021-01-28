@@ -10,14 +10,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<% Hotel signedHotel = (Hotel)session.getAttribute("userObj");
+<% Hotel signedHotel = (Hotel) session.getAttribute("userObj");
     if (signedHotel == null) {
         request.setAttribute("message", "You should sign in first.");%>
 <jsp:forward page="login.jsp"/>
 
 <% return;
-    }
-    String hotelUsername = ((Hotel)session.getAttribute("userObj")).getUsername();
+}
+    String hotelUsername = ((Hotel) session.getAttribute("userObj")).getUsername();
 
     int reservationId = Integer.parseInt(request.getParameter("reservation"));
     request.setAttribute("reservation", reservationId);
@@ -95,8 +95,7 @@
 
                 <%
                     RoomDao roomDao = new RoomDao();
-//                List<Room> rooms = roomDao.getAvailableRooms(foundReservation.getArrivalDate(), foundReservation.getDepartureDate(), hotelUsername);
-                    List<Room> rooms = roomDao.getAll(hotelUsername);
+                    List<Room> rooms = roomDao.getAvailableRooms(foundReservation.getArrivalDate(), foundReservation.getDepartureDate(), hotelUsername);
                     for (Room room : rooms) {
                 %>
                 <div class="room" id="r-<%=room.getId()%>" data-roomId="<%=room.getId()%>" draggable="true"
@@ -130,8 +129,8 @@
                         let roomId = roomCell.firstChild.getAttribute('data-roomId');
                         console.log("grouping is", groupingId, "room is", roomId);
                         let grouping = {
-                            groupingId : groupingId,
-                            roomId : roomId
+                            groupingId: groupingId,
+                            roomId: roomId
                         }
                         groupingRooms.push(grouping)
                     } else {
@@ -145,16 +144,17 @@
                 type: "POST",
                 url: "roomsToCustomers",
                 dataType: 'JSON',
-                data: {"groupings" : JSON.stringify(groupingRooms)},
-                complete: function() {
+                data: {"groupings": JSON.stringify(groupingRooms)},
+                complete: function () {
                     window.location.replace("index.jsp")
                 },
-                fail: function(xhr, textStatus, errorThrown){
+                fail: function (xhr, textStatus, errorThrown) {
                     alert('fail');
                 }
             });
         })
     })
+
     function allowDrop(ev, ele) {
         ev.preventDefault();
     }

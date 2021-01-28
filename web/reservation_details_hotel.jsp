@@ -227,6 +227,10 @@
 
                     <% } %>
                 </ol>
+                <form action="room_customers.jsp" method="post">
+                    <input type="hidden" value="<%=reservationCodeInt%>" name="reservation">
+                    <button type="submit" class="darkBlueButton">Assign customers to rooms</button>
+                </form>
             </div>
         </div>
     </div>

@@ -42,7 +42,7 @@
                             <option value="quadruple">quadruple</option>
                         </select>
                     </div>
-                    <button type="submit" id="submit-rooms">Save Room</button>
+                    <button type="submit" id="submit-rooms" class="darkBlueButton">Save Room</button>
                 </form>
             </div>
             <div class="col-md-6">

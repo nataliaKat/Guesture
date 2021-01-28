@@ -65,21 +65,31 @@ public class RoomDao {
     public List<Room> getAvailableRooms(Date startDate, Date endDate, String hotelId) {
         DB db = new DB();
         Connection con = null;
-        String sql = "select room.roomId, number, type, floor " +
-                "from grouping, room " +
-                "where grouping.roomId = room.roomId " +
-                "and username = ? " +
-                "and grouping.reservationId not in (select reservation.reservationId " +
-                "from reservation " +
-                "where arrivalDate <= ? and departureDate >= ?); ";
+        String sql = "select * from room as r " +
+                "where r.username = ? and r.roomId not in (select room.roomId " +
+                                                            "from room " +
+                                                            "left join grouping " +
+                                                            "on grouping.roomId = room.roomId " +
+                                                            "where grouping.reservationId in (select reservation.reservationId as id " +
+                                                                                            "from reservation " +
+                                                                                            "where (arrivalDate >= ? and departureDate <= ?) " +
+                                                    "                                        or (arrivalDate <= ? and departureDate >= ?) " +
+                                                    "                                        or (arrivalDate <= ? and departureDate >= ?) " +
+                                                    "                                        or (arrivalDate <= ? and departureDate >= ?)));";
         List<Room> rooms = new ArrayList<>();
         PreparedStatement pst = null;
         try {
             con = db.getConnection();
             pst = con.prepareStatement(sql);
             pst.setString(1, hotelId);
-            pst.setDate(2, endDate);
-            pst.setDate(3, startDate);
+            pst.setDate(2, startDate);
+            pst.setDate(3, endDate);
+            pst.setDate(4, startDate);
+            pst.setDate(5, endDate);
+            pst.setDate(6, startDate);
+            pst.setDate(7, startDate);
+            pst.setDate(8, endDate);
+            pst.setDate(9, endDate);
             ResultSet rs = pst.executeQuery();
             System.out.println("startdate is " + startDate);
             System.out.println("endate is " + endDate);
