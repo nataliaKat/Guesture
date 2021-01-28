@@ -126,7 +126,7 @@
             <div class="col-md-4">
                 <div class="box">
                     <form role="form" method="POST" action="editController.jsp">
-                        <input type="hidden" id="resiId" name="resId">
+                        <input type="hidden" id="resiId" name="resId" value="<%=reservationCodeInt%>">
                         <div class="row">
                             <div class="col">
                                 <label for="ar_date" class="control-label">Arrival date</label>
@@ -135,7 +135,7 @@
                             </div>
                             <div class="col">
                                 <label for="ar_time" class="control-label">Arrival time</label>
-                                <select id="ar_time" type="selct" class="form-control form-control-sm" name="ar_time">
+                                <select id="ar_time" type="select" class="form-control form-control-sm" name="ar_time">
                                     <option value="morning"<%if (reservation.getArrivalTime().equals("morning")) { %> selected="selected"<% } %>>morning</option>
                                     <option value="noon" <%if (reservation.getArrivalTime().equals("noon")) { %> selected="selected"<% } %>>noon</option>
                                     <option value="evening" <%if (reservation.getArrivalTime().equals("evening")) { %> selected="selected"<% } %>>evening</option>

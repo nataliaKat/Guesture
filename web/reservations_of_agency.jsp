@@ -95,9 +95,9 @@
 
                 <%
                     GroupCustomerDao gcd = new GroupCustomerDao();
-                    List<GroupCustomer> groupCustomers = gcd.getGroupCustomersPerReservation(reservationCode);
+                    int membersNumber = gcd.getGroupCustomersNumber(reservationCode);
 
-                    if ((reservationsOfAgencyList.get(i).getConfirmed() == b1) && (groupCustomers.size() == 0)) { %>
+                    if ((reservationsOfAgencyList.get(i).getConfirmed() == b1) && (membersNumber == 0)) { %>
 
                 <td>
                     <form action="group_members.jsp?reservation=<%=reservationCode%>" target="_blank" method="POST">

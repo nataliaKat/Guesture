@@ -102,5 +102,32 @@ public class RoomDao {
 
     }
 
+    public Room getById(int id) {
+        DB db = new DB();
+        Connection con = null;
+        String sql = "SELECT * FROM room WHERE roomId = ?";
+        Room room = null;
+        try {
+            con = db.getConnection();
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                room = new Room(rs.getInt("roomId"), rs.getInt("number"), rs.getString("type"), rs.getInt("floor"));
+            }
+            rs.close();
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return room;
+    }
+
 
 }

@@ -74,38 +74,34 @@ public class GroupCustomerDao {
     }
 
 
-//    public List<GroupCustomer> getGroupCustomersPerReservation(int resId) {
-//        DB db = new DB();
-//        Connection con = null;
-//        List<GroupCustomer> groupC = new ArrayList<GroupCustomer>();
-//        GroupingDao gd = new GroupingDao();
-//        PreparedStatement pst = null;
-//        ResultSet rs = null;
-//        String sql = "SELECT name, surname, telephone, email, identityNumber, roomId FROM  GroupCustomer, Grouping, Reservation WHERE GroupCustomer.groupingId = Grouping.groupingId AND Grouping.reservationId = ? GROUP BY name;";
-//        try {
-//            con = db.getConnection();
-//            pst = con.prepareStatement(sql);
-//            pst.setInt(1, resId);
-//            rs = pst.executeQuery();
-//            while (rs.next()) {
-//                groupC.add(new GroupCustomer(
-//                        rs.getString("name"), rs.getString("surname"),
-//                        rs.getString("telephone"), rs.getString("email"),
-//                        rs.getString("identityNumber"), gd.getGroupingsPerReservation(resId)
-//                ));
-//            }
-//            rs.close();
-//            pst.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                db.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return groupC;
-//    }
+    public int getGroupCustomersNumber(int resId) {
+        DB db = new DB();
+        Connection con = null;
+        List<GroupCustomer> groupC = new ArrayList<GroupCustomer>();
+        GroupingDao gd = new GroupingDao();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "select count(*) from grouping where reservationId = ?";
+        try {
+            con = db.getConnection();
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, resId);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            rs.close();
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                db.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return -1;
+    }
     
 }

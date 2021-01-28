@@ -58,12 +58,11 @@ if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that toda
                     <h1>Reservation has been edited successfully</h1>
                 </div>
 
-                <% Reservation r = new Reservation(arrival, time1, departure, time2, resId);
+                <% Reservation r = new Reservation(sqlDateArrival, time1, sqlDateDeparture, time2, resId);
                 ReservationDao rd = new ReservationDao();
                 rd.edit(r);
 
-             %>  
-            } else { %>
+             } else { %>
                 <div class="alert alert-danger" role="alert">
                     <ol>
                         <%=errors%>
