@@ -55,7 +55,7 @@ if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that toda
                 
                 <% if (errors == "") { %>
                 <div class="alert alert-success" role="alert">
-                    <h1>Reservation has been edited successfully</h1>
+                    <h1>Reservation has been edited successfully!</h1>
                 </div>
 
                 <% Reservation r = new Reservation(sqlDateArrival, time1, sqlDateDeparture, time2, resId);

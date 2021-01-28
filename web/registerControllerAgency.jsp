@@ -42,7 +42,7 @@ if (errors == "") {
     Agency agency = new Agency(mail, password, name, telephone, mail, vatNumber);
     AgencyDao agencydao  = new AgencyDao();
     agencydao.register(agency);
-    request.setAttribute("message", "Registration form has been successfully completed. Login now!");
+    request.setAttribute("message", "Registration form has been completed successfully. Login now!");
 %>
     <jsp:forward page="login.jsp" />
 
