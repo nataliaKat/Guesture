@@ -473,7 +473,6 @@ public class ReservationDao {
                 reservation = new Reservation(reservationId, arrivalDate, arrivalTime, 
                         departureDate, departureTime, submittedOn, checkIn, checkOut, agencyUsername, hotel_username, 
                         singleRooms, doubleRooms, tripleRooms, quadrupleRooms, comments, confirmed);
-
             }
 
             stmt.close();

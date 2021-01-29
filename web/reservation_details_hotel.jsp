@@ -1,14 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="dao.ReservationDao" %>
+<%@ page import="dao.RoomDao" %>
+
 <%@ page import="dao.ServiceDao" %>
 
-<%@ page import="model.GroupCustomer" %>
-<%@ page import="model.Reservation" %>
-<%@ page import="model.Service" %>
-<%@ page import="model.Grouping" %>
+<%@ page import="model.*" %>
 <%@ page import="service.GroupCustomerService" %>
-
 <%@ page import="java.util.List" %>
 
 <%--<%@ page errorPage="errorPage.jsp" %>--%>
@@ -178,14 +176,17 @@
                             <th scope="col">Phone</th>
                             <th scope="col">email</th>
                             <th scope="col">Room</th>
+                            <th scope="col">Floor</th>
                         </tr>
                         </thead>
                         <tbody>
                         <%
-
+                        RoomDao roomDao = new RoomDao();
                         GroupCustomerService groupCustomerService = new GroupCustomerService();
                         List<Grouping> groups = groupCustomerService.getGroupings(reservationCodeInt);
+                        boolean roomsExist = false;
                         for (Grouping grouping : groups) {
+                            Room r = roomDao.getById(grouping.getRoomId());
                             for (GroupCustomer groupCustomer : grouping.getGroupCustomers()) {
 
                         %>
@@ -203,8 +204,15 @@
                             </td>
                             <td><%=groupCustomer.getEmail() %>
                             </td>
-                            <td><%=grouping.getRoomId() %>
+                            <%
+                                if (r != null) {
+                                    roomsExist = true;
+                            %>
+                            <td><%=r.getNumber()%>
                             </td>
+                            <td><%=r.getFloor()%>
+                            </td>
+                            <% } %>
                         </tr>
                         <% }
                         } %>
@@ -227,10 +235,12 @@
 
                     <% } %>
                 </ol>
+                <% if (!roomsExist) { %>
                 <form action="room_customers.jsp" method="post">
                     <input type="hidden" value="<%=reservationCodeInt%>" name="reservation">
                     <button type="submit" class="darkBlueButton">Assign customers to rooms</button>
                 </form>
+                <% } %>
             </div>
         </div>
     </div>

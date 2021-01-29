@@ -21,8 +21,8 @@ public class GroupCustomerDao {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, groupCustomer.getName());
             pst.setString(2, groupCustomer.getSurname());
-            pst.setString(3, groupCustomer.getEmail());
-            pst.setString(4, groupCustomer.getTelephone());
+            pst.setString(3, groupCustomer.getTelephone());
+            pst.setString(4, groupCustomer.getEmail());
             pst.setString(5, groupCustomer.getIdentityNumber());
             pst.setInt(6, groupingId);
             pst.executeUpdate();

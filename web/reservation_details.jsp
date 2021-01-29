@@ -4,13 +4,11 @@
 <%@page import="dao.ReservationDao" %>
 
 <%@ page import="dao.ServiceDao" %>
-<%@ page import="model.GroupCustomer" %>
 
-<%@ page import="model.Grouping" %>
-<%@ page import="model.Reservation" %>
-<%@ page import="model.Service" %>
+<%@ page import="model.*" %>
 <%@ page import="service.GroupCustomerService" %>
 <%@ page import="java.util.List" %>
+<%@ page import="dao.RoomDao" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -159,7 +157,9 @@
                         <%
                             GroupCustomerService groupCustomerService = new GroupCustomerService();
                             List<Grouping> groups = groupCustomerService.getGroupings(reservationCodeInt);
+                            RoomDao roomDao = new RoomDao();
                             for (Grouping grouping : groups) {
+                                Room r = roomDao.getById(grouping.getRoomId());
                                 for (GroupCustomer groupCustomer : grouping.getGroupCustomers()) {
                         %>
 
@@ -176,8 +176,12 @@
                             </td>
                             <td><%=groupCustomer.getEmail() %>
                             </td>
-                            <td><%=grouping.getRoomId() %>
+                            <% if (r != null) { %>
+                            <td><%=r.getNumber()%>
                             </td>
+                            <td><%=r.getFloor()%>
+                            </td>
+                            <% } %>
                         </tr>
                         <% }
                         } %>

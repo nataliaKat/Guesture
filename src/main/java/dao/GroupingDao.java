@@ -55,7 +55,7 @@ public class GroupingDao {
             pst.setInt(1, reservationId);
             rs = pst.executeQuery();
             while (rs.next()) {
-                Grouping g = new Grouping(rs.getInt("groupingId"));
+                Grouping g = new Grouping(rs.getInt("groupingId"), rs.getInt("roomId"));
                 groupings.add(g);
             }
             rs.close();

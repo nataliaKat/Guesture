@@ -42,23 +42,7 @@ $(document).ready(function() {
         $('#customer-table tr:last').after(content);
         grouping.push(customer)
 
-        $(".delete-buttons").on("click", function(e) {
-            let row = e.currentTarget.parentElement.parentElement;
-            let data = row.firstChild.innerHTML;
-            for (let i = 0; i < customers.length; i++) {
-                for (let j = 0; j < customers[i].length; j++) {
-                    if (data == customer.num) {
-                        console.log(j, "is");
-                        customers[i].splice(j, 1);
-                        row.remove();
-                        console.log(customers)
 
-                        break;
-                    }
-                }
-
-            }
-        })
 
     })
 
