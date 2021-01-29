@@ -9,7 +9,7 @@
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light  custom-nav">
-        <a class="navbar-brand" href="index.html"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
+        <a class="navbar-brand" href="index.jsp"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
