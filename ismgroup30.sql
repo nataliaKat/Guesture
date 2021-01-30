@@ -95,7 +95,8 @@ CREATE TABLE Grouping (
     FOREIGN KEY (roomId)
 		REFERENCES Room (roomId),
      FOREIGN KEY (reservationId)
-		REFERENCES Reservation (reservationId)    
+		REFERENCES Reservation (reservationId) 
+        ON DELETE CASCADE
 );         
 
 CREATE TABLE GroupCustomer (
@@ -109,6 +110,7 @@ CREATE TABLE GroupCustomer (
     PRIMARY KEY (customerId),
 	FOREIGN KEY (groupingId)
         REFERENCES Grouping (groupingId) 
+        ON DELETE CASCADE
 );
              
 CREATE TABLE Reservation_Service (
