@@ -180,7 +180,7 @@ VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', '2020-11-10', FALSE, 
 ('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', FALSE, FALSE, 15, 15, 10, 5, FALSE, " ", 'iraklion@gmail.com', 'vacay@yahoo.com'),
 ('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 7, 5, 3, 1, TRUE, "Θα προτιμούσαμε να υπάρχει θέα σε όλα τα δωμάτια και να είναι στον ίδιο όροφο.", 'sweethome@yahoo.com', 'travel@gmail.com'),
 ('2020-12-12', 'morning', '2020-12-20', 'evening', '2020-11-10', FALSE, FALSE, 10, 3, 5, 5,TRUE, "Πρόκειται για μαθητές γ' λυκείου.", 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
-('2020-11-29', 'evening', '2020-12-05', 'evening', '2020-11-10', FALSE, FALSE, 4, 1, 2, 0, FALSE, "Customers do not speak Greek", 'sweethome@yahoo.com', 'holidays@gmail.com'),
+('2020-11-29', 'evening', '2020-12-05', 'evening', '2020-11-10', FALSE, FALSE, 4, 1, 1, 0, TRUE, "Customers do not speak Greek", 'sweethome@yahoo.com', 'holidays@gmail.com'),
 ('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 10, 10, 7, 1, TRUE, "Μία πελάτισσα έχει αλλεργία στους ξηρούς καρπούς.", 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
 ('2020-11-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, TRUE, 6, 12, 7, 5, TRUE, "Πρόκειται για ΚΑΠΗ οπότε θα εκτιμούσαμε ιδιαίτερα να υπάρχει ησυχία στον όροφο.", 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
 ('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', FALSE, FALSE, 15, 15, 10, 5, FALSE, " ", 'homepoetry@gmail.com', 'holidays@gmail.com') ;      

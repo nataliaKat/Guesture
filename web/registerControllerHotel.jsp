@@ -112,7 +112,7 @@ servicesAsString = new String(servicesAsString.getBytes("ISO-8859-1"), "UTF-8");
 
     <!-- Begin page content -->
     <main class="container">
-        <div id="registration_form" class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
+        <div class="col-xs-12 col-md-10 col-lg-8" style="padding: 20px">
             
                     <div class="page-header">
                         <h1>Registration form has errors</h1>
