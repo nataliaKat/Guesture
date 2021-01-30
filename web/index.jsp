@@ -48,7 +48,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <h3>Today's reservations</h3>
+                    <h3 style="color: white">Recent reservations</h3>
                     <table class="table table-bordered table-dark">
                         <thead>
                         <tr>

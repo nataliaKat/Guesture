@@ -15,7 +15,6 @@ $(document).ready(function() {
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>    
                         </tr>`
         $('#customer-table tr:last').after(content);
 
@@ -59,7 +58,7 @@ $(document).ready(function() {
                 data: {"custs" : JSON.stringify(customers),
                         "reservation" : reservationId},
                 complete: function() {
-                    window.location.replace("index.jsp")
+                    window.location.replace("view_hotels.jsp")
                 },
                 fail: function(xhr, textStatus, errorThrown){
                     alert('fail');

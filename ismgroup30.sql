@@ -95,7 +95,7 @@ CREATE TABLE Grouping (
     FOREIGN KEY (roomId)
 		REFERENCES Room (roomId),
      FOREIGN KEY (reservationId)
-		REFERENCES Resesrvation (reservationId)    
+		REFERENCES Reservation (reservationId)    
 );         
 
 CREATE TABLE GroupCustomer (
@@ -153,7 +153,7 @@ VALUES ('luxury@gmail.com', 'Luxury', 'Ροδόπης 4, Κομοτηνή', '256
 	   ('marysrooms@yahoo.com', 'Marys Rooms', 'Κολοκοτρώνη 40, Βόλος', '2152365236', 'Ελένη Παπαδοπούλου', 'Beautiful apartments in the city of Volos. Enjoy the quiet and friendly city in our modern apartments.', 30.00, 45.50, 60.00, 85.50, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGsjT9APoUYnGw2dajCInA4qXu6hNpal6QOA&usqp=CAU"),
        ('acropolisv@gmail.com', 'Acropolis View Hotel', 'Ανδριανού 50, Πλάκα', '2194526325', 'Γιώργος Λινός', '', 50.00, 75.50, 100.00, 130.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnZyIZM4HWe-GkpeTUcuAZmVuHuuIWQJJUQg&usqp=CAU"),
        ('homepoetry@gmail.com', 'Home and Poetry', 'Ερμού 114, Αθήνα', '2198545632', 'Δήμητρα Σωτηρίου', 'Ξενοδοχείο στο ιστορικό κέντρο της Αθήνας, μόλις 5 λεπτά από την κεντρική πλατεία Συντάγματος. Θα μείνετε ευχαριστημένοι από τις ανέσεις του ξενοδοχείου μας. Ελπίζουμε να απολαύσετε τις ομορφιές της Αθήνας!', 45.00, 63.50, 80.00, 105.50, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQba19kiOBlMoLonQlOs5AyBlw9rB7w1Bplxw&usqp=CAU"),
-       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', '1254563289', 'Chris Green', '', 40.00, 55.50, 70.00, 100.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGqIP-ZOpHOLxxcNuldZ2ol1AquRmwBz3Bgw&usqp=CAU"),
+       ('sweethome@yahoo.com', 'Sweet Home Hotel', 'Κανάρη 56, Θησείο', '1254563289', 'Chris Green', 'Το πιο φιλόξενο ξενοδοχείο στο κέντρο της Αθήνας, με θέα στην Ακρόπολη και προσιτές τιμές.', 40.00, 55.50, 70.00, 100.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGqIP-ZOpHOLxxcNuldZ2ol1AquRmwBz3Bgw&usqp=CAU"),
        ('iraklion@gmail.com', 'Iraklion Hotel', 'Καλοκαιρινού 128, Ηράκλειο', '2563245639', 'Σωτήρης Φανταράκης', 'Enjoy your stay in the beautiful island of Crete!!! Activities as fishing, breakfast, tour of the island available!', 30.50, 40.50, 51.50, 65.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5T7W8bIylI6_RBfgeO2E9e-kB-rcKYacWXA&usqp=CAU"),
        ('portoven@gmail.com', 'Porto Veneziano Hotel', 'Ακτή Ενώσεως και Γλαύκου, Χανιά', '2569685632', 'Μαρία Κωσταντάκη', 'Visit Crete!', 37.50, 45.00, 52.50, 65.00, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUQ0px1iPAM2aNErpkn_3ih27Y-sBR_HHNYA&usqp=CAU");
             
@@ -176,14 +176,14 @@ VALUES ('Holidays', '2562532145', 'holidays@gmail.com', 'GR52125232', '2008-10-1
         
         
 INSERT INTO Reservation (arrivalDate, arrivalTime, departureDate, departureTime, submittedOn, checkin, chekout, singleRooms, doubleRooms, tripleRooms, quadrupleRooms, confirmed, comments, username_hotel, username_agency)
-VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', '2020-11-10', FALSE, FALSE, 10, 10, 5, 5, TRUE, " ", 'luxury@gmail.com', 'holidays@gmail.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 15, 15, 10, 5, FALSE, " ", 'iraklion@gmail.com', 'vacay@yahoo.com'),
-('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 7, 5, 3, 1, TRUE, " ", 'sweethome@yahoo.com', 'travel@gmail.com'),
-('2020-12-12', 'morning', '2020-12-20', 'evening', '2020-11-10', FALSE, FALSE, 10, 3, 5, 5,TRUE, " ", 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
-('2020-11-29', 'evening', '2020-12-05', 'evening', '2020-11-10', TRUE, FALSE, 8, 9, 2, 4, FALSE, " ", 'sweethome@yahoo.com', 'holidays@gmail.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 10, 10, 7, 1, TRUE, " ", 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
-('2020-11-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 6, 12, 7, 5, TRUE, " ", 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
-('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, TRUE, 15, 15, 10, 5, FALSE, " ", 'homepoetry@gmail.com', 'oreakomot@gmail.com') ;      
+VALUES  ('2020-12-12', 'morning', '2020-12-20', 'morning', '2020-11-10', FALSE, FALSE, 10, 10, 5, 5, TRUE, "Θέα σε όλα τα δωμάτια", 'sweethome@yahoo.com', 'holidays@gmail.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', FALSE, FALSE, 15, 15, 10, 5, FALSE, " ", 'iraklion@gmail.com', 'vacay@yahoo.com'),
+('2020-12-23', 'evening', '2021-01-03', 'morning', '2020-11-29', TRUE, FALSE, 7, 5, 3, 1, TRUE, "Θα προτιμούσαμε να υπάρχει θέα σε όλα τα δωμάτια και να είναι στον ίδιο όροφο.", 'sweethome@yahoo.com', 'travel@gmail.com'),
+('2020-12-12', 'morning', '2020-12-20', 'evening', '2020-11-10', FALSE, FALSE, 10, 3, 5, 5,TRUE, "Πρόκειται για μαθητές γ' λυκείου.", 'sweethome@yahoo.com', 'taxidiot@gmail.com'),
+('2020-11-29', 'evening', '2020-12-05', 'evening', '2020-11-10', FALSE, FALSE, 4, 1, 2, 0, FALSE, "Customers do not speak Greek", 'sweethome@yahoo.com', 'holidays@gmail.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, FALSE, 10, 10, 7, 1, TRUE, "Μία πελάτισσα έχει αλλεργία στους ξηρούς καρπούς.", 'sweethome@yahoo.com', 'peripatos@yahoo.com'),
+('2020-11-30', 'evening', '2021-01-03', 'morning', '2020-11-13', TRUE, TRUE, 6, 12, 7, 5, TRUE, "Πρόκειται για ΚΑΠΗ οπότε θα εκτιμούσαμε ιδιαίτερα να υπάρχει ησυχία στον όροφο.", 'sweethome@yahoo.com', 'memorablet@yahoo.com'),
+('2020-12-30', 'evening', '2021-01-03', 'morning', '2020-11-13', FALSE, FALSE, 15, 15, 10, 5, FALSE, " ", 'homepoetry@gmail.com', 'holidays@gmail.com') ;      
             
 INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.com'),
 ('Fishing','iraklion@gmail.com'),
@@ -199,12 +199,26 @@ INSERT INTO Service (name, hotel_username) VALUES ('Fishing','sweethome@yahoo.co
 ('Sightseeing','portoven@gmail.com'),
 ('Massage & Spa','homepoetry@gmail.com'),
 ('Horse Riding','marysrooms@yahoo.com'),
+('Spa','sweethome@yahoo.com'),
 ('Horse Riding','portoven@gmail.com');
 
 INSERT INTO Room (number, username, type, floor)
 VALUES (101, 'luxury@gmail.com', 'single', 1),
 (710, 'iraklion@gmail.com', 'double', 7),
-(405, 'sweethome@yahoo.com', 'single', 4),
+(101, 'sweethome@yahoo.com', 'single', 1),
+(102, 'sweethome@yahoo.com', 'double', 1),
+(103, 'sweethome@yahoo.com', 'triple', 1),
+(104, 'sweethome@yahoo.com', 'quadruple', 1),
+(105, 'sweethome@yahoo.com', 'single', 1),
+(106, 'sweethome@yahoo.com', 'double', 1),
+(107, 'sweethome@yahoo.com', 'triple', 1),
+(201, 'sweethome@yahoo.com', 'single', 2),
+(202, 'sweethome@yahoo.com', 'double', 2),
+(203, 'sweethome@yahoo.com', 'single', 2),
+(401, 'sweethome@yahoo.com', 'double', 4),
+(402, 'sweethome@yahoo.com', 'quadruple', 4),
+(402, 'sweethome@yahoo.com', 'quadruple', 4),
+(403, 'sweethome@yahoo.com', 'single', 4),
 (307, 'luxury@gmail.com', 'triple', 3),
 (505, 'homepoetry@gmail.com', 'double', 5),
 (208, 'iraklion@gmail.com', 'double', 2),

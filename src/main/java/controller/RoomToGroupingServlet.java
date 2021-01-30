@@ -23,8 +23,6 @@ public class RoomToGroupingServlet extends HttpServlet {
             groupingDao.setRoomsToGrouping(g.getRoomId(), g.getGroupingId());
         }
 
-//        request.getRequestDispatcher("/index.jsp").forward(request, response);
-//        return;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

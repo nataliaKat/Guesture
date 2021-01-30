@@ -8,29 +8,12 @@
         <welcome-file>view_hotels.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
-        <servlet-name>HelloServlet</servlet-name>
-        <servlet-class>controller.HelloServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
     <servlet-name>GroupCustomerServlet</servlet-name>
     <servlet-class>controller.GroupCustomerServlet</servlet-class>
 </servlet>
     <servlet-mapping>
         <servlet-name>GroupCustomerServlet</servlet-name>
         <url-pattern>/groupCustomers</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>NewReservationServlet</servlet-name>
-        <servlet-class>controller.NewReservationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>NewReservationServlet</servlet-name>
-        <url-pattern>/newReservation</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>RoomToGroupingServlet</servlet-name>

@@ -103,7 +103,6 @@
                             <th scope="col">Identity Number</th>
                             <th scope="col">Phone</th>
                             <th scope="col">email</th>
-                            <th scope="col">Delete</th>
                         </tr>
                         </thead>
                         <tbody>

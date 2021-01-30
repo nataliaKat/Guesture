@@ -102,8 +102,7 @@
                     if ((reservationsOfAgencyList.get(i).getConfirmed() == b1) && (membersNumber == 0)) { %>
 
                 <td>
-                    <form action="group_members.jsp" target="_blank" method="POST">
-                        <input type="hidden" name="reservation" value="<%=reservationCode%>">
+                    <form action="group_members.jsp?reservation=<%=reservationCode%>" target="_blank" method="POST">
                         <button type="submit" class="blueButton">Add Members</button>
                     </form>
                 </td>

@@ -17,7 +17,6 @@
     <title>Dream Hotel | Reservation Details</title>
 </head>
 <body>
-<%@include file="navbar.jsp" %>
 <% Hotel signedInHotel = null;
     try {
         signedInHotel = (Hotel) session.getAttribute("userObj");
@@ -31,9 +30,11 @@
         request.setAttribute("message", "You should sign in first");
 %>
 <jsp:forward page="login.jsp"></jsp:forward>
+<% } %>
+<%@include file="navbar.jsp" %>
 
 <%
-    }
+
     String hotelUsername = signedInHotel.getUsername();
     ReservationDao rd = new ReservationDao();
 
@@ -141,9 +142,15 @@
                             <div class="col">
                                 <label for="ar_time" class="control-label">Arrival time</label>
                                 <select id="ar_time" type="select" class="form-control form-control-sm" name="ar_time">
-                                    <option value="morning"<%if (reservation.getArrivalTime().equals("morning")) { %> selected="selected"<% } %>>morning</option>
-                                    <option value="noon" <%if (reservation.getArrivalTime().equals("noon")) { %> selected="selected"<% } %>>noon</option>
-                                    <option value="evening" <%if (reservation.getArrivalTime().equals("evening")) { %> selected="selected"<% } %>>evening</option>
+                                    <option value="morning"<%if (reservation.getArrivalTime().equals("morning")) { %>
+                                            selected="selected"<% } %>>morning
+                                    </option>
+                                    <option value="noon" <%if (reservation.getArrivalTime().equals("noon")) { %>
+                                            selected="selected"<% } %>>noon
+                                    </option>
+                                    <option value="evening" <%if (reservation.getArrivalTime().equals("evening")) { %>
+                                            selected="selected"<% } %>>evening
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -156,9 +163,15 @@
                             <div class="col">
                                 <label for="ar_time" class="control-label">Departure time</label>
                                 <select id="dep_time" type="text" class="form-control form-control-sm" name="dep_time">
-                                    <option value="morning"<%if (reservation.getDepartureTime().equals("morning")) { %> selected="selected"<% } %>>morning</option>
-                                    <option value="noon" <%if (reservation.getDepartureTime().equals("noon")) { %> selected="selected"<% } %>>noon</option>
-                                    <option value="evening" <%if (reservation.getDepartureTime().equals("evening")) { %> selected="selected"<% } %>>evening</option>
+                                    <option value="morning"<%if (reservation.getDepartureTime().equals("morning")) { %>
+                                            selected="selected"<% } %>>morning
+                                    </option>
+                                    <option value="noon" <%if (reservation.getDepartureTime().equals("noon")) { %>
+                                            selected="selected"<% } %>>noon
+                                    </option>
+                                    <option value="evening" <%if (reservation.getDepartureTime().equals("evening")) { %>
+                                            selected="selected"<% } %>>evening
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -188,13 +201,13 @@
                         </thead>
                         <tbody>
                         <%
-                        RoomDao roomDao = new RoomDao();
-                        GroupCustomerService groupCustomerService = new GroupCustomerService();
-                        List<Grouping> groups = groupCustomerService.getGroupings(reservationCodeInt);
-                        boolean roomsExist = false;
-                        for (Grouping grouping : groups) {
-                            Room r = roomDao.getById(grouping.getRoomId());
-                            for (GroupCustomer groupCustomer : grouping.getGroupCustomers()) {
+                            RoomDao roomDao = new RoomDao();
+                            GroupCustomerService groupCustomerService = new GroupCustomerService();
+                            List<Grouping> groups = groupCustomerService.getGroupings(reservationCodeInt);
+                            boolean roomsExist = false;
+                            for (Grouping grouping : groups) {
+                                Room r = roomDao.getById(grouping.getRoomId());
+                                for (GroupCustomer groupCustomer : grouping.getGroupCustomers()) {
 
                         %>
 
@@ -219,9 +232,12 @@
                             </td>
                             <td><%=r.getFloor()%>
                             </td>
-                            <% } %>
+                            <% } else {%>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                         <% }
+                        }
                         } %>
                         </tbody>
                     </table>

@@ -177,9 +177,6 @@
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         ele.appendChild(document.getElementById(data));
-        // ev.target.appendChild(document.getElementById(data));
-
-        // $('.droppable').droppable('disable');
     }
 
 </script>

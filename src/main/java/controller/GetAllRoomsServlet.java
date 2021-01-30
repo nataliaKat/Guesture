@@ -6,7 +6,6 @@ import model.Hotel;
 import model.Room;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "GetAllRoomsServlet")
 public class GetAllRoomsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -36,6 +34,5 @@ public class GetAllRoomsServlet extends HttpServlet {
         final byte[] data = out.toByteArray();
         String jsondata = new String(data);
         pw.println(jsondata);
-        System.out.println(jsondata);
     }
 }

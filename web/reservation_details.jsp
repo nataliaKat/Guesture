@@ -3,12 +3,12 @@
 
 <%@page import="dao.ReservationDao" %>
 
-<%@ page import="dao.ServiceDao" %>
+<%@ page import="dao.RoomDao" %>
 
+<%@ page import="dao.ServiceDao" %>
 <%@ page import="model.*" %>
 <%@ page import="service.GroupCustomerService" %>
 <%@ page import="java.util.List" %>
-<%@ page import="dao.RoomDao" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -157,6 +157,7 @@
                             <th scope="col">Phone</th>
                             <th scope="col">email</th>
                             <th scope="col">Room</th>
+                            <th scope="col">Floor</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -188,9 +189,12 @@
                             </td>
                             <td><%=r.getFloor()%>
                             </td>
-                            <% } %>
+                            <% } else {%>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                         <% }
+                        }
                         } %>
 
                         </tbody>
@@ -203,11 +207,11 @@
                     <%
                         ServiceDao sd = new ServiceDao();
                         List<Service> services = sd.getServicesPerReservation(reservationCodeInt, hotelUsername);
-                        for (int i = 0; i < services.size(); i++) {
 
+                        for (int i = 0; i < services.size(); i++) {
                     %>
-                    <li><%=services.get(i).getName() %>
-                    </li>
+
+                    <li><%=services.get(i).getName() %></li>
 
                     <% } %>
 
