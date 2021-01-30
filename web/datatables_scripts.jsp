@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kat26
-  Date: 12/19/2020
-  Time: 8:47 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
