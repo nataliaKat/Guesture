@@ -72,10 +72,8 @@
 
     RoomDao roomdao = new RoomDao();
 
-//    List<Room> availableRooms = roomdao.getAvailableRooms(sqlDateArrival, sqlDateDeparture, hotelName);
+    List<Room> availableRooms = roomdao.getAvailableRooms(sqlDateArrival, sqlDateDeparture, hotelName);
 
-
-    List<Room> availableRooms = roomdao.getAll(hotelName);
     int availableRoomsPerType[] = new int[4];
 
     for (int i = 0; i < 4; i++) {
