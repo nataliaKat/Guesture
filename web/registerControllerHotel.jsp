@@ -79,7 +79,7 @@ servicesAsString = new String(servicesAsString.getBytes("ISO-8859-1"), "UTF-8");
             ServiceDao servicedao = new ServiceDao();
             servicedao.register(service);
         }
-        request.setAttribute("message", "Registration form has been completed successfully. Login now!");
+        request.setAttribute("message", "Registration form has been completed successfully. Login now and insert your rooms!");
  %>
         <jsp:forward page="login.jsp" />
 
