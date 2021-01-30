@@ -2,7 +2,7 @@
 <%@ page import="dao.ReservationDao" %>
 <%@ page import="model.Reservation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ page errorPage="errorPage.jsp" %>--%>
+<%@ page errorPage="errorPage.jsp" %>
 
 <html>
 <head>
@@ -11,8 +11,15 @@
 </head>
 <body>
 <%@include file="agency_navbar.jsp" %>
-<%
-    Agency signedInAgency = (Agency) session.getAttribute("userObj");
+<% Agency signedInAgency = null;
+    try {
+        signedInAgency = (Agency) session.getAttribute("userObj");
+    } catch (ClassCastException e) {
+        request.setAttribute("message", "You are not authorized to view this content");
+%>
+<jsp:forward page="index.jsp"></jsp:forward>
+
+<% }
     if (signedInAgency == null) {
         request.setAttribute("message", "You should sign in first");
 %>

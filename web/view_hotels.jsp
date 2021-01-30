@@ -1,7 +1,8 @@
 <%@ page import="dao.HotelDao" %>
+<%@ page import="model.Hotel" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page errorPage="errorPage.jsp" %>
 <html>
 <%
     HotelDao hotelDao = new HotelDao();
@@ -28,6 +29,13 @@
 </div>
 <main>
     <div class="container">
+        <% if (request.getAttribute("message") != null) { %>
+        <div class="row">
+            <div class="alert alert-danger col-md-12" role="alert">
+                <%=request.getAttribute("message")%>
+            </div>
+        </div>
+        <% } %>
         <div class="row m-4">
             <div class="col-sm-12">
                 <h3>Pick a hotel to make your reservation</h3>

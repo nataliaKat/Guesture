@@ -4,8 +4,9 @@
 <%@page import="dao.ReservationDao" %>
 
 <%@ page import="dao.ServiceDao" %>
-<%@ page import="model.Service" %>
+<%@ page import="model.Hotel" %>
 
+<%@ page import="model.Service" %>
 <%@ page import="java.util.List" %>
 
 
@@ -18,8 +19,15 @@
     <%@include file="header.jsp" %>
 
 </head>
-<%
-    Agency signedInAgency = (Agency) session.getAttribute("userObj");
+<% Agency signedInAgency = null;
+    try {
+        signedInAgency = (Agency) session.getAttribute("userObj");
+    } catch (ClassCastException e) {
+        request.setAttribute("message", "You are not authorized to view this content");
+%>
+<jsp:forward page="index.jsp"></jsp:forward>
+
+<% }
     if (signedInAgency == null) {
         request.setAttribute("message", "You should sign in first");
 %>

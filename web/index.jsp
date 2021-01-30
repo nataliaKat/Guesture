@@ -5,8 +5,15 @@
 <%@ page errorPage="errorPage.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
-<%
-    Hotel signedInHotel = (Hotel) session.getAttribute("userObj");
+<% Hotel signedInHotel = null;
+    try {
+        signedInHotel = (Hotel) session.getAttribute("userObj");
+    } catch (ClassCastException e) {
+        request.setAttribute("message", "You are not authorized to view this content");
+%>
+<jsp:forward page="view_hotels.jsp"></jsp:forward>
+
+<% }
     if (signedInHotel == null) {
         request.setAttribute("message", "You should sign in first");
 %>
@@ -25,6 +32,13 @@
 <main>
     <section>
         <div class="container">
+            <% if (request.getAttribute("message") != null) { %>
+            <div class="row">
+                <div class="alert alert-danger col-md-12" role="alert">
+                    <%=request.getAttribute("message")%>
+                </div>
+            </div>
+            <% } %>
             <div class="row">
                 <div class="col-md-6" style="color: white;">
                     <b><h1 class="mt-5">Welcome back!</h1></b>

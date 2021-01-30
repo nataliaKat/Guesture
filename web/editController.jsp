@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="dao.ReservationDao" %>
-<%--<%@ page errorPage="errorPage.jsp" %>--%>
+<%@ page errorPage="errorPage.jsp" %>
 
 <%@page import="java.sql.Date"%>
 <%@page import="java.time.LocalDate"%>

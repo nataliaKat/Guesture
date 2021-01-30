@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ page errorPage="errorPage.jsp" %>--%>
+<%@ page errorPage="errorPage.jsp" %>
 
 <%@page import="dao.ReservationDao" %>
 
@@ -22,13 +22,20 @@
 
     <title>Dream Hotel | Reservation</title>
 
-    <%
-        Agency signedInAgency = (Agency) session.getAttribute("userObj");
+    <% Agency signedInAgency = null;
+        try {
+            signedInAgency = (Agency) session.getAttribute("userObj");
+        } catch (ClassCastException e) {
+            request.setAttribute("message", "You are not authorized to view this content");
+    %>
+    <jsp:forward page="index.jsp"></jsp:forward>
+
+    <% }
         if (signedInAgency == null) {
             request.setAttribute("message", "You should sign in first");
-
     %>
     <jsp:forward page="login.jsp"></jsp:forward>
+
     <%
         }
     %>
@@ -49,7 +56,7 @@
 
     ReservationDao rd = new ReservationDao();
 
-    String agencyUsername = ((Agency) session.getAttribute("userObj")).getUsername();
+    String agencyUsername = signedInAgency.getUsername();
 
     String reservationCode = request.getParameter("rid");
     int reservationCodeInt = Integer.parseInt(reservationCode);

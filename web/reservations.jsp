@@ -13,14 +13,23 @@
     <%@include file="datatables_stylesheets.jsp" %>
     <title>Dream Hotel | Reservations</title>
 </head>
-<%
-    Hotel signedInHotel = (Hotel) session.getAttribute("userObj");
+<% Hotel signedInHotel = null;
+    try {
+        signedInHotel = (Hotel) session.getAttribute("userObj");
+    } catch (ClassCastException e) {
+        request.setAttribute("message", "You are not authorized to view this content");
+%>
+<jsp:forward page="view_hotels.jsp"></jsp:forward>
+
+<% }
     if (signedInHotel == null) {
         request.setAttribute("message", "You should sign in first");
-
 %>
 <jsp:forward page="login.jsp"></jsp:forward>
-<% } %>
+
+<%
+    }
+%>
 <body id="reservation">
 <%@include file="navbar.jsp" %>
 

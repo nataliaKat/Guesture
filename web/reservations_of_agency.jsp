@@ -1,18 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page errorPage="errorPage.jsp" %>
-
 <%@ page import="dao.GroupCustomerDao" %>
 <%@ page import="dao.ReservationDao" %>
-
-<%@page import="model.GroupCustomer" %>
-
 <%@ page import="model.Reservation" %>
 <%@ page import="java.util.List" %>
 
 
-<%
-    String agencyUsername = ((Agency) session.getAttribute("userObj")).getUsername();
-    Agency signedInAgency = (Agency) session.getAttribute("userObj");
+<% Agency signedInAgency = null;
+    try {
+        signedInAgency = (Agency) session.getAttribute("userObj");
+    } catch (ClassCastException e) {
+        request.setAttribute("message", "You are not authorized to view this content");
+%>
+<jsp:forward page="index.jsp"></jsp:forward>
+
+<% }
     if (signedInAgency == null) {
         request.setAttribute("message", "You should sign in first");
 %>
@@ -65,7 +67,7 @@
 
                 <%
                     ReservationDao rd = new ReservationDao();
-                    List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(agencyUsername);
+                    List<Reservation> reservationsOfAgencyList = rd.getReservationsPerAgency(signedInAgency.getUsername());
                     int reservationCode = 0;
                     boolean b1 = true;
                     for (int i = 0; i < reservationsOfAgencyList.size(); i++) {
@@ -100,8 +102,9 @@
                     if ((reservationsOfAgencyList.get(i).getConfirmed() == b1) && (membersNumber == 0)) { %>
 
                 <td>
-                    <form action="group_members.jsp?reservation=<%=reservationCode%>" target="_blank" method="POST">
-                        <button class="blueButton">Add Members</button>
+                    <form action="group_members.jsp" target="_blank" method="POST">
+                        <input type="hidden" name="reservation" value="<%=reservationCode%>">
+                        <button type="submit" class="blueButton">Add Members</button>
                     </form>
                 </td>
 

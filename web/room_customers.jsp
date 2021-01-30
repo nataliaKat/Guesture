@@ -8,14 +8,24 @@
 <%@ page import="service.GroupCustomerService" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
-<% Hotel signedHotel = (Hotel) session.getAttribute("userObj");
-    if (signedHotel == null) {
-        request.setAttribute("message", "You should sign in first.");%>
-<jsp:forward page="login.jsp"/>
+<% Hotel signedInHotel = null;
+    try {
+        signedInHotel = (Hotel) session.getAttribute("userObj");
+    } catch (ClassCastException e) {
+        request.setAttribute("message", "You are not authorized to view this content");
+%>
+<jsp:forward page="view_hotels.jsp"></jsp:forward>
 
-<% return;
+<% }
+    if (signedInHotel == null) {
+        request.setAttribute("message", "You should sign in first");
+%>
+<jsp:forward page="login.jsp"></jsp:forward>
+<%
 }
     String hotelUsername = ((Hotel) session.getAttribute("userObj")).getUsername();
 

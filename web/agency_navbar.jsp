@@ -1,12 +1,6 @@
-<%@ page import="model.Hotel" %>
-<%@ page import="model.Agency" %><%--
-  Created by IntelliJ IDEA.
-  User: kat26
-  Date: 12/5/2020
-  Time: 12:15 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.Agency" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light  custom-nav">

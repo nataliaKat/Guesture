@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page errorPage="errorPage.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +11,15 @@
 
 <body>
 <%@include file="navbar.jsp" %>
-<%
-    Hotel signedInHotel = (Hotel) session.getAttribute("userObj");
+<% Hotel signedInHotel = null;
+    try {
+        signedInHotel = (Hotel) session.getAttribute("userObj");
+    } catch (ClassCastException e) {
+        request.setAttribute("message", "You are not authorized to view this content");
+%>
+<jsp:forward page="view_hotels.jsp"></jsp:forward>
+
+<% }
     if (signedInHotel == null) {
         request.setAttribute("message", "You should sign in first");
 %>
