@@ -23,7 +23,7 @@
     }
 %>
 <head>
-    <title>Dream Hotel | Home</title>
+    <title>Guesture | Home</title>
     <%@include file="header.jsp" %>
 </head>
 <body id="home">

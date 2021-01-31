@@ -15,7 +15,7 @@
 
 <head>
 
-    <title>Dream Agency | New Reservation</title>
+    <title>Guesture | New Reservation</title>
     <%@include file="header.jsp" %>
 
 </head>

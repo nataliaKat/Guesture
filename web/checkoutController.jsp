@@ -11,7 +11,7 @@ int resId = Integer.parseInt(request.getParameter("resId"));
 
     <head>
 
-        <title>Dream Hotel | Reservations</title>
+        <title>Guesture | Reservations</title>
 
         <%@include file="header.jsp" %>
     </head>

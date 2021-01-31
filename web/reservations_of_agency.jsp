@@ -33,7 +33,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dream Hotel | Reservations Of Agency</title>
+    <title>Guesture | Reservations Of Agency</title>
     <%@include file="header.jsp" %>
     <%@include file="datatables_stylesheets.jsp" %>
 

@@ -5,7 +5,7 @@
 <html>
 <head>
     <%@include file="header.jsp"%>
-    <title>Error</title>
+    <title>Guesture | Error</title>
 
 </head>
 <body>

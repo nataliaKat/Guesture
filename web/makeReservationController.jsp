@@ -135,7 +135,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dream Hotel | New Reservation</title>
+    <title>Guesture | New Reservation</title>
     <%@include file="header.jsp" %>
 </header>
 

@@ -11,7 +11,7 @@
 <head>
     <%@include file="header.jsp" %>
     <%@include file="datatables_stylesheets.jsp" %>
-    <title>Dream Hotel | Reservations</title>
+    <title>Guesture | Reservations</title>
 </head>
 <% Hotel signedInHotel = null;
     try {

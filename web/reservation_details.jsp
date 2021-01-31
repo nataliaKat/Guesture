@@ -47,7 +47,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dream Hotel | Reservation Details</title>
+    <title>Guesture | Reservation Details</title>
     <%@include file="header.jsp" %>
 </header>
 <%@include file="agency_navbar.jsp" %>

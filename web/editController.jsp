@@ -42,7 +42,7 @@ if (date.before(localDateDate)) errors += "<li>Arrival date is earlier that toda
 
     <head>
 
-        <title>Dream Hotel | Edit</title>
+        <title>Guesture | Edit</title>
 
         <%@include file="header.jsp" %>
     </head>

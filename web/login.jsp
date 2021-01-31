@@ -6,7 +6,7 @@
 
 <head>
     <%@include file="header.jsp"%>
-    <title>Log In</title>
+    <title>Guesture | Log In</title>
     <link rel="stylesheet" type="text/css" href="css/login-style.css">
 
 </head>
