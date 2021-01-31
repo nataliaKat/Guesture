@@ -46,7 +46,7 @@
     }
 %>
 <head>
-    <title>Dream Hotel | Rooms</title>
+    <title>Guesture | Rooms' Assignment</title>
     <%@include file="header.jsp" %>
 </head>
 <body>

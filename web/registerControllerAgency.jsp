@@ -53,7 +53,7 @@ if (errors == "") {
 <html lang="en">
 
 <head>
-    <title>Guesture | New Agency</title>
+    <title>Guesture | Agency Registration</title>
     <!-- Bootstrap 4 -->
     <%@include file="header.jsp"%>
 </head>

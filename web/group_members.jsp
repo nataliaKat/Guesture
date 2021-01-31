@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title>Dream Hotel | Group Members</title>
+    <title>Guesture | Group Members</title>
     <%@include file="header.jsp" %>
 </head>
 <body>

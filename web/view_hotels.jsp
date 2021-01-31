@@ -10,7 +10,7 @@
 %>
 <head>
     <%@include file="header.jsp" %>
-    <title>Home</title>
+    <title>Guesture | Home</title>
     <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>

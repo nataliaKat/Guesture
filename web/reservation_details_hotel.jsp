@@ -14,7 +14,7 @@
 <html>
 <head>
     <%@include file="header.jsp" %>
-    <title>Dream Hotel | Reservation Details</title>
+    <title>Guesture | Reservation Details</title>
 </head>
 <body>
 <% Hotel signedInHotel = null;
