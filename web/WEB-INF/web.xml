@@ -56,4 +56,12 @@
         <servlet-name>ConfirmServlet</servlet-name>
         <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GetReservationServlet</servlet-name>
+        <servlet-class>controller.GetReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetReservationServlet</servlet-name>
+        <url-pattern>/getById</url-pattern>
+    </servlet-mapping>
 </web-app>

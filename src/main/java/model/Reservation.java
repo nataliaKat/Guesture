@@ -309,6 +309,17 @@ public class Reservation {
         return confirmed;
     }
 
+    public List<Grouping> getGroupingList() {
+        return groupingList;
+    }
+
+    public void setGroupingList(List<Grouping> groupingList) {
+        this.groupingList = groupingList;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
 
     @Override
     public String toString() {
