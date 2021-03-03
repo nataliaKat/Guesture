@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Reservation {
 
@@ -21,11 +22,32 @@ public class Reservation {
     private int tripleRooms;
     private int quadrupleRooms;
     private String comments;
-
+    private List<Grouping> groupingList;
     private boolean confirmed;
 
     public Reservation() {
 
+    }
+
+    public Reservation(int reservationId, Date arrivalDate, String arrivalTime, Date departureDate, String departureTime, int numberOfPeople, Date submittedOn, boolean checkedIn, boolean checkedOut, String agencyName, String hotelName, int singleRooms, int doubleRooms, int tripleRooms, int quadrupleRooms, String comments, List<Grouping> groupingList, boolean confirmed) {
+        this.reservationId = reservationId;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.departureTime = departureTime;
+        this.numberOfPeople = numberOfPeople;
+        this.submittedOn = submittedOn;
+        this.checkedIn = checkedIn;
+        this.checkedOut = checkedOut;
+        this.agencyName = agencyName;
+        this.hotelName = hotelName;
+        this.singleRooms = singleRooms;
+        this.doubleRooms = doubleRooms;
+        this.tripleRooms = tripleRooms;
+        this.quadrupleRooms = quadrupleRooms;
+        this.comments = comments;
+        this.groupingList = groupingList;
+        this.confirmed = confirmed;
     }
 
     public Reservation(int reservationId, Date arrivalDate, String arrivalTime, Date departureDate, String departureTime, Date submittedOn, boolean checkedIn, boolean checkedOut, String agencyName, int singleRooms, int doubleRooms, int tripleRooms, int quadrupleRooms, String comments, boolean confirmed) {

@@ -7,6 +7,7 @@
     <welcome-file-list>
         <welcome-file>view_hotels.jsp</welcome-file>
     </welcome-file-list>
+
     <servlet>
     <servlet-name>GroupCustomerServlet</servlet-name>
     <servlet-class>controller.GroupCustomerServlet</servlet-class>
@@ -38,5 +39,21 @@
     <servlet-mapping>
         <servlet-name>RoomRegistrationServlet</servlet-name>
         <url-pattern>/submitRoom</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetAllReservations</servlet-name>
+        <servlet-class>controller.GetAllReservetionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllReservations</servlet-name>
+        <url-pattern>/reservations</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <servlet-class>controller.ConfirmServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
 </web-app>
