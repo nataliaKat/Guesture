@@ -71,7 +71,7 @@
                         {{reservation.comments}}
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="table-responsive table-striped">
                         <table class="table table-hover table-striped table-bordered" style="text-align: center;">
                             <thead>
@@ -108,22 +108,22 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="box">
-                        <form role="form" method="POST" action="edit.jsp">
+                        <form role="form">
                             <input type="hidden" id="resiId" name="resId">
                             <div class="row">
                                 <div class="col">
                                     <label for="ar_date" class="control-label">Arrival date</label>
-                                    <input id="ar_date" type="date" class="form-control form-control-sm" name="ar_date"
-                                        >
+                                    <input id="ar_date" type="date" class="form-control form-control-sm"
+                                        value="{{convertToDate(reservation.arrivalDate)}}" ng-model="resEdit.arrivalDate">
                                 </div>
                                 <div class="col">
-                                    <label for="ar_time" class="control-label">Arrival time</label>
+                                    <label for="ar_time" class="control-label">Arrival time</label> <i>{{reservation.arrivalTime}}</i>
                                     <select id="ar_time" type="select" class="form-control form-control-sm"
-                                        name="ar_time">
+                                        ng-model="resEdit.arrivalTime">
                                         <option value="morning">morning</option>
-                                        <option value="noon" selected="selected">noon</option>
+                                        <option value="noon">noon</option>
                                         <option value="evening">evening</option>
                                     </select>
                                 </div>
@@ -131,21 +131,21 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="dep_date" class="control-label">Departure date</label>
-                                    <input id="dep_date" type="date" class="form-control form-control-sm" name="ar_date"
-                                        value="{{convertToDate(reservation.departureDate)}}">
+                                    <input id="dep_date" type="date" class="form-control form-control-sm"
+                                        value="{{convertToDate(reservation.departureDate)}}" ng-model="resEdit.departureDate">
                                 </div>
                                 <div class="col">
-                                    <label for="ar_time" class="control-label">Departure time</label>
-                                    <select id="dep_time" type="date" class="form-control form-control-sm"
-                                        name="dep_time">
+                                    <label for="ar_time" class="control-label">Departure time</label> <i>{{reservation.departureTime}}</i>
+                                    <select id="dep_time" type="date" class="form-control form-control-sm" ng-model="resEdit.departureTime"
+                                        >
                                         <option value="morning">morning</option>
                                         <option value="noon">noon</option>
-                                        <option value="evening" selected="selected">evening</option>
+                                        <option value="evening">evening</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
-                                <input type="submit" class="ml-auto brownButton" style="margin: 10px;" value="Edit">
+                                <input type="submit" ng-click="update(resEdit)" class="ml-auto brownButton" style="margin: 10px;" value="Edit">
                             </div>
                         </form>
                     </div>
@@ -239,8 +239,14 @@
 
             $http.get(URL).then(handleJson);
 
-            $scope.convertToDate = function (date) {
-                return new Date(date);
+            $scope.convertToDate = function (fromDate) {
+                fromDate = new Date(fromDate);
+                formattedDate = fromDate.getFullYear() + "-" + (fromDate.getMonth()+1) + "-" + fromDate.getDate()
+                return formattedDate;
+            }
+
+            $scope.update = function (resEdit) {
+                console.log(resEdit)
             }
 
             function getUrlId() {
