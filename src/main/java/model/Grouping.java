@@ -6,8 +6,17 @@ public class Grouping {
 
     private int groupingId;
     private int roomId;
+    /* Had to add field due to Json construction */
+    private Room room;
     private Reservation reservation;
     List<GroupCustomer> groupCustomers;
+
+    public Grouping(int groupingId, int roomId, Room room, List<GroupCustomer> groupCustomers) {
+        this.groupingId = groupingId;
+        this.roomId = roomId;
+        this.room = room;
+        this.groupCustomers = groupCustomers;
+    }
 
     public Grouping() {
     }
@@ -15,7 +24,6 @@ public class Grouping {
     public Grouping(int groupingId, int roomId) {
         this.groupingId = groupingId;
         this.roomId = roomId;
-        this.reservation = reservation;
     }
 
     public Grouping(List<GroupCustomer> groupCustomers) {
@@ -65,6 +73,14 @@ public class Grouping {
 
     public void setGroupCustomers(List<GroupCustomer> groupCustomers) {
         this.groupCustomers = groupCustomers;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     @Override

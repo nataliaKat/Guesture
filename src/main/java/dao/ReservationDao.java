@@ -357,7 +357,7 @@ public class ReservationDao {
                 Date departureDate = rs.getDate("departureDate");
                 String departureTime = rs.getString("departureTime");
                 Date submittedOn = rs.getDate("submittedOn");
-                Boolean confirmed = rs.getBoolean("confirmed");
+                boolean confirmed = rs.getBoolean("confirmed");
                 String hotel_username = rs.getString("username_hotel");
                 int singleRooms = rs.getInt("singleRooms");
                 int doubleRooms = rs.getInt("doubleRooms");

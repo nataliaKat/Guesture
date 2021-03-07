@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dream Hotel | Reservations</title>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+
+
+    <script src="js/controller.js"></script>
+</head>
+
+<body ng-app="app" ng-controller="MainCtrl" ng-cloak>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-light  custom-nav">
+            <a class="navbar-brand" href="index.html"><img class="logo" src="images/logo_blue_nav.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="view_reservations.html">Reservations<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rooms_registration.jsp">Add room</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link logout" href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Begin page content -->
+    <main class="container">
+        <div class="row">
+            <a href="new_reservation.html"><button location.href="" class="brownButton"><i class="fas fa-plus"></i> New
+                    Reservation</button></a>
+        </div>
+        <div class="mb-3 mt-3">
+            <table id="example" class="table table-hover table-striped table-bordered dt-responsive nowrap table-dark"
+                style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Reservation code</th>
+                        <th scope="col">Agency</th>
+                        <th scope="col">Arrival Date</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align: center;">
+                    <tr ng-repeat="reservation in reservations">
+                        <td>{{reservation.reservationId}}</td>
+                        <td>{{reservation.agencyName}}</td>
+                        <td>{{reservation.arrivalDate}}</td>
+                        <td><button ng-if="!reservation.confirmed" type="button" class="btn btn-success"
+                                ng-click="confirm(reservation.reservationId)"><i class="fas fa-check"></i></button>
+
+                            <button ng-if="reservation.confirmed && !reservation.checkedIn" type="button"
+                                class="btn btn-info"
+                                ng-click="checkIn(reservation.reservationId)"><i class="fas fa-door-closed"></i></button>
+
+                            <button ng-if="reservation.confirmed && reservation.checkedIn && !reservation.checkedOut"
+                                type="button" class="btn btn-info"
+                                ng-click="checkOut(reservation.reservationId)"><i
+                                    class="fas fa-door-open"></i></button>
+
+                        </td>
+                        <td><button type="button" class="btn btn-danger"
+                                ng-click="delete(reservation.reservationId)"><i
+                                    class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Modal For Confirm -->
+    <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel">Updated successfully</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="brownButton" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Made with &hearts; by Guesture - Group Management</span>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        const ReservationsApp = angular.module("app", []);
+
+        ReservationsApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+
+        function MainCtrl($scope, $http) {
+            const URL = "reservations";
+            const confirmUrl = "confirm";
+
+            $http.get(URL).then(handleJson);
+
+            $scope.confirm = function (id) {
+                $http({
+                    method: 'POST',
+                    url: confirmUrl,
+                    data: "id=" + id + "&action=" + 1,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }).then(handleConfResponse);
+            }
+
+            $scope.checkIn = function(id) {
+                $http({
+                    method: 'POST',
+                    url: confirmUrl,
+                    data: "id=" + id + "&action=" + 2,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }).then(handleResponse);
+            }
+
+            $scope.checkOut = function(id) {
+                $http({
+                    method: 'POST',
+                    url: confirmUrl,
+                    data: "id=" + id + "&action=" + 3,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }).then(handleCheckOutResponse);
+            }
+
+            $scope.delete = function(id) {
+                $http({
+                    method: 'POST',
+                    url: confirmUrl,
+                    data: "id=" + id + "&action=" + 4,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }).then(function() {
+                    $http.get(URL).then(handleJson);
+                });
+            }
+
+            function handleConfResponse(response) {
+                if (response.status == 200) {
+                    $("#modal-body").text("Reservation has been confirmed");
+                    $('#confirm-modal').modal('show');
+                }
+                $http.get(URL).then(handleJson);
+            }
+
+            function handleCheckInResponse(response) {
+                if (response.status == 200) {
+                    $("#modal-body").text("Reservation has been checked in");
+                    $('#confirm-modal').modal('show');
+                }
+                $http.get(URL).then(handleJson);
+            }
+
+            function handleCheckOutResponse(response) {
+                if (response.status == 200) {
+                    $("#modal-body").text("Reservation has been checked out");
+                    $('#confirm-modal').modal('show');
+                }
+                $http.get(URL).then(handleJson);
+            }
+
+            function handleJson(response) {
+                $scope.reservations = response.data;
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
