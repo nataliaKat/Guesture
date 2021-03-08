@@ -111,7 +111,7 @@
                 <div class="col-md-5">
                     <div class="box">
                         <form role="form">
-                            <input type="hidden" id="resiId" name="resId">
+                            <input type="hidden" id="resiId" value="{{reservation.reservationId}}" ng-model="resEdit.id">
                             <div class="row">
                                 <div class="col">
                                     <label for="ar_date" class="control-label">Arrival date</label>
@@ -235,7 +235,7 @@
         function ReservationCtrl($scope, $http) {
             var id = getUrlId()
 
-            const URL = 'http://localhost:8080/guesture/getById?id=' + id
+            const URL = 'getById?id=' + id
 
             $http.get(URL).then(handleJson);
 
@@ -246,7 +246,14 @@
             }
 
             $scope.update = function (resEdit) {
-                console.log(resEdit)
+                console.log(resEdit);
+                let editURL = "edit";
+                $.ajax({
+                    type: "POST",
+                    url: editURL,
+                    dataType: 'JSON',
+                    data: resEdit});
+
             }
 
             function getUrlId() {
@@ -268,6 +275,10 @@
                 $scope.hotel = response.data.hotel;
                 $scope.services = response.data.services;
                 console.log(response.data)
+            }
+
+            function handleEditResponse() {
+
             }
 
 

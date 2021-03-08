@@ -64,4 +64,12 @@
         <servlet-name>GetReservationServlet</servlet-name>
         <url-pattern>/getById</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EditReservationServlet</servlet-name>
+        <servlet-class>controller.EditReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditReservationServlet</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
 </web-app>
