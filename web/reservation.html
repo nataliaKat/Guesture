@@ -111,7 +111,6 @@
                 <div class="col-md-5">
                     <div class="box">
                         <form role="form">
-                            <input type="hidden" id="resiId" value="{{reservation.reservationId}}" ng-model="resEdit.id">
                             <div class="row">
                                 <div class="col">
                                     <label for="ar_date" class="control-label">Arrival date</label>
@@ -121,10 +120,8 @@
                                 <div class="col">
                                     <label for="ar_time" class="control-label">Arrival time</label> <i>{{reservation.arrivalTime}}</i>
                                     <select id="ar_time" type="select" class="form-control form-control-sm"
-                                        ng-model="resEdit.arrivalTime">
-                                        <option value="morning">morning</option>
-                                        <option value="noon">noon</option>
-                                        <option value="evening">evening</option>
+                                        ng-model="resEdit.arrivalTime" value="{{reservation.arrivalTime}}" >
+                                        <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -136,11 +133,8 @@
                                 </div>
                                 <div class="col">
                                     <label for="ar_time" class="control-label">Departure time</label> <i>{{reservation.departureTime}}</i>
-                                    <select id="dep_time" type="date" class="form-control form-control-sm" ng-model="resEdit.departureTime"
-                                        >
-                                        <option value="morning">morning</option>
-                                        <option value="noon">noon</option>
-                                        <option value="evening">evening</option>
+                                    <select id="dep_time" type="date" class="form-control form-control-sm" ng-model="resEdit.departureTime">
+                                        <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -230,30 +224,54 @@
     <script>
         const ShowReservationApp = angular.module("res-app", []);
 
-        ShowReservationApp.controller("ReservationCtrl", ['$scope', '$http', ReservationCtrl]);
+        ShowReservationApp.controller("ReservationCtrl", ['$scope', '$http', '$window', ReservationCtrl]);
 
-        function ReservationCtrl($scope, $http) {
+        function ReservationCtrl($scope, $http, $window) {
             var id = getUrlId()
 
-            const URL = 'getById?id=' + id
+            const URL = 'getById?id=' + id;
 
-            $http.get(URL).then(handleJson);
+            $http.get(URL).then(handleJson, handleError);
 
             $scope.convertToDate = function (fromDate) {
                 fromDate = new Date(fromDate);
-                formattedDate = fromDate.getFullYear() + "-" + (fromDate.getMonth()+1) + "-" + fromDate.getDate()
+                if (fromDate.getDate() < 10) {
+                    day = '0' + fromDate.getDate();
+                } else {
+                    day = fromDate.getDate();
+                }
+                formattedDate = fromDate.getFullYear() + "-" + (fromDate.getMonth()+1) + "-" + day
                 return formattedDate;
             }
 
             $scope.update = function (resEdit) {
                 console.log(resEdit);
                 let editURL = "edit";
+                resEdit.id = $scope.reservation.reservationId;
+                // if ($scope.reservation.arrivalDate > $scope.reservation.departureDate) {
+                //     $("#modal-body").text("Arrival date is after departure date");
+                //     $('#confirm-modal').modal('show');
+                // }
+                if (!resEdit.arrivalDate) resEdit.arrivalDate = $scope.reservation.arrivalDate;
+                if (!resEdit.departureDate) resEdit.departureDate = $scope.reservation.departureDate;
+                if (!resEdit.arrivalTime) resEdit.arrivalTime = $scope.reservation.arrivalTime;
+                if (!resEdit.departureTime) resEdit.departureTime = $scope.reservation.departureTime;
+                resEdit.arrivalDate = $scope.convertToDate(resEdit.arrivalDate);
+                resEdit.departureDate = $scope.convertToDate(resEdit.departureDate);
+
                 $.ajax({
                     type: "POST",
                     url: editURL,
                     dataType: 'JSON',
-                    data: resEdit});
-
+                    data: resEdit,
+                    complete: function(data) {
+                        if (data.status == 200) {
+                            $("#modal-body").text("Reservation has been checked out");
+                            $('#confirm-modal').modal('show');
+                        }
+                        $http.get(URL).then(handleJson);
+                    }
+                });
             }
 
             function getUrlId() {
@@ -265,20 +283,30 @@
 
             function handleCheckOutResponse(response) {
                 if (response.status == 200) {
-                    $("#modal-body").text("Reservation has been checked out");
+                    $("#modal-body").text("Reservation has updates");
                     $('#confirm-modal').modal('show');
                 }
             }
+
+            $scope.reservation = {};
 
             function handleJson(response) {
                 $scope.reservation = response.data.reservation;
                 $scope.hotel = response.data.hotel;
                 $scope.services = response.data.services;
                 console.log(response.data)
-            }
+                $scope.data = {
+                    availableOptions: [
+                        {id: 'morning', name: 'morning'},
+                        {id: 'noon', name: 'noon'},
+                        {id: 'evening', name: 'evening'}
+                    ]
+                };
+            };
 
-            function handleEditResponse() {
-
+            function handleError(response) {
+                if (response.status == 507)
+                    $window.location.href = 'login.jsp'
             }
 
 

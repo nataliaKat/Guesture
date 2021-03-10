@@ -24,17 +24,19 @@ public class GetAllReservetionsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         PrintWriter pw = response.getWriter();
         ReservationDao reservationDao = new ReservationDao();
         HttpSession session = request.getSession();
-        String hotel = ((Hotel)session.getAttribute("userObj")).getUsername();
+        Hotel hotel = (Hotel)session.getAttribute("userObj");
+        if (hotel == null) {
+            response.setStatus(507);
+            return;
+        }
         List<Reservation> reservations = new ArrayList<>();
         try {
-            reservations = reservationDao.getAll(hotel);
+            reservations = reservationDao.getAll(hotel.getUsername());
         } catch (Exception e) {
             e.printStackTrace();
         }
