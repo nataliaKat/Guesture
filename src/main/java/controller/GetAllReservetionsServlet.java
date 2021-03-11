@@ -31,7 +31,7 @@ public class GetAllReservetionsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Hotel hotel = (Hotel)session.getAttribute("userObj");
         if (hotel == null) {
-            response.setStatus(507);
+            response.setStatus(538);
             return;
         }
         List<Reservation> reservations = new ArrayList<>();

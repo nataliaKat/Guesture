@@ -28,10 +28,11 @@ public class GetReservationServlet extends HttpServlet {
         response.setContentType("application/json");
         Hotel hotel = (Hotel)session.getAttribute("userObj");
         if (hotel == null) {
-            response.setStatus(507);
+            response.setStatus(538);
             return;
         }
         String hotelUsername = hotel.getUsername();
+        hotel.setPassword("");
         int id = -1;
         try {
             id = Integer.parseInt(request.getParameter("id"));

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dream Hotel | Reservations</title>
+    <title>Guesture | Reservations</title>
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="js/all_reservations.js"></script>
 </head>
 
 <body ng-app="app">
@@ -31,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="view_hotels.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                     </li>
@@ -97,7 +98,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalLabel">Updated successfully</h5>
+              <h5 class="modal-title" id="modalLabel">Update notification</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -125,92 +126,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script>
-        const ReservationsApp = angular.module("app", []);
-
-        ReservationsApp.controller("MainCtrl", ['$scope', '$http', '$window', MainCtrl]);
-
-        function MainCtrl($scope, $http, $window) {
-            const URL = "reservations";
-            const confirmUrl = "confirm";
-
-            $http.get(URL).then(handleJson, handleError);
-
-            $scope.confirm = function (id) {
-                $http({
-                    method: 'POST',
-                    url: confirmUrl,
-                    data: "id=" + id + "&action=" + 1,
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                }).then(handleConfResponse);
-            }
-
-            $scope.checkIn = function(id) {
-                $http({
-                    method: 'POST',
-                    url: confirmUrl,
-                    data: "id=" + id + "&action=" + 2,
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                }).then(handleCheckInResponse);
-            }
-
-            $scope.checkOut = function(id) {
-                $http({
-                    method: 'POST',
-                    url: confirmUrl,
-                    data: "id=" + id + "&action=" + 3,
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                }).then(handleCheckOutResponse);
-            }
-
-            $scope.delete = function(id) {
-                $http({
-                    method: 'POST',
-                    url: confirmUrl,
-                    data: "id=" + id + "&action=" + 4,
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                }).then(function() {
-                    $http.get(URL).then(handleJson);
-                });
-            }
-
-            function handleConfResponse(response) {
-                if (response.status == 200) {
-                    $("#modal-body").text("Reservation has been confirmed");
-                    $('#confirm-modal').modal('show');
-                }
-                $http.get(URL).then(handleJson);
-            }
-
-            function handleCheckInResponse(response) {
-                if (response.status == 200) {
-                    $("#modal-body").text("Reservation has been checked in");
-                    $('#confirm-modal').modal('show');
-                }
-                $http.get(URL).then(handleJson);
-            }
-
-            function handleCheckOutResponse(response) {
-                if (response.status == 200) {
-                    $("#modal-body").text("Reservation has been checked out");
-                    $('#confirm-modal').modal('show');
-                }
-                $http.get(URL).then(handleJson);
-            }
-
-            function handleJson(response) {
-                $scope.reservations = response.data;
-            }
-
-            function handleError(response) {
-                if (response.status == 507)
-                    $window.location.href = 'login.jsp'
-            }
-
-        }
-
-
-    </script>
 </div>
 </body>
 

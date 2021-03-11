@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dream Hotel | Reservations</title>
+    <title>Guesture | Reservations</title>
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
-
+    <script src="js/reservation_details.js"></script>
 
 </head>
 
@@ -62,7 +62,7 @@
                 <div class="col-md-4">
                     <div class="box">
                         <b>Reservation id:</b> {{reservation.reservationId}}<br>
-                        <b>Agency:</b> {{reservation.agency}}<br>
+                        <b>Agency:</b> {{reservation.agencyName}}<br>
                         <b>Created on:</b> {{reservation.arrivalDate}}<br>
                         <b>Confirmed: </b> {{reservation.confirmed}}<br>
                         <b>Checked in: </b> {{reservation.checkedIn}}<br>
@@ -148,7 +148,7 @@
             <div class="row mt-3">
                 <div class="col-md-9">
                     <h4 class="text-center">Group Members</h4>
-                    <div class="table-responsive table-striped table-sm text-center">
+                    <div class="table-responsive table-bordered table-sm text-center">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -221,101 +221,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script>
-        const ShowReservationApp = angular.module("res-app", []);
-
-        ShowReservationApp.controller("ReservationCtrl", ['$scope', '$http', '$window', ReservationCtrl]);
-
-        function ReservationCtrl($scope, $http, $window) {
-            var id = getUrlId()
-
-            const URL = 'getById?id=' + id;
-
-            $http.get(URL).then(handleJson, handleError);
-
-            $scope.convertToDate = function (fromDate) {
-                fromDate = new Date(fromDate);
-                if (fromDate.getDate() < 10) {
-                    day = '0' + fromDate.getDate();
-                } else {
-                    day = fromDate.getDate();
-                }
-                formattedDate = fromDate.getFullYear() + "-" + (fromDate.getMonth()+1) + "-" + day
-                return formattedDate;
-            }
-
-            $scope.update = function (resEdit) {
-                console.log(resEdit);
-                let editURL = "edit";
-                resEdit.id = $scope.reservation.reservationId;
-                // if ($scope.reservation.arrivalDate > $scope.reservation.departureDate) {
-                //     $("#modal-body").text("Arrival date is after departure date");
-                //     $('#confirm-modal').modal('show');
-                // }
-                if (!resEdit.arrivalDate) resEdit.arrivalDate = $scope.reservation.arrivalDate;
-                if (!resEdit.departureDate) resEdit.departureDate = $scope.reservation.departureDate;
-                if (!resEdit.arrivalTime) resEdit.arrivalTime = $scope.reservation.arrivalTime;
-                if (!resEdit.departureTime) resEdit.departureTime = $scope.reservation.departureTime;
-                resEdit.arrivalDate = $scope.convertToDate(resEdit.arrivalDate);
-                resEdit.departureDate = $scope.convertToDate(resEdit.departureDate);
-
-                $.ajax({
-                    type: "POST",
-                    url: editURL,
-                    dataType: 'JSON',
-                    data: resEdit,
-                    complete: function(data) {
-                        if (data.status == 200) {
-                            $("#modal-body").text("Reservation has been checked out");
-                            $('#confirm-modal').modal('show');
-                        }
-                        $http.get(URL).then(handleJson);
-                    }
-                });
-            }
-
-            function getUrlId() {
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
-                const id = urlParams.get('id')
-                return id;
-            }
-
-            function handleCheckOutResponse(response) {
-                if (response.status == 200) {
-                    $("#modal-body").text("Reservation has updates");
-                    $('#confirm-modal').modal('show');
-                }
-            }
-
-            $scope.reservation = {};
-
-            function handleJson(response) {
-                $scope.reservation = response.data.reservation;
-                $scope.hotel = response.data.hotel;
-                $scope.services = response.data.services;
-                console.log(response.data)
-                $scope.data = {
-                    availableOptions: [
-                        {id: 'morning', name: 'morning'},
-                        {id: 'noon', name: 'noon'},
-                        {id: 'evening', name: 'evening'}
-                    ]
-                };
-            };
-
-            function handleError(response) {
-                if (response.status == 507)
-                    $window.location.href = 'login.jsp'
-            }
-
-
-
-        }
-
-
-    </script>
-
 </body>
 
 </html>
